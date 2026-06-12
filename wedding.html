@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Suits Calgary — Thomas Jeffery Men's Wear</title>
+  <meta name="description" content="Dress your whole wedding party right. Custom suits, off-the-rack options, and expert fitting in Calgary since 1968. Buy 3 Paul Betenly suits, get the 4th free.">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: #F5F0EB;
+      color: #1C2B39;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ══════════════════════════════
+       IMAGE PLACEHOLDERS
+    ══════════════════════════════ */
+    .photo {
+      background: #D9D3CC;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .photo__label {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: rgba(28,43,57,0.45);
+      text-align: center;
+      padding: 20px;
+      line-height: 1.6;
+      max-width: 220px;
+      z-index: 1;
+    }
+    .photo--3x4  { aspect-ratio: 3/4; }
+    .photo--4x3  { aspect-ratio: 4/3; }
+    .photo--1x1  { aspect-ratio: 1/1; }
+    .photo--hero { height: 100%; min-height: 320px; }
+
+    /* ══════════════════════════════
+       NAV
+    ══════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(245,240,235,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(28,43,57,0.07);
+      transition: padding 0.3s;
+    }
+    .nav.scrolled { padding: 10px 20px; }
+    .nav__logo img { height: 64px; width: auto; display: block; }
+    .nav__right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .nav__links { display: flex; align-items: center; gap: 20px; list-style: none; }
+    .nav__links a {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav__links a:hover { color: #1C2B39; }
+    .nav__book a {
+      color: #1C2B39;
+      border-bottom: 1px solid rgba(28,43,57,0.3);
+      padding-bottom: 2px;
+    }
+    .nav__modes { display: none; align-items: center; gap: 16px; }
+    .nav__mode-sep { font-size: 9px; color: rgba(28,43,57,0.35); letter-spacing: 0.2em; }
+    .nav__mode-btn {
+      background: none; border: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 9px; font-weight: 400;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(28,43,57,0.45);
+      cursor: pointer; padding: 2px 0;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .nav__mode-btn:hover { color: rgba(28,43,57,0.8); }
+    .nav__mode-btn.active { color: #1C2B39; border-bottom-color: #1C2B39; }
+
+    /* ══ MOBILE HAMBURGER + MENU ══ */
+    .nav__hamburger {
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      gap: 5px; width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer; padding: 0;
+    }
+    .nav__hamburger span {
+      display: block; width: 22px; height: 2px; background: #1C2B39;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-menu {
+      position: fixed; top: 92px; left: 0; right: 0;
+      background: #F5F0EB; border-bottom: 1px solid rgba(28,43,57,0.1);
+      z-index: 99; padding: 12px 0 20px;
+      transform: translateY(-110%); opacity: 0; pointer-events: none;
+      transition: transform 0.3s ease, opacity 0.2s ease;
+      max-height: calc(100vh - 92px); overflow-y: auto;
+    }
+    .nav-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .nav-menu__section {
+      display: block; padding: 14px 24px 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.36em;
+      text-transform: uppercase; color: rgba(28,43,57,0.4);
+    }
+    .nav-menu a {
+      display: block; padding: 14px 24px;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(28,43,57,0.78);
+      text-decoration: none; border-bottom: 1px solid rgba(28,43,57,0.06);
+    }
+    .nav-menu a:hover { background: rgba(28,43,57,0.04); color: #1C2B39; }
+    .nav-menu a.active { color: #1C2B39; font-weight: 700; background: rgba(28,43,57,0.04); }
+    .nav-menu a.nav-menu__book { color: #1C2B39; font-weight: 700; background: rgba(28,43,57,0.05); }
+
+    @media (max-width: 699px) { .nav__links { display: none; } }
+
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
+      padding-top: 92px;
+    }
+    .hero__image { flex-shrink: 0; height: 60vw; min-height: 240px; order: -1; }
+    .hero__panel {
+      background: #1C2B39;
+      padding: 36px 24px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
+    .hero__eyebrow {
+      font-size: 12px; font-weight: 400;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(245,240,235,0.55);
+      margin-bottom: 18px; display: block;
+    }
+    .hero__title {
+      font-size: clamp(48px, 12vw, 92px);
+      font-weight: 300; letter-spacing: -0.01em;
+      color: #F5F0EB; line-height: 0.92;
+      margin-bottom: 24px;
+    }
+    .hero__rule { width: 40px; height: 1px; background: rgba(245,240,235,0.3); margin-bottom: 20px; }
+    .hero__sub {
+      font-size: 16px; font-weight: 400;
+      color: rgba(245,240,235,0.85); line-height: 1.75;
+      margin-bottom: 36px; max-width: 380px;
+    }
+    .hero__cta {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: #1C2B39; background: #F5F0EB;
+      padding: 16px 40px; text-decoration: none;
+      transition: background 0.2s; align-self: flex-start;
+    }
+    .hero__cta:hover { background: #fff; }
+    .hero__walkin {
+      margin-top: 14px; font-size: 13px; font-weight: 400;
+      font-style: italic; color: rgba(245,240,235,0.6); letter-spacing: 0.04em;
+    }
+
+    /* ══════════════════════════════
+       PROMO STRIP
+    ══════════════════════════════ */
+    .promo {
+      background: #F5F0EB;
+      border-top: 1px solid rgba(28,43,57,0.1);
+      border-bottom: 1px solid rgba(28,43,57,0.1);
+      padding: 28px 20px;
+      text-align: center;
+    }
+    .promo__eyebrow {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(28,43,57,0.45);
+      display: block; margin-bottom: 10px;
+    }
+    .promo__headline {
+      font-size: clamp(20px, 5vw, 32px);
+      font-weight: 300; color: #1C2B39;
+      line-height: 1.2; margin-bottom: 10px;
+    }
+    .promo__headline strong { font-weight: 700; }
+    .promo__sub {
+      font-size: 15px; font-weight: 400;
+      color: rgba(28,43,57,0.65); line-height: 1.6;
+      max-width: 480px; margin: 0 auto 20px;
+    }
+    .promo__cta {
+      display: inline-block;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: #F5F0EB; background: #1C2B39;
+      padding: 14px 36px; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .promo__cta:hover { opacity: 0.85; }
+    .promo__fine {
+      margin-top: 12px; font-size: 12px; font-weight: 400;
+      font-style: italic; color: rgba(28,43,57,0.45);
+    }
+
+    /* ══════════════════════════════
+       SECTION SHARED STYLES
+    ══════════════════════════════ */
+    .section__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5); margin-bottom: 12px;
+    }
+    .section__title {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 300; letter-spacing: 0.01em;
+      color: #1C2B39; line-height: 1.1; margin-bottom: 14px;
+    }
+    .section__body {
+      font-size: 16px; font-weight: 400; line-height: 1.8;
+      color: rgba(28,43,57,0.78); margin-bottom: 32px; max-width: 560px;
+    }
+
+    /* ══════════════════════════════
+       WHAT'S YOUR SITUATION — TABS
+    ══════════════════════════════ */
+    .start { padding: 40px 20px; }
+    .start__inner { display: block; }
+    .start__label {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5); margin-bottom: 20px;
+    }
+    .start__tabs { display: flex; flex-direction: column; gap: 8px; }
+    .start__tab {
+      background: none; border: 1px solid rgba(28,43,57,0.15);
+      cursor: pointer; font-family: 'Lato', sans-serif;
+      font-size: 13px; font-weight: 400;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(28,43,57,0.65); padding: 14px 20px;
+      text-align: left; transition: all 0.2s;
+    }
+    .start__tab.active, .start__tab:hover {
+      background: #1C2B39; border-color: #1C2B39; color: #F5F0EB;
+    }
+    .start__panels { margin-top: 0; }
+    .start__panel { display: none; padding: 28px 0 0; }
+    .start__panel.active { display: block; }
+    .start__panel p {
+      font-size: 16px; font-weight: 400; font-style: italic;
+      line-height: 1.8; color: rgba(28,43,57,0.75);
+      border-left: 2px solid #1C2B39;
+      padding-left: 20px; margin-bottom: 24px;
+    }
+    .start__panel-promo {
+      background: rgba(28,43,57,0.04);
+      border: 1px solid rgba(28,43,57,0.1);
+      padding: 16px 20px; margin-bottom: 24px;
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .start__panel-promo-text {
+      font-size: 14px; font-weight: 700; color: #1C2B39;
+      letter-spacing: 0.04em; flex: 1; min-width: 180px;
+    }
+    .start__panel-promo-text span {
+      display: block; font-size: 13px; font-weight: 400;
+      color: rgba(28,43,57,0.6); margin-top: 3px; letter-spacing: 0;
+    }
+    .start__panel-cta {
+      display: inline-block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: #F5F0EB; background: #1C2B39;
+      padding: 13px 30px; text-decoration: none; transition: opacity 0.2s;
+    }
+    .start__panel-cta:hover { opacity: 0.85; }
+    .start__photo { display: none; }
+
+    /* ══════════════════════════════
+       KEY DECISIONS — EXPANDABLE CARDS
+    ══════════════════════════════ */
+    .decisions { padding: 44px 20px; background: #E8E0D5; }
+    .decisions__hint {
+      font-size: 13px; font-weight: 400; font-style: italic;
+      color: rgba(28,43,57,0.45); margin-top: -20px;
+      margin-bottom: 36px; letter-spacing: 0.04em;
+    }
+    .decisions__grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .decision {
+      border: 1px solid rgba(28,43,57,0.12);
+      background: #F5F0EB; cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .decision:hover { border-color: rgba(28,43,57,0.28); box-shadow: 0 4px 20px rgba(28,43,57,0.07); }
+    .decision.open { border-color: #1C2B39; }
+    .decision__header {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 24px; gap: 16px;
+    }
+    .decision__left { flex: 1; }
+    .decision__num {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(28,43,57,0.45); display: block; margin-bottom: 6px;
+    }
+    .decision__name {
+      font-size: 20px; font-weight: 300;
+      letter-spacing: 0.05em; color: #1C2B39; display: block;
+    }
+    .decision__tagline {
+      font-size: 15px; font-weight: 700; font-style: italic;
+      color: rgba(28,43,57,0.72); display: block; margin-top: 4px;
+    }
+    .decision__toggle {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(28,43,57,0.2); border-radius: 50%;
+      font-size: 20px; line-height: 1; color: rgba(28,43,57,0.45);
+      flex-shrink: 0;
+      transition: transform 0.3s, color 0.22s, background 0.22s, border-color 0.22s;
+    }
+    .decision:hover .decision__toggle { border-color: rgba(28,43,57,0.4); color: #1C2B39; }
+    .decision.open .decision__toggle {
+      transform: rotate(45deg); color: #F5F0EB;
+      background: #1C2B39; border-color: #1C2B39;
+    }
+    .decision__detail {
+      display: none; padding: 0 24px 28px;
+      border-top: 1px solid rgba(28,43,57,0.08);
+    }
+    .decision.open .decision__detail { display: block; }
+    .decision__body {
+      font-size: 15px; font-weight: 400; line-height: 1.8;
+      color: rgba(28,43,57,0.78); padding-top: 20px;
+    }
+
+    /* ══════════════════════════════
+       TWO PATHS
+    ══════════════════════════════ */
+    .paths { padding: 44px 20px; }
+    .paths__grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 36px; }
+    .path { background: #E8E0D5; display: flex; flex-direction: column; }
+    .path__photo { flex-shrink: 0; }
+    .path__content { padding: 28px 24px 32px; flex: 1; display: flex; flex-direction: column; }
+    .path__tag {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.34em;
+      text-transform: uppercase; color: rgba(28,43,57,0.5);
+      display: block; margin-bottom: 10px;
+    }
+    .path__title { font-size: 24px; font-weight: 300; color: #1C2B39; margin-bottom: 14px; line-height: 1.2; }
+    .path__body { font-size: 15px; font-weight: 400; line-height: 1.8; color: rgba(28,43,57,0.76); margin-bottom: 16px; flex: 1; }
+    .path__offer {
+      background: rgba(28,43,57,0.06); border-left: 2px solid #1C2B39;
+      padding: 12px 16px; margin-bottom: 24px;
+      font-size: 14px; font-weight: 700; color: #1C2B39; letter-spacing: 0.02em;
+    }
+    .path__offer span {
+      display: block; font-size: 13px; font-weight: 400;
+      color: rgba(28,43,57,0.62); margin-top: 3px;
+    }
+    .path__cta {
+      display: inline-block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: #F5F0EB; background: #1C2B39;
+      padding: 14px 30px; text-decoration: none;
+      transition: opacity 0.2s; align-self: flex-start;
+    }
+    .path__cta:hover { opacity: 0.82; }
+    .path--custom { background: #1C2B39; }
+    .path--custom .path__tag { color: rgba(245,240,235,0.45); }
+    .path--custom .path__title { color: #F5F0EB; }
+    .path--custom .path__body { color: rgba(245,240,235,0.8); }
+    .path--custom .path__cta { background: #F5F0EB; color: #1C2B39; }
+    .path--custom .path__cta:hover { background: #fff; opacity: 1; }
+
+    /* ══════════════════════════════
+       TIMELINE
+    ══════════════════════════════ */
+    .timeline { padding: 44px 20px; background: #1C2B39; }
+    .timeline .section__eyebrow { color: rgba(245,240,235,0.55); }
+    .timeline .section__title { color: #F5F0EB; }
+    .timeline .section__body { color: rgba(245,240,235,0.78); }
+    .timeline__grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 36px; }
+    .timecard {
+      border: 1px solid rgba(245,240,235,0.1);
+      background: rgba(245,240,235,0.04);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .timecard:hover { background: rgba(245,240,235,0.08); border-color: rgba(245,240,235,0.22); }
+    .timecard.open { border-color: rgba(245,240,235,0.35); background: rgba(245,240,235,0.07); }
+    .timecard__header {
+      display: flex; align-items: center;
+      justify-content: space-between; padding: 22px 24px; gap: 16px;
+    }
+    .timecard__left { flex: 1; }
+    .timecard__when {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.32em;
+      text-transform: uppercase; color: rgba(245,240,235,0.5);
+      display: block; margin-bottom: 6px;
+    }
+    .timecard__headline {
+      font-size: 18px; font-weight: 300; color: #F5F0EB;
+      letter-spacing: 0.04em; display: block;
+    }
+    .timecard__toggle {
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(245,240,235,0.2); border-radius: 50%;
+      font-size: 18px; line-height: 1; color: rgba(245,240,235,0.45);
+      flex-shrink: 0;
+      transition: transform 0.3s, color 0.22s, background 0.22s, border-color 0.22s;
+    }
+    .timecard:hover .timecard__toggle { border-color: rgba(245,240,235,0.4); color: rgba(245,240,235,0.8); }
+    .timecard.open .timecard__toggle {
+      transform: rotate(45deg);
+      color: #1C2B39; background: #F5F0EB; border-color: #F5F0EB;
+    }
+    .timecard__detail { display: none; padding: 0 24px 24px; border-top: 1px solid rgba(245,240,235,0.08); }
+    .timecard.open .timecard__detail { display: block; }
+    .timecard__body {
+      font-size: 15px; font-weight: 400; line-height: 1.8;
+      color: rgba(245,240,235,0.78); padding-top: 18px;
+    }
+
+    /* ══════════════════════════════
+       FEATURED BRANDS
+    ══════════════════════════════ */
+    .featured-brands { padding: 40px 20px; }
+    .featured-brands__grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
+    .brand-card {
+      background: #E8E0D5; border: 1px solid rgba(28,43,57,0.08);
+      padding: 28px 24px; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .brand-card:hover { border-color: rgba(28,43,57,0.2); box-shadow: 0 4px 20px rgba(28,43,57,0.07); }
+    .brand-card__name {
+      font-size: 18px; font-weight: 400; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #1C2B39;
+      display: block; margin-bottom: 6px;
+    }
+    .brand-card__origin {
+      font-size: 12px; font-weight: 400; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(28,43,57,0.5);
+      display: block; margin-bottom: 14px;
+    }
+    .brand-card__body {
+      font-size: 14px; font-weight: 400; line-height: 1.75;
+      color: rgba(28,43,57,0.75);
+    }
+
+    /* ══════════════════════════════
+       BOOKING
+    ══════════════════════════════ */
+    .booking { padding: 56px 20px; background: #1C2B39; text-align: center; }
+    .booking__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(245,240,235,0.55); margin-bottom: 16px;
+    }
+    .booking__title {
+      font-size: clamp(32px, 6vw, 52px); font-weight: 300;
+      color: #F5F0EB; line-height: 1.15; margin-bottom: 16px;
+    }
+    .booking__sub {
+      font-size: 16px; font-weight: 400; color: rgba(245,240,235,0.78);
+      line-height: 1.75; margin-bottom: 36px;
+      max-width: 500px; margin-left: auto; margin-right: auto;
+    }
+    .booking__cta {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: #1C2B39; background: #F5F0EB;
+      padding: 18px 52px; text-decoration: none; transition: background 0.2s;
+    }
+    .booking__cta:hover { background: #fff; }
+    .booking__walkin {
+      margin-top: 20px; font-size: 14px; font-weight: 400;
+      font-style: italic; color: rgba(245,240,235,0.55); letter-spacing: 0.02em;
+    }
+    .booking__walkin strong { font-weight: 700; font-style: normal; color: rgba(245,240,235,0.75); }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    /* ══ FOOTER (unified across site) ══ */
+    .footer { background: #1C2B39; padding: 64px 24px 36px; border-top: 1px solid rgba(245,240,235,0.07); }
+    .footer__logo { height: 84px; width: auto; display: block; margin: 0 0 36px; opacity: 0.92; }
+    .footer__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(245,240,235,0.55); margin-bottom: 14px;
+    }
+    .footer__title {
+      font-size: clamp(30px, 6vw, 44px); font-weight: 300;
+      letter-spacing: 0.01em; color: #F5F0EB;
+      line-height: 1.1; margin-bottom: 40px;
+    }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
+    .footer__col h4 {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.32em;
+      text-transform: uppercase; color: rgba(245,240,235,0.55); margin-bottom: 14px;
+    }
+    .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer__col ul a {
+      font-size: 15px; font-weight: 400; letter-spacing: 0.04em;
+      color: rgba(245,240,235,0.78); text-decoration: none; transition: color 0.2s;
+    }
+    .footer__col ul a:hover { color: #F5F0EB; }
+    .footer__address, .footer__hours {
+      font-size: 15px; font-weight: 400; line-height: 1.85; color: rgba(245,240,235,0.78);
+    }
+    .footer__phone { margin-top: 14px; font-size: 15px; font-weight: 700; letter-spacing: 0.02em; }
+    .footer__phone a { color: rgba(245,240,235,0.85); text-decoration: none; }
+    .footer__phone a:hover { color: #F5F0EB; }
+    .footer__cta-row { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+    .footer__btn {
+      display: inline-block; padding: 16px 28px; text-align: center;
+      text-decoration: none; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .footer__btn--primary { background: #F5F0EB; color: #1C2B39; }
+    .footer__btn--primary:hover { background: #fff; }
+    .footer__btn--ghost { background: transparent; color: #F5F0EB; border: 1px solid rgba(245,240,235,0.4); }
+    .footer__btn--ghost:hover { border-color: #F5F0EB; background: rgba(245,240,235,0.06); }
+    .footer__divider { border: none; border-top: 1px solid rgba(245,240,235,0.1); margin-bottom: 22px; }
+    .footer__bottom { display: flex; flex-direction: column; gap: 14px; }
+    .footer__copy {
+      font-size: 13px; font-weight: 400; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(245,240,235,0.45);
+    }
+    .footer__social { display: flex; gap: 22px; }
+    .footer__social a {
+      font-size: 12px; font-weight: 400; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(245,240,235,0.55);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer__social a:hover { color: rgba(245,240,235,0.9); }
+
+    /* ══════════════════════════════
+       MOBILE STICKY BOOK BUTTON
+    ══════════════════════════════ */
+    .sticky-book {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+      display: block; background: #1C2B39; color: #F5F0EB;
+      font-family: 'Lato', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      text-align: center; text-decoration: none;
+      padding: 18px 20px; border-top: 1px solid rgba(245,240,235,0.1);
+      transition: background 0.2s;
+    }
+    .sticky-book:hover { background: #243649; }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (min-width: 700px) {
+      .nav { padding: 14px 40px; }
+      .nav.scrolled { padding: 10px 40px; }
+      .nav__logo img { height: 72px; }
+      .nav__links { gap: 32px; }
+      .nav__modes { display: flex; }
+      .nav__hamburger { display: none; }
+      .nav-menu { display: none; }
+
+      .hero { flex-direction: row; padding-top: 0; min-height: 100svh; }
+      .hero__image { order: 0; width: 50%; height: auto; min-height: unset; }
+      .hero__panel { padding: 140px 52px 72px; }
+
+      .promo { padding: 36px 48px; }
+      .promo__sub { margin-bottom: 24px; }
+
+      .start { padding: 48px 48px; }
+      .start__inner {
+        display: grid; grid-template-columns: 1fr 1fr;
+        gap: 48px; align-items: stretch;
+      }
+      .start__tabs { flex-direction: column; }
+      .start__photo {
+        display: block; min-height: 280px;
+        aspect-ratio: unset; height: 100%;
+      }
+
+      .decisions { padding: 64px 48px; }
+      .decisions__grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+
+      .paths { padding: 64px 48px; }
+      .paths__grid { grid-template-columns: 1fr 1fr; }
+
+      .timeline { padding: 64px 48px; }
+      .timeline__grid { grid-template-columns: 1fr 1fr; }
+
+      .featured-brands { padding: 56px 48px; }
+      .featured-brands__grid { grid-template-columns: 1fr 1fr 1fr; }
+
+      .booking { padding: 96px 48px; }
+
+      .footer { padding: 80px 48px 40px; }
+      .footer__logo { height: 100px; margin: 0 0 44px; }
+      .footer__title { margin-bottom: 48px; }
+      .footer__grid { grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+      .footer__cta-row { flex-direction: row; gap: 14px; margin-bottom: 48px; }
+      .footer__bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+
+      .sticky-book { display: none; }
+    }
+
+    @media (min-width: 1024px) {
+      .nav { padding: 14px 64px; }
+      .hero__image { width: 52%; }
+      .hero__panel { padding: 160px 72px 80px; }
+      .start { padding: 56px 64px; }
+      .decisions { padding: 80px 64px; }
+      .paths { padding: 80px 64px; }
+      .timeline { padding: 80px 64px; }
+      .featured-brands { padding: 64px 64px; }
+      .booking { padding: 112px 64px; }
+      .footer { padding: 96px 64px 44px; }
+      .footer__logo { height: 112px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ MOBILE STICKY BOOK ══ -->
+<a class="sticky-book" href="book-wedding.html">Book a Wedding Consultation →</a>
+
+<!-- ══════════════════════════════
+     NAV
+══════════════════════════════ -->
+<nav class="nav" id="nav">
+  <a href="thomas-jeffery-homepage.html">
+    <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/8c767aaa-8e17-aad6-db85-b0383c08bd33.png"
+         alt="Thomas Jeffery Men's Wear" style="height:64px;width:auto;display:block;">
+  </a>
+  <div class="nav__right">
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="office.html">Office</a></li>
+      <li class="nav__book"><a href="book-wedding.html">Book a Consultation</a></li>
+    </ul>
+    <div class="nav__modes">
+      <span class="nav__mode-sep">Viewing</span>
+      <a class="nav__mode-btn" href="office.html">Office</a>
+      <a class="nav__mode-btn active" href="wedding.html">Wedding</a>
+      <a class="nav__mode-btn" href="casual.html">Casual</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ MOBILE MENU ══ -->
+<div class="nav-menu" id="nav-menu">
+  <span class="nav-menu__section">Browse</span>
+  <a href="office.html">Office</a>
+  <a href="wedding.html" class="active">Wedding</a>
+  <a href="casual.html">Casual</a>
+  <span class="nav-menu__section">More</span>
+  <a href="about.html">About</a>
+  <a href="brands.html">Brands</a>
+  <a class="nav-menu__book" href="book-wedding.html">Book a Consultation →</a>
+</div>
+
+<!-- ══════════════════════════════
+     HERO
+══════════════════════════════ -->
+<section class="hero">
+  <div class="hero__image photo photo--hero">
+    <span class="photo__label">HERO SHOT — Groom portrait. Well-fitted dark suit, confident and relaxed. Warm natural light. Not stiff or posed — candid elegance. Portrait orientation 3×4.</span>
+  </div>
+  <div class="hero__panel">
+    <span class="hero__eyebrow">Wedding Suiting · Calgary</span>
+    <h1 class="hero__title">The Day<br>You'll<br>Remember.</h1>
+    <div class="hero__rule"></div>
+    <p class="hero__sub">From the groom to the last groomsman. Expert fitting, whole-party coordination, and the right suit for the occasion, custom or off the rack.</p>
+    <a class="hero__cta" href="book-wedding.html">Book a Wedding Consultation</a>
+    <p class="hero__walkin">Walk-ins welcome. Saturdays fill up fast, so book ahead.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     PROMO STRIP
+══════════════════════════════ -->
+<div class="promo">
+  <span class="promo__eyebrow">Current Offer · Groomsmen Parties</span>
+  <h2 class="promo__headline">Buy 3 Paul Betenly suits,<br><strong>get the 4th on us.</strong></h2>
+  <p class="promo__sub">Dressing four or more? Take 25% off the full order. Either way, your whole party gets a suit that fits. Made in Canada, worn well past the wedding.</p>
+  <a class="promo__cta" href="book-wedding.html?type=party">Book a Group Fitting</a>
+  <p class="promo__fine">Applies to Paul Betenly ready-to-wear suits. In-store only. While selection lasts.</p>
+</div>
+
+<!-- ══════════════════════════════
+     WHAT'S YOUR SITUATION
+══════════════════════════════ -->
+<div class="start">
+  <div class="start__inner">
+    <div class="start__left">
+      <span class="start__label">What's your situation?</span>
+      <div class="start__tabs">
+        <button class="start__tab active" data-tab="groom">Just the groom</button>
+        <button class="start__tab" data-tab="party">The whole wedding party</button>
+        <button class="start__tab" data-tab="father">Father of the wedding</button>
+      </div>
+      <div class="start__panels">
+        <div class="start__panel active" id="panel-groom">
+          <p>Your suit is the one that gets photographed most. We'll start with what you're after, figure out whether off the rack or custom makes sense given your timeline, and fit everything properly before the day.</p>
+          <a class="start__panel-cta" href="book-wedding.html?type=groom">Book a Groom Consultation</a>
+        </div>
+        <div class="start__panel" id="panel-party">
+          <p>We handle groups. Bring in the groomsmen, we'll measure everyone, coordinate the look, and make sure it all comes together. One appointment, the whole party sorted.</p>
+          <div class="start__panel-promo">
+            <div class="start__panel-promo-text">
+              Buy 3 Paul Betenly suits, get the 4th free.
+              <span>Or 25% off when you dress four or more.</span>
+            </div>
+            <a class="start__panel-cta" href="book-wedding.html?type=party">Book a Group Fitting</a>
+          </div>
+        </div>
+        <div class="start__panel" id="panel-father">
+          <p>You want to look great, feel comfortable all day, and spend appropriately. We'll find you a suit that does all three. One that holds up through the ceremony, the photos, and the reception, and that you'll wear again.</p>
+          <a class="start__panel-cta" href="book-wedding.html?type=individual">Book a Fitting</a>
+        </div>
+      </div>
+    </div>
+    <div class="start__photo photo">
+      <span class="photo__label">SHOT — Groom and groomsmen standing together, coordinated but not identical suits. Relaxed, real moment. Warm light. Fill frame vertically.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     KEY DECISIONS
+══════════════════════════════ -->
+<section class="decisions">
+  <span class="section__eyebrow">Before You Book</span>
+  <h2 class="section__title">The decisions<br>that matter.</h2>
+  <p class="section__body">Most wedding suit questions come down to four things. Here's what to know before you walk in.</p>
+  <p class="decisions__hint">Select any to learn more.</p>
+
+  <div class="decisions__grid">
+
+    <div class="decision">
+      <div class="decision__header">
+        <div class="decision__left">
+          <span class="decision__num">01</span>
+          <span class="decision__name">Suit or Tuxedo?</span>
+          <span class="decision__tagline">Most weddings, the answer is a suit.</span>
+        </div>
+        <span class="decision__toggle">+</span>
+      </div>
+      <div class="decision__detail">
+        <p class="decision__body">A tuxedo is the right call for a very formal evening wedding, a black-tie dress code, or a venue where the setting genuinely warrants it. For the vast majority of Calgary weddings, whether daytime, outdoor, hotel ballroom, or otherwise, a well-fitted suit is the more appropriate choice and photographs better across different party members. When in doubt, come in and we'll tell you honestly.</p>
+      </div>
+    </div>
+
+    <div class="decision">
+      <div class="decision__header">
+        <div class="decision__left">
+          <span class="decision__num">02</span>
+          <span class="decision__name">Custom or Off the Rack?</span>
+          <span class="decision__tagline">Your timeline decides this one.</span>
+        </div>
+        <span class="decision__toggle">+</span>
+      </div>
+      <div class="decision__detail">
+        <p class="decision__body">If your wedding is more than four months out, custom through Coppley is a real option. Your suit is built to your exact measurements, in the fabric you choose, and ready well before the day. Under four months, ready-to-wear selected and fitted in-store is the smarter play. We do this constantly and the results are excellent. Either way, alterations are handled in-house on our schedule, so build that time into your planning.</p>
+      </div>
+    </div>
+
+    <div class="decision">
+      <div class="decision__header">
+        <div class="decision__left">
+          <span class="decision__num">03</span>
+          <span class="decision__name">Coordinating the Party</span>
+          <span class="decision__tagline">Matching and coordinating are different things.</span>
+        </div>
+        <span class="decision__toggle">+</span>
+      </div>
+      <div class="decision__detail">
+        <p class="decision__body">The groom should stand out. A slightly different suit, a different tie, or a unique pocket square is usually enough to set him apart. Groomsmen can coordinate without being identical: the same suit color in different cuts, or the same cut in a slightly different shade. Ties and pocket squares are the easiest way to pull a group together without making everyone look like a uniform. We'll help you figure this out in the fitting.</p>
+      </div>
+    </div>
+
+    <div class="decision">
+      <div class="decision__header">
+        <div class="decision__left">
+          <span class="decision__num">04</span>
+          <span class="decision__name">What Goes Under It</span>
+          <span class="decision__tagline">The shirt and tie make or break the suit.</span>
+        </div>
+        <span class="decision__toggle">+</span>
+      </div>
+      <div class="decision__detail">
+        <p class="decision__body">A white dress shirt with a spread collar is almost never wrong. Avoid pre-tied ties. It shows in photos. The pocket square can match the tie exactly for a formal, polished look, or complement it for something slightly more relaxed. Both are correct depending on the occasion. These are the details that separate a great look from a good one, and they're easy to get right when someone walks you through them.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     TWO PATHS
+══════════════════════════════ -->
+<section class="paths">
+  <span class="section__eyebrow">How We Work</span>
+  <h2 class="section__title">Two ways to get there.</h2>
+
+  <div class="paths__grid">
+
+    <div class="path">
+      <div class="path__photo photo photo--4x3">
+        <span class="photo__label">SHOT — In-store. Row of suits on a rack, warm store lighting. Premium, welcoming feel. Landscape 4×3.</span>
+      </div>
+      <div class="path__content">
+        <span class="path__tag">In Store Now</span>
+        <h3 class="path__title">Ready to wear.<br>Fitted to you.</h3>
+        <p class="path__body">Paul Betenly, Coppley, and Atelier suits ready to try in-store. We fit every suit and book alterations through our in-house schedule, so everything is done well before your date. Note that wedding party orders often need to be brought in. We typically need about 2 weeks to order the full run of sizes. Come in early and we'll make sure everything arrives with time to spare.</p>
+        <div class="path__offer">
+          Buy 3 Paul Betenly suits, get the 4th free.
+          <span>Or 25% off when dressing four or more. In-store only.</span>
+        </div>
+        <a class="path__cta" href="book-wedding.html?type=party">Book a Group Fitting</a>
+      </div>
+    </div>
+
+    <div class="path path--custom">
+      <div class="path__photo photo photo--4x3">
+        <span class="photo__label">SHOT — Close-up of fabric swatches being reviewed. Rich wool textures. Dark background, intimate feel. Landscape 4×3.</span>
+      </div>
+      <div class="path__content">
+        <span class="path__tag">Made for You</span>
+        <h3 class="path__title">Coppley Custom.<br>Built to your measurements.</h3>
+        <p class="path__body">Your wedding suit will be in every photo from that day. A suit built to your exact measurements, in the fabric you chose, is the one you'll still be proud of years later. Four seasons of fabric to choose from. Shipping takes about a month, so we recommend coming in at least 6–8 weeks before your date to leave room for fittings and any unexpected delays. One of Canada's oldest tailoring houses, Est. 1883.</p>
+        <a class="path__cta" href="book-wedding.html?type=custom">Book a Custom Consultation</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     TIMELINE
+══════════════════════════════ -->
+<section class="timeline">
+  <span class="section__eyebrow">Your Timeline</span>
+  <h2 class="section__title">How far out<br>are you?</h2>
+  <p class="section__body">Your date changes everything about how we approach your suit. Here's what to expect at each stage.</p>
+
+  <div class="timeline__grid">
+
+    <div class="timecard">
+      <div class="timecard__header">
+        <div class="timecard__left">
+          <span class="timecard__when">6+ Months Out</span>
+          <span class="timecard__headline">Every option is open.</span>
+        </div>
+        <span class="timecard__toggle">+</span>
+      </div>
+      <div class="timecard__detail">
+        <p class="timecard__body">The ideal window for Coppley custom. Suits ship in roughly a month, leaving plenty of time for fittings, adjustments, and any unexpected delays. Come in, explore fabrics, and take your time. If you're dressing a full party, earlier is always better. Party orders need to be brought in and that adds lead time.</p>
+      </div>
+    </div>
+
+    <div class="timecard">
+      <div class="timecard__header">
+        <div class="timecard__left">
+          <span class="timecard__when">3–6 Months Out</span>
+          <span class="timecard__headline">Custom is still on the table.</span>
+        </div>
+        <span class="timecard__toggle">+</span>
+      </div>
+      <div class="timecard__detail">
+        <p class="timecard__body">Custom works comfortably at this stage for most specifications. Shipping takes about a month, so you have a solid buffer for fittings and finishing. Off-the-rack party orders typically take about 2 weeks to bring in the full run of sizes. Come in soon and we'll map everything out.</p>
+      </div>
+    </div>
+
+    <div class="timecard">
+      <div class="timecard__header">
+        <div class="timecard__left">
+          <span class="timecard__when">6–12 Weeks Out</span>
+          <span class="timecard__headline">Doable — but come in now.</span>
+        </div>
+        <span class="timecard__toggle">+</span>
+      </div>
+      <div class="timecard__detail">
+        <p class="timecard__body">Custom may still be possible depending on the specifications. We'll tell you honestly. Off-the-rack sizes for a party take about 2 weeks to order in if we don't have them on hand. Either way, book your appointment this week. The sooner we have a plan, the better your options.</p>
+      </div>
+    </div>
+
+    <div class="timecard">
+      <div class="timecard__header">
+        <div class="timecard__left">
+          <span class="timecard__when">Under 6 Weeks</span>
+          <span class="timecard__headline">Call us. We'll figure it out.</span>
+        </div>
+        <span class="timecard__toggle">+</span>
+      </div>
+      <div class="timecard__detail">
+        <p class="timecard__body">This is tight but not impossible. What's in stock can be fitted quickly, with alterations booked through our in-house schedule. Party sizes may need to be rushed in. We've made it work in windows like this before, but don't wait another day. Book now and we'll tell you exactly what's achievable.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     FEATURED BRANDS
+══════════════════════════════ -->
+<section class="featured-brands">
+  <span class="section__eyebrow">Why These Brands</span>
+  <h2 class="section__title">The suits we reach for.</h2>
+  <p class="section__body">Every brand we carry was chosen deliberately. For weddings, these are the three we recommend most, and the reasons why.</p>
+
+  <div class="featured-brands__grid">
+    <div class="brand-card">
+      <span class="brand-card__name">Paul Betenly</span>
+      <span class="brand-card__origin">Canada · Est. 1981</span>
+      <p class="brand-card__body">Our go-to for wedding parties. Consistent fit, excellent fabric quality, and a price point that's fair when you're dressing four or more. Hand-sewn armholes and pick stitching throughout. The current offer makes this the most value-forward way to dress your whole group.</p>
+    </div>
+    <div class="brand-card">
+      <span class="brand-card__name">Coppley</span>
+      <span class="brand-card__origin">Canada · Est. 1883</span>
+      <p class="brand-card__body">Available ready-to-wear in-store and through our custom program. Half-canvas construction means the jacket molds to your body rather than holding a generic shape. For the groom who wants something built to his exact measurements, the custom program offers four seasons of fabric, made in Canada. The suit you'll still be wearing in ten years.</p>
+    </div>
+    <div class="brand-card">
+      <span class="brand-card__name">Jack Victor</span>
+      <span class="brand-card__origin">Montreal, Canada · Est. 1913</span>
+      <p class="brand-card__body">Fabrics selected in Europe, everything cut and sewn in Montreal. A strong choice for fathers of the wedding or anyone in the party who wants a sport jacket instead of a suit. The wool quality at this price point is genuinely hard to match, and the dress pants coordinate well with the rest of the group.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     BOOKING
+══════════════════════════════ -->
+<section class="booking">
+  <span class="booking__eyebrow">Book Your Consultation</span>
+  <h2 class="booking__title">Your date is set.<br>Your suit should be too.</h2>
+  <p class="booking__sub">One appointment is usually all it takes to have a complete plan: suit selected, measurements taken, and a timeline confirmed. Walk in with a date, walk out with a direction.</p>
+  <a class="booking__cta" href="book-wedding.html">Book a Wedding Consultation</a>
+  <p class="booking__walkin">
+    Walk-ins welcome any day.<br>
+    <strong>Saturdays fill up fast</strong>, so book ahead to guarantee your spot.
+  </p>
+</section>
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer class="footer">
+  <span class="footer__eyebrow">Find Us</span>
+  <h2 class="footer__title">One store.<br>Kingsland Village.</h2>
+
+  <div class="footer__grid">
+    <div class="footer__col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="brands.html">Brands</a></li>
+        <li><a href="office.html">Office</a></li>
+        <li><a href="wedding.html">Wedding</a></li>
+        <li><a href="casual.html">Casual</a></li>
+        <li><a href="book-wedding.html">Book a Consultation</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Address</h4>
+      <div class="footer__address">
+        Kingsland Village #303<br>
+        7337 Macleod Trail SW<br>
+        Calgary, AB &nbsp;T2H 0L8
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Hours &amp; Contact</h4>
+      <div class="footer__hours">
+        Mon – Sat &nbsp;10am – 6pm<br>
+        Closed Sundays &amp; Holidays
+      </div>
+      <div class="footer__phone">
+        <a href="tel:+14032782445">(403) 278-2445</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__cta-row">
+    <a class="footer__btn footer__btn--primary" href="book-wedding.html">Book a Consultation</a>
+    <a class="footer__btn footer__btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Thomas+Jeffery+Mens+Wear+7337+Macleod+Trail+SW+Calgary+AB" target="_blank" rel="noopener">Open in Maps</a>
+  </div>
+
+  <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/50fa581f-6078-5021-27fa-4c15ad9d947f.png"
+       alt="Thomas Jeffery Men's Wear" class="footer__logo">
+
+  <hr class="footer__divider">
+  <div class="footer__bottom">
+    <p class="footer__copy">© 2026 Thomas Jeffery Men's Wear. All rights reserved.</p>
+    <div class="footer__social">
+      <a href="https://www.instagram.com/thomasjefferyofficial/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/ThomasJefferyMensWear" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── Nav scroll ── */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── Mobile hamburger menu ── */
+  var hamburger = document.getElementById('nav-hamburger');
+  var navMenu = document.getElementById('nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function () {
+      var isOpen = navMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  /* ── What's your situation tabs ── */
+  var tabs   = document.querySelectorAll('.start__tab');
+  var panels = document.querySelectorAll('.start__panel');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var target = this.getAttribute('data-tab');
+      tabs.forEach(function (t) { t.classList.remove('active'); });
+      panels.forEach(function (p) { p.classList.remove('active'); });
+      this.classList.add('active');
+      var panel = document.getElementById('panel-' + target);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  /* ── Key decisions expand / collapse ── */
+  document.querySelectorAll('.decision').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var isOpen = this.classList.contains('open');
+      document.querySelectorAll('.decision').forEach(function (c) { c.classList.remove('open'); });
+      if (!isOpen) this.classList.add('open');
+    });
+  });
+
+  /* ── Timeline expand / collapse ── */
+  document.querySelectorAll('.timecard').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var isOpen = this.classList.contains('open');
+      document.querySelectorAll('.timecard').forEach(function (c) { c.classList.remove('open'); });
+      if (!isOpen) this.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>

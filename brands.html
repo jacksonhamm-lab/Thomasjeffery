@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brands — Thomas Jeffery Men's Wear Calgary</title>
+  <meta name="description" content="The full brand selection at Thomas Jeffery Men's Wear: Coppley, Paul Betenly, Jack Victor, Bugatti, 7 Downie St., Alberto, Stenströms, and more. Suiting, dress shirts, trousers, knitwear, outerwear, and accessories in Calgary since 1968.">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: #F5F0EB;
+      color: #1C2B39;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ══ PHOTO PLACEHOLDERS ══ */
+    .photo {
+      background: #D9D3CC;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .photo__label {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: rgba(28,43,57,0.45);
+      text-align: center;
+      padding: 16px;
+      line-height: 1.6;
+      max-width: 220px;
+      z-index: 1;
+    }
+    .photo--3x4 { aspect-ratio: 3/4; }
+    .photo--4x3 { aspect-ratio: 4/3; }
+    .photo--hero { height: 100%; min-height: 320px; }
+
+    /* ══ NAV ══ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(245,240,235,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(28,43,57,0.07);
+      transition: padding 0.3s;
+    }
+    .nav.scrolled { padding: 10px 20px; }
+    .nav__logo img { height: 64px; width: auto; display: block; }
+    .nav__right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .nav__links { display: flex; align-items: center; gap: 20px; list-style: none; }
+    .nav__links a {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(28,43,57,0.7);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav__links a:hover { color: #1C2B39; }
+    .nav__book a {
+      color: #1C2B39;
+      border-bottom: 1px solid rgba(28,43,57,0.3);
+      padding-bottom: 2px;
+    }
+    .nav__modes { display: none; align-items: center; gap: 16px; }
+    .nav__mode-sep { font-size: 9px; color: rgba(28,43,57,0.35); letter-spacing: 0.2em; }
+    .nav__mode-btn {
+      background: none; border: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 9px; font-weight: 400;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(28,43,57,0.45);
+      cursor: pointer; padding: 2px 0;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .nav__mode-btn:hover { color: rgba(28,43,57,0.8); }
+    .nav__mode-btn.active { color: #1C2B39; border-bottom-color: #1C2B39; }
+
+    /* ══ MOBILE HAMBURGER + MENU ══ */
+    .nav__hamburger {
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      gap: 5px; width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer; padding: 0;
+    }
+    .nav__hamburger span {
+      display: block; width: 22px; height: 2px; background: #1C2B39;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-menu {
+      position: fixed; top: 92px; left: 0; right: 0;
+      background: #F5F0EB; border-bottom: 1px solid rgba(28,43,57,0.1);
+      z-index: 99; padding: 12px 0 20px;
+      transform: translateY(-110%); opacity: 0; pointer-events: none;
+      transition: transform 0.3s ease, opacity 0.2s ease;
+      max-height: calc(100vh - 92px); overflow-y: auto;
+    }
+    .nav-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .nav-menu__section {
+      display: block; padding: 14px 24px 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.36em;
+      text-transform: uppercase; color: rgba(28,43,57,0.4);
+    }
+    .nav-menu a {
+      display: block; padding: 14px 24px;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(28,43,57,0.78);
+      text-decoration: none; border-bottom: 1px solid rgba(28,43,57,0.06);
+    }
+    .nav-menu a:hover { background: rgba(28,43,57,0.04); color: #1C2B39; }
+    .nav-menu a.active { color: #1C2B39; font-weight: 700; background: rgba(28,43,57,0.04); }
+    .nav-menu a.nav-menu__book { color: #1C2B39; font-weight: 700; background: rgba(28,43,57,0.05); }
+
+    @media (max-width: 699px) { .nav__links { display: none; } }
+
+    /* ══ HERO ══ */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
+      padding-top: 92px;
+    }
+    .hero__image { flex-shrink: 0; height: 70vw; min-height: 300px; order: -1; }
+    .hero__panel {
+      background: #1C2B39;
+      padding: 48px 28px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
+    .hero__eyebrow {
+      font-size: 12px; font-weight: 400;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(245,240,235,0.55);
+      margin-bottom: 18px; display: block;
+    }
+    .hero__title {
+      font-size: clamp(48px, 12vw, 92px);
+      font-weight: 300; letter-spacing: -0.01em;
+      color: #F5F0EB; line-height: 0.92;
+      margin-bottom: 24px;
+    }
+    .hero__rule { width: 40px; height: 1px; background: rgba(245,240,235,0.3); margin-bottom: 20px; }
+    .hero__sub {
+      font-size: 16px; font-weight: 400;
+      color: rgba(245,240,235,0.85); line-height: 1.75;
+      max-width: 420px;
+    }
+
+    /* ══ SECTION SHARED ══ */
+    .section__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5); margin-bottom: 12px;
+    }
+    .section__title {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 300; letter-spacing: 0.01em;
+      color: #1C2B39; line-height: 1.1; margin-bottom: 14px;
+    }
+    .section__body {
+      font-size: 16px; font-weight: 400; line-height: 1.8;
+      color: rgba(28,43,57,0.78); margin-bottom: 32px; max-width: 600px;
+    }
+
+    /* ══ FEATURED ══ */
+    .featured { padding: 48px 20px; }
+    .featured--top { padding-top: 120px; }
+    .featured__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-top: 36px;
+    }
+    .featured-card {
+      background: #E8E0D5;
+      display: flex;
+      flex-direction: column;
+    }
+    .featured-card__image { flex-shrink: 0; }
+    .featured-card__content { padding: 26px 24px 30px; flex: 1; display: flex; flex-direction: column; }
+    .featured-card__origin {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.5);
+      display: block;
+      margin-bottom: 10px;
+    }
+    .featured-card__name {
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: #1C2B39;
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+    .featured-card__body {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: rgba(28,43,57,0.78);
+    }
+
+    /* ══ CATALOG ══ */
+    .catalog { padding: 48px 20px; background: #1C2B39; }
+    .catalog .section__eyebrow { color: rgba(245,240,235,0.55); }
+    .catalog .section__title { color: #F5F0EB; }
+    .catalog .section__body { color: rgba(245,240,235,0.78); }
+    .catalog__hint-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .catalog__hint {
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(245,240,235,0.55);
+      letter-spacing: 0.04em;
+    }
+    .catalog__collapse {
+      background: none;
+      border: 1px solid rgba(245,240,235,0.3);
+      color: rgba(245,240,235,0.8);
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, opacity 0.2s;
+    }
+    .catalog__collapse:hover { background: rgba(245,240,235,0.1); border-color: rgba(245,240,235,0.5); color: #F5F0EB; }
+    .catalog__collapse[hidden] { display: none; }
+    .catalog__categories {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .cat__label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: rgba(245,240,235,0.6);
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(245,240,235,0.15);
+    }
+    .cat__list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .brand-card {
+      background: rgba(245,240,235,0.04);
+      border: 1px solid rgba(245,240,235,0.12);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .brand-card:hover {
+      background: rgba(245,240,235,0.08);
+      border-color: rgba(245,240,235,0.25);
+    }
+    .brand-card.open {
+      border-color: rgba(245,240,235,0.4);
+      background: rgba(245,240,235,0.07);
+    }
+    .brand-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 22px;
+      gap: 16px;
+    }
+    .brand-card__left { flex: 1; min-width: 0; }
+    .brand-card__name {
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #F5F0EB;
+      display: block;
+      line-height: 1.2;
+    }
+    .brand-card__origin {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245,240,235,0.5);
+      display: block;
+      margin-top: 5px;
+    }
+    .brand-card__toggle {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(245,240,235,0.25);
+      border-radius: 50%;
+      font-size: 16px;
+      line-height: 1;
+      color: rgba(245,240,235,0.55);
+      flex-shrink: 0;
+      transition: transform 0.3s, color 0.22s, background 0.22s, border-color 0.22s;
+    }
+    .brand-card:hover .brand-card__toggle {
+      border-color: rgba(245,240,235,0.45);
+      color: rgba(245,240,235,0.85);
+    }
+    .brand-card.open .brand-card__toggle {
+      transform: rotate(45deg);
+      color: #1C2B39;
+      background: #F5F0EB;
+      border-color: #F5F0EB;
+    }
+    .brand-card__detail {
+      display: none;
+      padding: 0 22px 22px;
+      border-top: 1px solid rgba(245,240,235,0.08);
+    }
+    .brand-card.open .brand-card__detail { display: block; }
+    .brand-card__body {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: rgba(245,240,235,0.78);
+      padding-top: 16px;
+    }
+
+    /* ══ CTA ══ */
+    .cta { padding: 56px 20px; background: #E8E0D5; text-align: center; }
+    .cta__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5); margin-bottom: 16px;
+    }
+    .cta__title {
+      font-size: clamp(28px, 5.5vw, 44px);
+      font-weight: 300; color: #1C2B39;
+      line-height: 1.15; margin-bottom: 16px;
+    }
+    .cta__sub {
+      font-size: 16px; color: rgba(28,43,57,0.72);
+      line-height: 1.75; margin-bottom: 32px;
+      max-width: 500px; margin-left: auto; margin-right: auto;
+    }
+    .cta__row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+    .cta__btn {
+      display: inline-block;
+      padding: 16px 36px;
+      text-decoration: none;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cta__btn--primary { background: #1C2B39; color: #F5F0EB; }
+    .cta__btn--primary:hover { background: #243649; }
+    .cta__btn--ghost { background: transparent; color: #1C2B39; border: 1px solid rgba(28,43,57,0.3); }
+    .cta__btn--ghost:hover { border-color: #1C2B39; background: rgba(28,43,57,0.04); }
+
+    /* ══ FOOTER (matches site) ══ */
+    /* ══ FOOTER (unified across site) ══ */
+    .footer { background: #1C2B39; padding: 64px 24px 36px; border-top: 1px solid rgba(245,240,235,0.07); }
+    .footer__logo { height: 84px; width: auto; display: block; margin: 0 0 36px; opacity: 0.92; }
+    .footer__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(245,240,235,0.55); margin-bottom: 14px;
+    }
+    .footer__title {
+      font-size: clamp(30px, 6vw, 44px); font-weight: 300;
+      letter-spacing: 0.01em; color: #F5F0EB;
+      line-height: 1.1; margin-bottom: 40px;
+    }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
+    .footer__col h4 {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.32em;
+      text-transform: uppercase; color: rgba(245,240,235,0.55); margin-bottom: 14px;
+    }
+    .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer__col ul a {
+      font-size: 15px; font-weight: 400; letter-spacing: 0.04em;
+      color: rgba(245,240,235,0.78); text-decoration: none; transition: color 0.2s;
+    }
+    .footer__col ul a:hover { color: #F5F0EB; }
+    .footer__address, .footer__hours {
+      font-size: 15px; font-weight: 400; line-height: 1.85; color: rgba(245,240,235,0.78);
+    }
+    .footer__phone { margin-top: 14px; font-size: 15px; font-weight: 700; letter-spacing: 0.02em; }
+    .footer__phone a { color: rgba(245,240,235,0.85); text-decoration: none; }
+    .footer__phone a:hover { color: #F5F0EB; }
+    .footer__cta-row { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+    .footer__btn {
+      display: inline-block; padding: 16px 28px; text-align: center;
+      text-decoration: none; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .footer__btn--primary { background: #F5F0EB; color: #1C2B39; }
+    .footer__btn--primary:hover { background: #fff; }
+    .footer__btn--ghost { background: transparent; color: #F5F0EB; border: 1px solid rgba(245,240,235,0.4); }
+    .footer__btn--ghost:hover { border-color: #F5F0EB; background: rgba(245,240,235,0.06); }
+    .footer__divider { border: none; border-top: 1px solid rgba(245,240,235,0.1); margin-bottom: 22px; }
+    .footer__bottom { display: flex; flex-direction: column; gap: 14px; }
+    .footer__copy {
+      font-size: 13px; font-weight: 400; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(245,240,235,0.45);
+    }
+    .footer__social { display: flex; gap: 22px; }
+    .footer__social a {
+      font-size: 12px; font-weight: 400; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(245,240,235,0.55);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer__social a:hover { color: rgba(245,240,235,0.9); }
+
+    /* ══ MOBILE STICKY BOOK ══ */
+    .sticky-book {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+      display: block; background: #1C2B39; color: #F5F0EB;
+      font-family: 'Lato', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      text-align: center; text-decoration: none;
+      padding: 18px 20px; border-top: 1px solid rgba(245,240,235,0.1);
+      transition: background 0.2s;
+    }
+    .sticky-book:hover { background: #243649; }
+
+    /* ══ RESPONSIVE ══ */
+    @media (min-width: 700px) {
+      .nav { padding: 14px 40px; }
+      .nav.scrolled { padding: 10px 40px; }
+      .nav__logo img { height: 72px; }
+      .nav__links { gap: 32px; }
+      .nav__modes { display: flex; }
+      .nav__hamburger { display: none; }
+      .nav-menu { display: none; }
+
+      .hero { flex-direction: row; padding-top: 0; min-height: 100svh; }
+      .hero__image { order: 0; width: 50%; height: auto; min-height: unset; }
+      .hero__panel { padding: 140px 52px 72px; }
+
+      .featured { padding: 80px 48px; }
+      .featured--top { padding-top: 148px; }
+      .featured__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+
+      .catalog { padding: 80px 48px; }
+      .cat__list { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+      .cta { padding: 96px 48px; }
+      .cta__row { flex-direction: row; justify-content: center; gap: 14px; }
+
+      .footer { padding: 80px 48px 40px; }
+      .footer__logo { height: 100px; margin: 0 0 44px; }
+      .footer__title { margin-bottom: 48px; }
+      .footer__grid { grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+      .footer__cta-row { flex-direction: row; gap: 14px; margin-bottom: 48px; }
+      .footer__bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+      .sticky-book { display: none; }
+    }
+    @media (min-width: 1024px) {
+      .nav { padding: 14px 64px; }
+      .hero__image { width: 52%; }
+      .hero__panel { padding: 160px 72px 80px; }
+      .featured { padding: 96px 64px; }
+      .featured--top { padding-top: 168px; }
+      .featured__grid { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+      .catalog { padding: 96px 64px; }
+      .cat__list { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+      .cta { padding: 112px 64px; }
+      .footer { padding: 96px 64px 44px; }
+      .footer__logo { height: 112px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ MOBILE STICKY BOOK ══ -->
+<a class="sticky-book" href="book-office.html">Book a Fitting →</a>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a class="nav__logo" href="thomas-jeffery-homepage.html">
+    <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/8c767aaa-8e17-aad6-db85-b0383c08bd33.png"
+         alt="Thomas Jeffery Men's Wear">
+  </a>
+  <div class="nav__right">
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="office.html">Office</a></li>
+      <li class="nav__book"><a href="book-office.html">Book a Fitting</a></li>
+    </ul>
+    <div class="nav__modes">
+      <span class="nav__mode-sep">Viewing</span>
+      <a class="nav__mode-btn" href="office.html">Office</a>
+      <a class="nav__mode-btn" href="wedding.html">Wedding</a>
+      <a class="nav__mode-btn" href="casual.html">Casual</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ MOBILE MENU ══ -->
+<div class="nav-menu" id="nav-menu">
+  <span class="nav-menu__section">Browse</span>
+  <a href="office.html">Office</a>
+  <a href="wedding.html">Wedding</a>
+  <a href="casual.html">Casual</a>
+  <span class="nav-menu__section">More</span>
+  <a href="about.html">About</a>
+  <a href="brands.html" class="active">Brands</a>
+  <a class="nav-menu__book" href="book-office.html">Book a Fitting →</a>
+</div>
+
+<!-- ══ FEATURED BRANDS (page header + 6 cards) ══ -->
+<!-- TODO REFINE: featured cards each have an image placeholder. Real photography to be added later. -->
+<section class="featured featured--top">
+  <span class="section__eyebrow">Our Brands</span>
+  <h1 class="section__title">Names worth<br>knowing.</h1>
+  <p class="section__body">Every brand on the floor was chosen for a reason. Six are featured here, and the full list of who we carry is below.</p>
+
+  <div class="featured__grid">
+
+    <article class="featured-card">
+      <div class="featured-card__image photo photo--4x3">
+        <span class="photo__label">SHOT — Coppley jacket detail or factory shot. Half-canvas construction, premium feel. Landscape 4×3.</span>
+      </div>
+      <div class="featured-card__content">
+        <span class="featured-card__origin">Hamilton, Canada · Est. 1883</span>
+        <h3 class="featured-card__name">Coppley</h3>
+        <p class="featured-card__body">One of North America's oldest tailoring houses, and one of the last makers still doing genuine half-canvas construction. The jacket molds to your body over time rather than holding the generic shape of a fused garment. We carry Coppley ready-to-wear in the store and offer their full custom program with four seasons of fabric, made to your exact measurements in Canada. For a suit you will still be wearing in ten years, this is the brand we point to first.</p>
+      </div>
+    </article>
+
+    <article class="featured-card">
+      <div class="featured-card__image photo photo--4x3">
+        <span class="photo__label">SHOT — Paul Betenly suit detail. Hand-sewn armhole or pick stitching close-up. Landscape 4×3.</span>
+      </div>
+      <div class="featured-card__content">
+        <span class="featured-card__origin">Canada · Est. 1981</span>
+        <h3 class="featured-card__name">Paul Betenly</h3>
+        <p class="featured-card__body">Italian tailoring tradition built at a price point that doesn't require a raise to justify. Hand-sewn armholes, pick stitching throughout, and performance fabrics across the line. Their fit through the chest and waist is consistently excellent, which is why Paul Betenly is our default recommendation for wedding parties and customers building their first or second suit. Made in Canada.</p>
+      </div>
+    </article>
+
+    <article class="featured-card">
+      <div class="featured-card__image photo photo--4x3">
+        <span class="photo__label">SHOT — Jack Victor sport jacket detail or Montreal workroom shot. Landscape 4×3.</span>
+      </div>
+      <div class="featured-card__content">
+        <span class="featured-card__origin">Montreal, Canada · Est. 1913</span>
+        <h3 class="featured-card__name">Jack Victor</h3>
+        <p class="featured-card__body">Over a century of Canadian tailoring. Fabrics selected in Europe, everything cut and sewn in Montreal. Their wool quality at this price point is genuinely hard to match, and their sport jackets in particular have been a Thomas Jeffery staple for years. A strong choice for fathers of the wedding, anyone in a party who wants a sport jacket option, or anyone building a wardrobe around separates.</p>
+      </div>
+    </article>
+
+    <article class="featured-card">
+      <div class="featured-card__image photo photo--4x3">
+        <span class="photo__label">SHOT — Bugatti shop-in-shop area or product spread. Trousers, outerwear, knits laid out. Landscape 4×3.</span>
+      </div>
+      <div class="featured-card__content">
+        <span class="featured-card__origin">Germany · Est. 1947</span>
+        <h3 class="featured-card__name">Bugatti</h3>
+        <p class="featured-card__body">A German fashion house founded in 1947 by Friedrich Wilhelm Brinkmann, still run by the second and third generations of the Brinkmann family. Thomas Jeffery carries Bugatti's broadest range in Calgary, which is why we treat the brand as a shop within the shop. Trousers, outerwear, knitwear, sport shirts, and accessories under one label. If you want to build a complete casual or business-casual wardrobe from a single house, this is the most efficient way to do it. Fit and finish hold up across categories.</p>
+      </div>
+    </article>
+
+    <article class="featured-card">
+      <div class="featured-card__image photo photo--4x3">
+        <span class="photo__label">SHOT — 7 Downie St. sport shirt or knit detail. Canadian, casual, warm light. Landscape 4×3.</span>
+      </div>
+      <div class="featured-card__content">
+        <span class="featured-card__origin">Canada</span>
+        <h3 class="featured-card__name">7 Downie St.</h3>
+        <p class="featured-card__body">A Canadian brand built around the way people actually dress: golf, weekends, travel, and the hours in between. Sport shirts, casual knits, light layers, and sport jackets that work across a lot of situations. One of the most consistently wearable labels in the store, and a reliable starting point for anyone refreshing their casual wardrobe.</p>
+      </div>
+    </article>
+
+    <article class="featured-card">
+      <div class="featured-card__image photo photo--4x3">
+        <span class="photo__label">SHOT — Alberto trousers or denim detail. Crisp fit, fabric texture. Landscape 4×3.</span>
+      </div>
+      <div class="featured-card__content">
+        <span class="featured-card__origin">Mönchengladbach, Germany · Est. 1922</span>
+        <h3 class="featured-card__name">Alberto</h3>
+        <p class="featured-card__body">A German trouser house founded in 1922 in Mönchengladbach by Dr. Albert Dormanns. Family-operated for over a hundred years with a singular focus on pants, with no diversification into other categories. Each pair is built from 36 components through roughly 40 production steps. Alberto has been a Thomas Jeffery staple for years for one simple reason: the cut works in both casual and business-casual contexts, and the fabrics have the stretch and recovery to wear well over time.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ══ CATALOG ══ -->
+<section class="catalog">
+  <span class="section__eyebrow">The Full List</span>
+  <h2 class="section__title">Every brand,<br>by category.</h2>
+  <p class="section__body">Tap any brand to read what we know about them, and why we carry them.</p>
+  <div class="catalog__hint-row">
+    <p class="catalog__hint">Click any name to expand.</p>
+    <button class="catalog__collapse" id="catalog-collapse" hidden>Collapse All</button>
+  </div>
+
+  <div class="catalog__categories">
+
+    <!-- ── SUITING & TAILORING ── -->
+    <div class="cat">
+      <span class="cat__label">Suiting &amp; Tailoring</span>
+      <div class="cat__list">
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Paul Betenly</span>
+              <span class="brand-card__origin">Canada · Est. 1981</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Italian tailoring tradition produced in Canada. Hand-sewn armholes, pick stitching, and performance fabrics throughout the line. Their fit through the chest and waist is consistently excellent, which is why Paul Betenly is our default recommendation for wedding parties and first or second suits.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Coppley</span>
+              <span class="brand-card__origin">Hamilton, Canada · Est. 1883</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">One of the last remaining North American makers doing genuine half-canvas construction. The jacket molds to the body over time rather than holding a fused shape. Available ready-to-wear and through our custom program, with four seasons of fabric to choose from.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Atelier</span>
+              <span class="brand-card__origin">A Jack Victor Line</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">A line under the Jack Victor umbrella sitting below the mainline. Same Montreal manufacturing and European fabric sourcing roots as parent Jack Victor, at a more accessible price point. A solid entry into Jack Victor tailoring without committing to the mainline cost.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SPORT JACKETS ── -->
+    <div class="cat">
+      <span class="cat__label">Sport Jackets</span>
+      <div class="cat__list">
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">7 Downie St.</span>
+              <span class="brand-card__origin">Canada</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">7 Downie St.'s sport jackets carry the same versatile, wearable feel that runs through their casual range. Strong for customers who want a slightly elevated weekend layer or a softer business-casual blazer without going full suit.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Jack Victor</span>
+              <span class="brand-card__origin">Montreal, Canada · Est. 1913</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Over a century of Canadian tailoring. Fabrics selected in Europe, everything cut and sewn in Montreal. Their sport jackets have been a Thomas Jeffery staple for years, and the wool quality at this price point is genuinely hard to match.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Aristo</span>
+              <span class="brand-card__origin">Paul Betenly's Relaxed-Construction Line</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Paul Betenly's relaxed-construction line. Same maker, softer and less structured through the jackets, with a feel that moves more easily on the body without losing the fit philosophy that defines Paul Betenly. A strong pick for customers who want a lighter, more wearable sport jacket option.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Paul Betenly</span>
+              <span class="brand-card__origin">Canada · Est. 1981</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Paul Betenly's sport jackets carry the same hand-sewn armholes, pick stitching, and Italian tailoring tradition that anchor their suiting line. A strong everyday blazer at a price point that makes building several realistic.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Lief Horsens</span>
+              <span class="brand-card__origin">Montreal, Canada</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">A Montreal-based manufacturer with a sustainability angle: recycled wool and organic cotton run through much of their line, produced with low-impact, cruelty-free methods. At Thomas Jeffery we carry their sport jackets, which sit at the most accessible price point in our sport jacket category. A good first sport coat, or a relaxed addition to a casual blazer rotation.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Coppley</span>
+              <span class="brand-card__origin">Hamilton, Canada · Est. 1883</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Coppley's half-canvas construction carries over from their suiting into their sport jacket line. The same heritage, the same molding-to-the-body feel, in a more casual silhouette. Available ready-to-wear and through made-to-measure.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── DRESS SHIRTS ── -->
+    <div class="cat">
+      <span class="cat__label">Dress Shirts</span>
+      <div class="cat__list">
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Stenströms</span>
+              <span class="brand-card__origin">Helsingborg, Sweden · Est. 1883</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Founded in 1883 by August Stenström in Helsingborg, Sweden. Within a few decades of opening their first factory in 1899, Stenströms had become Scandinavia's largest shirt manufacturer, earning appointment as a supplier to the Swedish royal court in 1962. The Bengtsson family has led the company since 1981. Premium fabrics, refined finishing, and over 140 years of shirt-making behind every garment. Made-to-measure available.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Lugano</span>
+              <span class="brand-card__origin">Switzerland</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">A Swiss-made dress shirt and our most accessible price point in the dress shirt category. We stock Lugano in white and ecru solids only. 100% cotton with the build quality and finishing you would expect from a Swiss maker. The right starting point for a wardrobe that needs reliable everyday whites.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Polifironi Milano</span>
+              <span class="brand-card__origin">Italy</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">An Italian dress shirt cut with a bigger, more relaxed fit. More fabric through the body and a slightly higher price point than Lugano because of it. The right choice for customers who want extra room through the chest and shoulders without compromising shirt quality.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Blu by Polifironi</span>
+              <span class="brand-card__origin">Italy</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">An Italian dress shirt comparable to Klauss Boehler on price and construction. Same Italian heritage as the broader Polifironi line, in a refined cut that works across the office and after-hours. A strong everyday shirt at a price point that makes building several realistic.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Klauss Boehler</span>
+              <span class="brand-card__origin">Europe</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">A European dress shirt maker producing 100% extra-long-fibre cotton shirts under strict sustainability standards. Built for breathability, moisture management, and wrinkle resistance through the day. Quietly one of the most wearable shirts in the category.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SPORT SHIRTS ── -->
+    <div class="cat">
+      <span class="cat__label">Sport Shirts</span>
+      <div class="cat__list">
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">7 Downie St.</span>
+              <span class="brand-card__origin">Canada</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Sport shirts cut and styled for the way Canadians actually live. Versatile across golf, weekends, travel, and after-hours. The kind of shirt that does not pin you to a specific occasion.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">DeSoto</span>
+              <span class="brand-card__origin">Germany</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">A German shirt maker built around a single concept: jersey-knit shirts that feel like a t-shirt and look like a dress shirt. 100% pure cotton with natural stretch, knitted in Germany, refined in Austria, and assembled in North Macedonia. Non-iron, OEKO-TEX certified, and engineered for travel and movement. Reads as easily in business casual as it does at a casual dinner.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Altemflower</span>
+              <span class="brand-card__origin">Italy</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">An Italian shirt maker based in Sala Consilina, Campania. The brand focuses on fabric variety: classic weaves alongside fil coupé, jacquards, and texture-driven yarn structures. A more design-driven sport shirt for customers who want something distinctive.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Codice</span>
+              <span class="brand-card__origin">Reggio Emilia, Italy</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Italian-made sport shirts from a small house in Reggio Emilia, founded by Giorgio Filippi. The brand intentionally avoids online retail, which means you only see Codice through specialty menswear stores. Elegant, classic construction with seasonal pieces the founder describes as window stoppers.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── TROUSERS ── -->
+    <div class="cat">
+      <span class="cat__label">Trousers</span>
+      <div class="cat__list">
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Alberto</span>
+              <span class="brand-card__origin">Mönchengladbach, Germany · Est. 1922</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">A German trouser house founded in 1922 in Mönchengladbach by Dr. Albert Dormanns, family-operated for over a hundred years. Each pair is built from 36 components through roughly 40 production steps, supervised from Germany. Alberto has been a Thomas Jeffery staple for years for one simple reason: the cut works as well in business casual as it does dressed down on weekends.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Meyer</span>
+              <span class="brand-card__origin">Germany</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">A German trouser house with a full range of fits across the catalog. Cotton, organic cotton, and Tencel blends with stretch options throughout. Built around fit consistency: comfort, modern, and performance shapes that all hold their proportions through wear.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">34 Heritage</span>
+              <span class="brand-card__origin">Canada</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">A Canadian premium trouser and denim brand built around an inclusive sizing philosophy. Most makers cut for a standard 32×32 proportion; 34 Heritage was built for the men who don't fit that mold. Multiple fits across straight, tapered, skinny, relaxed, and athletic cuts, with the higher rise that has made the brand one of the most-asked-about in the store.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Bugatti</span>
+              <span class="brand-card__origin">Germany · Est. 1947</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Bugatti's trousers anchor the broader line we carry. Strong fit, durable fabrics, and a price point that makes building several pairs realistic. The starting point for a Bugatti-led wardrobe, from a German house founded in 1947 and still run by the founding Brinkmann family.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── KNITWEAR ── -->
+    <div class="cat">
+      <span class="cat__label">Knitwear</span>
+      <div class="cat__list">
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Robert Barakett</span>
+              <span class="brand-card__origin">Canada</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Founded by Robert Barakett with one design proposition: clothes that elevate comfort without overshadowing the person wearing them. Incredibly soft fabrics, subtle and sophisticated color palettes, and finishes that hold their color and shape through years of wear. The casual basics you keep reaching for.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Patrick Assaraf</span>
+              <span class="brand-card__origin">Toronto, Canada</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Founded in Toronto and led by Patrick Assaraf, drawing on more than three decades of attending Pitti Uomo in Florence. Pima cotton sourced from Peru, merino wool from Italian mills, and knitwear made with serious machinery. The brand evolved out of a single iconic t-shirt into a full menswear range, with the same effortless elegance running through every piece.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Codice</span>
+              <span class="brand-card__origin">Reggio Emilia, Italy</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Italian-made knitwear from a small house in Reggio Emilia, founded by Giorgio Filippi. Codice's knits favor elegant, classic construction over trend-chasing, with seasonal pieces the founder describes as "window stoppers." The brand intentionally avoids online retail, which means you only see Codice through specialty menswear stores.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Ferrante</span>
+              <span class="brand-card__origin">Abruzzo, Italy</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">An Italian knitwear house from San Giovanni Teatino in Abruzzo, run by the same family for three generations. The line is built around excellent yarns, considered textures, and sustainable production. One of the highest-quality knits on the floor, and one most Canadian stores never get.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── DENIM ── -->
+    <div class="cat">
+      <span class="cat__label">Denim</span>
+      <div class="cat__list">
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Fidelity Denim</span>
+              <span class="brand-card__origin">Los Angeles, USA</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Founded by Jason Trotzuk in Los Angeles. One of the few remaining denim brands that cuts, sews, and washes all of its product in North America, using premium fabrics imported from Italy and Japan. Built around fit engineering and finishing detail rather than chasing wash trends.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">34 Heritage</span>
+              <span class="brand-card__origin">Canada</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">34 Heritage's denim runs on the same inclusive-sizing philosophy that defines their trousers: a higher rise and proportions that fit the men most denim brands ignore. Multiple washes and weights across straight, tapered, skinny, relaxed, and athletic fits. Comfortable in a way most denim isn't.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Alberto</span>
+              <span class="brand-card__origin">Mönchengladbach, Germany · Est. 1922</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Alberto's denim carries the same 100-year heritage of precision trouser-making that runs through the rest of their line. European construction, premium Italian fabrics, and the stretch and recovery that make them genuinely comfortable to wear all day. Reads as smart casual on weekends and travels well.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── OUTERWEAR ── -->
+    <div class="cat">
+      <span class="cat__label">Outerwear</span>
+      <div class="cat__list">
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Bugatti</span>
+              <span class="brand-card__origin">Germany · Est. 1947</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Bugatti's outerwear range runs from technical casual jackets through to more formal overcoats that carry over into office wear. The broadest outerwear collection we carry under one label, from a German fashion house operating for over 75 years.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Holebrook</span>
+              <span class="brand-card__origin">Sweden</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Made in Europe from premium yarns and sustainable materials, with the construction quality to last for years. Knitted outerwear and lifestyle jackets that sit at the intersection of contemporary and timeless. Their windproof knits in particular have a following: warm without bulk, dressed-down enough for a weekend, polished enough for the office.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Regency Leathers</span>
+              <span class="brand-card__origin">Leather Outerwear</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">A leather outerwear house sourcing the finest leathers, shearlings, and fabrics from around the world. Classic biker silhouettes, lighter-weight jackets, vests, coats, and puffer outerwear, all built around a casual, modern take on luxury. We carry their leather outerwear only.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Coppley (Made-to-Measure)</span>
+              <span class="brand-card__origin">Hamilton, Canada · Est. 1883</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Coppley's overcoat made-to-measure program, available through us. The same construction standards as their suiting, applied to topcoats and overcoats in fabrics you choose.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── ESSENTIALS ── -->
+    <div class="cat">
+      <span class="cat__label">Essentials</span>
+      <div class="cat__list">
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Benchcraft</span>
+              <span class="brand-card__origin">Kitchener, Canada · Est. 1976</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">A Canadian leather house operating out of Kitchener, Ontario since 1976. Belts, bracelets, and suspenders made in-house from full-grain, top-grain, and split-grain leather. Nearly fifty years on, one of the few remaining domestic leather manufacturers, and the only company we source belts from.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">SAXX</span>
+              <span class="brand-card__origin">Vancouver, Canada · Est. 2006</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Founded in Vancouver in 2006 to rethink underwear from the inside out. SAXX invented modern pouch underwear to solve the problems traditional underwear left unaddressed: chafing, bunching, inadequate support, and constant adjustment. Problem-first design, not trend-following. We carry their core lines.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Dion</span>
+              <span class="brand-card__origin">Toronto, Canada · Est. 1967</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Family-owned in Toronto since 1967. Neckwear and formal accessories: ties, bow ties, pocket squares, scarves, cummerbunds, braces, and more. Italian silks worked in-house. One of the few remaining domestic neckwear makers.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Marcoliani</span>
+              <span class="brand-card__origin">Paina di Giussano, Italy</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">An Italian sock house founded after the First World War, still operating from Paina di Giussano. Pima cotton lisle, extrafine merino, cashmere, and cotton blends across classic, textured, and color-driven lines. The standard for premium men's hosiery.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">Pantherella</span>
+              <span class="brand-card__origin">Leicester, England · Est. 1937</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">Founded in 1937 by Louis Goldschmidt, Pantherella made its name introducing lightweight, seamless socks at a time when the standard was bulky and uncomfortable. By the 1940s the brand was stocked at Harrods and Selfridges, and it has been there ever since. After a period under Burberry through the 1990s, Pantherella is now part of the HJ Hall sock group, still producing some of the most refined men's socks made anywhere through fine yarns and skilled construction.</p>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-card__header">
+            <div class="brand-card__left">
+              <span class="brand-card__name">7 Downie St.</span>
+              <span class="brand-card__origin">Canada</span>
+            </div>
+            <span class="brand-card__toggle">+</span>
+          </div>
+          <div class="brand-card__detail">
+            <p class="brand-card__body">7 Downie St.'s accessories and essentials complement the casual line. Reliable picks for customers building out a coordinated weekend wardrobe.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta">
+  <span class="cta__eyebrow">Want to See Them?</span>
+  <h2 class="cta__title">Come in. Try them on.</h2>
+  <p class="cta__sub">Photos and write-ups only get you so far. The fit, the fabric, and the feel are the parts that matter, and those are easier to judge in person. Walk-ins are welcome any day.</p>
+  <div class="cta__row">
+    <a class="cta__btn cta__btn--primary" href="book-office.html">Book a Fitting</a>
+    <a class="cta__btn cta__btn--ghost" href="about.html">More About Us</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <span class="footer__eyebrow">Find Us</span>
+  <h2 class="footer__title">One store.<br>Kingsland Village.</h2>
+
+  <div class="footer__grid">
+    <div class="footer__col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="brands.html">Brands</a></li>
+        <li><a href="office.html">Office</a></li>
+        <li><a href="wedding.html">Wedding</a></li>
+        <li><a href="casual.html">Casual</a></li>
+        <li><a href="book-office.html">Book a Fitting</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Address</h4>
+      <div class="footer__address">
+        Kingsland Village #303<br>
+        7337 Macleod Trail SW<br>
+        Calgary, AB &nbsp;T2H 0L8
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Hours &amp; Contact</h4>
+      <div class="footer__hours">
+        Mon – Sat &nbsp;10am – 6pm<br>
+        Closed Sundays &amp; Holidays
+      </div>
+      <div class="footer__phone">
+        <a href="tel:+14032782445">(403) 278-2445</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__cta-row">
+    <a class="footer__btn footer__btn--primary" href="book-office.html">Book a Fitting</a>
+    <a class="footer__btn footer__btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Thomas+Jeffery+Mens+Wear+7337+Macleod+Trail+SW+Calgary+AB" target="_blank" rel="noopener">Open in Maps</a>
+  </div>
+
+  <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/50fa581f-6078-5021-27fa-4c15ad9d947f.png"
+       alt="Thomas Jeffery Men's Wear" class="footer__logo">
+
+  <hr class="footer__divider">
+  <div class="footer__bottom">
+    <p class="footer__copy">© 2026 Thomas Jeffery Men's Wear. All rights reserved.</p>
+    <div class="footer__social">
+      <a href="https://www.instagram.com/thomasjefferyofficial/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/ThomasJefferyMensWear" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── Nav scroll ── */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── Mobile hamburger menu ── */
+  var hamburger = document.getElementById('nav-hamburger');
+  var navMenu = document.getElementById('nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function () {
+      var isOpen = navMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  /* ── Brand card expand / collapse ── */
+  /* Multiple cards can be open at once for browsing/comparing */
+  var collapseBtn = document.getElementById('catalog-collapse');
+  function updateCollapseBtn() {
+    var anyOpen = document.querySelectorAll('.brand-card.open').length > 0;
+    collapseBtn.hidden = !anyOpen;
+  }
+  document.querySelectorAll('.brand-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      this.classList.toggle('open');
+      updateCollapseBtn();
+    });
+  });
+  collapseBtn.addEventListener('click', function () {
+    document.querySelectorAll('.brand-card.open').forEach(function (c) { c.classList.remove('open'); });
+    updateCollapseBtn();
+  });
+</script>
+
+</body>
+</html>

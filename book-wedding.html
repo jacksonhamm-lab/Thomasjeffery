@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Wedding Appointment — Thomas Jeffery Men's Wear</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: #F5F0EB;
+      color: #1C2B39;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ══ HEADER ══ */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      background: #F5F0EB;
+      border-bottom: 1px solid rgba(28,43,57,0.07);
+    }
+    .header__logo img { height: 56px; width: auto; display: block; }
+    .header__back {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .header__back:hover { color: #1C2B39; }
+    @media (min-width: 700px) {
+      .header { padding: 20px 40px; }
+      .header__logo img { height: 62px; }
+    }
+
+    /* ══ MAIN LAYOUT ══ */
+    .main { padding: 48px 24px 56px; max-width: 980px; margin: 0 auto; }
+    @media (min-width: 700px) { .main { padding: 64px 40px 72px; } }
+
+    /* ══ TYPE SELECTOR ══ */
+    .selector__eyebrow {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.55);
+      margin-bottom: 14px;
+    }
+    .selector__title {
+      font-size: clamp(30px, 6.5vw, 40px);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      color: #1C2B39;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .selector__sub {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(28,43,57,0.72);
+      max-width: 560px;
+      margin-bottom: 36px;
+    }
+
+    .validation {
+      display: none;
+      background: rgba(170,40,40,0.06);
+      border-left: 2px solid #aa2828;
+      padding: 12px 16px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      font-weight: 400;
+      color: #aa2828;
+      letter-spacing: 0.02em;
+    }
+    .validation.show { display: block; }
+
+    .tiles {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    @media (min-width: 580px) {
+      .tiles { grid-template-columns: 1fr 1fr; gap: 14px; }
+    }
+    @media (min-width: 900px) {
+      .tiles { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    .tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 14px;
+      padding: 44px 28px;
+      background: #1C2B39;
+      border: 1px solid rgba(245,240,235,0.1);
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.22s, border-color 0.22s, transform 0.22s, box-shadow 0.22s;
+    }
+    .tile:hover {
+      background: #243649;
+      border-color: rgba(245,240,235,0.28);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(28,43,57,0.18);
+    }
+    .tile.active {
+      background: #243649;
+      border-color: rgba(245,240,235,0.55);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(28,43,57,0.18);
+    }
+    .tile__name {
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #F5F0EB;
+      line-height: 1.15;
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tile__sub {
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.04em;
+      color: rgba(245,240,235,0.82);
+      line-height: 1.6;
+    }
+
+    /* ══ CUSTOM TOGGLE ══ */
+    .custom-toggle-wrap {
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .custom-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      background: rgba(28,43,57,0.04);
+      border: 1px solid rgba(28,43,57,0.18);
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.7);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .custom-toggle:hover {
+      border-color: rgba(28,43,57,0.4);
+      color: #1C2B39;
+    }
+    .custom-toggle.active {
+      background: #1C2B39;
+      border-color: #1C2B39;
+      color: #F5F0EB;
+    }
+    .custom-toggle__sub {
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(28,43,57,0.6);
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
+    /* ══ NEXT BUTTON ══ */
+    .next-btn {
+      width: 100%;
+      padding: 18px;
+      margin-top: 40px;
+      background: #F5F0EB;
+      color: rgba(28,43,57,0.4);
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      border: 1px solid rgba(28,43,57,0.18);
+      cursor: not-allowed;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .next-btn.ready {
+      background: #1C2B39;
+      color: #F5F0EB;
+      border-color: #1C2B39;
+      cursor: pointer;
+    }
+    .next-btn.ready:hover { background: #243649; border-color: #243649; }
+
+    /* ══ RENTAL NOTICE ══ */
+    .rental {
+      background: #E8E0D5;
+      border-left: 2px solid #1C2B39;
+      padding: 22px 24px;
+      margin-bottom: 40px;
+    }
+    .rental__title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #1C2B39;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .rental__body {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: rgba(28,43,57,0.78);
+    }
+
+    /* ══ FORM ══ */
+    .form-section {
+      border-top: 1px solid rgba(28,43,57,0.1);
+      padding-top: 40px;
+    }
+    .form__eyebrow {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.55);
+      margin-bottom: 24px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    @media (min-width: 580px) {
+      .form-row { grid-template-columns: 1fr 1fr; gap: 16px; }
+    }
+    .field { display: flex; flex-direction: column; }
+    .field label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.55);
+      margin-bottom: 8px;
+    }
+    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+      width: 100%;
+      background: rgba(28,43,57,0.04);
+      border: 1px solid rgba(28,43,57,0.14);
+      color: #1C2B39;
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      padding: 13px 15px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
+    }
+    textarea { resize: vertical; min-height: 110px; font-family: 'Lato', Arial, sans-serif; }
+    input::placeholder, textarea::placeholder { color: rgba(28,43,57,0.28); }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(28,43,57,0.35);
+      background: rgba(28,43,57,0.07);
+    }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(28,43,57,0.45)' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      cursor: pointer;
+      padding-right: 32px;
+    }
+    select option { background: #F5F0EB; color: #1C2B39; }
+
+    .form__notes-wrap { margin-bottom: 22px; }
+    .form__confirm {
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(28,43,57,0.6);
+      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 18px;
+      background: #1C2B39;
+      color: #F5F0EB;
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: #243649; }
+
+    /* ══ CROSS-BOOKING ══ */
+    .crossbook {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(28,43,57,0.08);
+    }
+    .crossbook__text {
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(28,43,57,0.6);
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+    .crossbook__links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+    @media (min-width: 580px) {
+      .crossbook__links { flex-direction: row; justify-content: center; gap: 28px; }
+    }
+    .crossbook__links a {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #1C2B39;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(28,43,57,0.3);
+      padding-bottom: 3px;
+      transition: border-color 0.2s;
+    }
+    .crossbook__links a:hover { border-color: #1C2B39; }
+
+    /* ══ FOOTER ══ */
+    .footer {
+      background: #1C2B39;
+      border-top: 1px solid rgba(245,240,235,0.06);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(245,240,235,0.5);
+    }
+    .footer a { color: rgba(245,240,235,0.5); text-decoration: none; transition: color 0.2s; }
+    .footer a:hover { color: rgba(245,240,235,0.85); }
+
+    /* ══ STEP TRANSITIONS ══ */
+    .step { display: block; }
+    .step.hidden { display: none; }
+
+    /* ══ SELECTED INDICATOR (form view) ══ */
+    .selected-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 18px 22px;
+      background: #1C2B39;
+      margin-bottom: 36px;
+    }
+    .selected-bar__left { display: flex; flex-direction: column; gap: 4px; }
+    .selected-bar__label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(245,240,235,0.55);
+    }
+    .selected-bar__value {
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: #F5F0EB;
+    }
+    .selected-bar__change {
+      background: none;
+      border: 1px solid rgba(245,240,235,0.4);
+      color: #F5F0EB;
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .selected-bar__change:hover {
+      background: rgba(245,240,235,0.1);
+      border-color: #F5F0EB;
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <a class="header__logo" href="thomas-jeffery-homepage.html">
+    <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/8c767aaa-8e17-aad6-db85-b0383c08bd33.png"
+         alt="Thomas Jeffery Men's Wear">
+  </a>
+  <a class="header__back" href="wedding.html">← Weddings</a>
+</header>
+
+<main class="main">
+
+  <!-- ══ STEP 1 — TYPE SELECTOR ══ -->
+  <section class="step selector" id="step-selector">
+    <span class="selector__eyebrow">Book an Appointment</span>
+    <h1 class="selector__title">Wedding Appointment</h1>
+    <p class="selector__sub">Select what best describes your situation.</p>
+
+    <div class="validation" id="validation">Please select an appointment type to continue.</div>
+
+    <div class="tiles">
+      <div class="tile" data-type="groom">
+        <span class="tile__name">Groom Consultation</span>
+        <span class="tile__sub">Your suit is in every photo. We'll get a complete plan together in one appointment.</span>
+      </div>
+      <div class="tile" data-type="party">
+        <span class="tile__name">Wedding Party Fitting</span>
+        <span class="tile__sub">The whole group, sorted. One visit for measurements, coordination, and the full look.</span>
+      </div>
+      <div class="tile" data-type="individual">
+        <span class="tile__name">One Suit</span>
+        <span class="tile__sub">A guest, family member, or anyone else attending. Right suit, right budget.</span>
+      </div>
+    </div>
+
+    <div class="custom-toggle-wrap">
+      <div class="custom-toggle" id="custom-toggle">+ Custom</div>
+      <span class="custom-toggle__sub">Add this if you're looking for a made-to-measure suit or have a specific fabric or style request.</span>
+    </div>
+
+    <button type="button" class="next-btn" id="next-btn" disabled>Next →</button>
+  </section>
+
+  <!-- ══ STEP 2 — FORM ══ -->
+  <section class="step form-section hidden" id="form-section">
+    <div class="selected-bar">
+      <div class="selected-bar__left">
+        <span class="selected-bar__label">Appointment Type</span>
+        <span class="selected-bar__value" id="selected-label">—</span>
+      </div>
+      <button type="button" class="selected-bar__change" id="change-btn">Change</button>
+    </div>
+
+    <!-- ══ RENTAL NOTICE ══ -->
+    <aside class="rental">
+      <span class="rental__title">A note on rentals</span>
+      <p class="rental__body">We don't offer rentals. But here's the thing: by the time you factor in a multi-day rental, you're often spending close to what a suit costs outright. The difference is you'd actually own it. We carry a wide range of price points and our staff will find something that fits both your occasion and your budget.</p>
+    </aside>
+
+    <span class="form__eyebrow">Your Details</span>
+
+    <form action="https://formspree.io/f/mvzdbwyr" method="POST" id="booking-form">
+      <input type="hidden" name="_subject" value="Wedding Appointment Request">
+      <input type="hidden" name="_next" value="wedding.html">
+      <input type="hidden" name="appointmentType" id="appointmentType">
+      <input type="hidden" name="customAppointment" id="customAppointment" value="No">
+      <input type="text" name="_gotcha" style="display:none">
+
+      <div class="form-row">
+        <div class="field">
+          <label for="firstName">First Name</label>
+          <input type="text" name="firstName" id="firstName" required>
+        </div>
+        <div class="field">
+          <label for="lastName">Last Name</label>
+          <input type="text" name="lastName" id="lastName" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" name="phone" id="phone">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="preferredDay">Preferred Day</label>
+          <select name="preferredDay" id="preferredDay">
+            <option value="">Select…</option>
+            <option>Weekday (Mon–Fri)</option>
+            <option>Saturday</option>
+            <option>Flexible (any day works)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="preferredTime">Preferred Time</label>
+          <select name="preferredTime" id="preferredTime">
+            <option value="">Select…</option>
+            <option>Morning (10am–12pm)</option>
+            <option>Afternoon (12pm–4pm)</option>
+            <option>Evening (4pm–6pm)</option>
+            <option>Flexible</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field form__notes-wrap">
+        <label for="notes">What are you shopping for?</label>
+        <textarea name="notes" id="notes" placeholder="Wedding date, party size, or anything else that helps us prepare."></textarea>
+      </div>
+
+      <p class="form__confirm">We'll confirm your appointment within one business day.</p>
+
+      <button type="submit" class="btn-submit">Request Appointment</button>
+    </form>
+  </section>
+
+  <!-- ══ CROSS-BOOKING ══ -->
+  <div class="crossbook">
+    <p class="crossbook__text">Booking for a different occasion?</p>
+    <div class="crossbook__links">
+      <a href="book-office.html">Office Appointment →</a>
+      <a href="book-casual.html">Casual / Walk In →</a>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  Thomas Jeffery Men's Wear · Calgary, AB · <a href="tel:+14032782445">(403) 278-2445</a> · <a href="https://thomasjeffery.ca">thomasjeffery.ca</a>
+</footer>
+
+<script>
+  var labels = {
+    'wardrobe':   'Wardrobe Consultation',
+    'general':    'Classic Fitting',
+    'groom':      'Groom Consultation',
+    'party':      'Wedding Party Fitting',
+    'individual': 'One Suit'
+  };
+
+  var tiles = document.querySelectorAll('.tile');
+  var appointmentTypeInput = document.getElementById('appointmentType');
+  var notes = document.getElementById('notes');
+  var validation = document.getElementById('validation');
+  var stepSelector = document.getElementById('step-selector');
+  var stepForm = document.getElementById('form-section');
+  var selectedLabel = document.getElementById('selected-label');
+
+  function showForm(label) {
+    selectedLabel.textContent = label;
+    stepSelector.classList.add('hidden');
+    stepForm.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showSelector() {
+    stepForm.classList.add('hidden');
+    stepSelector.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  var nextBtn = document.getElementById('next-btn');
+
+  function setNextReady(ready) {
+    if (ready) {
+      nextBtn.classList.add('ready');
+      nextBtn.removeAttribute('disabled');
+    } else {
+      nextBtn.classList.remove('ready');
+      nextBtn.setAttribute('disabled', 'disabled');
+    }
+  }
+
+  tiles.forEach(function (tile) {
+    tile.addEventListener('click', function () {
+      tiles.forEach(function (t) { t.classList.remove('active'); });
+      this.classList.add('active');
+      var type = this.getAttribute('data-type');
+      var label = labels[type] || type;
+      appointmentTypeInput.value = label;
+      if (notes && !notes.value) notes.value = label;
+      validation.classList.remove('show');
+      setNextReady(true);
+    });
+  });
+
+  nextBtn.addEventListener('click', function () {
+    if (!appointmentTypeInput.value) return;
+    showForm(appointmentTypeInput.value);
+  });
+
+  document.getElementById('change-btn').addEventListener('click', showSelector);
+
+  /* ── Custom toggle ── */
+  var customToggle = document.getElementById('custom-toggle');
+  var customInput = document.getElementById('customAppointment');
+  customToggle.addEventListener('click', function () {
+    var isActive = this.classList.toggle('active');
+    customInput.value = isActive ? 'Yes' : 'No';
+  });
+
+  /* ── Form validation: require tile selection ── */
+  document.getElementById('booking-form').addEventListener('submit', function (e) {
+    if (!appointmentTypeInput.value) {
+      e.preventDefault();
+      validation.classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  /* ── URL parameter pre-selection ── */
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var type = params.get('type');
+    if (!type) return;
+    if (type === 'custom') {
+      customToggle.classList.add('active');
+      customInput.value = 'Yes';
+      customToggle.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    var tile = document.querySelector('[data-type="' + type + '"]');
+    if (tile) {
+      tile.classList.add('active');
+      var label = labels[type] || type;
+      appointmentTypeInput.value = label;
+      if (notes && !notes.value && labels[type]) notes.value = label;
+      setNextReady(true);
+      showForm(label);
+    }
+  })();
+</script>
+
+</body>
+</html>

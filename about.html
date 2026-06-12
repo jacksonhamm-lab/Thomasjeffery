@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Thomas Jeffery Men's Wear Calgary</title>
+  <meta name="description" content="Thomas Jeffery has been Calgary's locally owned, family-run menswear store since 1968. Honest fitting, in-house tailoring, and brands we believe in.">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: #F5F0EB;
+      color: #1C2B39;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ══ PHOTO PLACEHOLDERS ══ */
+    .photo {
+      background: #D9D3CC;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .photo__label {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: rgba(28,43,57,0.45);
+      text-align: center;
+      padding: 20px;
+      line-height: 1.6;
+      max-width: 220px;
+      z-index: 1;
+    }
+    .photo--3x4 { aspect-ratio: 3/4; }
+    .photo--hero { height: 100%; min-height: 320px; }
+
+    /* ══ NAV ══ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(245,240,235,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(28,43,57,0.07);
+      transition: padding 0.3s;
+    }
+    .nav.scrolled { padding: 10px 20px; }
+    .nav__logo img { height: 64px; width: auto; display: block; }
+    .nav__right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .nav__links { display: flex; align-items: center; gap: 20px; list-style: none; }
+    .nav__links a {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(28,43,57,0.7);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav__links a:hover { color: #1C2B39; }
+    .nav__book a {
+      color: #1C2B39;
+      border-bottom: 1px solid rgba(28,43,57,0.3);
+      padding-bottom: 2px;
+    }
+    .nav__modes { display: none; align-items: center; gap: 16px; }
+    .nav__mode-sep { font-size: 9px; color: rgba(28,43,57,0.35); letter-spacing: 0.2em; }
+    .nav__mode-btn {
+      background: none; border: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 9px; font-weight: 400;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(28,43,57,0.45);
+      cursor: pointer; padding: 2px 0;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .nav__mode-btn:hover { color: rgba(28,43,57,0.8); }
+    .nav__mode-btn.active { color: #1C2B39; border-bottom-color: #1C2B39; }
+
+    /* ══ MOBILE HAMBURGER + MENU ══ */
+    .nav__hamburger {
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      gap: 5px; width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer; padding: 0;
+    }
+    .nav__hamburger span {
+      display: block; width: 22px; height: 2px; background: #1C2B39;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-menu {
+      position: fixed; top: 92px; left: 0; right: 0;
+      background: #F5F0EB; border-bottom: 1px solid rgba(28,43,57,0.1);
+      z-index: 99; padding: 12px 0 20px;
+      transform: translateY(-110%); opacity: 0; pointer-events: none;
+      transition: transform 0.3s ease, opacity 0.2s ease;
+      max-height: calc(100vh - 92px); overflow-y: auto;
+    }
+    .nav-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .nav-menu__section {
+      display: block; padding: 14px 24px 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.36em;
+      text-transform: uppercase; color: rgba(28,43,57,0.4);
+    }
+    .nav-menu a {
+      display: block; padding: 14px 24px;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(28,43,57,0.78);
+      text-decoration: none; border-bottom: 1px solid rgba(28,43,57,0.06);
+    }
+    .nav-menu a:hover { background: rgba(28,43,57,0.04); color: #1C2B39; }
+    .nav-menu a.active { color: #1C2B39; font-weight: 700; background: rgba(28,43,57,0.04); }
+    .nav-menu a.nav-menu__book { color: #1C2B39; font-weight: 700; background: rgba(28,43,57,0.05); }
+
+    @media (max-width: 699px) { .nav__links { display: none; } }
+
+    /* ══ HERO ══ */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
+      padding-top: 92px;
+    }
+    .hero__image { flex-shrink: 0; height: 70vw; min-height: 300px; order: -1; }
+    .hero__panel {
+      background: #1C2B39;
+      padding: 48px 28px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
+    .hero__eyebrow {
+      font-size: 12px; font-weight: 400;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(245,240,235,0.55);
+      margin-bottom: 18px; display: block;
+    }
+    .hero__title {
+      font-size: clamp(48px, 12vw, 92px);
+      font-weight: 300; letter-spacing: -0.01em;
+      color: #F5F0EB; line-height: 0.92;
+      margin-bottom: 24px;
+    }
+    .hero__rule { width: 40px; height: 1px; background: rgba(245,240,235,0.3); margin-bottom: 20px; }
+    .hero__sub {
+      font-size: 16px; font-weight: 400;
+      color: rgba(245,240,235,0.85); line-height: 1.75;
+      margin-bottom: 0; max-width: 420px;
+    }
+
+    /* ══ SECTION SHARED ══ */
+    .section__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5); margin-bottom: 12px;
+    }
+    .section__title {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 300; letter-spacing: 0.01em;
+      color: #1C2B39; line-height: 1.1; margin-bottom: 18px;
+    }
+    .section__body {
+      font-size: 16px; font-weight: 400; line-height: 1.85;
+      color: rgba(28,43,57,0.78); margin-bottom: 20px; max-width: 640px;
+    }
+    .section__body + .section__body { margin-top: 0; }
+
+    /* ══ STORY ══ */
+    .story { padding: 48px 20px; }
+    .story--top { padding-top: 120px; }
+    .story__inner { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .story__photo { aspect-ratio: 3/4; }
+    .story__more {
+      display: none;
+      margin-top: 8px;
+    }
+    .story.expanded .story__more { display: block; }
+    .story__toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #1C2B39;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(28,43,57,0.3);
+      transition: border-color 0.2s;
+      margin-top: 14px;
+    }
+    .story__toggle:hover { border-color: #1C2B39; }
+
+    /* ══ PHILOSOPHY ══ */
+    .philosophy { padding: 48px 20px; background: #E8E0D5; }
+    .philosophy__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .principle {
+      background: #F5F0EB;
+      border-left: 2px solid #1C2B39;
+      padding: 24px 24px 26px;
+    }
+    .principle__num {
+      font-size: 28px;
+      font-weight: 300;
+      color: rgba(28,43,57,0.22);
+      line-height: 1;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .principle__title {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1C2B39;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .principle__body {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: rgba(28,43,57,0.78);
+    }
+
+    /* ══ TEAM ══ */
+    .team { padding: 48px 20px; }
+    .team__inner { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .team__photo { aspect-ratio: 3/4; }
+    .team__body {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.85;
+      color: rgba(28,43,57,0.78);
+      max-width: 640px;
+    }
+    .team__body + .team__body { margin-top: 20px; }
+
+    /* ══ FOOTER (unified across site) ══ */
+    .footer { background: #1C2B39; padding: 64px 24px 36px; border-top: 1px solid rgba(245,240,235,0.07); }
+    .footer__logo { height: 84px; width: auto; display: block; margin: 0 0 36px; opacity: 0.92; }
+    .footer__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(245,240,235,0.55); margin-bottom: 14px;
+    }
+    .footer__title {
+      font-size: clamp(30px, 6vw, 44px); font-weight: 300;
+      letter-spacing: 0.01em; color: #F5F0EB;
+      line-height: 1.1; margin-bottom: 40px;
+    }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
+    .footer__col h4 {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.32em;
+      text-transform: uppercase; color: rgba(245,240,235,0.55); margin-bottom: 14px;
+    }
+    .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer__col ul a {
+      font-size: 15px; font-weight: 400; letter-spacing: 0.04em;
+      color: rgba(245,240,235,0.78); text-decoration: none; transition: color 0.2s;
+    }
+    .footer__col ul a:hover { color: #F5F0EB; }
+    .footer__address, .footer__hours {
+      font-size: 15px; font-weight: 400; line-height: 1.85; color: rgba(245,240,235,0.78);
+    }
+    .footer__phone { margin-top: 14px; font-size: 15px; font-weight: 700; letter-spacing: 0.02em; }
+    .footer__phone a { color: rgba(245,240,235,0.85); text-decoration: none; }
+    .footer__phone a:hover { color: #F5F0EB; }
+    .footer__cta-row { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+    .footer__btn {
+      display: inline-block; padding: 16px 28px; text-align: center;
+      text-decoration: none; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .footer__btn--primary { background: #F5F0EB; color: #1C2B39; }
+    .footer__btn--primary:hover { background: #fff; }
+    .footer__btn--ghost { background: transparent; color: #F5F0EB; border: 1px solid rgba(245,240,235,0.4); }
+    .footer__btn--ghost:hover { border-color: #F5F0EB; background: rgba(245,240,235,0.06); }
+    .footer__divider { border: none; border-top: 1px solid rgba(245,240,235,0.1); margin-bottom: 22px; }
+    .footer__bottom { display: flex; flex-direction: column; gap: 14px; }
+    .footer__copy {
+      font-size: 13px; font-weight: 400; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(245,240,235,0.45);
+    }
+    .footer__social { display: flex; gap: 22px; }
+    .footer__social a {
+      font-size: 12px; font-weight: 400; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(245,240,235,0.55);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer__social a:hover { color: rgba(245,240,235,0.9); }
+
+    /* ══ MOBILE STICKY BOOK ══ */
+    .sticky-book {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+      display: block; background: #1C2B39; color: #F5F0EB;
+      font-family: 'Lato', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      text-align: center; text-decoration: none;
+      padding: 18px 20px; border-top: 1px solid rgba(245,240,235,0.1);
+      transition: background 0.2s;
+    }
+    .sticky-book:hover { background: #243649; }
+
+    /* ══ RESPONSIVE ══ */
+    @media (min-width: 700px) {
+      .nav { padding: 14px 40px; }
+      .nav.scrolled { padding: 10px 40px; }
+      .nav__logo img { height: 72px; }
+      .nav__links { gap: 32px; }
+      .nav__modes { display: flex; }
+      .nav__hamburger { display: none; }
+      .nav-menu { display: none; }
+
+      .hero { flex-direction: row; padding-top: 0; min-height: 100svh; }
+      .hero__image { order: 0; width: 50%; height: auto; min-height: unset; }
+      .hero__panel { padding: 140px 52px 72px; }
+
+      .story { padding: 80px 48px; }
+      .story--top { padding-top: 148px; }
+      .story__inner { grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start; }
+      .story__photo { aspect-ratio: 1/1; position: sticky; top: 110px; }
+      .team { padding: 80px 48px; }
+      .team__inner { grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: start; }
+      .team__photo { aspect-ratio: 1/1; }
+      .team__photo--order { order: -1; }
+      .philosophy { padding: 80px 48px; }
+      .philosophy__grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+      .team { padding: 80px 48px; }
+      .footer { padding: 80px 48px 40px; }
+      .footer__logo { height: 100px; margin: 0 0 44px; }
+      .footer__title { margin-bottom: 48px; }
+      .footer__grid { grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+      .footer__cta-row { flex-direction: row; gap: 14px; margin-bottom: 48px; }
+      .footer__bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+      .sticky-book { display: none; }
+    }
+    @media (min-width: 1024px) {
+      .nav { padding: 14px 64px; }
+      .hero__image { width: 52%; }
+      .hero__panel { padding: 160px 72px 80px; }
+      .story { padding: 96px 64px; }
+      .story--top { padding-top: 168px; }
+      .team { padding: 96px 64px; }
+      .philosophy { padding: 96px 64px; }
+      .philosophy__grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
+      .team { padding: 96px 64px; }
+      .footer { padding: 96px 64px 44px; }
+      .footer__logo { height: 112px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ MOBILE STICKY BOOK ══ -->
+<a class="sticky-book" href="book-office.html">Book a Fitting →</a>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a class="nav__logo" href="thomas-jeffery-homepage.html">
+    <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/8c767aaa-8e17-aad6-db85-b0383c08bd33.png"
+         alt="Thomas Jeffery Men's Wear">
+  </a>
+  <div class="nav__right">
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="brands.html">Brands</a></li>
+      <li><a href="office.html">Office</a></li>
+      <li class="nav__book"><a href="book-office.html">Book a Fitting</a></li>
+    </ul>
+    <div class="nav__modes">
+      <span class="nav__mode-sep">Viewing</span>
+      <a class="nav__mode-btn" href="office.html">Office</a>
+      <a class="nav__mode-btn" href="wedding.html">Wedding</a>
+      <a class="nav__mode-btn" href="casual.html">Casual</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ MOBILE MENU ══ -->
+<div class="nav-menu" id="nav-menu">
+  <span class="nav-menu__section">Browse</span>
+  <a href="office.html">Office</a>
+  <a href="wedding.html">Wedding</a>
+  <a href="casual.html">Casual</a>
+  <span class="nav-menu__section">More</span>
+  <a href="about.html" class="active">About</a>
+  <a href="brands.html">Brands</a>
+  <a class="nav-menu__book" href="book-office.html">Book a Fitting →</a>
+</div>
+
+<!-- ══ STORY ══ -->
+<!-- TODO REFINE: confirm founder name, year named Thomas Jeffery, full ownership chain (original founder -> Ken McCowan -> Len Hamm). Update copy once Len has confirmed. -->
+<section class="story story--top" id="story">
+  <div class="story__inner">
+    <div class="story__text">
+      <span class="section__eyebrow">The Store</span>
+      <h1 class="section__title">A Calgary store,<br>with Calgary roots.</h1>
+
+      <p class="section__body">Thomas Jeffery has been part of Calgary's menswear scene since 1968. The store carries the names of two sons from one of its earlier owners, Thomas and Jeffery. Today it is family-owned, family-run, and answerable to the city it has served for over half a century.</p>
+
+      <p class="section__body">What that means in practice is straightforward. We carry the brands we believe in. We fit every piece in-store. We don't sell what we wouldn't wear ourselves. And the people who walk you through a fitting are usually the same ones you will see next time, often for years.</p>
+
+      <div class="story__more" id="story-more">
+        <p class="section__body">Thomas Jeffery has passed through a few hands over the decades. The current owner, Len Hamm, bought the store from Ken McCowan, who ran it before him. The store kept the name, kept the location in Calgary, and kept building on what came before.</p>
+
+        <p class="section__body">For most of the store's history, Calgary saw Thomas Jeffery in more than one place. A long-standing presence at Southcentre Mall, and a second location downtown. In 2022, both consolidated into a single larger home at Kingsland Village. One store, more space under one roof, the same people behind the counter.</p>
+      </div>
+
+      <button class="story__toggle" id="story-toggle" aria-expanded="false">Read More +</button>
+    </div>
+    <div class="story__photo photo photo--3x4">
+      <span class="photo__label">SHOT — Storefront exterior at Kingsland Village, or warm interior overview. Calgary, premium and welcoming. Portrait 3×4.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PHILOSOPHY ══ -->
+<section class="philosophy">
+  <span class="section__eyebrow">What We Do</span>
+  <h2 class="section__title">A different kind<br>of menswear store.</h2>
+  <p class="section__body">There are bigger stores and there are flashier stores. We are neither. Here is what we are instead.</p>
+
+  <div class="philosophy__grid">
+
+    <div class="principle">
+      <span class="principle__num">01</span>
+      <span class="principle__title">Personal, Not Transactional</span>
+      <p class="principle__body">We are not a chain. Every fitting happens with one staff member from start to finish. They learn your taste, your build, and what you actually wear. Next time you come in, you don't start over.</p>
+    </div>
+
+    <div class="principle">
+      <span class="principle__num">02</span>
+      <span class="principle__title">Honest Opinions</span>
+      <p class="principle__body">If a piece isn't right for you, we will tell you. If you don't need three suits, we won't sell you three. The point isn't to move stock. The point is that you walk out with something you will actually wear.</p>
+    </div>
+
+    <div class="principle">
+      <span class="principle__num">03</span>
+      <span class="principle__title">Tailoring In-House</span>
+      <p class="principle__body">Our tailors work on the same schedule we do, in the same building. Alterations are not subcontracted out or shipped across town. Nothing leaves the store until it fits the way it should.</p>
+    </div>
+
+    <div class="principle">
+      <span class="principle__num">04</span>
+      <span class="principle__title">Brands We Believe In</span>
+      <p class="principle__body">We don't carry a label because it pays for shelf space. Every brand on the floor earned its place because the construction holds up, the fit works for our customers, or it does something specific better than anyone else.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ TEAM ══ -->
+<!-- TODO REFINE: this section is placeholder until staff input. Consider adding names / tenure once confirmed. -->
+<section class="team">
+  <div class="team__inner">
+    <div class="team__photo photo photo--3x4 team__photo--order">
+      <span class="photo__label">SHOT — Team member fitting a customer, or staff on the floor in the store. Warm light, candid, real moment. Portrait 3×4.</span>
+    </div>
+    <div class="team__text">
+      <span class="section__eyebrow">The People</span>
+      <h2 class="section__title">Experienced menswear<br>professionals.</h2>
+
+      <p class="team__body">The Thomas Jeffery team is part of what the store is. Many of them have been here for decades, learning the craft from the people who came before them and now passing it on themselves. They are experienced menswear professionals: the kind of people who can read a shoulder seam from across the room, and who, more often than you would expect, remember what you bought the last time you came in.</p>
+
+      <p class="team__body">Come in and meet them. They are the ones fitting you, picking the right shirt for the right suit, and telling you honestly when a piece works and when it doesn't. That part has not changed in over fifty years.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <span class="footer__eyebrow">Find Us</span>
+  <h2 class="footer__title">One store.<br>Kingsland Village.</h2>
+
+  <div class="footer__grid">
+    <div class="footer__col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="brands.html">Brands</a></li>
+        <li><a href="office.html">Office</a></li>
+        <li><a href="wedding.html">Wedding</a></li>
+        <li><a href="casual.html">Casual</a></li>
+        <li><a href="book-office.html">Book a Fitting</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Address</h4>
+      <div class="footer__address">
+        Kingsland Village #303<br>
+        7337 Macleod Trail SW<br>
+        Calgary, AB &nbsp;T2H 0L8
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Hours &amp; Contact</h4>
+      <div class="footer__hours">
+        Mon – Sat &nbsp;10am – 6pm<br>
+        Closed Sundays &amp; Holidays
+      </div>
+      <div class="footer__phone">
+        <a href="tel:+14032782445">(403) 278-2445</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__cta-row">
+    <a class="footer__btn footer__btn--primary" href="book-office.html">Book a Fitting</a>
+    <a class="footer__btn footer__btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Thomas+Jeffery+Mens+Wear+7337+Macleod+Trail+SW+Calgary+AB" target="_blank" rel="noopener">Open in Maps</a>
+  </div>
+
+  <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/50fa581f-6078-5021-27fa-4c15ad9d947f.png"
+       alt="Thomas Jeffery Men's Wear" class="footer__logo">
+
+  <hr class="footer__divider">
+  <div class="footer__bottom">
+    <p class="footer__copy">© 2026 Thomas Jeffery Men's Wear. All rights reserved.</p>
+    <div class="footer__social">
+      <a href="https://www.instagram.com/thomasjefferyofficial/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/ThomasJefferyMensWear" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── Nav scroll ── */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── Mobile hamburger menu ── */
+  var hamburger = document.getElementById('nav-hamburger');
+  var navMenu = document.getElementById('nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function () {
+      var isOpen = navMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  /* ── Read more toggle ── */
+  var story = document.getElementById('story');
+  var toggle = document.getElementById('story-toggle');
+  toggle.addEventListener('click', function () {
+    var expanded = story.classList.toggle('expanded');
+    toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    toggle.textContent = expanded ? 'Read Less −' : 'Read More +';
+  });
+</script>
+
+</body>
+</html>
