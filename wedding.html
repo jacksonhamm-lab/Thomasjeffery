@@ -36,6 +36,7 @@
       object-fit: cover;
       object-position: center top;
       display: block;
+      transition: opacity 0.4s ease;
     }
     .photo__label {
       font-size: 10px;
@@ -1067,7 +1068,13 @@
       if (panel) panel.classList.add('active');
       var imgs = { groom: 'wedding-party.webp', party: 'wedding-group.webp', father: 'wedding-father.webp' };
       var photo = document.querySelector('.start__photo img');
-      if (photo && imgs[target]) photo.src = imgs[target];
+      if (photo && imgs[target]) {
+        photo.style.opacity = '0';
+        setTimeout(function() {
+          photo.src = imgs[target];
+          photo.style.opacity = '1';
+        }, 400);
+      }
     });
   });
 
