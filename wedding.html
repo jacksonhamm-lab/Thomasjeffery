@@ -612,7 +612,7 @@
         display: block; min-height: 340px;
         aspect-ratio: unset; height: 100%;
       }
-      .start__photo img { object-position: center center; }
+      .start__photo img { object-position: center 15%; }
 
       .decisions { padding: 64px 48px; }
       .decisions__grid { grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -1065,6 +1065,9 @@
       this.classList.add('active');
       var panel = document.getElementById('panel-' + target);
       if (panel) panel.classList.add('active');
+      var imgs = { groom: 'wedding-party.webp', party: 'wedding-group.webp', father: 'wedding-father.webp' };
+      var photo = document.querySelector('.start__photo img');
+      if (photo && imgs[target]) photo.src = imgs[target];
     });
   });
 
