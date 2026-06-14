@@ -609,9 +609,11 @@
       }
       .start__tabs { flex-direction: column; }
       .start__photo {
-        display: block; min-height: 280px;
-        aspect-ratio: unset; height: 100%;
+        display: block; min-height: 520px;
+        aspect-ratio: unset; height: auto;
+        align-self: stretch;
       }
+      .start__photo img { object-position: center center; }
 
       .decisions { padding: 64px 48px; }
       .decisions__grid { grid-template-columns: 1fr 1fr; gap: 14px; }
