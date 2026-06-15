@@ -136,41 +136,6 @@
 
     @media (max-width: 699px) { .nav__links { display: none; } }
 
-    /* ══ HERO ══ */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      min-height: 100svh;
-      padding-top: 92px;
-    }
-    .hero__image { flex-shrink: 0; height: 70vw; min-height: 300px; order: -1; }
-    .hero__panel {
-      background: #1C2B39;
-      padding: 48px 28px 56px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex: 1;
-    }
-    .hero__eyebrow {
-      font-size: 12px; font-weight: 400;
-      letter-spacing: 0.38em; text-transform: uppercase;
-      color: rgba(245,240,235,0.55);
-      margin-bottom: 18px; display: block;
-    }
-    .hero__title {
-      font-size: clamp(48px, 12vw, 92px);
-      font-weight: 300; letter-spacing: -0.01em;
-      color: #F5F0EB; line-height: 0.92;
-      margin-bottom: 24px;
-    }
-    .hero__rule { width: 40px; height: 1px; background: rgba(245,240,235,0.3); margin-bottom: 20px; }
-    .hero__sub {
-      font-size: 16px; font-weight: 400;
-      color: rgba(245,240,235,0.85); line-height: 1.75;
-      margin-bottom: 0; max-width: 420px;
-    }
-
     /* ══ SECTION SHARED ══ */
     .section__eyebrow {
       display: block; font-size: 12px; font-weight: 700;
@@ -342,10 +307,6 @@
       .nav__hamburger { display: none; }
       .nav-menu { display: none; }
 
-      .hero { flex-direction: row; padding-top: 0; min-height: 100svh; }
-      .hero__image { order: 0; width: 50%; height: auto; min-height: unset; }
-      .hero__panel { padding: 140px 52px 72px; }
-
       .story { padding: 80px 48px; }
       .story--top { padding-top: 148px; }
       .story__inner { grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start; }
@@ -356,7 +317,6 @@
       .team__photo--order { order: -1; }
       .philosophy { padding: 80px 48px; }
       .philosophy__grid { grid-template-columns: 1fr 1fr; gap: 18px; }
-      .team { padding: 80px 48px; }
       .footer { padding: 80px 48px 40px; }
       .footer__logo { height: 100px; margin: 0 0 44px; }
       .footer__title { margin-bottom: 48px; }
@@ -367,14 +327,11 @@
     }
     @media (min-width: 1024px) {
       .nav { padding: 14px 64px; }
-      .hero__image { width: 52%; }
-      .hero__panel { padding: 160px 72px 80px; }
       .story { padding: 96px 64px; }
       .story--top { padding-top: 168px; }
       .team { padding: 96px 64px; }
       .philosophy { padding: 96px 64px; }
       .philosophy__grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
-      .team { padding: 96px 64px; }
       .footer { padding: 96px 64px 44px; }
       .footer__logo { height: 112px; }
     }
@@ -442,7 +399,7 @@
       <button class="story__toggle" id="story-toggle" aria-expanded="false">Read More +</button>
     </div>
     <div class="story__photo photo photo--3x4">
-      <span class="photo__label">SHOT — Storefront exterior at Kingsland Village, or warm interior overview. Calgary, premium and welcoming. Portrait 3×4.</span>
+      <img src="about-storefront.webp" alt="Thomas Jeffery Men's Wear — Kingsland Village storefront">
     </div>
   </div>
 </section>
@@ -487,7 +444,7 @@
 <section class="team">
   <div class="team__inner">
     <div class="team__photo photo photo--3x4 team__photo--order">
-      <span class="photo__label">SHOT — Team member fitting a customer, or staff on the floor in the store. Warm light, candid, real moment. Portrait 3×4.</span>
+      <img src="about-fitting.webp" alt="In-store suit fitting at Thomas Jeffery Men's Wear">
     </div>
     <div class="team__text">
       <span class="section__eyebrow">The People</span>

@@ -797,9 +797,6 @@
     }
     .booking__walkin strong { font-weight: 700; font-style: normal; color: rgba(28,43,57,0.78); }
 
-    /* ══════════════════════════════
-       FOOTER
-    ══════════════════════════════ */
     /* ══ FOOTER (unified across site) ══ */
     .footer { background: #1C2B39; padding: 64px 24px 36px; border-top: 1px solid rgba(245,240,235,0.07); }
     .footer__logo { height: 84px; width: auto; display: block; margin: 0 0 36px; opacity: 0.92; }
@@ -1429,6 +1426,12 @@
   /* ── Where do you start tabs ── */
   var tabs   = document.querySelectorAll('.start__tab');
   var panels = document.querySelectorAll('.start__panel');
+  var tabImages = {
+    scratch: 'office-consultation-tight.webp',
+    refresh: 'office-wardrobe-refresh.webp',
+    event:   'office-event.webp'
+  };
+  var startPhoto = document.querySelector('.start__photo img');
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
       var target = this.getAttribute('data-tab');
@@ -1437,6 +1440,14 @@
       this.classList.add('active');
       var panel = document.getElementById('panel-' + target);
       if (panel) panel.classList.add('active');
+      if (startPhoto && tabImages[target]) {
+        startPhoto.style.opacity = '0';
+        startPhoto.style.transition = 'opacity 0.3s';
+        setTimeout(function () {
+          startPhoto.src = tabImages[target];
+          startPhoto.style.opacity = '1';
+        }, 300);
+      }
     });
   });
 

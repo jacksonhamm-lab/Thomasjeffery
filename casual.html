@@ -606,9 +606,6 @@
       letter-spacing: 0.02em;
     }
 
-    /* ══════════════════════════════
-       FOOTER
-    ══════════════════════════════ */
     /* ══ FOOTER (unified across site) ══ */
     .footer { background: #1C2B39; padding: 64px 24px 36px; border-top: 1px solid rgba(245,240,235,0.07); }
     .footer__logo { height: 84px; width: auto; display: block; margin: 0 0 36px; opacity: 0.92; }
@@ -744,11 +741,105 @@
       .hero__image { width: 52%; }
       .hero__panel { padding: 160px 72px 80px; }
       .collections { padding: 80px 64px; }
-      .crossover { padding: 28px 64px; }
       .spotlights { padding: 64px 64px; }
       .booking { padding: 112px 64px; }
       .footer { padding: 96px 64px 44px; }
       .footer__logo { height: 112px; }
+    }
+
+    /* ══════════════════════════════
+       EDITORIAL LOOKS — CAROUSEL
+    ══════════════════════════════ */
+    .looks {
+      padding: 56px 0 48px;
+      background: #1C2B39;
+    }
+    .looks__header {
+      padding: 0 24px 32px;
+    }
+    .looks .section__eyebrow { color: rgba(245,240,235,0.5); }
+    .looks .section__title { color: #F5F0EB; margin-bottom: 0; }
+
+    .looks__carousel {
+      position: relative;
+      overflow: hidden;
+    }
+    .looks__track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .looks__slide {
+      min-width: 100%;
+      padding: 0 24px;
+    }
+    .looks__slide .photo img { object-position: center top; }
+
+    .looks__btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(245,240,235,0.1);
+      border: 1px solid rgba(245,240,235,0.2);
+      color: #F5F0EB;
+      font-size: 18px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      z-index: 2;
+    }
+    .looks__btn:hover {
+      background: rgba(245,240,235,0.2);
+      border-color: rgba(245,240,235,0.4);
+    }
+    .looks__btn--prev { left: 28px; }
+    .looks__btn--next { right: 28px; }
+
+    .looks__dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 24px 0 0;
+    }
+    .looks__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(245,240,235,0.3);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .looks__dot--active {
+      background: #F5F0EB;
+      transform: scale(1.35);
+    }
+
+    @media (min-width: 700px) {
+      .looks { padding: 72px 0 60px; }
+      .looks__header { padding: 0 48px 36px; }
+      .looks__carousel { overflow: visible; padding: 0 48px; }
+      .looks__track {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        transform: none !important;
+        transition: none;
+      }
+      .looks__slide { min-width: unset; padding: 0; }
+      .looks__btn { display: none; }
+      .looks__dots { display: none; }
+    }
+    @media (min-width: 1024px) {
+      .looks { padding: 88px 0 72px; }
+      .looks__header { padding: 0 64px 40px; }
+      .looks__carousel { padding: 0 64px; }
+      .looks__track { gap: 28px; }
     }
   </style>
 </head>
@@ -801,7 +892,7 @@
 ══════════════════════════════ -->
 <section class="hero">
   <div class="hero__image photo photo--hero">
-    <span class="photo__label">HERO SHOT — Lifestyle. Man in elevated casual — sport shirt or knit, well-fitted trousers or dark denim, no tie. Natural outdoor or warm interior light. Relaxed and confident. Not posed. Portrait orientation 3×4.</span>
+    <img src="casual-hero.webp" alt="Thomas Jeffery casual menswear">
   </div>
   <div class="hero__panel">
     <span class="hero__eyebrow">Casual · Spring / Summer 2026</span>
@@ -926,13 +1017,40 @@
 </div><!-- /collections -->
 
 <!-- ══════════════════════════════
-     CROSSOVER STRIP
+     EDITORIAL LOOKS — CAROUSEL
 ══════════════════════════════ -->
-<div class="crossover">
-  <span class="crossover__label">Also for the office</span>
-  <p class="crossover__text">DeSoto sport shirts, Bugatti overcoats, and dress trousers from Alberto and Meyer work just as well in a business casual environment. See the full office wardrobe guide.</p>
-  <a class="crossover__link" href="office.html">Office Wear →</a>
-</div>
+<section class="looks">
+  <div class="looks__header">
+    <span class="section__eyebrow">The look</span>
+    <h2 class="section__title">Casual, done right.</h2>
+  </div>
+  <div class="looks__carousel" id="looks-carousel">
+    <div class="looks__track" id="looks-track">
+      <div class="looks__slide">
+        <div class="photo photo--3x4">
+          <img src="casual-carousel-1.webp" alt="Casual look — navy bomber, grey trousers">
+        </div>
+      </div>
+      <div class="looks__slide">
+        <div class="photo photo--3x4">
+          <img src="casual-carousel-2.webp" alt="Casual look — blue knit polo, pleated trousers">
+        </div>
+      </div>
+      <div class="looks__slide">
+        <div class="photo photo--3x4">
+          <img src="casual-carousel-3.webp" alt="Casual look — golf clubhouse style">
+        </div>
+      </div>
+    </div>
+    <button class="looks__btn looks__btn--prev" id="looks-prev" aria-label="Previous look">&#8592;</button>
+    <button class="looks__btn looks__btn--next" id="looks-next" aria-label="Next look">&#8594;</button>
+  </div>
+  <div class="looks__dots">
+    <button class="looks__dot looks__dot--active" data-index="0" aria-label="Look 1"></button>
+    <button class="looks__dot" data-index="1" aria-label="Look 2"></button>
+    <button class="looks__dot" data-index="2" aria-label="Look 3"></button>
+  </div>
+</section>
 
 <!-- ══════════════════════════════
      BRAND SPOTLIGHTS
@@ -1062,6 +1180,47 @@
       if (!isOpen) col.classList.add('open');
     });
   });
+
+  // ── Looks carousel ────────────────────────────────────────
+  (function () {
+    var track = document.getElementById('looks-track');
+    var dots = document.querySelectorAll('.looks__dot');
+    var total = 3;
+    var current = 0;
+    if (!track) return;
+
+    function goTo(n) {
+      current = ((n % total) + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function (d, i) {
+        d.classList.toggle('looks__dot--active', i === current);
+      });
+    }
+
+    var prevBtn = document.getElementById('looks-prev');
+    var nextBtn = document.getElementById('looks-next');
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        goTo(parseInt(this.dataset.index, 10));
+      });
+    });
+
+    // Touch swipe
+    var startX = 0;
+    var el = document.getElementById('looks-carousel');
+    if (el) {
+      el.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+      el.addEventListener('touchend', function (e) {
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+      });
+    }
+  })();
 </script>
 </body>
 </html>

@@ -137,41 +137,6 @@
 
     @media (max-width: 699px) { .nav__links { display: none; } }
 
-    /* ══ HERO ══ */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      min-height: 100svh;
-      padding-top: 92px;
-    }
-    .hero__image { flex-shrink: 0; height: 70vw; min-height: 300px; order: -1; }
-    .hero__panel {
-      background: #1C2B39;
-      padding: 48px 28px 56px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex: 1;
-    }
-    .hero__eyebrow {
-      font-size: 12px; font-weight: 400;
-      letter-spacing: 0.38em; text-transform: uppercase;
-      color: rgba(245,240,235,0.55);
-      margin-bottom: 18px; display: block;
-    }
-    .hero__title {
-      font-size: clamp(48px, 12vw, 92px);
-      font-weight: 300; letter-spacing: -0.01em;
-      color: #F5F0EB; line-height: 0.92;
-      margin-bottom: 24px;
-    }
-    .hero__rule { width: 40px; height: 1px; background: rgba(245,240,235,0.3); margin-bottom: 20px; }
-    .hero__sub {
-      font-size: 16px; font-weight: 400;
-      color: rgba(245,240,235,0.85); line-height: 1.75;
-      max-width: 420px;
-    }
-
     /* ══ SECTION SHARED ══ */
     .section__eyebrow {
       display: block; font-size: 12px; font-weight: 700;
@@ -398,7 +363,6 @@
     .cta__btn--ghost { background: transparent; color: #1C2B39; border: 1px solid rgba(28,43,57,0.3); }
     .cta__btn--ghost:hover { border-color: #1C2B39; background: rgba(28,43,57,0.04); }
 
-    /* ══ FOOTER (matches site) ══ */
     /* ══ FOOTER (unified across site) ══ */
     .footer { background: #1C2B39; padding: 64px 24px 36px; border-top: 1px solid rgba(245,240,235,0.07); }
     .footer__logo { height: 84px; width: auto; display: block; margin: 0 0 36px; opacity: 0.92; }
@@ -476,10 +440,6 @@
       .nav__hamburger { display: none; }
       .nav-menu { display: none; }
 
-      .hero { flex-direction: row; padding-top: 0; min-height: 100svh; }
-      .hero__image { order: 0; width: 50%; height: auto; min-height: unset; }
-      .hero__panel { padding: 140px 52px 72px; }
-
       .featured { padding: 80px 48px; }
       .featured--top { padding-top: 148px; }
       .featured__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -500,8 +460,6 @@
     }
     @media (min-width: 1024px) {
       .nav { padding: 14px 64px; }
-      .hero__image { width: 52%; }
-      .hero__panel { padding: 160px 72px 80px; }
       .featured { padding: 96px 64px; }
       .featured--top { padding-top: 168px; }
       .featured__grid { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
@@ -565,7 +523,7 @@
 
     <article class="featured-card">
       <div class="featured-card__image photo photo--4x3">
-        <span class="photo__label">SHOT — Coppley jacket detail or factory shot. Half-canvas construction, premium feel. Landscape 4×3.</span>
+        <img src="brands-coppley.webp" alt="Coppley — half-canvas suit jacket detail">
       </div>
       <div class="featured-card__content">
         <span class="featured-card__origin">Hamilton, Canada · Est. 1883</span>
@@ -576,7 +534,7 @@
 
     <article class="featured-card">
       <div class="featured-card__image photo photo--4x3">
-        <span class="photo__label">SHOT — Paul Betenly suit detail. Hand-sewn armhole or pick stitching close-up. Landscape 4×3.</span>
+        <img src="brands-paul-betenly.webp" alt="Paul Betenly — Super 120s navy suit pick stitching detail">
       </div>
       <div class="featured-card__content">
         <span class="featured-card__origin">Canada · Est. 1981</span>
@@ -587,7 +545,7 @@
 
     <article class="featured-card">
       <div class="featured-card__image photo photo--4x3">
-        <span class="photo__label">SHOT — Jack Victor sport jacket detail or Montreal workroom shot. Landscape 4×3.</span>
+        <img src="brands-jack-victor.webp" alt="Jack Victor — sport jacket lifestyle">
       </div>
       <div class="featured-card__content">
         <span class="featured-card__origin">Montreal, Canada · Est. 1913</span>
@@ -598,7 +556,7 @@
 
     <article class="featured-card">
       <div class="featured-card__image photo photo--4x3">
-        <span class="photo__label">SHOT — Bugatti shop-in-shop area or product spread. Trousers, outerwear, knits laid out. Landscape 4×3.</span>
+        <img src="brands-bugatti.webp" alt="Bugatti — navy bomber jacket lifestyle">
       </div>
       <div class="featured-card__content">
         <span class="featured-card__origin">Germany · Est. 1947</span>
@@ -609,7 +567,7 @@
 
     <article class="featured-card">
       <div class="featured-card__image photo photo--4x3">
-        <span class="photo__label">SHOT — 7 Downie St. sport shirt or knit detail. Canadian, casual, warm light. Landscape 4×3.</span>
+        <img src="brands-7downie.webp" alt="7 Downie St. — cream sport coat casual lifestyle">
       </div>
       <div class="featured-card__content">
         <span class="featured-card__origin">Canada</span>
@@ -620,7 +578,7 @@
 
     <article class="featured-card">
       <div class="featured-card__image photo photo--4x3">
-        <span class="photo__label">SHOT — Alberto trousers or denim detail. Crisp fit, fabric texture. Landscape 4×3.</span>
+        <img src="brands-alberto.webp" alt="Alberto — medium grey trouser waist-down detail">
       </div>
       <div class="featured-card__content">
         <span class="featured-card__origin">Mönchengladbach, Germany · Est. 1922</span>
