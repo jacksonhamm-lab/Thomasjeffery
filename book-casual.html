@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="Thomas-Jeffery-Logo-Black-Small.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="Thomas-Jeffery-Logo-White-Small-1.png" media="(prefers-color-scheme: dark)">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visit Us — Thomas Jeffery Men's Wear Calgary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: #F5F0EB;
+      color: #1C2B39;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ══ HEADER ══ */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      background: #F5F0EB;
+      border-bottom: 1px solid rgba(28,43,57,0.07);
+    }
+    .header__logo img { height: 56px; width: auto; display: block; }
+    .header__back {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .header__back:hover { color: #1C2B39; }
+    @media (min-width: 700px) {
+      .header { padding: 20px 40px; }
+      .header__logo img { height: 62px; }
+    }
+
+    /* ══ MAIN LAYOUT ══ */
+    .main { padding: 48px 24px 56px; max-width: 880px; margin: 0 auto; }
+    @media (min-width: 700px) { .main { padding: 64px 40px 72px; } }
+
+    /* ══ SHARED HEADINGS ══ */
+    .eyebrow {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.55);
+      margin-bottom: 14px;
+    }
+    .title {
+      font-size: clamp(30px, 6.5vw, 40px);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      color: #1C2B39;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .body {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(28,43,57,0.75);
+      max-width: 600px;
+      margin-bottom: 36px;
+    }
+
+    /* ══ STORE INFO ══ */
+    .store-info {
+      background: #E8E0D5;
+      padding: 28px 26px;
+      margin-bottom: 24px;
+      border-left: 2px solid #1C2B39;
+    }
+    .store-info__address {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.85;
+      color: rgba(28,43,57,0.82);
+    }
+    .store-info__address strong {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .store-info__hours {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(28,43,57,0.1);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: rgba(28,43,57,0.72);
+    }
+    .store-info__phone {
+      margin-top: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .store-info__phone a { color: #1C2B39; text-decoration: none; }
+
+    /* ══ MAP BUTTONS ══ */
+    .map-buttons {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    @media (min-width: 580px) {
+      .map-buttons { grid-template-columns: 1fr 1fr; gap: 14px; }
+    }
+    .map-btn {
+      display: block;
+      padding: 16px 20px;
+      background: #1C2B39;
+      color: #F5F0EB;
+      text-align: center;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .map-btn:hover { background: #243649; }
+
+    /* ══ DIVIDER ══ */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(28,43,57,0.1);
+      margin: 56px 0 48px;
+    }
+
+    /* ══ FORM ══ */
+    .form-section { }
+    .form__eyebrow {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.55);
+      margin-bottom: 14px;
+    }
+    .form__heading {
+      font-size: clamp(28px, 6vw, 36px);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      color: #1C2B39;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .form__body {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(28,43,57,0.72);
+      max-width: 600px;
+      margin-bottom: 32px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    @media (min-width: 580px) {
+      .form-row { grid-template-columns: 1fr 1fr; gap: 16px; }
+    }
+    .field { display: flex; flex-direction: column; }
+    .field label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.55);
+      margin-bottom: 8px;
+    }
+    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+      width: 100%;
+      background: rgba(28,43,57,0.04);
+      border: 1px solid rgba(28,43,57,0.14);
+      color: #1C2B39;
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      padding: 13px 15px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
+    }
+    textarea { resize: vertical; min-height: 110px; font-family: 'Lato', Arial, sans-serif; }
+    input::placeholder, textarea::placeholder { color: rgba(28,43,57,0.28); }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(28,43,57,0.35);
+      background: rgba(28,43,57,0.07);
+    }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(28,43,57,0.45)' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      cursor: pointer;
+      padding-right: 32px;
+    }
+    select option { background: #F5F0EB; color: #1C2B39; }
+
+    .form__notes-wrap { margin-bottom: 22px; }
+    .form__confirm {
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(28,43,57,0.6);
+      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 18px;
+      background: #1C2B39;
+      color: #F5F0EB;
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: #243649; }
+
+    /* ══ CROSS-BOOKING ══ */
+    .crossbook {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(28,43,57,0.08);
+    }
+    .crossbook__text {
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(28,43,57,0.6);
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+    .crossbook__links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+    @media (min-width: 580px) {
+      .crossbook__links { flex-direction: row; justify-content: center; gap: 28px; }
+    }
+    .crossbook__links a {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #1C2B39;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(28,43,57,0.3);
+      padding-bottom: 3px;
+      transition: border-color 0.2s;
+    }
+    .crossbook__links a:hover { border-color: #1C2B39; }
+
+    /* ══ FOOTER ══ */
+    .footer {
+      background: #1C2B39;
+      border-top: 1px solid rgba(245,240,235,0.06);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(245,240,235,0.5);
+    }
+    .footer a { color: rgba(245,240,235,0.5); text-decoration: none; transition: color 0.2s; }
+    .footer a:hover { color: rgba(245,240,235,0.85); }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <a class="header__logo" href="thomas-jeffery-homepage.html">
+    <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/8c767aaa-8e17-aad6-db85-b0383c08bd33.png"
+         alt="Thomas Jeffery Men's Wear">
+  </a>
+  <a class="header__back" href="casual.html">← Casual</a>
+</header>
+
+<main class="main">
+
+  <!-- ══ WALK-IN SECTION ══ -->
+  <section class="walkin">
+    <span class="eyebrow">Come In</span>
+    <h1 class="title">No Appointment Needed.</h1>
+    <p class="body">The casual side of the store is walk-in friendly. Come in any time during store hours and browse at your own pace: knitwear, sport shirts, denim, trousers, and outerwear. Our staff are there if you need them.</p>
+
+    <div class="store-info">
+      <div class="store-info__address">
+        <strong>Kingsland Village #303</strong><br>
+        7337 Macleod Trail SW<br>
+        Calgary, AB &nbsp;T2H 0L8
+      </div>
+      <div class="store-info__hours">
+        Mon – Sat &nbsp;10am – 6pm<br>
+        Closed Sundays &amp; Holidays
+      </div>
+      <div class="store-info__phone">
+        <a href="tel:+14032782445">(403) 278-2445</a>
+      </div>
+    </div>
+
+    <div class="map-buttons">
+      <a class="map-btn" href="https://maps.apple.com/?q=Thomas+Jeffery+Menswear&address=7337+Macleod+Trail+SW,+Calgary,+AB" target="_blank" rel="noopener">Apple Maps</a>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Thomas+Jeffery+Mens+Wear+7337+Macleod+Trail+SW+Calgary+AB" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ══ BOOK AHEAD / CUSTOM APPOINTMENT ══ -->
+  <section class="form-section" id="form-section">
+    <span class="form__eyebrow">Want to Book Ahead?</span>
+    <h2 class="form__heading">Schedule a Visit.</h2>
+    <p class="form__body">If you'd like dedicated time with one of our staff or have something specific in mind, booking ahead is easy. Fill out the form below and we'll confirm a time within one business day.</p>
+
+    <form action="https://formspree.io/f/mvzdbwyr" method="POST" id="booking-form">
+      <input type="hidden" name="_subject" value="Casual / Custom Appointment Request">
+      <input type="hidden" name="_next" value="casual.html">
+      <input type="hidden" name="appointmentType" value="Custom Appointment">
+      <input type="text" name="_gotcha" style="display:none">
+
+      <div class="form-row">
+        <div class="field">
+          <label for="firstName">First Name</label>
+          <input type="text" name="firstName" id="firstName" required>
+        </div>
+        <div class="field">
+          <label for="lastName">Last Name</label>
+          <input type="text" name="lastName" id="lastName" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" name="phone" id="phone">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="preferredDay">Preferred Day</label>
+          <select name="preferredDay" id="preferredDay">
+            <option value="">Select…</option>
+            <option>Weekday (Mon–Fri)</option>
+            <option>Saturday</option>
+            <option>Flexible (any day works)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="preferredTime">Preferred Time</label>
+          <select name="preferredTime" id="preferredTime">
+            <option value="">Select…</option>
+            <option>Morning (10am–12pm)</option>
+            <option>Afternoon (12pm–4pm)</option>
+            <option>Evening (4pm–6pm)</option>
+            <option>Flexible</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field form__notes-wrap">
+        <label for="notes">What are you shopping for?</label>
+        <textarea name="notes" id="notes" placeholder="Tell us a bit about what you're after."></textarea>
+      </div>
+
+      <p class="form__confirm">We'll confirm your appointment within one business day.</p>
+
+      <button type="submit" class="btn-submit">Request Appointment</button>
+    </form>
+  </section>
+
+  <!-- ══ CROSS-BOOKING ══ -->
+  <div class="crossbook">
+    <p class="crossbook__text">Booking for a different occasion?</p>
+    <div class="crossbook__links">
+      <a href="book-office.html">Office Appointment →</a>
+      <a href="book-wedding.html">Wedding Appointment →</a>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  Thomas Jeffery Men's Wear · Calgary, AB · <a href="tel:+14032782445">(403) 278-2445</a> · <a href="https://thomasjeffery.ca">thomasjeffery.ca</a>
+</footer>
+
+</body>
+</html>

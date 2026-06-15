@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="Thomas-Jeffery-Logo-Black-Small.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="Thomas-Jeffery-Logo-White-Small-1.png" media="(prefers-color-scheme: dark)">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wedding Suits Calgary — Thomas Jeffery Men's Wear</title>
   <meta name="description" content="Dress your whole wedding party right. Custom suits, off-the-rack options, and expert fitting in Calgary since 1968. Buy 3 Paul Betenly suits, get the 4th free.">
@@ -606,12 +608,13 @@
       .start { padding: 48px 48px; }
       .start__inner {
         display: grid; grid-template-columns: 1fr 1fr;
-        gap: 48px; align-items: stretch;
+        gap: 48px; align-items: start;
       }
       .start__tabs { flex-direction: column; }
       .start__photo {
-        display: block; min-height: 280px;
-        aspect-ratio: unset; height: 100%;
+        display: block; width: 100%;
+        aspect-ratio: 4/3; height: auto;
+        min-height: unset; max-height: 400px;
       }
       .start__photo img { object-position: center 15%; }
 
@@ -1090,12 +1093,4 @@
   /* ── Timeline expand / collapse ── */
   document.querySelectorAll('.timecard').forEach(function (card) {
     card.addEventListener('click', function () {
-      var isOpen = this.classList.contains('open');
-      document.querySelectorAll('.timecard').forEach(function (c) { c.classList.remove('open'); });
-      if (!isOpen) this.classList.add('open');
-    });
-  });
-</script>
-
-</body>
-</html>
+      var isOpen = this.cl
