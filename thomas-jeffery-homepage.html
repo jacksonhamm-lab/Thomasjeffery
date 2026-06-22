@@ -8,8 +8,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-      height: 100%;
+    html, body { height: 100%; }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
       font-family: 'Lato', Arial, sans-serif;
       background: #F5F0EB;
       -webkit-font-smoothing: antialiased;
@@ -20,7 +23,7 @@
        FULL-SCREEN LAYOUT
     ══════════════════════════════ */
     .landing {
-      min-height: 100svh;
+      flex: 1 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -150,10 +153,8 @@
        FOOTER LINE
     ══════════════════════════════ */
     .landing__footer {
-      position: fixed;
-      bottom: 22px;
-      left: 0; right: 0;
       text-align: center;
+      padding: 28px 20px 32px;
       font-size: 11px;
       font-weight: 400;
       letter-spacing: 0.3em;
@@ -194,19 +195,110 @@
 <p class="landing__footer">Kingsland Village · 7337 Macleod Trail SW · Calgary, AB · (403) 278-2445</p>
 
 <script>
+  /* ─── Returning visitor redirect ───
+     If a mode has been saved and this is the first homepage visit of this
+     browser session, jump straight to that mode page. After that, navigating
+     back to the homepage in the same session shows the chooser normally. */
+  (function () {
+    var modeUrls = { office: 'office.html', wedding: 'wedding.html', casual: 'casual.html' };
+    var saved = localStorage.getItem('tj_mode');
+    var sessionSeen = sessionStorage.getItem('tj_homepage_seen');
+    if (saved && modeUrls[saved] && !sessionSeen) {
+      sessionStorage.setItem('tj_homepage_seen', '1');
+      window.location.replace(modeUrls[saved]);
+      return;
+    }
+    sessionStorage.setItem('tj_homepage_seen', '1');
+  })();
+
   /* ─── Save preference on tile click ─── */
-  /* Returning visitor redirect will be added once all three pages exist */
-  document.querySelectorAll('.tile').forEach(function(tile) {
-    tile.addEventListener('click', function() {
+  document.querySelectorAll('.tile').forEach(function (tile) {
+    tile.addEventListener('click', function () {
       var mode = this.getAttribute('data-mode');
       if (mode) localStorage.setItem('tj_mode', mode);
       /* href handles navigation */
     });
   });
-
-  /* ─── Clear any stale localStorage from earlier builds ─── */
-  localStorage.removeItem('tj_mode');
 </script>
+
+<!-- ══ SUBSCRIBE POPUP ══ -->
+<style>
+  .tj-popup { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+  .tj-popup.tj-popup--show { display: flex; }
+  .tj-popup__backdrop { position: absolute; inset: 0; background: rgba(28,43,57,0.55); backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.3s ease; }
+  .tj-popup--show .tj-popup__backdrop { opacity: 1; }
+  .tj-popup__card { position: relative; background: #F5F0EB; width: 100%; max-width: 760px; max-height: calc(100vh - 40px); overflow-y: auto; display: grid; grid-template-columns: 1fr; transform: translateY(20px); opacity: 0; transition: transform 0.35s ease, opacity 0.3s ease; box-shadow: 0 30px 80px rgba(28,43,57,0.35); }
+  .tj-popup--show .tj-popup__card { transform: translateY(0); opacity: 1; }
+  .tj-popup__photo { background: #D9D3CC; position: relative; overflow: hidden; aspect-ratio: 4/3; }
+  .tj-popup__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .tj-popup__text { padding: 28px 24px 28px; display: flex; flex-direction: column; }
+  .tj-popup__eyebrow { font-family: 'Lato', Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.36em; text-transform: uppercase; color: rgba(28,43,57,0.5); margin-bottom: 12px; }
+  .tj-popup__title { font-family: 'Lato', Arial, sans-serif; font-size: clamp(24px, 5vw, 34px); font-weight: 300; color: #1C2B39; line-height: 1.15; margin: 0 0 14px; letter-spacing: 0.01em; }
+  .tj-popup__body { font-family: 'Lato', Arial, sans-serif; font-size: 15px; line-height: 1.7; color: rgba(28,43,57,0.78); margin: 0 0 22px; }
+  .tj-popup__btn { display: inline-block; background: #1C2B39; color: #F5F0EB; font-family: 'Lato', Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; padding: 16px 22px; text-align: center; text-decoration: none; transition: background 0.2s; margin-bottom: 10px; }
+  .tj-popup__btn:hover { background: #243649; }
+  .tj-popup__dismiss { background: none; border: none; font-family: 'Lato', Arial, sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(28,43,57,0.5); cursor: pointer; padding: 10px 0 0; text-align: center; transition: color 0.2s; }
+  .tj-popup__dismiss:hover { color: #1C2B39; }
+  .tj-popup__close { position: absolute; top: 10px; right: 12px; z-index: 2; width: 36px; height: 36px; background: rgba(245,240,235,0.92); border: none; cursor: pointer; font-family: 'Lato', Arial, sans-serif; font-size: 22px; line-height: 1; color: #1C2B39; transition: background 0.2s; }
+  .tj-popup__close:hover { background: #fff; }
+  @media (min-width: 700px) {
+    .tj-popup__card { grid-template-columns: 1fr 1fr; max-height: calc(100vh - 60px); }
+    .tj-popup__photo { aspect-ratio: auto; height: 100%; min-height: 360px; }
+    .tj-popup__text { padding: 44px 40px; justify-content: center; }
+    .tj-popup__close { top: 14px; right: 16px; }
+  }
+</style>
+<div class="tj-popup" id="tj-popup" role="dialog" aria-modal="true" aria-labelledby="tj-popup-title">
+  <div class="tj-popup__backdrop" data-tj-popup-close></div>
+  <div class="tj-popup__card">
+    <button class="tj-popup__close" data-tj-popup-close aria-label="Close">&times;</button>
+    <div class="tj-popup__photo"><img src="subscribe-hero.webp" alt=""></div>
+    <div class="tj-popup__text">
+      <span class="tj-popup__eyebrow">A Little Something</span>
+      <h2 class="tj-popup__title" id="tj-popup-title">$50 off your first visit.</h2>
+      <p class="tj-popup__body">Subscribe and we will send you $50 off your first purchase of $250 or more on full price items.</p>
+      <a class="tj-popup__btn" href="subscribe.html" data-tj-popup-cta>Subscribe</a>
+      <button class="tj-popup__dismiss" type="button" data-tj-popup-close>No thanks</button>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var STORAGE_KEY = 'tj_subscribe_seen';
+  var SUBSCRIBED_KEY = 'tj_subscribed';
+  var DELAY_MS = 3000;
+  function getFlag(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function setFlag(k){ try { localStorage.setItem(k, '1'); } catch (e) {} }
+  var subscribed = getFlag(SUBSCRIBED_KEY);
+  var seen = getFlag(STORAGE_KEY);
+  var popup = document.getElementById('tj-popup');
+  if (!popup) return;
+  function show(){ popup.classList.add('tj-popup--show'); }
+  function dismiss(){ setFlag(STORAGE_KEY); popup.classList.remove('tj-popup--show'); }
+  window.tjShowPopup = show;
+  if (!subscribed && !seen) {
+    setTimeout(show, DELAY_MS);
+  }
+  popup.addEventListener('click', function (e) {
+    if (e.target.closest('[data-tj-popup-close]')) dismiss();
+    if (e.target.closest('[data-tj-popup-cta]')) { setFlag(STORAGE_KEY); setFlag(SUBSCRIBED_KEY); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && popup.classList.contains('tj-popup--show')) dismiss();
+  });
+  document.querySelectorAll('[data-tj-subscribe]').forEach(function (t) {
+    if (subscribed) {
+      t.style.display = 'none';
+    } else {
+      t.addEventListener('click', function (e) {
+        e.preventDefault();
+        show();
+      });
+    }
+  });
+})();
+</script>
+<!-- ══ END SUBSCRIBE POPUP ══ -->
 
 </body>
 </html>

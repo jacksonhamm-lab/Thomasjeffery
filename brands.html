@@ -36,20 +36,7 @@
       object-position: center top;
       display: block;
     }
-    .photo__label {
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      color: rgba(28,43,57,0.45);
-      text-align: center;
-      padding: 16px;
-      line-height: 1.6;
-      max-width: 220px;
-      z-index: 1;
-    }
-    .photo--3x4 { aspect-ratio: 3/4; }
     .photo--4x3 { aspect-ratio: 4/3; }
-    .photo--hero { height: 100%; min-height: 320px; }
 
     /* ══ NAV ══ */
     .nav {
@@ -96,6 +83,43 @@
     }
     .nav__mode-btn:hover { color: rgba(28,43,57,0.8); }
     .nav__mode-btn.active { color: #1C2B39; border-bottom-color: #1C2B39; }
+
+    /* ══ LOGO FOCUS GLOW (transparent PNG — drop-shadow follows the letters, not the box) ══ */
+    .nav__logo, .header__logo { outline: none; -webkit-tap-highlight-color: transparent; display: inline-block; }
+    .nav__logo img, .header__logo img { transition: filter 0.2s; }
+    .nav__logo:focus-visible img, .nav__logo:active img,
+    .header__logo:focus-visible img, .header__logo:active img {
+      filter: drop-shadow(0 0 1px #1C2B39) drop-shadow(0 0 3px rgba(28,43,57,0.4));
+    }
+
+    /* ══ BACK TO TOP BUTTON ══ */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 95;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1C2B39;
+      color: #F5F0EB;
+      border: 1px solid rgba(245,240,235,0.2);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.25s, transform 0.25s, background 0.2s, border-color 0.2s;
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .back-to-top:hover { background: #243649; border-color: rgba(245,240,235,0.4); }
+    @media (max-width: 699px) { .back-to-top { bottom: 78px; right: 20px; } }
 
     /* ══ MOBILE HAMBURGER + MENU ══ */
     .nav__hamburger {
@@ -198,6 +222,31 @@
     .catalog .section__eyebrow { color: rgba(245,240,235,0.55); }
     .catalog .section__title { color: #F5F0EB; }
     .catalog .section__body { color: rgba(245,240,235,0.78); }
+    .catalog__jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .catalog__jump a {
+      display: inline-block;
+      padding: 9px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,240,235,0.78);
+      text-decoration: none;
+      background: rgba(245,240,235,0.05);
+      border: 1px solid rgba(245,240,235,0.18);
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .catalog__jump a:hover {
+      background: rgba(245,240,235,0.12);
+      border-color: rgba(245,240,235,0.4);
+      color: #F5F0EB;
+    }
+    .cat { scroll-margin-top: 100px; }
     .catalog__hint-row {
       display: flex;
       align-items: center;
@@ -476,9 +525,12 @@
 <!-- ══ MOBILE STICKY BOOK ══ -->
 <a class="sticky-book" href="book-office.html">Book a Fitting →</a>
 
+<!-- ══ BACK TO TOP ══ -->
+<button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
 <!-- ══ NAV ══ -->
 <nav class="nav" id="nav">
-  <a class="nav__logo" href="thomas-jeffery-homepage.html">
+  <a class="nav__logo" href="thomas-jeffery-homepage.html" aria-label="Back to home">
     <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/8c767aaa-8e17-aad6-db85-b0383c08bd33.png"
          alt="Thomas Jeffery Men's Wear">
   </a>
@@ -489,6 +541,7 @@
     <ul class="nav__links">
       <li><a href="about.html">About</a></li>
       <li><a href="office.html">Office</a></li>
+      <li><a href="#" data-tj-subscribe>Subscribe</a></li>
       <li class="nav__book"><a href="book-office.html">Book a Fitting</a></li>
     </ul>
     <div class="nav__modes">
@@ -509,6 +562,7 @@
   <span class="nav-menu__section">More</span>
   <a href="about.html">About</a>
   <a href="brands.html" class="active">Brands</a>
+  <a href="#" data-tj-subscribe>Subscribe</a>
   <a class="nav-menu__book" href="book-office.html">Book a Fitting →</a>
 </div>
 
@@ -523,7 +577,7 @@
 
     <article class="featured-card">
       <div class="featured-card__image photo photo--4x3">
-        <img src="brands-coppley.webp" alt="Coppley — half-canvas suit jacket detail">
+        <img loading="lazy" decoding="async" src="brands-coppley.webp" alt="Coppley — half-canvas suit jacket detail">
       </div>
       <div class="featured-card__content">
         <span class="featured-card__origin">Hamilton, Canada · Est. 1883</span>
@@ -534,7 +588,7 @@
 
     <article class="featured-card">
       <div class="featured-card__image photo photo--4x3">
-        <img src="brands-paul-betenly.webp" alt="Paul Betenly — Super 120s navy suit pick stitching detail">
+        <img loading="lazy" decoding="async" src="brands-paul-betenly.webp" alt="Paul Betenly — Super 120s navy suit pick stitching detail">
       </div>
       <div class="featured-card__content">
         <span class="featured-card__origin">Canada · Est. 1981</span>
@@ -545,7 +599,7 @@
 
     <article class="featured-card">
       <div class="featured-card__image photo photo--4x3">
-        <img src="brands-jack-victor.webp" alt="Jack Victor — sport jacket lifestyle">
+        <img loading="lazy" decoding="async" src="brands-jack-victor.webp" alt="Jack Victor — sport jacket lifestyle">
       </div>
       <div class="featured-card__content">
         <span class="featured-card__origin">Montreal, Canada · Est. 1913</span>
@@ -556,7 +610,7 @@
 
     <article class="featured-card">
       <div class="featured-card__image photo photo--4x3">
-        <img src="brands-bugatti.webp" alt="Bugatti — navy bomber jacket lifestyle">
+        <img loading="lazy" decoding="async" src="brands-bugatti.webp" alt="Bugatti — navy bomber jacket lifestyle">
       </div>
       <div class="featured-card__content">
         <span class="featured-card__origin">Germany · Est. 1947</span>
@@ -567,7 +621,7 @@
 
     <article class="featured-card">
       <div class="featured-card__image photo photo--4x3">
-        <img src="brands-7downie.webp" alt="7 Downie St. — cream sport coat casual lifestyle">
+        <img loading="lazy" decoding="async" src="brands-7downie.webp" alt="7 Downie St. — cream sport coat casual lifestyle">
       </div>
       <div class="featured-card__content">
         <span class="featured-card__origin">Canada</span>
@@ -578,7 +632,7 @@
 
     <article class="featured-card">
       <div class="featured-card__image photo photo--4x3">
-        <img src="brands-alberto.webp" alt="Alberto — medium grey trouser waist-down detail">
+        <img loading="lazy" decoding="async" src="brands-alberto.webp" alt="Alberto — medium grey trouser waist-down detail">
       </div>
       <div class="featured-card__content">
         <span class="featured-card__origin">Mönchengladbach, Germany · Est. 1922</span>
@@ -595,6 +649,19 @@
   <span class="section__eyebrow">The Full List</span>
   <h2 class="section__title">Every brand,<br>by category.</h2>
   <p class="section__body">Tap any brand to read what we know about them, and why we carry them.</p>
+
+  <nav class="catalog__jump" aria-label="Jump to category">
+    <a href="#cat-suiting">Suiting</a>
+    <a href="#cat-sport-jackets">Sport Jackets</a>
+    <a href="#cat-dress-shirts">Dress Shirts</a>
+    <a href="#cat-sport-shirts">Sport Shirts</a>
+    <a href="#cat-trousers">Trousers</a>
+    <a href="#cat-knitwear">Knitwear</a>
+    <a href="#cat-denim">Denim</a>
+    <a href="#cat-outerwear">Outerwear</a>
+    <a href="#cat-essentials">Essentials</a>
+  </nav>
+
   <div class="catalog__hint-row">
     <p class="catalog__hint">Click any name to expand.</p>
     <button class="catalog__collapse" id="catalog-collapse" hidden>Collapse All</button>
@@ -603,7 +670,7 @@
   <div class="catalog__categories">
 
     <!-- ── SUITING & TAILORING ── -->
-    <div class="cat">
+    <div class="cat" id="cat-suiting">
       <span class="cat__label">Suiting &amp; Tailoring</span>
       <div class="cat__list">
 
@@ -650,7 +717,7 @@
     </div>
 
     <!-- ── SPORT JACKETS ── -->
-    <div class="cat">
+    <div class="cat" id="cat-sport-jackets">
       <span class="cat__label">Sport Jackets</span>
       <div class="cat__list">
 
@@ -736,7 +803,7 @@
     </div>
 
     <!-- ── DRESS SHIRTS ── -->
-    <div class="cat">
+    <div class="cat" id="cat-dress-shirts">
       <span class="cat__label">Dress Shirts</span>
       <div class="cat__list">
 
@@ -809,7 +876,7 @@
     </div>
 
     <!-- ── SPORT SHIRTS ── -->
-    <div class="cat">
+    <div class="cat" id="cat-sport-shirts">
       <span class="cat__label">Sport Shirts</span>
       <div class="cat__list">
 
@@ -869,7 +936,7 @@
     </div>
 
     <!-- ── TROUSERS ── -->
-    <div class="cat">
+    <div class="cat" id="cat-trousers">
       <span class="cat__label">Trousers</span>
       <div class="cat__list">
 
@@ -929,7 +996,7 @@
     </div>
 
     <!-- ── KNITWEAR ── -->
-    <div class="cat">
+    <div class="cat" id="cat-knitwear">
       <span class="cat__label">Knitwear</span>
       <div class="cat__list">
 
@@ -989,7 +1056,7 @@
     </div>
 
     <!-- ── DENIM ── -->
-    <div class="cat">
+    <div class="cat" id="cat-denim">
       <span class="cat__label">Denim</span>
       <div class="cat__list">
 
@@ -1036,7 +1103,7 @@
     </div>
 
     <!-- ── OUTERWEAR ── -->
-    <div class="cat">
+    <div class="cat" id="cat-outerwear">
       <span class="cat__label">Outerwear</span>
       <div class="cat__list">
 
@@ -1096,7 +1163,7 @@
     </div>
 
     <!-- ── ESSENTIALS ── -->
-    <div class="cat">
+    <div class="cat" id="cat-essentials">
       <span class="cat__label">Essentials</span>
       <div class="cat__list">
 
@@ -1209,6 +1276,7 @@
         <li><a href="office.html">Office</a></li>
         <li><a href="wedding.html">Wedding</a></li>
         <li><a href="casual.html">Casual</a></li>
+        <li><a href="subscribe.html">Subscribe</a></li>
         <li><a href="book-office.html">Book a Fitting</a></li>
       </ul>
     </div>
@@ -1268,6 +1336,17 @@
     });
   }
 
+  /* ── Back to top ── */
+  var backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    window.addEventListener('scroll', function () {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   /* ── Brand card expand / collapse ── */
   /* Multiple cards can be open at once for browsing/comparing */
   var collapseBtn = document.getElementById('catalog-collapse');
@@ -1286,6 +1365,85 @@
     updateCollapseBtn();
   });
 </script>
+
+<!-- ══ SUBSCRIBE POPUP ══ -->
+<style>
+  .tj-popup { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+  .tj-popup.tj-popup--show { display: flex; }
+  .tj-popup__backdrop { position: absolute; inset: 0; background: rgba(28,43,57,0.55); backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.3s ease; }
+  .tj-popup--show .tj-popup__backdrop { opacity: 1; }
+  .tj-popup__card { position: relative; background: #F5F0EB; width: 100%; max-width: 760px; max-height: calc(100vh - 40px); overflow-y: auto; display: grid; grid-template-columns: 1fr; transform: translateY(20px); opacity: 0; transition: transform 0.35s ease, opacity 0.3s ease; box-shadow: 0 30px 80px rgba(28,43,57,0.35); }
+  .tj-popup--show .tj-popup__card { transform: translateY(0); opacity: 1; }
+  .tj-popup__photo { background: #D9D3CC; position: relative; overflow: hidden; aspect-ratio: 4/3; }
+  .tj-popup__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .tj-popup__text { padding: 28px 24px 28px; display: flex; flex-direction: column; }
+  .tj-popup__eyebrow { font-family: 'Lato', Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.36em; text-transform: uppercase; color: rgba(28,43,57,0.5); margin-bottom: 12px; }
+  .tj-popup__title { font-family: 'Lato', Arial, sans-serif; font-size: clamp(24px, 5vw, 34px); font-weight: 300; color: #1C2B39; line-height: 1.15; margin: 0 0 14px; letter-spacing: 0.01em; }
+  .tj-popup__body { font-family: 'Lato', Arial, sans-serif; font-size: 15px; line-height: 1.7; color: rgba(28,43,57,0.78); margin: 0 0 22px; }
+  .tj-popup__btn { display: inline-block; background: #1C2B39; color: #F5F0EB; font-family: 'Lato', Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; padding: 16px 22px; text-align: center; text-decoration: none; transition: background 0.2s; margin-bottom: 10px; }
+  .tj-popup__btn:hover { background: #243649; }
+  .tj-popup__dismiss { background: none; border: none; font-family: 'Lato', Arial, sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(28,43,57,0.5); cursor: pointer; padding: 10px 0 0; text-align: center; transition: color 0.2s; }
+  .tj-popup__dismiss:hover { color: #1C2B39; }
+  .tj-popup__close { position: absolute; top: 10px; right: 12px; z-index: 2; width: 36px; height: 36px; background: rgba(245,240,235,0.92); border: none; cursor: pointer; font-family: 'Lato', Arial, sans-serif; font-size: 22px; line-height: 1; color: #1C2B39; transition: background 0.2s; }
+  .tj-popup__close:hover { background: #fff; }
+  @media (min-width: 700px) {
+    .tj-popup__card { grid-template-columns: 1fr 1fr; max-height: calc(100vh - 60px); }
+    .tj-popup__photo { aspect-ratio: auto; height: 100%; min-height: 360px; }
+    .tj-popup__text { padding: 44px 40px; justify-content: center; }
+    .tj-popup__close { top: 14px; right: 16px; }
+  }
+</style>
+<div class="tj-popup" id="tj-popup" role="dialog" aria-modal="true" aria-labelledby="tj-popup-title">
+  <div class="tj-popup__backdrop" data-tj-popup-close></div>
+  <div class="tj-popup__card">
+    <button class="tj-popup__close" data-tj-popup-close aria-label="Close">&times;</button>
+    <div class="tj-popup__photo"><img src="subscribe-hero.webp" alt=""></div>
+    <div class="tj-popup__text">
+      <span class="tj-popup__eyebrow">A Little Something</span>
+      <h2 class="tj-popup__title" id="tj-popup-title">$50 off your first visit.</h2>
+      <p class="tj-popup__body">Subscribe and we will send you $50 off your first purchase of $250 or more on full price items.</p>
+      <a class="tj-popup__btn" href="subscribe.html" data-tj-popup-cta>Subscribe</a>
+      <button class="tj-popup__dismiss" type="button" data-tj-popup-close>No thanks</button>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var STORAGE_KEY = 'tj_subscribe_seen';
+  var SUBSCRIBED_KEY = 'tj_subscribed';
+  var DELAY_MS = 3000;
+  function getFlag(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function setFlag(k){ try { localStorage.setItem(k, '1'); } catch (e) {} }
+  var subscribed = getFlag(SUBSCRIBED_KEY);
+  var seen = getFlag(STORAGE_KEY);
+  var popup = document.getElementById('tj-popup');
+  if (!popup) return;
+  function show(){ popup.classList.add('tj-popup--show'); }
+  function dismiss(){ setFlag(STORAGE_KEY); popup.classList.remove('tj-popup--show'); }
+  window.tjShowPopup = show;
+  if (!subscribed && !seen) {
+    setTimeout(show, DELAY_MS);
+  }
+  popup.addEventListener('click', function (e) {
+    if (e.target.closest('[data-tj-popup-close]')) dismiss();
+    if (e.target.closest('[data-tj-popup-cta]')) { setFlag(STORAGE_KEY); setFlag(SUBSCRIBED_KEY); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && popup.classList.contains('tj-popup--show')) dismiss();
+  });
+  document.querySelectorAll('[data-tj-subscribe]').forEach(function (t) {
+    if (subscribed) {
+      t.style.display = 'none';
+    } else {
+      t.addEventListener('click', function (e) {
+        e.preventDefault();
+        show();
+      });
+    }
+  });
+})();
+</script>
+<!-- ══ END SUBSCRIBE POPUP ══ -->
 
 </body>
 </html>

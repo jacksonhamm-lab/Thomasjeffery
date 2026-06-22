@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscribe — Thomas Jeffery Men's Wear Calgary</title>
+  <meta name="description" content="Subscribe to Thomas Jeffery for $50 off your first purchase of $250 or more on full price items, plus the occasional update on new arrivals.">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: #F5F0EB;
+      color: #1C2B39;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ══ PHOTO ══ */
+    .photo {
+      background: #D9D3CC;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .photo--3x4 { aspect-ratio: 3/4; }
+
+    /* ══ NAV ══ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(245,240,235,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(28,43,57,0.07);
+      transition: padding 0.3s;
+    }
+    .nav.scrolled { padding: 10px 20px; }
+    .nav__logo img { height: 64px; width: auto; display: block; }
+    .nav__right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .nav__links { display: flex; align-items: center; gap: 20px; list-style: none; }
+    .nav__links a {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(28,43,57,0.7);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav__links a:hover { color: #1C2B39; }
+    .nav__book a {
+      color: #1C2B39;
+      border-bottom: 1px solid rgba(28,43,57,0.3);
+      padding-bottom: 2px;
+    }
+    .nav__modes { display: none; align-items: center; gap: 16px; }
+    .nav__mode-sep { font-size: 9px; color: rgba(28,43,57,0.35); letter-spacing: 0.2em; }
+    .nav__mode-btn {
+      background: none; border: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 9px; font-weight: 400;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(28,43,57,0.45);
+      cursor: pointer; padding: 2px 0;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .nav__mode-btn:hover { color: rgba(28,43,57,0.8); }
+    .nav__mode-btn.active { color: #1C2B39; border-bottom-color: #1C2B39; }
+
+    /* ══ LOGO FOCUS GLOW ══ */
+    .nav__logo, .header__logo { outline: none; -webkit-tap-highlight-color: transparent; display: inline-block; }
+    .nav__logo img, .header__logo img { transition: filter 0.2s; }
+    .nav__logo:focus-visible img, .nav__logo:active img,
+    .header__logo:focus-visible img, .header__logo:active img {
+      filter: drop-shadow(0 0 1px #1C2B39) drop-shadow(0 0 3px rgba(28,43,57,0.4));
+    }
+
+    /* ══ BACK TO TOP ══ */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 95;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1C2B39;
+      color: #F5F0EB;
+      border: 1px solid rgba(245,240,235,0.2);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.25s, transform 0.25s, background 0.2s, border-color 0.2s;
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .back-to-top:hover { background: #243649; border-color: rgba(245,240,235,0.4); }
+    @media (max-width: 699px) { .back-to-top { bottom: 78px; right: 20px; } }
+
+    /* ══ MOBILE HAMBURGER + MENU ══ */
+    .nav__hamburger {
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      gap: 5px; width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer; padding: 0;
+    }
+    .nav__hamburger span {
+      display: block; width: 22px; height: 2px; background: #1C2B39;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-menu {
+      position: fixed; top: 92px; left: 0; right: 0;
+      background: #F5F0EB; border-bottom: 1px solid rgba(28,43,57,0.1);
+      z-index: 99; padding: 12px 0 20px;
+      transform: translateY(-110%); opacity: 0; pointer-events: none;
+      transition: transform 0.3s ease, opacity 0.2s ease;
+      max-height: calc(100vh - 92px); overflow-y: auto;
+    }
+    .nav-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .nav-menu__section {
+      display: block; padding: 14px 24px 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.36em;
+      text-transform: uppercase; color: rgba(28,43,57,0.4);
+    }
+    .nav-menu a {
+      display: block; padding: 14px 24px;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(28,43,57,0.78);
+      text-decoration: none; border-bottom: 1px solid rgba(28,43,57,0.06);
+    }
+    .nav-menu a:hover { background: rgba(28,43,57,0.04); color: #1C2B39; }
+    .nav-menu a.active { color: #1C2B39; font-weight: 700; background: rgba(28,43,57,0.04); }
+    .nav-menu a.nav-menu__book { color: #1C2B39; font-weight: 700; background: rgba(28,43,57,0.05); }
+
+    @media (max-width: 699px) { .nav__links { display: none; } }
+
+    /* ══ SECTION SHARED ══ */
+    .section__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5); margin-bottom: 12px;
+    }
+    .section__title {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 300; letter-spacing: 0.01em;
+      color: #1C2B39; line-height: 1.1; margin-bottom: 18px;
+    }
+    .section__body {
+      font-size: 16px; font-weight: 400; line-height: 1.85;
+      color: rgba(28,43,57,0.78); margin-bottom: 20px; max-width: 640px;
+    }
+
+    /* ══ SUBSCRIBE ══ */
+    .subscribe { padding: 48px 20px; padding-top: 120px; }
+    .subscribe__inner {
+      display: grid; grid-template-columns: 1fr; gap: 32px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .subscribe__photo { aspect-ratio: 3/4; }
+    .subscribe__form {
+      margin-top: 24px;
+      max-width: 480px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.28em;
+      text-transform: uppercase; color: rgba(28,43,57,0.65);
+    }
+    .field input {
+      width: 100%;
+      min-width: 0;
+      font-family: 'Lato', sans-serif; font-size: 15px;
+      padding: 13px 14px;
+      background: #fff;
+      border: 1px solid rgba(28,43,57,0.18);
+      color: #1C2B39;
+      transition: border-color 0.2s;
+    }
+    .field { min-width: 0; }
+    .field input:focus {
+      outline: none;
+      border-color: #1C2B39;
+    }
+    .subscribe__row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .subscribe__submit {
+      margin-top: 8px;
+      display: inline-block;
+      background: #1C2B39;
+      color: #F5F0EB;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      padding: 16px 24px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .subscribe__submit:hover { background: #243649; }
+    .subscribe__fine {
+      margin-top: 14px;
+      font-size: 12px; line-height: 1.7;
+      color: rgba(28,43,57,0.55);
+      max-width: 480px;
+    }
+    /* honeypot */
+    .subscribe__honey { position: absolute; left: -5000px; }
+
+    /* thanks state */
+    .subscribe__thanks { display: none; }
+    .subscribe.submitted .subscribe__form,
+    .subscribe.submitted .subscribe__fine { display: none; }
+    .subscribe.submitted .subscribe__thanks { display: block; }
+
+    /* ══ STICKY BOOK + RESPONSIVE ══ */
+    .sticky-book {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+      display: block; background: #1C2B39; color: #F5F0EB;
+      font-family: 'Lato', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      text-align: center; text-decoration: none;
+      padding: 18px 20px; border-top: 1px solid rgba(245,240,235,0.1);
+      transition: background 0.2s;
+    }
+    .sticky-book:hover { background: #243649; }
+
+    /* ══ FOOTER (unified across site) ══ */
+    .footer { background: #1C2B39; padding: 64px 24px 36px; border-top: 1px solid rgba(245,240,235,0.07); }
+    .footer__logo { height: 84px; width: auto; display: block; margin: 0 0 36px; opacity: 0.92; }
+    .footer__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(245,240,235,0.5); margin-bottom: 14px;
+    }
+    .footer__title {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 300; letter-spacing: 0.01em;
+      color: #F5F0EB; line-height: 1.1; margin-bottom: 36px;
+    }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
+    .footer__col h4 {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.34em;
+      text-transform: uppercase; color: rgba(245,240,235,0.6); margin-bottom: 14px;
+    }
+    .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer__col ul a {
+      color: rgba(245,240,235,0.85); text-decoration: none;
+      font-size: 15px; transition: color 0.2s;
+    }
+    .footer__col ul a:hover { color: #F5F0EB; }
+    .footer__address, .footer__hours {
+      color: rgba(245,240,235,0.85); font-size: 15px; line-height: 1.7;
+    }
+    .footer__phone { margin-top: 14px; font-size: 15px; font-weight: 700; letter-spacing: 0.02em; }
+    .footer__phone a { color: rgba(245,240,235,0.85); text-decoration: none; }
+    .footer__phone a:hover { color: #F5F0EB; }
+    .footer__cta-row { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+    .footer__btn {
+      display: inline-block; text-align: center; text-decoration: none;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
+      padding: 16px 22px; transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .footer__btn--primary { background: #F5F0EB; color: #1C2B39; }
+    .footer__btn--primary:hover { background: #fff; }
+    .footer__btn--ghost { background: transparent; color: #F5F0EB; border: 1px solid rgba(245,240,235,0.4); }
+    .footer__btn--ghost:hover { border-color: #F5F0EB; background: rgba(245,240,235,0.06); }
+    .footer__divider { border: none; border-top: 1px solid rgba(245,240,235,0.1); margin-bottom: 22px; }
+    .footer__bottom { display: flex; flex-direction: column; gap: 14px; }
+    .footer__copy {
+      font-size: 12px; color: rgba(245,240,235,0.55); letter-spacing: 0.04em;
+    }
+    .footer__social { display: flex; gap: 22px; }
+    .footer__social a {
+      color: rgba(245,240,235,0.65); text-decoration: none;
+      font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer__social a:hover { color: rgba(245,240,235,0.9); }
+
+    /* ══ RESPONSIVE ══ */
+    @media (min-width: 700px) {
+      .nav { padding: 14px 40px; }
+      .nav.scrolled { padding: 10px 40px; }
+      .nav__logo img { height: 72px; }
+      .nav__links { gap: 32px; }
+      .nav__modes { display: flex; }
+      .nav__hamburger { display: none; }
+      .nav-menu { display: none; }
+
+      .subscribe { padding: 80px 48px; padding-top: 148px; }
+      .subscribe__inner { grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: start; }
+      .subscribe__photo { aspect-ratio: 4/5; position: sticky; top: 110px; }
+
+      .footer { padding: 80px 48px 40px; }
+      .footer__logo { height: 100px; margin: 0 0 44px; }
+      .footer__title { margin-bottom: 48px; }
+      .footer__grid { grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+      .footer__cta-row { flex-direction: row; gap: 14px; margin-bottom: 48px; }
+      .footer__bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+      .sticky-book { display: none; }
+    }
+    @media (min-width: 1024px) {
+      .nav { padding: 14px 64px; }
+      .subscribe { padding: 96px 64px; padding-top: 168px; }
+      .footer { padding: 96px 64px 44px; }
+      .footer__logo { height: 112px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ MOBILE STICKY BOOK ══ -->
+<a class="sticky-book" href="book-office.html">Book a Fitting →</a>
+
+<!-- ══ BACK TO TOP ══ -->
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a class="nav__logo" href="thomas-jeffery-homepage.html" aria-label="Back to home">
+    <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/8c767aaa-8e17-aad6-db85-b0383c08bd33.png"
+         alt="Thomas Jeffery Men's Wear">
+  </a>
+  <div class="nav__right">
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="brands.html">Brands</a></li>
+      <li><a href="about.html">About</a></li>
+      <li class="nav__book"><a href="book-office.html">Book a Fitting</a></li>
+    </ul>
+    <div class="nav__modes">
+      <span class="nav__mode-sep">Viewing</span>
+      <a class="nav__mode-btn" href="office.html">Office</a>
+      <a class="nav__mode-btn" href="wedding.html">Wedding</a>
+      <a class="nav__mode-btn" href="casual.html">Casual</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ MOBILE MENU ══ -->
+<div class="nav-menu" id="nav-menu">
+  <span class="nav-menu__section">Browse</span>
+  <a href="office.html">Office</a>
+  <a href="wedding.html">Wedding</a>
+  <a href="casual.html">Casual</a>
+  <span class="nav-menu__section">More</span>
+  <a href="about.html">About</a>
+  <a href="brands.html">Brands</a>
+  <a href="subscribe.html" class="active">Subscribe</a>
+  <a class="nav-menu__book" href="book-office.html">Book a Fitting →</a>
+</div>
+
+<!-- ══ SUBSCRIBE ══ -->
+<section class="subscribe" id="subscribe">
+  <div class="subscribe__inner">
+    <div class="subscribe__text">
+      <span class="section__eyebrow">Stay In Touch</span>
+      <h1 class="section__title">$50 off your<br>first visit.</h1>
+
+      <p class="section__body">Subscribe and we will send you $50 off your first purchase of $250 or more on full price items. Along with the occasional note on new arrivals and what we are working on in store.</p>
+
+      <form class="subscribe__form" id="subscribe-form"
+            action="https://thomasjeffery.us1.list-manage.com/subscribe/post?u=a677e9b99521296ba09580ea8&amp;id=8352715181&amp;f_id=0023c9e4f0"
+            method="post" target="_blank" rel="noopener" novalidate>
+        <div class="field">
+          <label for="sub-email">Email</label>
+          <input type="email" name="EMAIL" id="sub-email" required>
+        </div>
+        <div class="subscribe__row">
+          <div class="field">
+            <label for="sub-fname">First Name</label>
+            <input type="text" name="FNAME" id="sub-fname">
+          </div>
+          <div class="field">
+            <label for="sub-lname">Last Name</label>
+            <input type="text" name="LNAME" id="sub-lname">
+          </div>
+        </div>
+        <div class="subscribe__honey" aria-hidden="true">
+          <input type="text" name="b_a677e9b99521296ba09580ea8_8352715181" tabindex="-1" value="">
+        </div>
+        <button type="submit" class="subscribe__submit">Subscribe</button>
+      </form>
+
+      <p class="subscribe__fine">Two emails a week, give or take. Unsubscribe whenever.</p>
+
+      <div class="subscribe__thanks">
+        <h2 class="section__title">You're on the list.</h2>
+        <p class="section__body">We sent a confirmation email. Click the link inside, and your $50 code is on the way.</p>
+      </div>
+    </div>
+
+    <div class="subscribe__photo photo">
+      <img src="subscribe-hero.webp" alt="Inside Thomas Jeffery Men's Wear">
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <span class="footer__eyebrow">Find Us</span>
+  <h2 class="footer__title">One store.<br>Kingsland Village.</h2>
+
+  <div class="footer__grid">
+    <div class="footer__col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="brands.html">Brands</a></li>
+        <li><a href="office.html">Office</a></li>
+        <li><a href="wedding.html">Wedding</a></li>
+        <li><a href="casual.html">Casual</a></li>
+        <li><a href="subscribe.html">Subscribe</a></li>
+        <li><a href="book-office.html">Book a Fitting</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Address</h4>
+      <div class="footer__address">
+        Kingsland Village #303<br>
+        7337 Macleod Trail SW<br>
+        Calgary, AB &nbsp;T2H 0L8
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Hours &amp; Contact</h4>
+      <div class="footer__hours">
+        Mon – Sat &nbsp;10am – 6pm<br>
+        Closed Sundays &amp; Holidays
+      </div>
+      <div class="footer__phone">
+        <a href="tel:+14032782445">(403) 278-2445</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__cta-row">
+    <a class="footer__btn footer__btn--primary" href="book-office.html">Book a Fitting</a>
+    <a class="footer__btn footer__btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Thomas+Jeffery+Mens+Wear+7337+Macleod+Trail+SW+Calgary+AB" target="_blank" rel="noopener">Open in Maps</a>
+  </div>
+
+  <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/50fa581f-6078-5021-27fa-4c15ad9d947f.png"
+       alt="Thomas Jeffery Men's Wear" class="footer__logo">
+
+  <hr class="footer__divider">
+  <div class="footer__bottom">
+    <p class="footer__copy">© 2026 Thomas Jeffery Men's Wear. All rights reserved.</p>
+    <div class="footer__social">
+      <a href="https://www.instagram.com/thomasjefferyofficial/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/ThomasJefferyMensWear" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── Nav scroll ── */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── Mobile hamburger menu ── */
+  var hamburger = document.getElementById('nav-hamburger');
+  var navMenu = document.getElementById('nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function () {
+      var isOpen = navMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  /* ── Back to top ── */
+  var backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    window.addEventListener('scroll', function () {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ── Subscribe form: post to Mailchimp, show inline thanks, mark popup as seen ── */
+  var subForm = document.getElementById('subscribe-form');
+  var subSection = document.getElementById('subscribe');
+  if (subForm) {
+    subForm.addEventListener('submit', function (e) {
+      var email = subForm.querySelector('[name="EMAIL"]').value.trim();
+      if (!email) return;
+      // Let the form post normally (target="_blank") and immediately swap to the thanks state.
+      try { localStorage.setItem('tj_subscribed', '1'); } catch (e) {}
+      try { localStorage.setItem('tj_subscribe_seen', '1'); } catch (e) {}
+      setTimeout(function () {
+        subSection.classList.add('submitted');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 50);
+    });
+  }
+</script>
+
+</body>
+</html>
