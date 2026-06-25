@@ -1337,5 +1337,48 @@
 </script>
 <!-- ══ END SUBSCRIBE POPUP ══ -->
 
+<!-- ══ TJ REVEAL ANIMATIONS ══ -->
+<style>
+  .tj-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+  }
+  .tj-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tj-reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+<script>
+  (function () {
+    var sel = '.section__eyebrow, .section__title, .section__body, .photo:not(.hero__image), .pillar, .path, .principle, .brand-card, .featured-brand, .start__panel, .timecard, .decision, .framework__item';
+    var els = document.querySelectorAll(sel);
+    if (!els.length) return;
+    els.forEach(function (el) { el.classList.add('tj-reveal'); });
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+<!-- ══ END TJ REVEAL ANIMATIONS ══ -->
+
 </body>
 </html>
