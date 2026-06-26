@@ -123,10 +123,9 @@
     }
 
     /* ══ LOGO FOCUS GLOW (transparent PNG — drop-shadow follows the letters, not the box) ══ */
-    .nav__logo, .header__logo { outline: none; -webkit-tap-highlight-color: transparent; display: inline-block; }
-    .nav__logo img, .header__logo img { transition: filter 0.2s; }
-    .nav__logo:focus-visible img, .nav__logo:active img,
-    .header__logo:focus-visible img, .header__logo:active img {
+    .nav__logo { outline: none; -webkit-tap-highlight-color: transparent; display: inline-block; }
+    .nav__logo img { transition: filter 0.2s; }
+    .nav__logo:focus-visible img, .nav__logo:active img {
       filter: drop-shadow(0 0 1px #1C2B39) drop-shadow(0 0 3px rgba(28,43,57,0.4));
     }
 
@@ -279,9 +278,6 @@
     /* ══════════════════════════════
        SECTION SHARED STYLES
     ══════════════════════════════ */
-    .section {
-      padding: 56px 20px;
-    }
     .section--dark {
       background: #1C2B39;
     }
@@ -458,45 +454,6 @@
       margin-bottom: 6px;
     }
 
-    /* ══════════════════════════════
-       CROSSOVER STRIP
-    ══════════════════════════════ */
-    .crossover {
-      background: #E8E0D5;
-      border-top: 1px solid rgba(28,43,57,0.08);
-      border-bottom: 1px solid rgba(28,43,57,0.08);
-      padding: 28px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .crossover__label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: rgba(28,43,57,0.5);
-    }
-    .crossover__text {
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 1.75;
-      color: rgba(28,43,57,0.78);
-    }
-    .crossover__link {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #1C2B39;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(28,43,57,0.3);
-      padding-bottom: 2px;
-      transition: border-color 0.2s;
-      align-self: flex-start;
-    }
-    .crossover__link:hover { border-color: #1C2B39; }
 
     /* ══════════════════════════════
        BRAND SPOTLIGHTS
@@ -731,14 +688,6 @@
       .collections { padding: 64px 48px; }
       .collections__grid { grid-template-columns: 1fr 1fr; gap: 14px; }
 
-      .crossover {
-        padding: 28px 48px;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-      }
-      .crossover__text { margin: 0; max-width: 540px; }
 
       .spotlights { padding: 56px 48px; }
       .spotlights__grid { grid-template-columns: 1fr 1fr 1fr; }

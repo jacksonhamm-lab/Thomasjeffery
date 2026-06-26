@@ -36,7 +36,6 @@
       object-position: center top;
       display: block;
     }
-    .photo--3x4 { aspect-ratio: 3/4; }
 
     /* ══ NAV ══ */
     .nav {
@@ -85,10 +84,9 @@
     .nav__mode-btn.active { color: #1C2B39; border-bottom-color: #1C2B39; }
 
     /* ══ LOGO FOCUS GLOW ══ */
-    .nav__logo, .header__logo { outline: none; -webkit-tap-highlight-color: transparent; display: inline-block; }
-    .nav__logo img, .header__logo img { transition: filter 0.2s; }
-    .nav__logo:focus-visible img, .nav__logo:active img,
-    .header__logo:focus-visible img, .header__logo:active img {
+    .nav__logo { outline: none; -webkit-tap-highlight-color: transparent; display: inline-block; }
+    .nav__logo img { transition: filter 0.2s; }
+    .nav__logo:focus-visible img, .nav__logo:active img {
       filter: drop-shadow(0 0 1px #1C2B39) drop-shadow(0 0 3px rgba(28,43,57,0.4));
     }
 
