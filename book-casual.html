@@ -535,6 +535,14 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  /* ── Meta Pixel: Schedule event on form submit ── */
+  var bookingForm = document.getElementById('booking-form');
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', function () {
+      if (window.fbq) fbq('track', 'Schedule');
+    });
+  }
 </script>
 
 </body>
