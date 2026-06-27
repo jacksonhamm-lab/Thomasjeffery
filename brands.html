@@ -1485,7 +1485,7 @@
   }
   popup.addEventListener('click', function (e) {
     if (e.target.closest('[data-tj-popup-close]')) dismiss();
-    if (e.target.closest('[data-tj-popup-cta]')) { setFlag(STORAGE_KEY); setFlag(SUBSCRIBED_KEY); }
+    if (e.target.closest('[data-tj-popup-cta]')) setFlag(STORAGE_KEY);
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && popup.classList.contains('tj-popup--show')) dismiss();
