@@ -382,6 +382,15 @@
   src="https://www.facebook.com/tr?id=1030193136327166&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G527X7EQX0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G527X7EQX0');
+  </script>
+  <!-- End Google tag -->
 </head>
 <body>
 
@@ -570,6 +579,7 @@
       try { localStorage.setItem('tj_subscribed', '1'); } catch (e) {}
       try { localStorage.setItem('tj_subscribe_seen', '1'); } catch (e) {}
       if (window.fbq) fbq('track', 'Lead');
+      if (window.gtag) gtag('event', 'sign_up', { method: 'email' });
       setTimeout(function () {
         subSection.classList.add('submitted');
         window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -527,6 +527,15 @@
   src="https://www.facebook.com/tr?id=1030193136327166&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G527X7EQX0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G527X7EQX0');
+  </script>
+  <!-- End Google tag -->
 </head>
 <body>
 
@@ -758,6 +767,7 @@
       return;
     }
     if (window.fbq) fbq('track', 'Schedule');
+      if (window.gtag) gtag('event', 'generate_lead', { service: 'wedding' });
   });
 
   /* ── URL parameter pre-selection ── */
