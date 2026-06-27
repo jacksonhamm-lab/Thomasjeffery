@@ -755,7 +755,9 @@
       e.preventDefault();
       validation.classList.add('show');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
     }
+    if (window.fbq) fbq('track', 'Schedule');
   });
 
   /* ── URL parameter pre-selection ── */
