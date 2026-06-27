@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1C2B39">
+  <title>Privacy Policy — Thomas Jeffery Men's Wear Calgary</title>
+  <meta name="description" content="Thomas Jeffery Men's Wear privacy policy. What information we collect, how we use it, and your rights under PIPEDA and Alberta PIPA.">
+  <link rel="canonical" href="https://thomasjeffery.ca/privacy.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Thomas Jeffery Men's Wear">
+  <meta property="og:title" content="Privacy Policy — Thomas Jeffery Men's Wear Calgary">
+  <meta property="og:description" content="What information we collect, how we use it, and your rights under PIPEDA and Alberta PIPA.">
+  <meta property="og:url" content="https://thomasjeffery.ca/privacy.html">
+  <meta property="og:image" content="https://thomasjeffery.ca/about-storefront.webp">
+  <meta property="og:locale" content="en_CA">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G527X7EQX0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G527X7EQX0');
+  </script>
+  <!-- End Google tag -->
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1030193136327166');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1030193136327166&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: #F5F0EB;
+      color: #1C2B39;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ══ NAV ══ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(245,240,235,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(28,43,57,0.07);
+      transition: padding 0.3s;
+    }
+    .nav.scrolled { padding: 10px 20px; }
+    .nav__logo img { height: 64px; width: auto; display: block; }
+    .nav__right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .nav__links { display: flex; align-items: center; gap: 20px; list-style: none; }
+    .nav__links a {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(28,43,57,0.7);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav__links a:hover { color: #1C2B39; }
+    .nav__book a {
+      color: #1C2B39;
+      border-bottom: 1px solid rgba(28,43,57,0.3);
+      padding-bottom: 2px;
+    }
+    .nav__logo { outline: none; -webkit-tap-highlight-color: transparent; display: inline-block; }
+    .nav__logo img { transition: filter 0.2s; }
+    .nav__logo:focus-visible img, .nav__logo:active img {
+      filter: drop-shadow(0 0 1px #1C2B39) drop-shadow(0 0 3px rgba(28,43,57,0.4));
+    }
+
+    /* ══ HAMBURGER ══ */
+    .nav__hamburger {
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      gap: 5px; width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer; padding: 0;
+    }
+    .nav__hamburger span {
+      display: block; width: 22px; height: 2px; background: #1C2B39;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-menu {
+      position: fixed; top: 92px; left: 0; right: 0;
+      background: #F5F0EB; border-bottom: 1px solid rgba(28,43,57,0.1);
+      z-index: 99; padding: 12px 0 20px;
+      transform: translateY(-110%); opacity: 0; pointer-events: none;
+      transition: transform 0.3s ease, opacity 0.2s ease;
+      max-height: calc(100vh - 92px); overflow-y: auto;
+    }
+    .nav-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .nav-menu__section {
+      display: block; padding: 14px 24px 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.36em;
+      text-transform: uppercase; color: rgba(28,43,57,0.4);
+    }
+    .nav-menu a {
+      display: block; padding: 14px 24px;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(28,43,57,0.78);
+      text-decoration: none; border-bottom: 1px solid rgba(28,43,57,0.06);
+    }
+    .nav-menu a:hover { background: rgba(28,43,57,0.04); color: #1C2B39; }
+    .nav-menu a.nav-menu__book { color: #1C2B39; font-weight: 700; background: rgba(28,43,57,0.05); }
+
+    @media (max-width: 699px) { .nav__links { display: none; } }
+
+    /* ══ CONTENT ══ */
+    .policy { padding: 120px 24px 64px; max-width: 760px; margin: 0 auto; }
+    .policy__eyebrow {
+      display: block;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5);
+      margin-bottom: 14px;
+    }
+    .policy__title {
+      font-size: clamp(32px, 6vw, 48px);
+      font-weight: 300; letter-spacing: 0.01em;
+      color: #1C2B39; line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .policy__updated {
+      font-size: 13px;
+      color: rgba(28,43,57,0.55);
+      margin-bottom: 40px;
+    }
+    .policy h2 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #1C2B39;
+      margin-top: 36px;
+      margin-bottom: 12px;
+    }
+    .policy h3 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.7);
+      margin-top: 22px;
+      margin-bottom: 10px;
+    }
+    .policy p {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.85;
+      color: rgba(28,43,57,0.82);
+      margin-bottom: 16px;
+    }
+    .policy ul { margin: 0 0 16px 22px; }
+    .policy li {
+      font-size: 16px;
+      line-height: 1.85;
+      color: rgba(28,43,57,0.82);
+      margin-bottom: 6px;
+    }
+    .policy strong { color: #1C2B39; font-weight: 700; }
+    .policy a { color: #1C2B39; text-decoration: underline; }
+    .policy a:hover { color: #243649; }
+
+    @media (min-width: 700px) {
+      .nav { padding: 14px 40px; }
+      .nav.scrolled { padding: 10px 40px; }
+      .nav__logo img { height: 72px; }
+      .nav__hamburger { display: none; }
+      .nav-menu { display: none; }
+      .policy { padding: 148px 40px 80px; }
+    }
+    @media (min-width: 1024px) {
+      .nav { padding: 14px 64px; }
+      .policy { padding: 168px 64px 96px; }
+    }
+
+    /* ══ FOOTER ══ */
+    .footer { background: #1C2B39; padding: 64px 24px 36px; }
+    .footer__logo { height: 84px; width: auto; display: block; margin: 0 0 36px; opacity: 0.92; }
+    .footer__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(245,240,235,0.5); margin-bottom: 14px;
+    }
+    .footer__title {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 300; letter-spacing: 0.01em;
+      color: #F5F0EB; line-height: 1.1; margin-bottom: 36px;
+    }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
+    .footer__col h4 {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.34em;
+      text-transform: uppercase; color: rgba(245,240,235,0.6); margin-bottom: 14px;
+    }
+    .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer__col ul a {
+      color: rgba(245,240,235,0.85); text-decoration: none;
+      font-size: 15px; transition: color 0.2s;
+    }
+    .footer__col ul a:hover { color: #F5F0EB; }
+    .footer__address, .footer__hours {
+      color: rgba(245,240,235,0.85); font-size: 15px; line-height: 1.7;
+    }
+    .footer__phone { margin-top: 14px; font-size: 15px; font-weight: 700; }
+    .footer__phone a { color: rgba(245,240,235,0.85); text-decoration: none; }
+    .footer__divider { border: none; border-top: 1px solid rgba(245,240,235,0.1); margin: 22px 0; }
+    .footer__bottom {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .footer__copy {
+      font-size: 12px; color: rgba(245,240,235,0.55); letter-spacing: 0.04em;
+    }
+    .footer__legal {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245,240,235,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer__legal:hover { color: rgba(245,240,235,0.85); }
+    .footer__social { display: flex; gap: 22px; }
+    .footer__social a {
+      color: rgba(245,240,235,0.65); text-decoration: none;
+      font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    }
+    .footer__social a:hover { color: rgba(245,240,235,0.9); }
+    @media (min-width: 700px) {
+      .footer { padding: 80px 48px 40px; }
+      .footer__logo { height: 100px; margin: 0 0 44px; }
+      .footer__grid { grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+      .footer__bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+    }
+    @media (min-width: 1024px) {
+      .footer { padding: 96px 64px 44px; }
+      .footer__logo { height: 112px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a class="nav__logo" href="thomas-jeffery-homepage.html" aria-label="Back to home">
+    <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/8c767aaa-8e17-aad6-db85-b0383c08bd33.png"
+         alt="Thomas Jeffery Men's Wear">
+  </a>
+  <div class="nav__right">
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="brands.html">Brands</a></li>
+      <li class="nav__book"><a href="book-office.html">Book a Fitting</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="nav-menu" id="nav-menu">
+  <span class="nav-menu__section">Browse</span>
+  <a href="office.html">Office</a>
+  <a href="wedding.html">Wedding</a>
+  <a href="casual.html">Casual</a>
+  <span class="nav-menu__section">More</span>
+  <a href="about.html">About</a>
+  <a href="brands.html">Brands</a>
+  <a class="nav-menu__book" href="book-office.html">Book a Fitting →</a>
+</div>
+
+<!--
+  ════════════════════════════════════════════════════════════════════════
+  Privacy policy — drafted for TJ's actual data collection.
+  [VERIFY] items for Len / lawyer review:
+    1. Privacy officer contact (currently appointments@thomasjeffery.ca)
+    2. Customer record retention period (Section 6 — currently generic
+       "as long as needed plus standard retention")
+    3. Whether you ever share customer info with brand partners (Coppley
+       custom orders may need data sharing — not currently mentioned)
+  ════════════════════════════════════════════════════════════════════════
+-->
+
+<main class="policy">
+  <span class="policy__eyebrow">Privacy</span>
+  <h1 class="policy__title">Privacy Policy</h1>
+  <p class="policy__updated">Effective: June 25, 2026</p>
+
+  <p>Thomas Jeffery Men's Wear ("we", "our", "us") respects your privacy. This policy explains what personal information we collect when you visit our website or interact with our store, how we use it, who we share it with, and your rights under Canadian and Alberta privacy law.</p>
+
+  <h2>1. Who we are</h2>
+  <p>Thomas Jeffery Men's Wear is a locally-owned menswear store in Calgary, operating since 1968.</p>
+  <p>
+    Kingsland Village #303<br>
+    7337 Macleod Trail SW<br>
+    Calgary, AB T2H 0L8<br>
+    (403) 278-2445<br>
+    <a href="mailto:appointments@thomasjeffery.ca">appointments@thomasjeffery.ca</a>
+  </p>
+  <p>We are governed by the federal <strong>Personal Information Protection and Electronic Documents Act (PIPEDA)</strong> and Alberta's <strong>Personal Information Protection Act (PIPA)</strong>.</p>
+
+  <h2>2. Information we collect</h2>
+
+  <h3>Information you give us directly</h3>
+  <ul>
+    <li><strong>Subscribing to our list:</strong> email address, first name, last name</li>
+    <li><strong>Booking an appointment:</strong> name, email, phone number, the type of appointment you're booking, and any notes you include</li>
+    <li><strong>Visiting the store in person:</strong> information you choose to share with us (purchase records, sizing details, fitting preferences)</li>
+  </ul>
+
+  <h3>Information collected automatically when you visit our website</h3>
+  <ul>
+    <li>IP address, browser type and version, device type, operating system</li>
+    <li>Pages viewed, time on each page, the website that referred you to ours</li>
+    <li>Approximate geographic location (typically city or region level)</li>
+    <li>Cookies and similar tracking technologies (see Section 5)</li>
+  </ul>
+
+  <h2>3. How we use your information</h2>
+  <p>We use your information to:</p>
+  <ul>
+    <li>Respond to your appointment requests and follow up with you</li>
+    <li>Send you emails you've subscribed to (offers, new arrivals, store updates)</li>
+    <li>Understand how visitors use our website so we can improve it</li>
+    <li>Show you relevant ads on Facebook, Instagram, and Google</li>
+    <li>Comply with our legal obligations</li>
+  </ul>
+
+  <h2>4. Who we share your information with</h2>
+  <p>We share information with the service providers we use to operate the website and communicate with you. We do not sell your personal information.</p>
+  <ul>
+    <li><strong>Mailchimp</strong> — handles our email list when you subscribe</li>
+    <li><strong>Formspree</strong> — processes our booking form submissions and forwards them to us</li>
+    <li><strong>Google (Analytics &amp; Ads)</strong> — provides website analytics and helps us measure ad performance</li>
+    <li><strong>Meta (Facebook &amp; Instagram)</strong> — receives our Pixel events to support our advertising</li>
+    <li><strong>Cloudflare</strong> — hosts and delivers our website</li>
+  </ul>
+  <p>These providers may store data outside of Canada (typically the United States). We share only what's needed for them to provide their service.</p>
+
+  <h2>5. Cookies and tracking</h2>
+  <p>Our website uses cookies and similar technologies for:</p>
+  <ul>
+    <li><strong>Essential functionality</strong> — for example, remembering that you've dismissed our subscribe popup or which mode page you've chosen</li>
+    <li><strong>Analytics</strong> — Google Analytics 4 to understand visitor behaviour in aggregate</li>
+    <li><strong>Advertising</strong> — the Meta Pixel so we can show relevant ads on Facebook and Instagram</li>
+  </ul>
+  <p>You can disable cookies in your browser settings. Some features may not work properly if you do.</p>
+
+  <h2>6. How long we keep your information</h2>
+  <ul>
+    <li><strong>Subscriber list:</strong> until you unsubscribe</li>
+    <li><strong>Booking inquiries:</strong> for as long as needed to respond and follow up, plus our standard customer record retention period</li>
+    <li><strong>Analytics data:</strong> up to 14 months in Google Analytics</li>
+    <li><strong>Cookies:</strong> varies by type, generally up to two years</li>
+  </ul>
+
+  <h2>7. Your rights</h2>
+  <p>Under PIPEDA and Alberta PIPA, you have the right to:</p>
+  <ul>
+    <li>Know what personal information we hold about you</li>
+    <li>Access that information</li>
+    <li>Correct anything that is inaccurate</li>
+    <li>Withdraw your consent and ask us to delete your information</li>
+    <li>Make a complaint to us, to the <a href="https://www.priv.gc.ca/" rel="noopener" target="_blank">Office of the Privacy Commissioner of Canada</a>, or to the <a href="https://www.oipc.ab.ca/" rel="noopener" target="_blank">Office of the Information and Privacy Commissioner of Alberta</a></li>
+  </ul>
+  <p>To exercise any of these rights, contact us at <a href="mailto:appointments@thomasjeffery.ca">appointments@thomasjeffery.ca</a> or (403) 278-2445.</p>
+
+  <h2>8. Children's privacy</h2>
+  <p>Our website and services are intended for adults. We do not knowingly collect personal information from anyone under 16.</p>
+
+  <h2>9. Security</h2>
+  <p>We take reasonable steps to protect your personal information using standard industry practices. No method of transmission over the internet is completely secure, but we work with reputable providers (Mailchimp, Formspree, Cloudflare, Google, Meta) who take security seriously.</p>
+
+  <h2>10. Changes to this policy</h2>
+  <p>We may update this policy from time to time. The "Effective" date at the top of this page will reflect any changes.</p>
+
+  <h2>11. Contact</h2>
+  <p>For privacy questions, requests, or complaints:</p>
+  <p>
+    Thomas Jeffery Men's Wear<br>
+    Kingsland Village #303, 7337 Macleod Trail SW<br>
+    Calgary, AB T2H 0L8<br>
+    <a href="mailto:appointments@thomasjeffery.ca">appointments@thomasjeffery.ca</a><br>
+    (403) 278-2445
+  </p>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <span class="footer__eyebrow">Find Us</span>
+  <h2 class="footer__title">One store.<br>Kingsland Village.</h2>
+
+  <div class="footer__grid">
+    <div class="footer__col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="brands.html">Brands</a></li>
+        <li><a href="office.html">Office</a></li>
+        <li><a href="wedding.html">Wedding</a></li>
+        <li><a href="casual.html">Casual</a></li>
+        <li><a href="subscribe.html">Subscribe</a></li>
+        <li><a href="book-office.html">Book a Fitting</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Address</h4>
+      <div class="footer__address">
+        Kingsland Village #303<br>
+        7337 Macleod Trail SW<br>
+        Calgary, AB &nbsp;T2H 0L8
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Hours &amp; Contact</h4>
+      <div class="footer__hours">
+        Mon – Sat &nbsp;10am – 6pm<br>
+        Closed Sundays &amp; Holidays
+      </div>
+      <div class="footer__phone">
+        <a href="tel:+14032782445">(403) 278-2445</a>
+      </div>
+    </div>
+  </div>
+
+  <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/50fa581f-6078-5021-27fa-4c15ad9d947f.png"
+       alt="Thomas Jeffery Men's Wear" class="footer__logo">
+
+  <hr class="footer__divider">
+  <div class="footer__bottom">
+    <p class="footer__copy">© 2026 Thomas Jeffery Men's Wear. All rights reserved. · <a href="privacy.html" class="footer__legal">Privacy</a></p>
+    <div class="footer__social">
+      <a href="https://www.instagram.com/thomasjefferyofficial/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/ThomasJefferyMensWear" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  var hamburger = document.getElementById('nav-hamburger');
+  var navMenu = document.getElementById('nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function () {
+      var isOpen = navMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
+
+</body>
+</html>
