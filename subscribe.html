@@ -330,6 +330,21 @@
       .footer { padding: 96px 64px 44px; }
       .footer__logo { height: 112px; }
     }
+  
+    /* ══ COOKIE CONSENT BANNER ══ */
+    .tj-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:1000;background:#1C2B39;color:#F5F0EB;border-radius:8px;box-shadow:0 12px 32px rgba(0,0,0,0.18);transform:translateY(120%);opacity:0;transition:transform 320ms cubic-bezier(0.4,0,0.2,1),opacity 320ms;pointer-events:none;max-width:720px;margin-inline:auto}
+    .tj-consent--show{transform:translateY(0);opacity:1;pointer-events:auto}
+    .tj-consent__inner{padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+    .tj-consent__text{margin:0;font-size:13px;line-height:1.6;color:#F5F0EB;font-family:'Lato',sans-serif;font-weight:300}
+    .tj-consent__link{color:#F5F0EB;text-decoration:underline}
+    .tj-consent__actions{display:flex;gap:10px;justify-content:flex-end}
+    .tj-consent__btn{font-family:'Lato',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;padding:10px 18px;border-radius:4px;border:1px solid #F5F0EB;cursor:pointer;background:transparent;color:#F5F0EB;transition:background 160ms,color 160ms}
+    .tj-consent__btn--primary{background:#F5F0EB;color:#1C2B39}
+    .tj-consent__btn--primary:hover{background:#E8E0D5}
+    .tj-consent__btn--ghost:hover{background:rgba(245,240,235,0.10)}
+    @media (min-width:700px){.tj-consent__inner{flex-direction:row;align-items:center}.tj-consent__text{flex:1}.tj-consent__actions{flex-shrink:0}}
+    @media (prefers-reduced-motion: reduce){.tj-consent{transition:opacity 200ms}}
+    /* ══ END COOKIE CONSENT BANNER ══ */
   </style>
   <meta name="description" content="Subscribe and get $50 off your first visit. Plus occasional notes on new arrivals from Thomas Jeffery, Calgary's locally-owned menswear store since 1968.">
   <link rel="canonical" href="https://thomasjeffery.ca/subscribe.html">
@@ -365,32 +380,77 @@
   ]
 }
   </script>
-  <!-- Meta Pixel Code -->
+  <!-- Analytics + Consent (gated by tj_consent) -->
   <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1030193136327166');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1030193136327166&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G527X7EQX0"></script>
-  <script>
+  (function(){
+    var KEY = 'tj_consent';
+    var GA_ID = 'G-G527X7EQX0';
+    var FB_ID = '1030193136327166';
+
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-G527X7EQX0');
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'functionality_storage': 'granted',
+      'security_storage': 'granted'
+    });
+
+    function loadGA(){
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+    }
+
+    function loadFB(){
+      !function(f,b,e,v,n,t,s){
+        if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s);
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', FB_ID);
+      fbq('track', 'PageView');
+    }
+
+    function applyConsent(state){
+      if(state === 'granted'){
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+        if(!window.__tjGaLoaded){ window.__tjGaLoaded = true; loadGA(); }
+        if(!window.__tjFbLoaded){ window.__tjFbLoaded = true; loadFB(); }
+      }
+    }
+
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch(e){}
+    if(stored === 'granted') applyConsent('granted');
+
+    window.tjConsent = {
+      set: function(state){
+        try { localStorage.setItem(KEY, state); } catch(e){}
+        applyConsent(state);
+      },
+      get: function(){
+        try { return localStorage.getItem(KEY); } catch(e){ return null; }
+      }
+    };
+  })();
   </script>
-  <!-- End Google tag -->
+  <!-- End Analytics + Consent -->
 </head>
 <body>
 
@@ -630,6 +690,38 @@
   })();
 </script>
 <!-- ══ END TJ REVEAL ANIMATIONS ══ -->
+
+
+<!-- ══ COOKIE CONSENT BANNER ══ -->
+<div class="tj-consent" id="tj-consent" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+  <div class="tj-consent__inner">
+    <p class="tj-consent__text">
+      We use cookies to understand how visitors use the site so we can improve it.
+      <a href="privacy.html" class="tj-consent__link">Privacy Policy</a>
+    </p>
+    <div class="tj-consent__actions">
+      <button type="button" class="tj-consent__btn tj-consent__btn--ghost" data-tj-consent="denied">Decline</button>
+      <button type="button" class="tj-consent__btn tj-consent__btn--primary" data-tj-consent="granted">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function(){
+    var banner = document.getElementById('tj-consent');
+    if(!banner) return;
+    function show(){ banner.classList.add('tj-consent--show'); }
+    function hide(){ banner.classList.remove('tj-consent--show'); }
+    banner.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-tj-consent]');
+      if(!btn) return;
+      if(window.tjConsent) window.tjConsent.set(btn.getAttribute('data-tj-consent'));
+      hide();
+    });
+    if(!window.tjConsent || !window.tjConsent.get()) show();
+    window.tjConsentOpen = show;
+  })();
+</script>
+<!-- ══ END COOKIE CONSENT BANNER ══ -->
 
 </body>
 </html>
