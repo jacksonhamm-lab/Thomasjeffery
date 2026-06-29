@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1C2B39">
+  <title>Book a Fitting — Thomas Jeffery Men's Wear Calgary</title>
+  <meta name="description" content="Book a fitting at Thomas Jeffery in Calgary. Pick the kind of wardrobe you're working on — office, wedding, or casual — and we'll take it from there.">
+  <link rel="canonical" href="https://thomasjeffery.ca/book.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Thomas Jeffery Men's Wear">
+  <meta property="og:title" content="Book a Fitting — Thomas Jeffery Men's Wear Calgary">
+  <meta property="og:description" content="Book a fitting at Thomas Jeffery in Calgary. Pick the kind of wardrobe you're working on — office, wedding, or casual — and we'll take it from there.">
+  <meta property="og:url" content="https://thomasjeffery.ca/book.html">
+  <meta property="og:image" content="https://thomasjeffery.pages.dev/og-home.jpg">
+  <meta property="og:image:alt" content="Thomas Jeffery Men's Wear">
+  <meta property="og:locale" content="en_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Book a Fitting — Thomas Jeffery Men's Wear Calgary">
+  <meta name="twitter:description" content="Book a fitting at Thomas Jeffery in Calgary. Pick the kind of wardrobe you're working on — office, wedding, or casual — and we'll take it from there.">
+  <meta name="twitter:image" content="https://thomasjeffery.pages.dev/og-home.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
+      font-family: 'Lato', Arial, sans-serif;
+      background: #F5F0EB;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .landing {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+    }
+
+    .landing__logo {
+      height: 100px;
+      width: auto;
+      display: block;
+      margin-bottom: 16px;
+    }
+    @media (min-width: 600px) {
+      .landing__logo { height: 120px; }
+    }
+
+    .landing__tagline {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.68);
+      margin-bottom: 56px;
+    }
+
+    .landing__prompt {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.48em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.78);
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    @media (min-width: 600px) {
+      .landing__prompt { font-size: 14px; }
+    }
+
+    .landing__tiles {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      width: 100%;
+      max-width: 820px;
+    }
+    @media (min-width: 580px) {
+      .landing__tiles { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    .tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 14px;
+      padding: 44px 28px;
+      background: #1C2B39;
+      border: 1px solid rgba(245,240,235,0.1);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.22s, border-color 0.22s, transform 0.22s, box-shadow 0.22s;
+    }
+    .tile:hover {
+      background: #243649;
+      border-color: rgba(245,240,235,0.28);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(28,43,57,0.18);
+    }
+    .tile__name {
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #F5F0EB;
+      line-height: 1.15;
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .tile__sub {
+      font-size: 12px;
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.06em;
+      color: rgba(245,240,235,0.88);
+      display: block;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .landing__skip {
+      margin-top: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.55);
+      transition: color 0.2s;
+      padding: 8px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .landing__skip:hover { color: rgba(28,43,57,0.82); }
+
+    .landing__footer {
+      text-align: center;
+      padding: 28px 20px 32px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.62);
+    }
+
+    /* ══ COOKIE CONSENT BANNER ══ */
+    .tj-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:1000;background:#1C2B39;color:#F5F0EB;border-radius:8px;box-shadow:0 12px 32px rgba(0,0,0,0.18);transform:translateY(120%);opacity:0;transition:transform 320ms cubic-bezier(0.4,0,0.2,1),opacity 320ms;pointer-events:none;max-width:720px;margin-inline:auto}
+    .tj-consent--show{transform:translateY(0);opacity:1;pointer-events:auto}
+    .tj-consent__inner{padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+    .tj-consent__text{margin:0;font-size:13px;line-height:1.6;color:#F5F0EB;font-family:'Lato',sans-serif;font-weight:300}
+    .tj-consent__link{color:#F5F0EB;text-decoration:underline}
+    .tj-consent__actions{display:flex;gap:10px;justify-content:flex-end}
+    .tj-consent__btn{font-family:'Lato',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;padding:10px 18px;border-radius:4px;border:1px solid #F5F0EB;cursor:pointer;background:transparent;color:#F5F0EB;transition:background 160ms,color 160ms}
+    .tj-consent__btn--primary{background:#F5F0EB;color:#1C2B39}
+    .tj-consent__btn--primary:hover{background:#E8E0D5}
+    .tj-consent__btn--ghost:hover{background:rgba(245,240,235,0.10)}
+    @media (min-width:700px){.tj-consent__inner{flex-direction:row;align-items:center}.tj-consent__text{flex:1}.tj-consent__actions{flex-shrink:0}}
+    @media (prefers-reduced-motion: reduce){.tj-consent{transition:opacity 200ms}}
+  </style>
+
+  <!-- Analytics + Consent (gated by tj_consent) -->
+  <script>
+  (function(){
+    var KEY = 'tj_consent';
+    var GA_ID = 'G-G527X7EQX0';
+    var FB_ID = '1030193136327166';
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'functionality_storage': 'granted',
+      'security_storage': 'granted'
+    });
+
+    function loadGA(){
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+    }
+
+    function loadFB(){
+      !function(f,b,e,v,n,t,s){
+        if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s);
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', FB_ID);
+      fbq('track', 'PageView');
+    }
+
+    function applyConsent(state){
+      if(state === 'granted'){
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+        if(!window.__tjGaLoaded){ window.__tjGaLoaded = true; loadGA(); }
+        if(!window.__tjFbLoaded){ window.__tjFbLoaded = true; loadFB(); }
+      }
+    }
+
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch(e){}
+    if(stored === 'granted') applyConsent('granted');
+
+    window.tjConsent = {
+      set: function(state){
+        try { localStorage.setItem(KEY, state); } catch(e){}
+        applyConsent(state);
+      },
+      get: function(){
+        try { return localStorage.getItem(KEY); } catch(e){ return null; }
+      }
+    };
+  })();
+  </script>
+  <!-- End Analytics + Consent -->
+</head>
+<body>
+
+<main class="landing">
+  <a href="thomas-jeffery-homepage.html" style="text-decoration:none;">
+    <img class="landing__logo"
+         src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/8c767aaa-8e17-aad6-db85-b0383c08bd33.png"
+         alt="Thomas Jeffery Men's Wear">
+  </a>
+
+  <p class="landing__tagline">Calgary's Menswear Since 1968</p>
+
+  <p class="landing__prompt">What would you like to book?</p>
+
+  <div class="landing__tiles">
+    <a class="tile" href="book-office.html">
+      <span class="tile__name">Office</span>
+      <span class="tile__sub">Suits, sport coats, and trousers.</span>
+    </a>
+    <a class="tile" href="book-wedding.html">
+      <span class="tile__name">Wedding</span>
+      <span class="tile__sub">Groom and groomsmen, end to end.</span>
+    </a>
+    <a class="tile" href="book-casual.html">
+      <span class="tile__name">Casual</span>
+      <span class="tile__sub">Shirts, knits, denim, and more.</span>
+    </a>
+  </div>
+
+  <a class="landing__skip" href="thomas-jeffery-homepage.html">← Back to home</a>
+</main>
+
+<p class="landing__footer">Kingsland Village · 7337 Macleod Trail SW · Calgary, AB · (403) 278-2445 · <a href="privacy.html" style="color:inherit;">Privacy</a></p>
+
+<!-- ══ COOKIE CONSENT BANNER ══ -->
+<div class="tj-consent" id="tj-consent" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+  <div class="tj-consent__inner">
+    <p class="tj-consent__text">
+      We use cookies to understand how visitors use the site so we can improve it.
+      <a href="privacy.html" class="tj-consent__link">Privacy Policy</a>
+    </p>
+    <div class="tj-consent__actions">
+      <button type="button" class="tj-consent__btn tj-consent__btn--ghost" data-tj-consent="denied">Decline</button>
+      <button type="button" class="tj-consent__btn tj-consent__btn--primary" data-tj-consent="granted">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function(){
+    var banner = document.getElementById('tj-consent');
+    if(!banner) return;
+    function show(){ banner.classList.add('tj-consent--show'); }
+    function hide(){ banner.classList.remove('tj-consent--show'); }
+    banner.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-tj-consent]');
+      if(!btn) return;
+      if(window.tjConsent) window.tjConsent.set(btn.getAttribute('data-tj-consent'));
+      hide();
+    });
+    if(!window.tjConsent || !window.tjConsent.get()) show();
+    window.tjConsentOpen = show;
+  })();
+</script>
+
+</body>
+</html>
