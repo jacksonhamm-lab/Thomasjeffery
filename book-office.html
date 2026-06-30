@@ -299,6 +299,54 @@
       transition: background 0.2s;
     }
     .btn-submit:hover { background: #243649; }
+    .btn-submit:disabled { background: rgba(28,43,57,0.4); cursor: wait; }
+
+    /* ══ THANKS STATE ══ */
+    .thanks-section {
+      padding: 96px 24px 80px;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .thanks__eyebrow {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.55);
+      margin-bottom: 28px;
+    }
+    .thanks__title {
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 300;
+      color: #1C2B39;
+      line-height: 1.2;
+      margin-bottom: 22px;
+    }
+    .thanks__body {
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(28,43,57,0.78);
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .thanks__btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border: 1px solid #1C2B39;
+      color: #1C2B39;
+      text-decoration: none;
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: background 0.2s, color 0.2s;
+    }
+    .thanks__btn:hover { background: #1C2B39; color: #F5F0EB; }
 
     /* ══ CROSS-BOOKING ══ */
     .crossbook {
@@ -626,7 +674,6 @@
 
     <form action="https://formspree.io/f/mvzdbwyr" method="POST" id="booking-form">
       <input type="hidden" name="_subject" value="Office Appointment Request">
-      <input type="hidden" name="_next" value="office.html">
       <input type="hidden" name="appointmentType" id="appointmentType">
       <input type="hidden" name="customAppointment" id="customAppointment" value="No">
       <input type="text" name="_gotcha" style="display:none">
@@ -684,6 +731,14 @@
 
       <button type="submit" class="btn-submit">Request Appointment</button>
     </form>
+  </section>
+
+  <!-- ══ THANKS STATE ══ -->
+  <section class="thanks-section hidden" id="thanks-section">
+    <span class="thanks__eyebrow">Request Received</span>
+    <h2 class="thanks__title">We'll be in touch.</h2>
+    <p class="thanks__body">Thanks for booking. Someone from the team will confirm your appointment within one business day.</p>
+    <a href="office.html" class="thanks__btn">← Back to Office</a>
   </section>
 
   <!-- ══ CROSS-BOOKING ══ -->
@@ -782,16 +837,38 @@
     customInput.value = isActive ? 'Yes' : 'No';
   });
 
-  /* ── Form validation: require tile selection ── */
+  /* ── Form submit: validate, then async POST + inline thanks ── */
   document.getElementById('booking-form').addEventListener('submit', function (e) {
+    var form = this;
     if (!appointmentTypeInput.value) {
       e.preventDefault();
       validation.classList.add('show');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    if (window.fbq) fbq('track', 'Schedule');
-      if (window.gtag) gtag('event', 'generate_lead', { service: 'office' });
+    e.preventDefault();
+    var btn = form.querySelector('.btn-submit');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function (res) {
+      if (res.ok) {
+        if (window.fbq) fbq('track', 'Schedule');
+        if (window.gtag) gtag('event', 'generate_lead', { service: 'office' });
+        document.getElementById('form-section').classList.add('hidden');
+        document.getElementById('thanks-section').classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        if (btn) { btn.disabled = false; btn.textContent = 'Request Appointment'; }
+        alert('Sorry, there was a problem sending your request. Please try again or call (403) 278-2445.');
+      }
+    }).catch(function () {
+      if (btn) { btn.disabled = false; btn.textContent = 'Request Appointment'; }
+      alert('Sorry, there was a problem sending your request. Please try again or call (403) 278-2445.');
+    });
   });
 
   /* ── URL parameter pre-selection ── */
