@@ -68,11 +68,11 @@
       padding-bottom: 2px;
     }
     .nav__modes { display: none; align-items: center; gap: 16px; }
-    .nav__mode-sep { font-size: 9px; color: rgba(28,43,57,0.35); letter-spacing: 0.2em; }
+    .nav__mode-sep { font-size: 11px; color: rgba(28,43,57,0.35); letter-spacing: 0.2em; }
     .nav__mode-btn {
       background: none; border: none;
       font-family: 'Lato', sans-serif;
-      font-size: 9px; font-weight: 400;
+      font-size: 11px; font-weight: 400;
       letter-spacing: 0.32em; text-transform: uppercase;
       color: rgba(28,43,57,0.45);
       cursor: pointer; padding: 2px 0;
@@ -220,6 +220,7 @@
       border: none;
       cursor: pointer;
       transition: background 0.2s;
+      border-radius: 4px;
     }
     .subscribe__submit:hover { background: #243649; }
     .subscribe__fine {
@@ -284,10 +285,15 @@
       display: inline-block; text-align: center; text-decoration: none;
       font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
       padding: 16px 22px; transition: background 0.2s, color 0.2s, border-color 0.2s;
+      border-radius: 4px;
     }
-    .footer__btn--primary { background: #F5F0EB; color: #1C2B39; }
+    .footer__btn--primary { background: #F5F0EB; color: #1C2B39;
+ border-radius: 4px;
+    }
     .footer__btn--primary:hover { background: #fff; }
-    .footer__btn--ghost { background: transparent; color: #F5F0EB; border: 1px solid rgba(245,240,235,0.4); }
+    .footer__btn--ghost { background: transparent; color: #F5F0EB; border: 1px solid rgba(245,240,235,0.4);
+ border-radius: 4px;
+    }
     .footer__btn--ghost:hover { border-color: #F5F0EB; background: rgba(245,240,235,0.06); }
     .footer__divider { border: none; border-top: 1px solid rgba(245,240,235,0.1); margin-bottom: 22px; }
     .footer__bottom { display: flex; flex-direction: column; gap: 14px; }
@@ -554,8 +560,7 @@
       <ul>
         <li><a href="about.html">About</a></li>
         <li><a href="brands.html">Brands</a></li>
-        <li><a href="office.html">Office</a></li>
-        <li><a href="wedding.html">Wedding</a></li>
+          <li><a href="wedding.html">Wedding</a></li>
         <li><a href="casual.html">Casual</a></li>
         <li><a href="subscribe.html">Subscribe</a></li>
         <li><a href="contact.html">Contact</a></li>
