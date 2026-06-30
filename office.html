@@ -845,14 +845,14 @@
       text-decoration: none; font-size: 11px; font-weight: 700;
       letter-spacing: 0.3em; text-transform: uppercase;
       transition: background 0.2s, color 0.2s, border-color 0.2s;
-      border-radius: 4px;
+      border-radius: 8px;
     }
     .footer__btn--primary { background: #F5F0EB; color: #1C2B39;
- border-radius: 4px;
+ border-radius: 8px;
     }
     .footer__btn--primary:hover { background: #fff; }
     .footer__btn--ghost { background: transparent; color: #F5F0EB; border: 1px solid rgba(245,240,235,0.4);
- border-radius: 4px;
+ border-radius: 8px;
     }
     .footer__btn--ghost:hover { border-color: #F5F0EB; background: rgba(245,240,235,0.06); }
     .footer__divider { border: none; border-top: 1px solid rgba(245,240,235,0.1); margin-bottom: 22px; }
@@ -1393,93 +1393,6 @@
 </section>
 
 <!-- ══════════════════════════════
-     ALL BRANDS GRID
-══════════════════════════════ -->
-<section class="all-brands">
-  <span class="section__eyebrow">Every Brand We Carry</span>
-  <h2 class="section__title">The full selection.</h2>
-
-  <div class="all-brands__categories">
-
-    <div class="brand-cat">
-      <span class="brand-cat__label">Suiting &amp; Tailoring</span>
-      <div class="brand-cat__list">
-        <span class="brand-tag">Paul Betenly</span>
-        <span class="brand-tag">Coppley</span>
-        <span class="brand-tag">Atelier</span>
-      </div>
-    </div>
-
-    <div class="brand-cat">
-      <span class="brand-cat__label">Dress Shirts</span>
-      <div class="brand-cat__list">
-        <span class="brand-tag">Stenströms</span>
-        <span class="brand-tag">Lugano</span>
-        <span class="brand-tag">Polifironi Milano</span>
-        <span class="brand-tag">Klauss Boehler</span>
-      </div>
-    </div>
-
-    <div class="brand-cat">
-      <span class="brand-cat__label">Sport Jackets</span>
-      <div class="brand-cat__list">
-        <span class="brand-tag">7 Downie St.</span>
-        <span class="brand-tag">Jack Victor</span>
-        <span class="brand-tag">Aristo</span>
-        <span class="brand-tag">Paul Betenly</span>
-        <span class="brand-tag">Leif Horsens</span>
-      </div>
-    </div>
-
-    <div class="brand-cat">
-      <span class="brand-cat__label">Trousers</span>
-      <div class="brand-cat__list">
-        <span class="brand-tag">Alberto</span>
-        <span class="brand-tag">Meyer</span>
-        <span class="brand-tag">34 Heritage</span>
-        <span class="brand-tag">Bugatti</span>
-      </div>
-    </div>
-
-    <div class="brand-cat">
-      <span class="brand-cat__label">Knitwear &amp; Casual Tops</span>
-      <div class="brand-cat__list">
-        <span class="brand-tag">Robert Barakett</span>
-        <span class="brand-tag">Holebrook</span>
-        <span class="brand-tag">Codice</span>
-        <span class="brand-tag">Altemflower</span>
-        <span class="brand-tag">DeSoto</span>
-        <span class="brand-tag">Ferrante</span>
-      </div>
-    </div>
-
-    <div class="brand-cat">
-      <span class="brand-cat__label">Denim</span>
-      <div class="brand-cat__list">
-        <span class="brand-tag">Fidelity Denim</span>
-        <span class="brand-tag">34 Heritage</span>
-        <span class="brand-tag">Alberto</span>
-      </div>
-    </div>
-
-    <div class="brand-cat">
-      <span class="brand-cat__label">Essentials</span>
-      <div class="brand-cat__list">
-        <span class="brand-tag">Benchcraft</span>
-        <span class="brand-tag">Regency Leathers</span>
-        <span class="brand-tag">Bugatti</span>
-        <span class="brand-tag">SAXX</span>
-        <span class="brand-tag">Dion</span>
-        <span class="brand-tag">7 Downie St.</span>
-        <span class="brand-tag">Marcoliani</span>
-        <span class="brand-tag">Pantherella</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════
      BOOKING SECTION
 ══════════════════════════════ -->
 <section class="booking">
@@ -1678,7 +1591,8 @@
   });
   document.querySelectorAll('[data-tj-subscribe]').forEach(function (t) {
     if (subscribed) {
-      t.style.display = 'none';
+      var hideTarget = t.closest('li') || t;
+      hideTarget.style.display = 'none';
     } else {
       t.addEventListener('click', function (e) {
         e.preventDefault();
