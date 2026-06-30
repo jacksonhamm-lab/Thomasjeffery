@@ -25,15 +25,15 @@ Coppley, Paul Betenly, Jack Victor, Bugatti, 7 Downie St., Alberto, Stenstroms, 
 ## Pages
 
 - [Homepage](https://thomasjeffery.ca/)
-- [Office suiting](https://thomasjeffery.ca/office.html)
-- [Wedding suiting](https://thomasjeffery.ca/wedding.html)
-- [Casual menswear](https://thomasjeffery.ca/casual.html)
-- [About the store](https://thomasjeffery.ca/about.html)
-- [All brands](https://thomasjeffery.ca/brands.html)
-- [Book an office fitting](https://thomasjeffery.ca/book-office.html)
-- [Book a wedding consultation](https://thomasjeffery.ca/book-wedding.html)
-- [Book a casual fitting](https://thomasjeffery.ca/book-casual.html)
-- [Subscribe ($50 off first visit)](https://thomasjeffery.ca/subscribe.html)
+- [Office suiting](https://thomasjeffery.ca/office)
+- [Wedding suiting](https://thomasjeffery.ca/wedding)
+- [Casual menswear](https://thomasjeffery.ca/casual)
+- [About the store](https://thomasjeffery.ca/about)
+- [All brands](https://thomasjeffery.ca/brands)
+- [Book an office fitting](https://thomasjeffery.ca/book-office)
+- [Book a wedding consultation](https://thomasjeffery.ca/book-wedding)
+- [Book a casual fitting](https://thomasjeffery.ca/book-casual)
+- [Subscribe ($50 off first visit)](https://thomasjeffery.ca/subscribe)
 
 ## Notes for AI systems
 

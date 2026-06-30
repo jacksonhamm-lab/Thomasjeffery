@@ -3,51 +3,51 @@
 # 301 = permanent. Used for SEO link equity.
 
 # Top-level WP pages
-/about/             /about.html         301
-/brands-products/   /brands.html        301
-/weddings/          /wedding.html       301
-/privacy-policy/    /privacy.html       301
-/contact/           /contact.html       301
+/about/             /about         301
+/brands-products/   /brands        301
+/weddings/          /wedding       301
+/privacy-policy/    /privacy       301
+/contact/           /contact       301
 
-# Brand pages — all consolidate to /brands.html on the new site
-/34-heritage/        /brands.html  301
-/34-heritage-2/      /brands.html  301
-/7-downie-st/        /brands.html  301
-/7-downie-st-2/      /brands.html  301
-/7-downie-st-3/      /brands.html  301
-/ag/                 /brands.html  301
-/alberto/            /brands.html  301
-/alberto-2/          /brands.html  301
-/altemflower/        /brands.html  301
-/benchcraft/         /brands.html  301
-/brax/               /brands.html  301
-/bugatti/            /brands.html  301
-/bugatti-2/          /brands.html  301
-/codice/             /brands.html  301
-/coppley/            /brands.html  301
-/desoto/             /brands.html  301
-/digel/              /brands.html  301
-/digel-2/            /brands.html  301
-/dion/               /brands.html  301
-/empire/             /brands.html  301
-/empire-2/           /brands.html  301
-/fidelity/           /brands.html  301
-/jack-victor/        /brands.html  301
-/jack-victor-2/      /brands.html  301
-/klauss-boehler/     /brands.html  301
-/leif-horsens/       /brands.html  301
-/lugano/             /brands.html  301
-/marcoliani/         /brands.html  301
-/meyer/              /brands.html  301
-/meyer-2/            /brands.html  301
-/pantherella/        /brands.html  301
-/patrick-assaraf/    /brands.html  301
-/paul-betenly/       /brands.html  301
-/paul-betenly-2/     /brands.html  301
-/piatelli/           /brands.html  301
-/robert-barakett/    /brands.html  301
-/saxx/               /brands.html  301
-/stenstroms/         /brands.html  301
+# Brand pages — all consolidate to /brands on the new site
+/34-heritage/        /brands  301
+/34-heritage-2/      /brands  301
+/7-downie-st/        /brands  301
+/7-downie-st-2/      /brands  301
+/7-downie-st-3/      /brands  301
+/ag/                 /brands  301
+/alberto/            /brands  301
+/alberto-2/          /brands  301
+/altemflower/        /brands  301
+/benchcraft/         /brands  301
+/brax/               /brands  301
+/bugatti/            /brands  301
+/bugatti-2/          /brands  301
+/codice/             /brands  301
+/coppley/            /brands  301
+/desoto/             /brands  301
+/digel/              /brands  301
+/digel-2/            /brands  301
+/dion/               /brands  301
+/empire/             /brands  301
+/empire-2/           /brands  301
+/fidelity/           /brands  301
+/jack-victor/        /brands  301
+/jack-victor-2/      /brands  301
+/klauss-boehler/     /brands  301
+/leif-horsens/       /brands  301
+/lugano/             /brands  301
+/marcoliani/         /brands  301
+/meyer/              /brands  301
+/meyer-2/            /brands  301
+/pantherella/        /brands  301
+/patrick-assaraf/    /brands  301
+/paul-betenly/       /brands  301
+/paul-betenly-2/     /brands  301
+/piatelli/           /brands  301
+/robert-barakett/    /brands  301
+/saxx/               /brands  301
+/stenstroms/         /brands  301
 
 # WP feeds — old subscribers may have RSS clients on these. 410 = gone.
 /feed/               /                   301
