@@ -5,7 +5,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1C2B39">
-  <title>Subscribe — Thomas Jeffery Men's Wear Calgary</title>
+  <title>Contact — Thomas Jeffery Men's Wear Calgary</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -234,8 +234,103 @@
     /* thanks state */
     .subscribe__thanks { display: none; }
     .subscribe.submitted .subscribe__form,
+    .subscribe.submitted .contact-info,
     .subscribe.submitted .subscribe__fine { display: none; }
     .subscribe.submitted .subscribe__thanks { display: block; }
+
+    /* ══ CONTACT-SPECIFIC ══ */
+    .contact-info {
+      margin: 28px 0 36px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(28,43,57,0.12);
+      border-bottom: 1px solid rgba(28,43,57,0.12);
+      max-width: 480px;
+    }
+    .contact-info__row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 18px;
+      padding: 10px 0;
+      align-items: start;
+    }
+    .contact-info__label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.55);
+      padding-top: 4px;
+    }
+    .contact-info__value {
+      font-size: 15px;
+      line-height: 1.55;
+      color: #1C2B39;
+      text-decoration: none;
+    }
+    a.contact-info__value:hover { text-decoration: underline; }
+    .contact-info__sub { color: rgba(28,43,57,0.6); font-size: 13px; }
+
+    .field__label-text {
+      display: block;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.28em;
+      text-transform: uppercase; color: rgba(28,43,57,0.65);
+      margin-bottom: 10px;
+    }
+    .field__opt {
+      font-size: 10px; font-weight: 400; letter-spacing: 0.14em;
+      text-transform: none; color: rgba(28,43,57,0.5);
+    }
+    .radio-group {
+      display: flex;
+      gap: 0;
+      border: 1px solid rgba(28,43,57,0.18);
+      background: #fff;
+      width: fit-content;
+      max-width: 100%;
+    }
+    .radio {
+      flex: 1;
+      cursor: pointer;
+      position: relative;
+    }
+    .radio input {
+      position: absolute; opacity: 0; pointer-events: none;
+    }
+    .radio span {
+      display: block;
+      padding: 13px 24px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(28,43,57,0.55);
+      text-align: center;
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+    .radio:has(input:checked) span,
+    .radio input:checked + span {
+      background: #1C2B39;
+      color: #F5F0EB;
+    }
+    .radio + .radio { border-left: 1px solid rgba(28,43,57,0.18); }
+
+    .field textarea {
+      width: 100%;
+      min-width: 0;
+      font-family: 'Lato', sans-serif; font-size: 15px;
+      padding: 13px 14px;
+      background: #fff;
+      border: 1px solid rgba(28,43,57,0.18);
+      color: #1C2B39;
+      transition: border-color 0.2s;
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.55;
+    }
+    .field textarea:focus {
+      outline: none;
+      border-color: #1C2B39;
+    }
+
+    .subscribe__submit:disabled { background: rgba(28,43,57,0.4); cursor: wait; }
 
     /* ══ STICKY BOOK + RESPONSIVE ══ */
     .sticky-book {
@@ -346,20 +441,20 @@
     @media (prefers-reduced-motion: reduce){.tj-consent{transition:opacity 200ms}}
     /* ══ END COOKIE CONSENT BANNER ══ */
   </style>
-  <meta name="description" content="Subscribe and get $50 off your first visit. Plus occasional notes on new arrivals from Thomas Jeffery, Calgary's locally-owned menswear store since 1968.">
-  <link rel="canonical" href="https://thomasjeffery.ca/subscribe.html">
+  <meta name="description" content="Get in touch with Thomas Jeffery in Calgary. Customer inquiries, business inquiries, store hours, phone, and address.">
+  <link rel="canonical" href="https://thomasjeffery.ca/contact.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Thomas Jeffery Men's Wear">
-  <meta property="og:title" content="Subscribe — Thomas Jeffery Men's Wear Calgary">
-  <meta property="og:description" content="Subscribe and get $50 off your first visit. Plus occasional notes on new arrivals from Thomas Jeffery, Calgary's locally-owned menswear store since 1968.">
-  <meta property="og:url" content="https://thomasjeffery.ca/subscribe.html">
-  <meta property="og:image" content="https://thomasjeffery.pages.dev/subscribe-hero.webp">
-  <meta property="og:image:alt" content="Subscribe — Thomas Jeffery Men's Wear Calgary">
+  <meta property="og:title" content="Contact — Thomas Jeffery Men's Wear Calgary">
+  <meta property="og:description" content="Get in touch with Thomas Jeffery in Calgary. Customer inquiries, business inquiries, store hours, phone, and address.">
+  <meta property="og:url" content="https://thomasjeffery.ca/contact.html">
+  <meta property="og:image" content="https://thomasjeffery.pages.dev/about-storefront.webp">
+  <meta property="og:image:alt" content="Thomas Jeffery Men's Wear storefront">
   <meta property="og:locale" content="en_CA">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Subscribe — Thomas Jeffery Men's Wear Calgary">
-  <meta name="twitter:description" content="Subscribe and get $50 off your first visit. Plus occasional notes on new arrivals from Thomas Jeffery, Calgary's locally-owned menswear store since 1968.">
-  <meta name="twitter:image" content="https://thomasjeffery.pages.dev/subscribe-hero.webp">
+  <meta name="twitter:title" content="Contact — Thomas Jeffery Men's Wear Calgary">
+  <meta name="twitter:description" content="Get in touch with Thomas Jeffery in Calgary. Customer inquiries, business inquiries, store hours, phone, and address.">
+  <meta name="twitter:image" content="https://thomasjeffery.pages.dev/about-storefront.webp">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -493,52 +588,86 @@
   <span class="nav-menu__section">More</span>
   <a href="about.html">About</a>
   <a href="brands.html">Brands</a>
-  <a href="subscribe.html" class="active">Subscribe</a>
+  <a href="contact.html" class="active">Contact</a>
+  <a href="subscribe.html">Subscribe</a>
   <a class="nav-menu__book" href="book-office.html">Book a Fitting →</a>
 </div>
 
-<!-- ══ SUBSCRIBE ══ -->
+<!-- ══ CONTACT ══ -->
 <section class="subscribe" id="subscribe">
   <div class="subscribe__inner">
     <div class="subscribe__text">
-      <span class="section__eyebrow">Stay In Touch</span>
-      <h1 class="section__title">$50 off your<br>first visit.</h1>
+      <span class="section__eyebrow">Contact</span>
+      <h1 class="section__title">Get in touch.</h1>
 
-      <p class="section__body">Subscribe and we will send you $50 off your first purchase of $250 or more on full price items. Along with the occasional note on new arrivals and what we are working on in store.</p>
+      <p class="section__body">The store phone is the fastest way during open hours. For everything else, send a note and we will get back within one business day.</p>
 
-      <form class="subscribe__form" id="subscribe-form"
-            action="https://thomasjeffery.us1.list-manage.com/subscribe/post?u=a677e9b99521296ba09580ea8&amp;id=8352715181&amp;f_id=0023c9e4f0"
-            method="post" target="_blank" rel="noopener" novalidate>
-        <div class="field">
-          <label for="sub-email">Email</label>
-          <input type="email" name="EMAIL" id="sub-email" required>
+      <div class="contact-info">
+        <div class="contact-info__row">
+          <span class="contact-info__label">Phone</span>
+          <a class="contact-info__value" href="tel:+14032782445">(403) 278-2445</a>
         </div>
+        <div class="contact-info__row">
+          <span class="contact-info__label">Hours</span>
+          <span class="contact-info__value">Mon – Sat &nbsp;10am – 6pm<br><span class="contact-info__sub">Closed Sundays &amp; Holidays</span></span>
+        </div>
+        <div class="contact-info__row">
+          <span class="contact-info__label">Address</span>
+          <span class="contact-info__value">Kingsland Village #303<br>7337 Macleod Trail SW<br>Calgary, AB &nbsp;T2H 0L8</span>
+        </div>
+      </div>
+
+      <form class="subscribe__form" id="contact-form" action="/api/contact" method="post" novalidate>
+        <div class="field">
+          <span class="field__label-text">Type of inquiry</span>
+          <div class="radio-group">
+            <label class="radio"><input type="radio" name="inquiryType" value="customer" checked><span>Customer</span></label>
+            <label class="radio"><input type="radio" name="inquiryType" value="business"><span>Business</span></label>
+          </div>
+        </div>
+
         <div class="subscribe__row">
           <div class="field">
-            <label for="sub-fname">First Name</label>
-            <input type="text" name="FNAME" id="sub-fname">
+            <label for="c-fname">First Name</label>
+            <input type="text" name="firstName" id="c-fname" required>
           </div>
           <div class="field">
-            <label for="sub-lname">Last Name</label>
-            <input type="text" name="LNAME" id="sub-lname">
+            <label for="c-lname">Last Name</label>
+            <input type="text" name="lastName" id="c-lname" required>
           </div>
         </div>
-        <div class="subscribe__honey" aria-hidden="true">
-          <input type="text" name="b_a677e9b99521296ba09580ea8_8352715181" tabindex="-1" value="">
+
+        <div class="subscribe__row">
+          <div class="field">
+            <label for="c-email">Email</label>
+            <input type="email" name="email" id="c-email" required>
+          </div>
+          <div class="field">
+            <label for="c-phone">Phone <span class="field__opt">(optional)</span></label>
+            <input type="tel" name="phone" id="c-phone">
+          </div>
         </div>
-        <button type="submit" class="subscribe__submit">Subscribe</button>
+
+        <div class="field">
+          <label for="c-message">Message</label>
+          <textarea name="message" id="c-message" rows="5" required placeholder="What can we help with?"></textarea>
+        </div>
+
+        <div class="subscribe__honey" aria-hidden="true">
+          <input type="text" name="_gotcha" tabindex="-1" value="">
+        </div>
+
+        <button type="submit" class="subscribe__submit">Send Message</button>
       </form>
 
-      <p class="subscribe__fine">Two emails a week, give or take. Unsubscribe whenever.</p>
-
       <div class="subscribe__thanks">
-        <h2 class="section__title">You're on the list.</h2>
-        <p class="section__body">Check your inbox for a welcome email with your $50 off. Show it at the till on your next visit.</p>
+        <h2 class="section__title">Thanks for reaching out.</h2>
+        <p class="section__body">We will get back to you within one business day. If it is urgent, the store phone is the fastest way during open hours.</p>
       </div>
     </div>
 
     <div class="subscribe__photo photo">
-      <img src="subscribe-hero.webp" width="928" height="1152" srcset="subscribe-hero-600w.webp 483w, subscribe-hero.webp 928w" sizes="100vw" alt="Inside Thomas Jeffery Men's Wear">
+      <img src="about-storefront.webp" width="928" height="1152" srcset="about-storefront-600w.webp 483w, about-storefront.webp 928w" sizes="100vw" alt="Thomas Jeffery Men's Wear at Kingsland Village">
     </div>
   </div>
 </section>
@@ -558,7 +687,6 @@
         <li><a href="wedding.html">Wedding</a></li>
         <li><a href="casual.html">Casual</a></li>
         <li><a href="subscribe.html">Subscribe</a></li>
-        <li><a href="contact.html">Contact</a></li>
         <li><a href="book-office.html">Book a Fitting</a></li>
       </ul>
     </div>
@@ -629,22 +757,34 @@
     });
   }
 
-  /* ── Subscribe form: post to Mailchimp, show inline thanks, mark popup as seen ── */
-  var subForm = document.getElementById('subscribe-form');
-  var subSection = document.getElementById('subscribe');
-  if (subForm) {
-    subForm.addEventListener('submit', function (e) {
-      var email = subForm.querySelector('[name="EMAIL"]').value.trim();
-      if (!email) return;
-      // Let the form post normally (target="_blank") and immediately swap to the thanks state.
-      try { localStorage.setItem('tj_subscribed', '1'); } catch (e) {}
-      try { localStorage.setItem('tj_subscribe_seen', '1'); } catch (e) {}
-      if (window.fbq) fbq('track', 'Lead');
-      if (window.gtag) gtag('event', 'sign_up', { method: 'email' });
-      setTimeout(function () {
-        subSection.classList.add('submitted');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 50);
+  /* ── Contact form: async POST + inline thanks ── */
+  var contactForm = document.getElementById('contact-form');
+  var contactSection = document.getElementById('subscribe');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var form = this;
+      var btn = form.querySelector('.subscribe__submit');
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          if (window.fbq) fbq('track', 'Contact');
+          if (window.gtag) gtag('event', 'contact', { method: 'form' });
+          contactSection.classList.add('submitted');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          if (btn) { btn.disabled = false; btn.textContent = 'Send Message'; }
+          alert('Sorry, there was a problem sending your message. Please try again or call (403) 278-2445.');
+        }
+      }).catch(function () {
+        if (btn) { btn.disabled = false; btn.textContent = 'Send Message'; }
+        alert('Sorry, there was a problem sending your message. Please try again or call (403) 278-2445.');
+      });
     });
   }
 </script>
