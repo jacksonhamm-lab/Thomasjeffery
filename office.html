@@ -231,6 +231,28 @@
       .nav__links { display: none; }
     }
 
+    /* Mobile: after scroll past hero, collapse the nav bar to a floating hamburger */
+    @media (max-width: 699px) {
+      .nav.mobile-collapsed {
+        background: transparent;
+        border-bottom: none;
+        backdrop-filter: none;
+        padding: 0;
+        pointer-events: none;
+      }
+      .nav.mobile-collapsed .nav__logo,
+      .nav.mobile-collapsed .nav__modes { display: none; }
+      .nav.mobile-collapsed .nav__right { pointer-events: auto; padding: 12px; margin-left: auto; align-items: flex-end; }
+      .nav.mobile-collapsed .nav__hamburger {
+        background: #1C2B39;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        box-shadow: 0 4px 14px rgba(28,43,57,0.25);
+      }
+      .nav.mobile-collapsed .nav__hamburger span { background: #F5F0EB; }
+    }
+
     /* ══════════════════════════════
        HERO — split panel
     ══════════════════════════════ */
@@ -1704,6 +1726,24 @@
   })();
 </script>
 <!-- ══ END COOKIE CONSENT BANNER ══ -->
+
+<script>
+(function(){
+  var nav = document.querySelector('.nav');
+  if (!nav) return;
+  var mql = window.matchMedia('(max-width: 699px)');
+  var threshold = 400;
+  function onScroll(){
+    if (!mql.matches) { nav.classList.remove('mobile-collapsed'); return; }
+    var y = window.scrollY || window.pageYOffset;
+    if (y > threshold) nav.classList.add('mobile-collapsed');
+    else nav.classList.remove('mobile-collapsed');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  mql.addEventListener ? mql.addEventListener('change', onScroll) : mql.addListener(onScroll);
+  onScroll();
+})();
+</script>
 
 </body>
 </html>
