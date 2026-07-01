@@ -855,14 +855,50 @@
   var KEY = 'tj_promo_2026_07_coppley';
   var promo = document.getElementById('tj-promo');
   if (!promo) return;
-  try { if (localStorage.getItem(KEY) === '1') { promo.classList.add('tj-promo--hidden'); document.body.classList.add('tj-promo-dismissed'); } } catch (e) {}
+
+  var nav = document.querySelector('.nav');
+  var navMenu = document.querySelector('.nav-menu');
+
+  function setTops(promoH){
+    if (nav) nav.style.top = promoH + 'px';
+    if (navMenu) navMenu.style.top = (promoH + 92) + 'px';
+  }
+  function clearTops(){
+    if (nav) nav.style.top = '';
+    if (navMenu) navMenu.style.top = '';
+  }
+
+  try {
+    if (localStorage.getItem(KEY) === '1') {
+      promo.classList.add('tj-promo--hidden');
+      document.body.classList.add('tj-promo-dismissed');
+    }
+  } catch (e) {}
+
   var close = promo.querySelector('[data-tj-promo-close]');
   if (close) close.addEventListener('click', function(e){
     e.stopPropagation(); e.preventDefault();
     promo.classList.add('tj-promo--hidden');
     document.body.classList.add('tj-promo-dismissed');
+    clearTops();
     try { localStorage.setItem(KEY, '1'); } catch (err) {}
   });
+
+  // Slide nav up as promo scrolls out of view — kills the empty band on scroll.
+  if (!document.body.classList.contains('tj-promo-dismissed')) {
+    var promoH = promo.offsetHeight;
+    window.addEventListener('scroll', function(){
+      if (document.body.classList.contains('tj-promo-dismissed')) return;
+      var y = window.scrollY || window.pageYOffset;
+      var offset = Math.max(0, promoH - y);
+      if (nav) nav.style.top = offset + 'px';
+      if (navMenu) navMenu.style.top = (offset + 92) + 'px';
+    }, { passive: true });
+    window.addEventListener('resize', function(){
+      if (document.body.classList.contains('tj-promo-dismissed')) return;
+      promoH = promo.offsetHeight;
+    }, { passive: true });
+  }
 })();
 </script>
 <!-- ══ END SITE-WIDE PROMO BAR ══ -->
