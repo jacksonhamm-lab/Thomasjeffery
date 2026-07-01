@@ -274,9 +274,13 @@
   .tj-promo--hidden { display: none; }
   @media (max-width: 699px) {
     .tj-promo__inner { flex-direction: column; gap: 4px; padding: 9px 38px; text-align: center; }
+    /* Keep the promo's mobile padding constant even when .scrolled */
+    .tj-promo.scrolled .tj-promo__inner { padding: 9px 38px; }
     .tj-promo__eyebrow { font-size: 9px; letter-spacing: 0.3em; }
     .tj-promo__text { font-size: 12px; }
     .tj-promo__cta { font-size: 10px; }
+    /* Push the collapsed hamburger container down so it clears the promo */
+    body:not(.tj-promo-dismissed) .nav.mobile-collapsed { top: 68px; }
   }
 </style>
 </head>
@@ -284,7 +288,7 @@
 
 <!-- ══ SITE-WIDE PROMO BAR — swap copy monthly ══ -->
 <div class="tj-promo" id="tj-promo" role="region" aria-label="Current promotion">
-  <a class="tj-promo__inner" href="/book-office">
+  <a class="tj-promo__inner" href="/book">
     <span class="tj-promo__eyebrow">July Only</span>
     <span class="tj-promo__text">Coppley Custom event — 20% off, or 50% off a second.</span>
     <span class="tj-promo__cta">Book →</span>
