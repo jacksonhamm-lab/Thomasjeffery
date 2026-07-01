@@ -588,6 +588,10 @@
     body:not(.tj-promo-dismissed) { padding-top: 54px; }
     body:not(.tj-promo-dismissed) .nav { top: 54px; }
     body:not(.tj-promo-dismissed) .nav-menu { top: 146px; }
+    /* When nav is collapsed to floating hamburger, open menu right below promo */
+    .nav.mobile-collapsed ~ .nav-menu,
+    body:not(.tj-promo-dismissed) .nav.mobile-collapsed ~ .nav-menu { top: 54px; }
+    body.tj-promo-dismissed .nav.mobile-collapsed ~ .nav-menu { top: 0; }
   }
   .tj-promo__inner { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 11px 44px; text-decoration: none; color: inherit; font-family: 'Lato', Arial, sans-serif; }
   .tj-promo__eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(245,240,235,0.6); }
