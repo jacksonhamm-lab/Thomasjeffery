@@ -9,24 +9,525 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1C2B39">
   <meta name="facebook-domain-verification" content="vrruclf3hfgl41dekz90zsejr3nz40" />
-  <title>Thomas Jeffery Men's Wear</title>
+  <title>Thomas Jeffery Men's Wear — Calgary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
+      font-family: 'Lato', Arial, sans-serif;
+      background: #F5F0EB;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ══════════════════════════════
+       FULL-SCREEN LAYOUT
+    ══════════════════════════════ */
+    .landing {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+    }
+
+    /* ══════════════════════════════
+       LOGO
+    ══════════════════════════════ */
+    .landing__logo {
+      height: 100px;
+      width: auto;
+      display: block;
+      margin-bottom: 16px;
+    }
+    @media (min-width: 600px) {
+      .landing__logo { height: 120px; }
+    }
+
+    /* ══════════════════════════════
+       TAGLINE
+    ══════════════════════════════ */
+    .landing__tagline {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.68);
+      margin-bottom: 56px;
+    }
+
+    /* ══════════════════════════════
+       PROMPT
+    ══════════════════════════════ */
+    .landing__prompt {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.48em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.78);
+      margin-bottom: 32px;
+    }
+    @media (min-width: 600px) {
+      .landing__prompt { font-size: 14px; }
+    }
+
+    /* ══════════════════════════════
+       TILES
+    ══════════════════════════════ */
+    .landing__tiles {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      width: 100%;
+      max-width: 820px;
+    }
+    @media (min-width: 580px) {
+      .landing__tiles { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    .tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 14px;
+      padding: 44px 28px;
+      background: #1C2B39;
+      border: 1px solid rgba(245,240,235,0.1);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.22s, border-color 0.22s, transform 0.22s, box-shadow 0.22s;
+      border-radius: 6px;
+    }
+    .tile:hover {
+      background: #243649;
+      border-color: rgba(245,240,235,0.28);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(28,43,57,0.18);
+    }
+    .tile__name {
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #F5F0EB;
+      line-height: 1.15;
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .tile__sub {
+      font-size: 12px;
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.06em;
+      color: rgba(245,240,235,0.88);
+      display: block;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    /* ══════════════════════════════
+       BROWSE ALL
+    ══════════════════════════════ */
+    .landing__skip {
+      margin-top: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.55);
+      transition: color 0.2s;
+      padding: 8px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .landing__skip:hover { color: rgba(28,43,57,0.82); }
+
+    /* ══════════════════════════════
+       FOOTER LINE
+    ══════════════════════════════ */
+    .landing__footer {
+      text-align: center;
+      padding: 28px 20px 32px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.62);
+    }
+  
+    /* ══ COOKIE CONSENT BANNER ══ */
+    .tj-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:1000;background:#1C2B39;color:#F5F0EB;border-radius:8px;box-shadow:0 12px 32px rgba(0,0,0,0.18);transform:translateY(120%);opacity:0;transition:transform 320ms cubic-bezier(0.4,0,0.2,1),opacity 320ms;pointer-events:none;max-width:720px;margin-inline:auto}
+    .tj-consent--show{transform:translateY(0);opacity:1;pointer-events:auto}
+    .tj-consent__inner{padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+    .tj-consent__text{margin:0;font-size:13px;line-height:1.6;color:#F5F0EB;font-family:'Lato',sans-serif;font-weight:300}
+    .tj-consent__link{color:#F5F0EB;text-decoration:underline}
+    .tj-consent__actions{display:flex;gap:10px;justify-content:flex-end}
+    .tj-consent__btn{font-family:'Lato',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;padding:10px 18px;border-radius:4px;border:1px solid #F5F0EB;cursor:pointer;background:transparent;color:#F5F0EB;transition:background 160ms,color 160ms}
+    .tj-consent__btn--primary{background:#F5F0EB;color:#1C2B39}
+    .tj-consent__btn--primary:hover{background:#E8E0D5}
+    .tj-consent__btn--ghost:hover{background:rgba(245,240,235,0.10)}
+    @media (min-width:700px){.tj-consent__inner{flex-direction:row;align-items:center}.tj-consent__text{flex:1}.tj-consent__actions{flex-shrink:0}}
+    @media (prefers-reduced-motion: reduce){.tj-consent{transition:opacity 200ms}}
+    /* ══ END COOKIE CONSENT BANNER ══ */
+  </style>
   <meta name="description" content="Calgary's locally-owned, family-run menswear store since 1968. Office, wedding, and casual menswear with expert fitting, in-house tailoring, and the brands worth knowing.">
   <link rel="canonical" href="https://thomasjeffery.ca/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Thomas Jeffery Men's Wear">
-  <meta property="og:title" content="Thomas Jeffery Men's Wear">
+  <meta property="og:title" content="Thomas Jeffery Men's Wear — Calgary">
   <meta property="og:description" content="Calgary's locally-owned, family-run menswear store since 1968. Office, wedding, and casual menswear with expert fitting, in-house tailoring, and the brands worth knowing.">
   <meta property="og:url" content="https://thomasjeffery.ca/">
-  <meta property="og:image" content="https://thomasjeffery.pages.dev/og-home.jpg">
-  <meta property="og:image:alt" content="Thomas Jeffery Men's Wear">
+  <meta property="og:image" content="https://thomasjeffery.pages.dev/casual-hero.webp">
+  <meta property="og:image:alt" content="Thomas Jeffery Men's Wear — Calgary">
   <meta property="og:locale" content="en_CA">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Thomas Jeffery Men's Wear">
+  <meta name="twitter:title" content="Thomas Jeffery Men's Wear — Calgary">
   <meta name="twitter:description" content="Calgary's locally-owned, family-run menswear store since 1968. Office, wedding, and casual menswear with expert fitting, in-house tailoring, and the brands worth knowing.">
-  <meta name="twitter:image" content="https://thomasjeffery.pages.dev/og-home.jpg">
-  <meta http-equiv="refresh" content="0; url=thomas-jeffery-homepage">
+  <meta name="twitter:image" content="https://thomasjeffery.pages.dev/casual-hero.webp">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ClothingStore",
+  "@id": "https://thomasjeffery.ca/#store",
+  "name": "Thomas Jeffery Men's Wear",
+  "alternateName": [
+    "Thomas Jeffery",
+    "TJ Mens Wear"
+  ],
+  "url": "https://thomasjeffery.ca/",
+  "image": "https://thomasjeffery.ca/casual-hero.webp",
+  "logo": "https://mcusercontent.com/a677e9b99521296ba09580ea8/images/8c767aaa-8e17-aad6-db85-b0383c08bd33.png",
+  "telephone": "+14032782445",
+  "priceRange": "$$$",
+  "description": "Locally-owned, family-run menswear store in Calgary since 1968. Office suiting, wedding suiting, and casual menswear, with in-house tailoring. Brands include Coppley, Paul Betenly, Jack Victor, Bugatti, and 7 Downie St.",
+  "foundingDate": "1968",
+  "slogan": "Calgary's menswear since 1968.",
+  "currenciesAccepted": "CAD",
+  "paymentAccepted": "Cash, Credit Card, Debit Card",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kingsland Village #303, 7337 Macleod Trail SW",
+    "addressLocality": "Calgary",
+    "addressRegion": "AB",
+    "postalCode": "T2H 0L8",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 50.99421,
+    "longitude": -114.0716
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "10:00",
+      "closes": "18:00"
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Calgary"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Alberta"
+    }
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+14032782445",
+    "contactType": "customer service",
+    "areaServed": "CA",
+    "availableLanguage": "English"
+  },
+  "brand": [
+    {
+      "@type": "Brand",
+      "name": "Coppley"
+    },
+    {
+      "@type": "Brand",
+      "name": "Paul Betenly"
+    },
+    {
+      "@type": "Brand",
+      "name": "Jack Victor"
+    },
+    {
+      "@type": "Brand",
+      "name": "Bugatti"
+    },
+    {
+      "@type": "Brand",
+      "name": "7 Downie St."
+    },
+    {
+      "@type": "Brand",
+      "name": "Alberto"
+    },
+    {
+      "@type": "Brand",
+      "name": "Stenstr\u00f6ms"
+    },
+    {
+      "@type": "Brand",
+      "name": "Robert Barakett"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/thomasjefferyofficial/",
+    "https://www.facebook.com/ThomasJefferyMensWear"
+  ]
+}
+  </script>
+  <!-- Analytics + Consent (gated by tj_consent) -->
+  <script>
+  (function(){
+    var KEY = 'tj_consent';
+    var GA_ID = 'G-G527X7EQX0';
+    var FB_ID = '1030193136327166';
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'functionality_storage': 'granted',
+      'security_storage': 'granted'
+    });
+
+    function loadGA(){
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+    }
+
+    function loadFB(){
+      !function(f,b,e,v,n,t,s){
+        if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s);
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', FB_ID);
+      fbq('track', 'PageView');
+    }
+
+    function applyConsent(state){
+      if(state === 'granted'){
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+        if(!window.__tjGaLoaded){ window.__tjGaLoaded = true; loadGA(); }
+        if(!window.__tjFbLoaded){ window.__tjFbLoaded = true; loadFB(); }
+      }
+    }
+
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch(e){}
+    if(stored === 'granted') applyConsent('granted');
+
+    window.tjConsent = {
+      set: function(state){
+        try { localStorage.setItem(KEY, state); } catch(e){}
+        applyConsent(state);
+      },
+      get: function(){
+        try { return localStorage.getItem(KEY); } catch(e){ return null; }
+      }
+    };
+  })();
+  </script>
+  <!-- End Analytics + Consent -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Where can I get a tailored suit in Calgary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Thomas Jeffery Men's Wear at Kingsland Village (7337 Macleod Trail SW, Calgary). Family-owned since 1968, with in-store fitting and in-house tailoring on every suit. Brands carried include Coppley, Paul Betenly, Jack Victor, Bugatti, and 7 Downie St."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who fits wedding parties in Calgary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Thomas Jeffery Men's Wear handles full wedding party fittings, from groom and groomsmen to the father of the bride or groom, with whole-party coordination and in-house alterations. Located at Kingsland Village in Calgary. Booking ahead is recommended; the store typically needs about two weeks to bring in the full run of sizes for a party."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do I buy Coppley suits in Calgary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Thomas Jeffery in Calgary carries Coppley ready-to-wear and runs the Coppley Custom program with bespoke suits built to your exact measurements, made in Hamilton, Canada. Located at Kingsland Village, 7337 Macleod Trail SW."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a menswear store in Calgary with in-house tailoring?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Thomas Jeffery Men's Wear at Kingsland Village handles most alterations in-house. The tailor works on the same schedule the store does, so suits leave fitted right. Open Monday to Saturday, 10am to 6pm. Closed Sundays and holidays."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What brands does Thomas Jeffery carry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Coppley, Paul Betenly, Jack Victor, Bugatti, 7 Downie St., Alberto, and other menswear brands across suiting, shirting, knits, sport shirts, denim, trousers, and outerwear. Both ready-to-wear and custom programs are available."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long has Thomas Jeffery been in Calgary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Thomas Jeffery Men's Wear has been part of Calgary's menswear scene since 1968. The store is currently owned by Len Hamm and is located at Kingsland Village, 7337 Macleod Trail SW."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an appointment at Thomas Jeffery?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Walk-ins are welcome during regular hours (Monday to Saturday, 10am to 6pm). For wedding parties, custom Coppley consultations, or a focused office wardrobe fitting, booking ahead is recommended through thomasjeffery.ca."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
-  <p>Redirecting... <a href="thomas-jeffery-homepage">Click here if not redirected</a></p>
+
+<main class="landing">
+  <img class="landing__logo"
+       src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/8c767aaa-8e17-aad6-db85-b0383c08bd33.png"
+       alt="Thomas Jeffery Men's Wear">
+
+  <p class="landing__tagline">Calgary's Menswear Since 1968</p>
+
+  <p class="landing__prompt">What brings you in?</p>
+
+  <div class="landing__tiles">
+    <a class="tile" href="office" data-mode="office">
+      <span class="tile__name">Office</span>
+      <span class="tile__sub">Sharp every day. Built to last.</span>
+    </a>
+    <a class="tile" href="wedding" data-mode="wedding">
+      <span class="tile__name">Wedding</span>
+      <span class="tile__sub">From the groom to the last groomsman.</span>
+    </a>
+    <a class="tile" href="casual" data-mode="casual">
+      <span class="tile__name">Casual</span>
+      <span class="tile__sub">Well-made pieces worth keeping.</span>
+    </a>
+  </div>
+
+  <a class="landing__skip" href="office">Browse all →</a>
+</main>
+
+<p class="landing__footer">Kingsland Village · 7337 Macleod Trail SW · Calgary, AB · (403) 278-2445 · <a href="privacy" style="color:inherit;">Privacy</a></p>
+
+<script>
+  /* ─── Returning visitor redirect ───
+     If a mode has been saved and this is the first homepage visit of this
+     browser session, jump straight to that mode page. After that, navigating
+     back to the homepage in the same session shows the chooser normally. */
+  (function () {
+    var modeUrls = { office: 'office', wedding: 'wedding', casual: 'casual' };
+    var saved = localStorage.getItem('tj_mode');
+    var sessionSeen = sessionStorage.getItem('tj_homepage_seen');
+    if (saved && modeUrls[saved] && !sessionSeen) {
+      sessionStorage.setItem('tj_homepage_seen', '1');
+      window.location.replace(modeUrls[saved]);
+      return;
+    }
+    sessionStorage.setItem('tj_homepage_seen', '1');
+  })();
+
+  /* ─── Save preference on tile click ─── */
+  document.querySelectorAll('.tile').forEach(function (tile) {
+    tile.addEventListener('click', function () {
+      var mode = this.getAttribute('data-mode');
+      if (mode) localStorage.setItem('tj_mode', mode);
+      /* href handles navigation */
+    });
+  });
+</script>
+
+
+
+<!-- ══ COOKIE CONSENT BANNER ══ -->
+<div class="tj-consent" id="tj-consent" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+  <div class="tj-consent__inner">
+    <p class="tj-consent__text">
+      We use cookies to understand how visitors use the site so we can improve it.
+      <a href="privacy" class="tj-consent__link">Privacy Policy</a>
+    </p>
+    <div class="tj-consent__actions">
+      <button type="button" class="tj-consent__btn tj-consent__btn--ghost" data-tj-consent="denied">Decline</button>
+      <button type="button" class="tj-consent__btn tj-consent__btn--primary" data-tj-consent="granted">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function(){
+    var banner = document.getElementById('tj-consent');
+    if(!banner) return;
+    function show(){ banner.classList.add('tj-consent--show'); }
+    function hide(){ banner.classList.remove('tj-consent--show'); }
+    banner.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-tj-consent]');
+      if(!btn) return;
+      if(window.tjConsent) window.tjConsent.set(btn.getAttribute('data-tj-consent'));
+      hide();
+    });
+    if(!window.tjConsent || !window.tjConsent.get()) show();
+    window.tjConsentOpen = show;
+  })();
+</script>
+<!-- ══ END COOKIE CONSENT BANNER ══ -->
+
 </body>
 </html>

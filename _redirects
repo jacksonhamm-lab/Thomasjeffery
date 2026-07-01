@@ -52,3 +52,6 @@
 # WP feeds — old subscribers may have RSS clients on these. 410 = gone.
 /feed/               /                   301
 /comments/feed/      /                   301
+
+# Legacy homepage path
+/thomas-jeffery-homepage  /  301
