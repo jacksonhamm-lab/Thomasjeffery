@@ -327,18 +327,24 @@
 
   <p class="landing__tagline">Calgary's Menswear Since 1968</p>
 
+  <!-- Event context banner, shown only when ?event=coppley is present -->
+  <div class="event-context" id="event-context" hidden>
+    <span class="event-context__eyebrow">Coppley Custom Event</span>
+    <span class="event-context__text">20% off single orders, or 50% off a second. Pick your fitting type below.</span>
+  </div>
+
   <p class="landing__prompt">What would you like to book?</p>
 
-  <div class="landing__tiles">
-    <a class="tile" href="book-office">
+  <div class="landing__tiles" id="landing-tiles">
+    <a class="tile" href="book-office" data-mode="office">
       <span class="tile__name">Office</span>
       <span class="tile__sub">Suits, sport coats, and trousers.</span>
     </a>
-    <a class="tile" href="book-wedding">
+    <a class="tile" href="book-wedding" data-mode="wedding">
       <span class="tile__name">Wedding</span>
       <span class="tile__sub">Groom and groomsmen, end to end.</span>
     </a>
-    <a class="tile" href="book-casual">
+    <a class="tile" href="book-casual" data-mode="casual">
       <span class="tile__name">Casual</span>
       <span class="tile__sub">Shirts, knits, denim, and more.</span>
     </a>
@@ -346,6 +352,51 @@
 
   <a class="landing__skip" href="/">← Back to home</a>
 </main>
+
+<style>
+  .event-context {
+    max-width: 640px;
+    background: #1C2B39;
+    color: #F5F0EB;
+    padding: 20px 24px;
+    margin: 0 auto 32px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .event-context__eyebrow {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(245,240,235,0.7);
+    margin-bottom: 8px;
+  }
+  .event-context__text {
+    display: block;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(245,240,235,0.95);
+  }
+</style>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var event = params.get('event');
+    if (event === 'coppley') {
+      var ctx = document.getElementById('event-context');
+      if (ctx) ctx.hidden = false;
+      // Forward ?type=custom to office + wedding tile hrefs.
+      // Casual is already a custom appointment by default, so no param needed.
+      document.querySelectorAll('#landing-tiles .tile').forEach(function (t) {
+        var mode = t.getAttribute('data-mode');
+        if (mode === 'office' || mode === 'wedding') {
+          t.setAttribute('href', t.getAttribute('href') + '?type=custom');
+        }
+      });
+    }
+  })();
+</script>
 
 <p class="landing__footer">Kingsland Village · 7337 Macleod Trail SW · Calgary, AB · (403) 278-2445 · <a href="privacy" style="color:inherit;">Privacy</a></p>
 
