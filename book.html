@@ -248,8 +248,59 @@
   })();
   </script>
   <!-- End Analytics + Consent -->
+  <style>
+  /* ══ SITE-WIDE PROMO BAR (swap copy for next month's offer) ══ */
+  .tj-promo { position: relative; background: #1C2B39; color: #F5F0EB; border-bottom: 1px solid rgba(245,240,235,0.12); z-index: 101; }
+  /* Shift the fixed nav + mobile menu down so they don't overlay the promo bar */
+  body:not(.tj-promo-dismissed) .nav { top: 42px; }
+  body:not(.tj-promo-dismissed) .nav-menu { top: 134px; }
+  @media (max-width: 699px) {
+    body:not(.tj-promo-dismissed) .nav { top: 54px; }
+    body:not(.tj-promo-dismissed) .nav-menu { top: 146px; }
+  }
+  .tj-promo__inner { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 11px 44px; text-decoration: none; color: inherit; font-family: 'Lato', Arial, sans-serif; }
+  .tj-promo__eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(245,240,235,0.6); }
+  .tj-promo__text { font-size: 13px; font-weight: 400; letter-spacing: 0.02em; color: rgba(245,240,235,0.96); }
+  .tj-promo__cta { font-size: 11px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; border-bottom: 1px solid rgba(245,240,235,0.45); padding-bottom: 1px; }
+  .tj-promo__close { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(245,240,235,0.55); font-size: 20px; line-height: 1; cursor: pointer; padding: 4px 10px; transition: color 0.15s; }
+  .tj-promo__close:hover { color: #F5F0EB; }
+  .tj-promo--hidden { display: none; }
+  @media (max-width: 699px) {
+    .tj-promo__inner { flex-direction: column; gap: 4px; padding: 9px 38px; text-align: center; }
+    .tj-promo__eyebrow { font-size: 9px; letter-spacing: 0.3em; }
+    .tj-promo__text { font-size: 12px; }
+    .tj-promo__cta { font-size: 10px; }
+  }
+</style>
 </head>
 <body>
+
+<!-- ══ SITE-WIDE PROMO BAR — swap copy monthly ══ -->
+<div class="tj-promo" id="tj-promo" role="region" aria-label="Current promotion">
+  <a class="tj-promo__inner" href="/book-office">
+    <span class="tj-promo__eyebrow">July Only</span>
+    <span class="tj-promo__text">Coppley Custom event — 20% off, or half off a second.</span>
+    <span class="tj-promo__cta">Book →</span>
+  </a>
+  <button type="button" class="tj-promo__close" data-tj-promo-close aria-label="Dismiss">&times;</button>
+</div>
+<script>
+(function(){
+  var KEY = 'tj_promo_2026_07_coppley';
+  var promo = document.getElementById('tj-promo');
+  if (!promo) return;
+  try { if (localStorage.getItem(KEY) === '1') { promo.classList.add('tj-promo--hidden'); document.body.classList.add('tj-promo-dismissed'); } } catch (e) {}
+  var close = promo.querySelector('[data-tj-promo-close]');
+  if (close) close.addEventListener('click', function(e){
+    e.stopPropagation(); e.preventDefault();
+    promo.classList.add('tj-promo--hidden');
+    document.body.classList.add('tj-promo-dismissed');
+    try { localStorage.setItem(KEY, '1'); } catch (err) {}
+  });
+})();
+</script>
+<!-- ══ END SITE-WIDE PROMO BAR ══ -->
+
 
 <main class="landing">
   <a href="/" style="text-decoration:none;">
