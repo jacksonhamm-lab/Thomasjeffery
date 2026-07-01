@@ -53,7 +53,7 @@
       background: rgba(245,240,235,0.97);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(28,43,57,0.07);
-      transition: padding 0.3s;
+      transition: padding 0.24s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .nav.scrolled { padding: 10px 20px; }
     
@@ -499,7 +499,7 @@
     body:not(.tj-promo-dismissed) .nav.mobile-collapsed ~ .nav-menu { top: 54px; }
     body.tj-promo-dismissed .nav.mobile-collapsed ~ .nav-menu { top: 0; }
   }
-  .tj-promo__inner { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 11px 44px; text-decoration: none; color: inherit; font-family: 'Lato', Arial, sans-serif; transition: padding 0.3s; }
+  .tj-promo__inner { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 11px 44px; text-decoration: none; color: inherit; font-family: 'Lato', Arial, sans-serif; transition: padding 0.24s cubic-bezier(0.4, 0, 0.2, 1); }
   .tj-promo.scrolled .tj-promo__inner { padding: 15px 44px; }
   .tj-promo__eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(245,240,235,0.6); }
   .tj-promo__text { font-size: 13px; font-weight: 400; letter-spacing: 0.02em; color: rgba(245,240,235,0.96); }
