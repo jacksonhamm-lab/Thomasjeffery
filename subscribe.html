@@ -432,7 +432,9 @@
       'security_storage': 'granted'
     });
 
-    function loadGA(){
+    // Load gtag script unconditionally; Consent Mode v2 above keeps tracking
+    // gated until consent is granted. Ensures Google's crawler always sees the tag.
+    (function(){
       var s = document.createElement('script');
       s.async = true;
       s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17246500151';
@@ -440,7 +442,9 @@
       gtag('js', new Date());
       gtag('config', GA_ID);
       gtag('config', 'AW-17246500151');
-    }
+    })();
+
+    function loadGA(){}
 
     function loadFB(){
       !function(f,b,e,v,n,t,s){
