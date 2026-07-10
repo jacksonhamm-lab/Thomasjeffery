@@ -509,6 +509,9 @@
       transition: background 0.2s;
     }
     .sticky-book:hover { background: #243649; }
+    /* Give the footer room to breathe above the sticky book button on mobile,
+       so Instagram / Facebook (last row of the footer) stay tappable. */
+    @media (max-width: 699px) { body { padding-bottom: 60px; } }
 
     /* ══ RESPONSIVE ══ */
     @media (min-width: 700px) {
