@@ -445,18 +445,20 @@
   </script>
   <style>
   /* ══ SITE-WIDE PROMO BAR (swap copy for next month's offer) ══ */
+  /* --promo-h holds the promo bar's rendered height. JS measures on load/resize
+     and updates this so nav positions self-correct when copy wraps taller. */
+  :root { --promo-h: 42px; }
+  @media (max-width: 699px) { :root { --promo-h: 66px; } }
+
   .tj-promo { position: fixed; top: 0; left: 0; right: 0; background: #1C2B39; color: #F5F0EB; border-bottom: 1px solid rgba(245,240,235,0.12); z-index: 101; }
   /* Push everything else down by promo height so nav + hero don't hide behind it */
-  body:not(.tj-promo-dismissed) { padding-top: 42px; }
-  body:not(.tj-promo-dismissed) .nav { top: 42px; }
-  body:not(.tj-promo-dismissed) .nav-menu { top: 134px; }
+  body:not(.tj-promo-dismissed) { padding-top: var(--promo-h); }
+  body:not(.tj-promo-dismissed) .nav { top: var(--promo-h); }
+  body:not(.tj-promo-dismissed) .nav-menu { top: calc(var(--promo-h) + 92px); }
   @media (max-width: 699px) {
-    body:not(.tj-promo-dismissed) { padding-top: 54px; }
-    body:not(.tj-promo-dismissed) .nav { top: 54px; }
-    body:not(.tj-promo-dismissed) .nav-menu { top: 146px; }
     /* When nav is collapsed to floating hamburger, open menu right below promo */
     .nav.mobile-collapsed ~ .nav-menu,
-    body:not(.tj-promo-dismissed) .nav.mobile-collapsed ~ .nav-menu { top: 54px; }
+    body:not(.tj-promo-dismissed) .nav.mobile-collapsed ~ .nav-menu { top: var(--promo-h); }
     body.tj-promo-dismissed .nav.mobile-collapsed ~ .nav-menu { top: 0; }
   }
   .tj-promo__inner { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 11px 44px; text-decoration: none; color: inherit; font-family: 'Lato', Arial, sans-serif; transition: padding 0.24s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -475,7 +477,7 @@
     .tj-promo__text { font-size: 12px; }
     .tj-promo__cta { font-size: 10px; }
     /* Push the collapsed hamburger container down so it clears the promo */
-    body:not(.tj-promo-dismissed) .nav.mobile-collapsed { top: 68px; }
+    body:not(.tj-promo-dismissed) .nav.mobile-collapsed { top: calc(var(--promo-h) + 14px); }
   }
 </style>
 </head>
@@ -507,7 +509,19 @@
     promo.classList.add('tj-promo--hidden');
     document.body.classList.add('tj-promo-dismissed');
     try { localStorage.setItem(KEY, '1'); } catch (err) {}
+    document.documentElement.style.setProperty('--promo-h', '0px');
   });
+  // Measure the promo's actual rendered height and expose as --promo-h.
+  // Runs on load + resize so wrapping copy on narrow phones doesn't hide
+  // the logo or floating hamburger behind the promo.
+  function measurePromo(){
+    if (document.body.classList.contains('tj-promo-dismissed')) return;
+    var h = promo.offsetHeight;
+    if (h > 0) document.documentElement.style.setProperty('--promo-h', h + 'px');
+  }
+  window.addEventListener('load', measurePromo);
+  window.addEventListener('resize', measurePromo);
+  if (document.readyState !== 'loading') requestAnimationFrame(measurePromo);
 })();
 </script>
 <!-- ══ END SITE-WIDE PROMO BAR ══ -->
