@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1C2B39">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="facebook-domain-verification" content="vrruclf3hfgl41dekz90zsejr3nz40" />
+  <title>Summer Sale — Thomas Jeffery Men's Wear Calgary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: #F5F0EB;
+      color: #1C2B39;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ══════════════════════════════
+       IMAGE PLACEHOLDERS
+    ══════════════════════════════ */
+    .photo {
+      background: #D9D3CC;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .photo--hero { height: 100%; min-height: 320px; }
+
+    /* ══════════════════════════════
+       NAV
+    ══════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(245,240,235,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(28,43,57,0.07);
+      transition: padding 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav.scrolled { padding: 10px 20px; }
+
+    .nav__logo img { height: 64px; width: auto; display: block; }
+    .nav__right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .nav__links { display: flex; align-items: center; gap: 20px; list-style: none; }
+    .nav__links a {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav__links a:hover { color: #1C2B39; }
+    .nav__book a {
+      color: #1C2B39;
+      border-bottom: 1px solid rgba(28,43,57,0.3);
+      padding-bottom: 2px;
+    }
+
+    .nav__logo { outline: none; -webkit-tap-highlight-color: transparent; display: inline-block; }
+    .nav__logo img { transition: filter 0.2s; }
+    .nav__logo:focus-visible img, .nav__logo:active img {
+      filter: drop-shadow(0 0 1px #1C2B39) drop-shadow(0 0 3px rgba(28,43,57,0.4));
+    }
+
+    /* ══ BACK TO TOP BUTTON ══ */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 95;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1C2B39;
+      color: #F5F0EB;
+      border: 1px solid rgba(245,240,235,0.2);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.25s, transform 0.25s, background 0.2s, border-color 0.2s;
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .back-to-top:hover { background: #243649; border-color: rgba(245,240,235,0.4); }
+    @media (max-width: 699px) { .back-to-top { bottom: 78px; right: 20px; } }
+
+    /* ══ MOBILE HAMBURGER + MENU ══ */
+    .nav__hamburger {
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      gap: 5px; width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer; padding: 0;
+    }
+    .nav__hamburger span {
+      display: block; width: 22px; height: 2px; background: #1C2B39;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-menu {
+      position: fixed; top: 92px; left: 0; right: 0;
+      background: #F5F0EB; border-bottom: 1px solid rgba(28,43,57,0.1);
+      z-index: 99; padding: 12px 0 20px;
+      transform: translateY(-110%); opacity: 0; pointer-events: none;
+      transition: transform 0.3s ease, opacity 0.2s ease;
+      max-height: calc(100vh - 92px); overflow-y: auto;
+    }
+    .nav-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .nav-menu__section {
+      display: block; padding: 14px 24px 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.36em;
+      text-transform: uppercase; color: rgba(28,43,57,0.4);
+    }
+    .nav-menu a {
+      display: block; padding: 14px 24px;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(28,43,57,0.78);
+      text-decoration: none; border-bottom: 1px solid rgba(28,43,57,0.06);
+    }
+    .nav-menu a:hover { background: rgba(28,43,57,0.04); color: #1C2B39; }
+    .nav-menu a.nav-menu__book { color: #1C2B39; font-weight: 700; background: rgba(28,43,57,0.05); }
+
+    @media (max-width: 699px) { .nav__links { display: none; } }
+    @media (max-width: 699px) {
+      .nav.mobile-collapsed {
+        background: transparent;
+        border-bottom: none;
+        backdrop-filter: none;
+        padding: 0;
+        pointer-events: none;
+      }
+      .nav.mobile-collapsed .nav__logo { display: none; }
+      .nav.mobile-collapsed .nav__right { pointer-events: auto; padding: 12px; margin-left: auto; align-items: flex-end; }
+      .nav.mobile-collapsed .nav__hamburger {
+        background: #1C2B39;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        box-shadow: 0 4px 14px rgba(28,43,57,0.25);
+      }
+      .nav.mobile-collapsed .nav__hamburger span { background: #F5F0EB; }
+    }
+
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
+      padding-top: 92px;
+    }
+    .hero__image { flex-shrink: 0; height: 80vw; min-height: 320px; order: -1; }
+    .hero__panel {
+      background: #1C2B39;
+      padding: 36px 24px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
+    .hero__eyebrow {
+      font-size: 12px; font-weight: 400;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(245,240,235,0.55);
+      margin-bottom: 18px; display: block;
+    }
+    .hero__title {
+      font-size: clamp(48px, 12vw, 92px);
+      font-weight: 300; letter-spacing: -0.01em;
+      color: #F5F0EB; line-height: 0.92;
+      margin-bottom: 24px;
+    }
+    .hero__rule { width: 40px; height: 1px; background: rgba(245,240,235,0.3); margin-bottom: 20px; }
+    .hero__sub {
+      font-size: 16px; font-weight: 400;
+      color: rgba(245,240,235,0.85); line-height: 1.75;
+      margin-bottom: 36px; max-width: 420px;
+    }
+    .hero__cta {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: #1C2B39; background: #F5F0EB;
+      padding: 16px 40px; text-decoration: none;
+      transition: background 0.2s; align-self: flex-start;
+      border-radius: 14px;
+    }
+    .hero__cta:hover { background: #fff; }
+
+    /* ══════════════════════════════
+       ACCESS STRIP
+    ══════════════════════════════ */
+    .access {
+      background: #E8E0D5;
+      border-bottom: 1px solid rgba(28,43,57,0.08);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .access__row {
+      display: flex; flex-direction: column; gap: 6px;
+      align-items: center; justify-content: center;
+    }
+    .access__eyebrow {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.36em; text-transform: uppercase;
+      color: rgba(28,43,57,0.55);
+    }
+    .access__text {
+      font-size: 15px; font-weight: 400;
+      color: #1C2B39; line-height: 1.6;
+      max-width: 640px;
+    }
+    .access__text strong { font-weight: 700; }
+
+    /* ══════════════════════════════
+       SECTION SHARED
+    ══════════════════════════════ */
+    .section__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5); margin-bottom: 12px;
+    }
+    .section__title {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 300; letter-spacing: 0.01em;
+      color: #1C2B39; line-height: 1.1; margin-bottom: 14px;
+    }
+    .section__body {
+      font-size: 16px; font-weight: 400; line-height: 1.8;
+      color: rgba(28,43,57,0.78); margin-bottom: 32px; max-width: 560px;
+    }
+
+    /* ══════════════════════════════
+       CATEGORY GRID
+    ══════════════════════════════ */
+    .cats { padding: 48px 20px; }
+    .cats__grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 14px; margin-top: 28px;
+    }
+    .cat {
+      background: #E8E0D5;
+      border: 1px solid rgba(28,43,57,0.08);
+      padding: 28px 24px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .cat:hover { border-color: rgba(28,43,57,0.2); box-shadow: 0 4px 20px rgba(28,43,57,0.07); }
+    .cat__name {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.34em;
+      text-transform: uppercase; color: rgba(28,43,57,0.55);
+      display: block; margin-bottom: 12px;
+    }
+    .cat__discount {
+      font-size: 28px; font-weight: 300; letter-spacing: 0.01em;
+      color: #1C2B39; line-height: 1.15; margin-bottom: 10px;
+    }
+    .cat__discount strong { font-weight: 700; }
+    .cat__note {
+      font-size: 14px; font-weight: 400; line-height: 1.65;
+      color: rgba(28,43,57,0.7);
+    }
+    .cat--wide {
+      grid-column: 1 / -1;
+    }
+    .cat--highlight {
+      background: #1C2B39;
+      border-color: #1C2B39;
+    }
+    .cat--highlight .cat__name { color: rgba(245,240,235,0.6); }
+    .cat--highlight .cat__discount { color: #F5F0EB; }
+    .cat--highlight .cat__discount strong { color: #F5F0EB; }
+    .cat--highlight .cat__note { color: rgba(245,240,235,0.8); }
+    .cat__fine {
+      display: block; margin-top: 10px;
+      font-size: 12px; font-style: italic;
+      color: rgba(28,43,57,0.55);
+    }
+
+    /* ══════════════════════════════
+       CLOSING
+    ══════════════════════════════ */
+    .closing {
+      background: #1C2B39;
+      padding: 56px 20px;
+      text-align: center;
+    }
+    .closing__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(245,240,235,0.55); margin-bottom: 16px;
+    }
+    .closing__title {
+      font-size: clamp(32px, 6vw, 52px); font-weight: 300;
+      color: #F5F0EB; line-height: 1.15; margin-bottom: 20px;
+    }
+    .closing__sub {
+      font-size: 16px; font-weight: 400; color: rgba(245,240,235,0.78);
+      line-height: 1.75; margin-bottom: 36px;
+      max-width: 500px; margin-left: auto; margin-right: auto;
+    }
+    .closing__cta {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: #1C2B39; background: #F5F0EB;
+      padding: 18px 52px; text-decoration: none; transition: background 0.2s;
+      border-radius: 14px;
+    }
+    .closing__cta:hover { background: #fff; }
+    .closing__walkin {
+      margin-top: 20px; font-size: 14px; font-weight: 400;
+      font-style: italic; color: rgba(245,240,235,0.55); letter-spacing: 0.02em;
+    }
+    .closing__walkin strong { font-weight: 700; font-style: normal; color: rgba(245,240,235,0.75); }
+
+    /* ══════════════════════════════
+       FOOTER (unified across site)
+    ══════════════════════════════ */
+    .footer { background: #1C2B39; padding: 64px 24px 36px; border-top: 1px solid rgba(245,240,235,0.07); }
+    .footer__logo { height: 84px; width: auto; display: block; margin: 0 0 36px; opacity: 0.92; }
+    .footer__eyebrow {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(245,240,235,0.55); margin-bottom: 14px;
+    }
+    .footer__title {
+      font-size: clamp(30px, 6vw, 44px); font-weight: 300;
+      letter-spacing: 0.01em; color: #F5F0EB;
+      line-height: 1.1; margin-bottom: 40px;
+    }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
+    .footer__col h4 {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.32em;
+      text-transform: uppercase; color: rgba(245,240,235,0.55); margin-bottom: 14px;
+    }
+    .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer__col ul a {
+      font-size: 15px; font-weight: 400; letter-spacing: 0.04em;
+      color: rgba(245,240,235,0.78); text-decoration: none; transition: color 0.2s;
+    }
+    .footer__col ul a:hover { color: #F5F0EB; }
+    .footer__address, .footer__hours {
+      font-size: 15px; font-weight: 400; line-height: 1.85; color: rgba(245,240,235,0.78);
+    }
+    .footer__phone { margin-top: 14px; font-size: 15px; font-weight: 700; letter-spacing: 0.02em; }
+    .footer__phone a { color: rgba(245,240,235,0.85); text-decoration: none; }
+    .footer__phone a:hover { color: #F5F0EB; }
+    .footer__cta-row { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+    .footer__btn {
+      display: inline-block; padding: 16px 28px; text-align: center;
+      text-decoration: none; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      border-radius: 10px;
+    }
+    .footer__btn--primary { background: #F5F0EB; color: #1C2B39; }
+    .footer__btn--primary:hover { background: #fff; }
+    .footer__btn--ghost { background: transparent; color: #F5F0EB; border: 1px solid rgba(245,240,235,0.4); }
+    .footer__btn--ghost:hover { border-color: #F5F0EB; background: rgba(245,240,235,0.06); }
+    .footer__divider { border: none; border-top: 1px solid rgba(245,240,235,0.1); margin-bottom: 22px; }
+    .footer__bottom { display: flex; flex-direction: column; gap: 14px; }
+    .footer__copy {
+      font-size: 13px; font-weight: 400; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(245,240,235,0.45);
+    }
+    .footer__social { display: flex; gap: 22px; }
+    .footer__social a {
+      font-size: 12px; font-weight: 400; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(245,240,235,0.55);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer__social a:hover { color: rgba(245,240,235,0.9); }
+
+    /* ══════════════════════════════
+       MOBILE STICKY BOOK BUTTON
+    ══════════════════════════════ */
+    .sticky-book {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+      display: block; background: #1C2B39; color: #F5F0EB;
+      font-family: 'Lato', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      text-align: center; text-decoration: none;
+      padding: 18px 20px; border-top: 1px solid rgba(245,240,235,0.1);
+      transition: background 0.2s;
+    }
+    .sticky-book:hover { background: #243649; }
+    @media (max-width: 699px) { body { padding-bottom: 60px; } }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (min-width: 700px) {
+      .nav { padding: 14px 40px; }
+      .nav.scrolled { padding: 10px 40px; }
+      .nav__logo img { height: 72px; }
+      .nav__links { gap: 32px; }
+      .nav__hamburger { display: none; }
+      .nav-menu { display: none; }
+
+      .hero { flex-direction: row; padding-top: 0; min-height: 100svh; }
+      .hero__image { order: 0; width: 45%; height: auto; min-height: unset; }
+      .hero__panel { padding: 140px 52px 72px; }
+
+      .access { padding: 32px 48px; }
+      .access__row { flex-direction: row; gap: 24px; }
+
+      .cats { padding: 64px 48px; }
+      .cats__grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+
+      .closing { padding: 96px 48px; }
+
+      .footer { padding: 80px 48px 40px; }
+      .footer__logo { height: 100px; margin: 0 0 44px; }
+      .footer__title { margin-bottom: 48px; }
+      .footer__grid { grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+      .footer__cta-row { flex-direction: row; gap: 14px; margin-bottom: 48px; }
+      .footer__bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+
+      .sticky-book { display: none; }
+    }
+
+    @media (min-width: 1024px) {
+      .nav { padding: 14px 64px; }
+      .hero__image { width: 47%; }
+      .hero__panel { padding: 160px 72px 80px; }
+      .cats { padding: 80px 64px; }
+      .cats__grid { grid-template-columns: 1fr 1fr 1fr; }
+      .closing { padding: 112px 64px; }
+      .footer { padding: 96px 64px 44px; }
+      .footer__logo { height: 112px; }
+    }
+
+    /* ══ COOKIE CONSENT BANNER ══ */
+    .tj-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:1000;background:#1C2B39;color:#F5F0EB;border-radius:8px;box-shadow:0 12px 32px rgba(0,0,0,0.18);transform:translateY(120%);opacity:0;transition:transform 320ms cubic-bezier(0.4,0,0.2,1),opacity 320ms;pointer-events:none;max-width:720px;margin-inline:auto}
+    .tj-consent--show{transform:translateY(0);opacity:1;pointer-events:auto}
+    .tj-consent__inner{padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+    .tj-consent__text{margin:0;font-size:13px;line-height:1.6;color:#F5F0EB;font-family:'Lato',sans-serif;font-weight:300}
+    .tj-consent__link{color:#F5F0EB;text-decoration:underline}
+    .tj-consent__actions{display:flex;gap:10px;justify-content:flex-end}
+    .tj-consent__btn{font-family:'Lato',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;padding:10px 18px;border-radius:4px;border:1px solid #F5F0EB;cursor:pointer;background:transparent;color:#F5F0EB;transition:background 160ms,color 160ms}
+    .tj-consent__btn--primary{background:#F5F0EB;color:#1C2B39}
+    .tj-consent__btn--primary:hover{background:#E8E0D5}
+    .tj-consent__btn--ghost:hover{background:rgba(245,240,235,0.10)}
+    @media (min-width:700px){.tj-consent__inner{flex-direction:row;align-items:center}.tj-consent__text{flex:1}.tj-consent__actions{flex-shrink:0}}
+    @media (prefers-reduced-motion: reduce){.tj-consent{transition:opacity 200ms}}
+  </style>
+  <meta name="description" content="The Thomas Jeffery Summer Sale. Subscriber preview through Sunday, July 19. Public access opens Monday, July 20. Sportcoats, suits, dress pants and shirts, denim, casual — up to 70% off on select pieces. Sale ends Saturday, August 8.">
+  <link rel="canonical" href="https://thomasjeffery.ca/summer-sale">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Thomas Jeffery Men's Wear">
+  <meta property="og:title" content="Summer Sale — Thomas Jeffery Men's Wear Calgary">
+  <meta property="og:description" content="Subscriber preview through Sunday, July 19. Public access opens Monday, July 20. Up to 70% off on select pieces. Sale ends Saturday, August 8.">
+  <meta property="og:url" content="https://thomasjeffery.ca/summer-sale">
+  <meta property="og:image" content="https://thomasjeffery.ca/tj-summer-sale-hero.png">
+  <meta property="og:image:alt" content="Summer Sale — Thomas Jeffery Men's Wear Calgary">
+  <meta property="og:locale" content="en_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Summer Sale — Thomas Jeffery Men's Wear Calgary">
+  <meta name="twitter:description" content="Subscriber preview through Sunday, July 19. Public access opens Monday, July 20. Up to 70% off on select pieces. Sale ends Saturday, August 8.">
+  <meta name="twitter:image" content="https://thomasjeffery.ca/tj-summer-sale-hero.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thomasjeffery.ca/" },
+    { "@type": "ListItem", "position": 2, "name": "Summer Sale", "item": "https://thomasjeffery.ca/summer-sale" }
+  ]
+}
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17246500151"></script>
+  <!-- Analytics + Consent (gated by tj_consent) -->
+  <script>
+  (function(){
+    var KEY = 'tj_consent';
+    var GA_ID = 'G-G527X7EQX0';
+    var FB_ID = '1030193136327166';
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'functionality_storage': 'granted',
+      'security_storage': 'granted'
+    });
+
+    (function(){
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17246500151';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+      gtag('config', 'AW-17246500151');
+    })();
+
+    function loadFB(){
+      !function(f,b,e,v,n,t,s){
+        if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s);
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', FB_ID);
+      fbq('track', 'PageView');
+    }
+
+    function applyConsent(state){
+      if(state === 'granted'){
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+        if(!window.__tjFbLoaded){ window.__tjFbLoaded = true; loadFB(); }
+      }
+    }
+
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch(e){}
+    if(stored === 'granted') applyConsent('granted');
+
+    window.tjConsent = {
+      set: function(state){
+        try { localStorage.setItem(KEY, state); } catch(e){}
+        applyConsent(state);
+      },
+      get: function(){
+        try { return localStorage.getItem(KEY); } catch(e){ return null; }
+      }
+    };
+  })();
+  </script>
+  <!-- End Analytics + Consent -->
+  <style>
+  /* ══ SITE-WIDE PROMO BAR ══ */
+  :root { --promo-h: 42px; }
+  @media (max-width: 699px) { :root { --promo-h: 66px; } }
+
+  .tj-promo { position: fixed; top: 0; left: 0; right: 0; background: #1C2B39; color: #F5F0EB; border-bottom: 1px solid rgba(245,240,235,0.12); z-index: 101; }
+  body:not(.tj-promo-dismissed) { padding-top: var(--promo-h); }
+  body:not(.tj-promo-dismissed) .nav { top: var(--promo-h); }
+  body:not(.tj-promo-dismissed) .nav-menu { top: calc(var(--promo-h) + 92px); }
+  @media (max-width: 699px) {
+    .nav.mobile-collapsed ~ .nav-menu,
+    body:not(.tj-promo-dismissed) .nav.mobile-collapsed ~ .nav-menu { top: var(--promo-h); }
+    body.tj-promo-dismissed .nav.mobile-collapsed ~ .nav-menu { top: 0; }
+  }
+  .tj-promo__inner { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 11px 44px; text-decoration: none; color: inherit; font-family: 'Lato', Arial, sans-serif; transition: padding 0.24s cubic-bezier(0.4, 0, 0.2, 1); }
+  .tj-promo.scrolled .tj-promo__inner { padding: 15px 44px; }
+  .tj-promo__eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(245,240,235,0.6); }
+  .tj-promo__text { font-size: 13px; font-weight: 400; letter-spacing: 0.02em; color: rgba(245,240,235,0.96); }
+  .tj-promo__cta { font-size: 11px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; border-bottom: 1px solid rgba(245,240,235,0.45); padding-bottom: 1px; }
+  .tj-promo__close { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(245,240,235,0.55); font-size: 20px; line-height: 1; cursor: pointer; padding: 4px 10px; transition: color 0.15s; }
+  .tj-promo__close:hover { color: #F5F0EB; }
+  .tj-promo--hidden { display: none; }
+  @media (max-width: 699px) {
+    .tj-promo__inner { flex-direction: column; gap: 4px; padding: 9px 38px; text-align: center; }
+    .tj-promo.scrolled .tj-promo__inner { padding: 9px 38px; }
+    .tj-promo__eyebrow { font-size: 9px; letter-spacing: 0.3em; }
+    .tj-promo__text { font-size: 12px; }
+    .tj-promo__cta { font-size: 10px; }
+    body:not(.tj-promo-dismissed) .nav.mobile-collapsed { top: calc(var(--promo-h) + 14px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ SITE-WIDE PROMO BAR ══ -->
+<div class="tj-promo" id="tj-promo" role="region" aria-label="Current promotion">
+  <a class="tj-promo__inner" href="/book?event=coppley">
+    <span class="tj-promo__eyebrow">July Only</span>
+    <span class="tj-promo__text">Coppley Custom, all July. Buy one: 20% off. Buy two: the second is half price.</span>
+    <span class="tj-promo__cta">Book &rarr;</span>
+  </a>
+  <button type="button" class="tj-promo__close" data-tj-promo-close aria-label="Dismiss">&times;</button>
+</div>
+<script>
+(function(){
+  var KEY = 'tj_promo_2026_07_coppley';
+  var promo = document.getElementById('tj-promo');
+  if (!promo) return;
+  try {
+    if (localStorage.getItem(KEY) === '1') {
+      promo.classList.add('tj-promo--hidden');
+      document.body.classList.add('tj-promo-dismissed');
+    }
+  } catch (e) {}
+  var close = promo.querySelector('[data-tj-promo-close]');
+  if (close) close.addEventListener('click', function(e){
+    e.stopPropagation(); e.preventDefault();
+    promo.classList.add('tj-promo--hidden');
+    document.body.classList.add('tj-promo-dismissed');
+    try { localStorage.setItem(KEY, '1'); } catch (err) {}
+    document.documentElement.style.setProperty('--promo-h', '0px');
+  });
+  function measurePromo(){
+    if (document.body.classList.contains('tj-promo-dismissed')) return;
+    var h = promo.offsetHeight;
+    if (h > 0) document.documentElement.style.setProperty('--promo-h', h + 'px');
+  }
+  window.addEventListener('load', measurePromo);
+  window.addEventListener('resize', measurePromo);
+  if (document.readyState !== 'loading') requestAnimationFrame(measurePromo);
+})();
+</script>
+<!-- ══ END SITE-WIDE PROMO BAR ══ -->
+
+<!-- ══ MOBILE STICKY BOOK ══ -->
+<a class="sticky-book" href="/find-us">Get Directions &rarr;</a>
+
+<!-- ══ BACK TO TOP ══ -->
+<button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">&uarr;</button>
+
+<!-- ══════════════════════════════
+     NAV
+══════════════════════════════ -->
+<nav class="nav" id="nav">
+  <a class="nav__logo" href="/" aria-label="Back to home">
+    <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/8c767aaa-8e17-aad6-db85-b0383c08bd33.png"
+         alt="Thomas Jeffery Men's Wear" style="height:64px;width:auto;display:block;">
+  </a>
+  <div class="nav__right">
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="about">About</a></li>
+      <li><a href="brands">Brands</a></li>
+      <li><a href="#" data-tj-subscribe>Subscribe</a></li>
+      <li><a href="contact">Contact</a></li>
+      <li class="nav__book"><a href="book">Book</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══ MOBILE MENU ══ -->
+<div class="nav-menu" id="nav-menu">
+  <span class="nav-menu__section">Browse</span>
+  <a href="office">Office</a>
+  <a href="wedding">Wedding</a>
+  <a href="casual">Casual</a>
+  <span class="nav-menu__section">More</span>
+  <a href="about">About</a>
+  <a href="contact">Contact</a>
+  <a href="brands">Brands</a>
+  <a href="#" data-tj-subscribe>Subscribe</a>
+  <a class="nav-menu__book" href="book">Book &rarr;</a>
+</div>
+
+<!-- ══════════════════════════════
+     HERO
+══════════════════════════════ -->
+<section class="hero">
+  <div class="hero__image photo photo--hero">
+    <img src="tj-summer-sale-hero.png" width="1200" height="896" alt="Thomas Jeffery Men's Wear — Summer Sale">
+  </div>
+  <div class="hero__panel">
+    <span class="hero__eyebrow">Summer Sale &middot; 2026</span>
+    <h1 class="hero__title">Summer<br>Sale.</h1>
+    <div class="hero__rule"></div>
+    <p class="hero__sub">Up to 70% off on select pieces &mdash; big markdowns across sportcoats, suits, dress shirts, denim and more. Subscribers first this week; public access opens Monday, July 20.</p>
+    <a class="hero__cta" href="#categories">See the Sale</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     ACCESS STRIP
+══════════════════════════════ -->
+<section class="access">
+  <div class="access__row">
+    <span class="access__eyebrow">Access</span>
+    <p class="access__text">
+      <strong>Subscriber preview</strong> through Sunday, July 19. <strong>Public access</strong> opens Monday, July 20. Sale ends <strong>Saturday, August 8</strong>.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     CATEGORY GRID
+══════════════════════════════ -->
+<section class="cats" id="categories">
+  <span class="section__eyebrow">What's On Sale</span>
+  <h2 class="section__title">Category by category.</h2>
+  <p class="section__body">Discounts vary by department. Here's what to expect when you walk in.</p>
+
+  <div class="cats__grid">
+
+    <div class="cat cat--wide cat--highlight">
+      <span class="cat__name">Select Pieces</span>
+      <p class="cat__discount">Up to <strong>70% off</strong></p>
+      <p class="cat__note">Marked-down individual pieces throughout the store &mdash; while they last.</p>
+    </div>
+
+    <div class="cat">
+      <span class="cat__name">Sportcoats</span>
+      <p class="cat__discount">Up to <strong>35% off</strong> each</p>
+      <p class="cat__note">Best pricing when you buy two.</p>
+    </div>
+
+    <div class="cat">
+      <span class="cat__name">Suits &middot; Paul Betenly Patterned</span>
+      <p class="cat__discount">Up to <strong>25% off</strong> each</p>
+      <p class="cat__note">Best pricing when you buy two.</p>
+    </div>
+
+    <div class="cat">
+      <span class="cat__name">Dress Pants</span>
+      <p class="cat__discount">Up to <strong>35% off</strong> each</p>
+      <p class="cat__note">Best pricing when you buy two. Paul Betenly separates: 20% off.</p>
+    </div>
+
+    <div class="cat">
+      <span class="cat__name">Dress Shirts</span>
+      <p class="cat__discount">Up to <strong>50% off</strong></p>
+      <p class="cat__note"><em>Additional alteration charges on 50% off items.</em></p>
+    </div>
+
+    <div class="cat">
+      <span class="cat__name">Sport Shirts</span>
+      <p class="cat__discount">Up to <strong>30% off</strong> each</p>
+      <p class="cat__note">Best pricing when you buy two.</p>
+    </div>
+
+    <div class="cat">
+      <span class="cat__name">Casual Pants</span>
+      <p class="cat__discount"><strong>20% off</strong></p>
+      <p class="cat__note">Alberto, 34 Heritage, and more.</p>
+    </div>
+
+    <div class="cat cat--wide">
+      <span class="cat__name">Denim</span>
+      <p class="cat__discount">AG: <strong>50% off</strong> &middot; 34 Heritage, Fidelity, Alberto: <strong>30% off</strong></p>
+      <p class="cat__note"><em>Additional alteration charges on 50% off items.</em></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     CLOSING
+══════════════════════════════ -->
+<section class="closing">
+  <span class="closing__eyebrow">Come See Us</span>
+  <h2 class="closing__title">One store.<br>Kingsland Village.</h2>
+  <p class="closing__sub">The sale is in-store only. Walk in any day &mdash; we'll show you what's on and help you find your size.</p>
+  <a class="closing__cta" href="/find-us">Get Directions</a>
+  <p class="closing__walkin">
+    Mon &ndash; Sat &nbsp;10am &ndash; 6pm<br>
+    <strong>Closed Sundays</strong>
+  </p>
+</section>
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer class="footer">
+  <span class="footer__eyebrow">Find Us</span>
+  <h2 class="footer__title">One store.<br>Kingsland Village.</h2>
+
+  <div class="footer__grid">
+    <div class="footer__col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="about">About</a></li>
+        <li><a href="brands">Brands</a></li>
+        <li><a href="office">Office</a></li>
+        <li><a href="wedding">Wedding</a></li>
+        <li><a href="casual">Casual</a></li>
+        <li><a href="subscribe">Subscribe</a></li>
+        <li><a href="book">Book a Consultation</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Address</h4>
+      <div class="footer__address">
+        Kingsland Village #303<br>
+        7337 Macleod Trail SW<br>
+        Calgary, AB &nbsp;T2H 0L8
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Hours &amp; Contact</h4>
+      <div class="footer__hours">
+        Mon &ndash; Sat &nbsp;10am &ndash; 6pm<br>
+        Closed Sundays &amp; Holidays
+      </div>
+      <div class="footer__phone">
+        <a href="tel:+14032782445">(403) 278-2445</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__cta-row">
+    <a class="footer__btn footer__btn--primary" href="book">Book a Consultation</a>
+    <a class="footer__btn footer__btn--ghost" href="/find-us">Get Directions</a>
+  </div>
+
+  <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/50fa581f-6078-5021-27fa-4c15ad9d947f.png"
+       alt="Thomas Jeffery Men's Wear" class="footer__logo">
+
+  <hr class="footer__divider">
+  <div class="footer__bottom">
+    <p class="footer__copy">&copy; 2026 Thomas Jeffery Men's Wear. All rights reserved. &middot; <a href="privacy" style="color:inherit; text-decoration:underline;">Privacy</a></p>
+    <div class="footer__social">
+      <a href="https://www.instagram.com/thomasjefferyofficial/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/ThomasJefferyMensWear" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── Nav scroll ── */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+    var _p = document.getElementById('tj-promo');
+    if (_p) _p.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── Mobile hamburger menu ── */
+  var hamburger = document.getElementById('nav-hamburger');
+  var navMenu = document.getElementById('nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function () {
+      var isOpen = navMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  /* ── Back to top ── */
+  var backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    window.addEventListener('scroll', function () {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+
+<!-- ══ SUBSCRIBE POPUP ══ -->
+<style>
+  .tj-popup { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+  .tj-popup.tj-popup--show { display: flex; }
+  .tj-popup__backdrop { position: absolute; inset: 0; background: rgba(28,43,57,0.55); backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.3s ease; }
+  .tj-popup--show .tj-popup__backdrop { opacity: 1; }
+  .tj-popup__card { position: relative; background: #F5F0EB; width: 100%; max-width: 760px; max-height: calc(100vh - 40px); overflow-y: auto; display: grid; grid-template-columns: 1fr; transform: translateY(20px); opacity: 0; transition: transform 0.35s ease, opacity 0.3s ease; box-shadow: 0 30px 80px rgba(28,43,57,0.35); }
+  .tj-popup--show .tj-popup__card { transform: translateY(0); opacity: 1; }
+  .tj-popup__photo { background: #D9D3CC; position: relative; overflow: hidden; aspect-ratio: 4/3; }
+  .tj-popup__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .tj-popup__text { padding: 28px 24px 28px; display: flex; flex-direction: column; }
+  .tj-popup__eyebrow { font-family: 'Lato', Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.36em; text-transform: uppercase; color: rgba(28,43,57,0.5); margin-bottom: 12px; }
+  .tj-popup__title { font-family: 'Lato', Arial, sans-serif; font-size: clamp(24px, 5vw, 34px); font-weight: 300; color: #1C2B39; line-height: 1.15; margin: 0 0 14px; letter-spacing: 0.01em; }
+  .tj-popup__body { font-family: 'Lato', Arial, sans-serif; font-size: 15px; line-height: 1.7; color: rgba(28,43,57,0.78); margin: 0 0 22px; }
+  .tj-popup__btn { display: inline-block; background: #1C2B39; color: #F5F0EB; font-family: 'Lato', Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; padding: 16px 22px; text-align: center; text-decoration: none; transition: background 0.2s; margin-bottom: 10px; }
+  .tj-popup__btn:hover { background: #243649; }
+  .tj-popup__dismiss { background: none; border: none; font-family: 'Lato', Arial, sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(28,43,57,0.5); cursor: pointer; padding: 10px 0 0; text-align: center; transition: color 0.2s; }
+  .tj-popup__dismiss:hover { color: #1C2B39; }
+  .tj-popup__close { position: absolute; top: 10px; right: 12px; z-index: 2; width: 36px; height: 36px; background: rgba(245,240,235,0.92); border: none; cursor: pointer; font-family: 'Lato', Arial, sans-serif; font-size: 22px; line-height: 1; color: #1C2B39; transition: background 0.2s; }
+  .tj-popup__close:hover { background: #fff; }
+  @media (min-width: 700px) {
+    .tj-popup__card { grid-template-columns: 1fr 1fr; max-height: calc(100vh - 60px); }
+    .tj-popup__photo { aspect-ratio: auto; height: 100%; min-height: 360px; }
+    .tj-popup__text { padding: 44px 40px; justify-content: center; }
+    .tj-popup__close { top: 14px; right: 16px; }
+  }
+</style>
+<div class="tj-popup" id="tj-popup" role="dialog" aria-modal="true" aria-labelledby="tj-popup-title">
+  <div class="tj-popup__backdrop" data-tj-popup-close></div>
+  <div class="tj-popup__card">
+    <button class="tj-popup__close" data-tj-popup-close aria-label="Close">&times;</button>
+    <div class="tj-popup__photo"><img src="subscribe-hero.webp" width="928" height="1152" srcset="subscribe-hero-600w.webp 483w, subscribe-hero.webp 928w" sizes="100vw" alt=""></div>
+    <div class="tj-popup__text">
+      <span class="tj-popup__eyebrow">A Little Something</span>
+      <h2 class="tj-popup__title" id="tj-popup-title">$50 off your first visit.</h2>
+      <p class="tj-popup__body">Subscribe and we will send you $50 off your first purchase of $250 or more on full price items.</p>
+      <a class="tj-popup__btn" href="subscribe" data-tj-popup-cta>Subscribe</a>
+      <button class="tj-popup__dismiss" type="button" data-tj-popup-close>No thanks</button>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var STORAGE_KEY = 'tj_subscribe_seen';
+  var SUBSCRIBED_KEY = 'tj_subscribed';
+  var DELAY_MS = 3000;
+  function getFlag(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function setFlag(k){ try { localStorage.setItem(k, '1'); } catch (e) {} }
+  var subscribed = getFlag(SUBSCRIBED_KEY);
+  var seen = getFlag(STORAGE_KEY);
+  var popup = document.getElementById('tj-popup');
+  if (!popup) return;
+  function show(){ popup.classList.add('tj-popup--show'); }
+  function dismiss(){ setFlag(STORAGE_KEY); popup.classList.remove('tj-popup--show'); }
+  window.tjShowPopup = show;
+  if (!subscribed && !seen) {
+    setTimeout(show, DELAY_MS);
+  }
+  popup.addEventListener('click', function (e) {
+    if (e.target.closest('[data-tj-popup-close]')) dismiss();
+    if (e.target.closest('[data-tj-popup-cta]')) setFlag(STORAGE_KEY);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && popup.classList.contains('tj-popup--show')) dismiss();
+  });
+  document.querySelectorAll('[data-tj-subscribe]').forEach(function (t) {
+    if (subscribed) {
+      var hideTarget = t.closest('li') || t;
+      hideTarget.style.display = 'none';
+    } else {
+      t.addEventListener('click', function (e) {
+        e.preventDefault();
+        show();
+      });
+    }
+  });
+})();
+</script>
+<!-- ══ END SUBSCRIBE POPUP ══ -->
+
+<!-- ══ COOKIE CONSENT BANNER ══ -->
+<div class="tj-consent" id="tj-consent" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+  <div class="tj-consent__inner">
+    <p class="tj-consent__text">
+      We use cookies to understand how visitors use the site so we can improve it.
+      <a href="privacy" class="tj-consent__link">Privacy Policy</a>
+    </p>
+    <div class="tj-consent__actions">
+      <button type="button" class="tj-consent__btn tj-consent__btn--ghost" data-tj-consent="denied">Decline</button>
+      <button type="button" class="tj-consent__btn tj-consent__btn--primary" data-tj-consent="granted">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function(){
+    var banner = document.getElementById('tj-consent');
+    if(!banner) return;
+    function show(){ banner.classList.add('tj-consent--show'); }
+    function hide(){ banner.classList.remove('tj-consent--show'); }
+    banner.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-tj-consent]');
+      if(!btn) return;
+      if(window.tjConsent) window.tjConsent.set(btn.getAttribute('data-tj-consent'));
+      hide();
+    });
+    if(!window.tjConsent || !window.tjConsent.get()) show();
+    window.tjConsentOpen = show;
+  })();
+</script>
+<!-- ══ END COOKIE CONSENT BANNER ══ -->
+
+<script>
+(function(){
+  var nav = document.querySelector('.nav');
+  if (!nav) return;
+  var mql = window.matchMedia('(max-width: 699px)');
+  var threshold = 400;
+  function onScroll(){
+    if (!mql.matches) { nav.classList.remove('mobile-collapsed'); return; }
+    var y = window.scrollY || window.pageYOffset;
+    if (y > threshold) nav.classList.add('mobile-collapsed');
+    else nav.classList.remove('mobile-collapsed');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  mql.addEventListener ? mql.addEventListener('change', onScroll) : mql.addListener(onScroll);
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
