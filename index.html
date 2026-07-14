@@ -560,8 +560,16 @@
   /* ─── Returning visitor redirect ───
      If a mode has been saved and this is the first homepage visit of this
      browser session, jump straight to that mode page. After that, navigating
-     back to the homepage in the same session shows the chooser normally. */
+     back to the homepage in the same session shows the chooser normally.
+
+     Guarded on window.location.pathname === '/' so Cloudflare Pages'
+     unknown-URL fallback (which serves index.html for e.g. mis-cased QR
+     targets like /Subscribe or deep links to un-deployed pages) doesn't
+     yank the visitor off to their saved mode. */
   (function () {
+    var path = window.location.pathname;
+    if (path !== '/' && path !== '/index.html' && path !== '') return;
+
     var modeUrls = { office: 'office', wedding: 'wedding', casual: 'casual' };
     var saved = localStorage.getItem('tj_mode');
     var sessionSeen = sessionStorage.getItem('tj_homepage_seen');
