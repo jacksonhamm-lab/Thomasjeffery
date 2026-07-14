@@ -24,28 +24,6 @@
     }
 
     /* ══════════════════════════════
-       IMAGE PLACEHOLDERS
-    ══════════════════════════════ */
-    .photo {
-      background: #D9D3CC;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .photo img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-    .photo--hero { height: 100%; min-height: 320px; }
-
-    /* ══════════════════════════════
        NAV
     ══════════════════════════════ */
     .nav {
@@ -176,76 +154,34 @@
     }
 
     /* ══════════════════════════════
-       HERO
+       PAGE HEADER (replaces the old hero — no image, direct-to-content)
     ══════════════════════════════ */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      min-height: 100svh;
-      padding-top: 92px;
-    }
-    .hero__image { flex-shrink: 0; height: 80vw; min-height: 320px; order: -1; }
-    .hero__panel {
-      background: #1C2B39;
-      padding: 36px 24px 44px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex: 1;
-    }
-    .hero__eyebrow {
-      font-size: 12px; font-weight: 400;
-      letter-spacing: 0.38em; text-transform: uppercase;
-      color: rgba(245,240,235,0.55);
-      margin-bottom: 18px; display: block;
-    }
-    .hero__title {
-      font-size: clamp(48px, 12vw, 92px);
-      font-weight: 300; letter-spacing: -0.01em;
-      color: #F5F0EB; line-height: 0.92;
-      margin-bottom: 24px;
-    }
-    .hero__rule { width: 40px; height: 1px; background: rgba(245,240,235,0.3); margin-bottom: 20px; }
-    .hero__sub {
-      font-size: 16px; font-weight: 400;
-      color: rgba(245,240,235,0.85); line-height: 1.75;
-      margin-bottom: 36px; max-width: 420px;
-    }
-    .hero__cta {
-      display: inline-block;
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.3em; text-transform: uppercase;
-      color: #1C2B39; background: #F5F0EB;
-      padding: 16px 40px; text-decoration: none;
-      transition: background 0.2s; align-self: flex-start;
-      border-radius: 14px;
-    }
-    .hero__cta:hover { background: #fff; }
-
-    /* ══════════════════════════════
-       ACCESS STRIP
-    ══════════════════════════════ */
-    .access {
+    .sale-header {
       background: #E8E0D5;
       border-bottom: 1px solid rgba(28,43,57,0.08);
-      padding: 24px 20px;
+      padding: 128px 20px 44px;
       text-align: center;
     }
-    .access__row {
-      display: flex; flex-direction: column; gap: 6px;
-      align-items: center; justify-content: center;
-    }
-    .access__eyebrow {
+    .sale-header__eyebrow {
+      display: block;
       font-size: 11px; font-weight: 700;
       letter-spacing: 0.36em; text-transform: uppercase;
       color: rgba(28,43,57,0.55);
+      margin-bottom: 18px;
     }
-    .access__text {
+    .sale-header__title {
+      font-size: clamp(36px, 8vw, 64px);
+      font-weight: 300; letter-spacing: -0.01em;
+      color: #1C2B39; line-height: 1.05;
+      margin: 0 auto 22px;
+      max-width: 720px;
+    }
+    .sale-header__sub {
       font-size: 15px; font-weight: 400;
-      color: #1C2B39; line-height: 1.6;
-      max-width: 640px;
+      color: #1C2B39; line-height: 1.7;
+      max-width: 620px; margin: 0 auto;
     }
-    .access__text strong { font-weight: 700; }
+    .sale-header__sub strong { font-weight: 700; }
 
     /* ══════════════════════════════
        SECTION SHARED
@@ -431,12 +367,9 @@
       .nav__hamburger { display: none; }
       .nav-menu { display: none; }
 
-      .hero { flex-direction: row; padding-top: 0; min-height: 100svh; }
-      .hero__image { order: 0; width: 45%; height: auto; min-height: unset; }
-      .hero__panel { padding: 140px 52px 72px; }
-
-      .access { padding: 32px 48px; }
-      .access__row { flex-direction: row; gap: 24px; }
+      .sale-header { padding: 148px 48px 56px; }
+      .sale-header__eyebrow { margin-bottom: 22px; }
+      .sale-header__title { margin-bottom: 26px; }
 
       .cats { padding: 64px 48px; }
       .cats__grid { grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -455,8 +388,7 @@
 
     @media (min-width: 1024px) {
       .nav { padding: 14px 64px; }
-      .hero__image { width: 47%; }
-      .hero__panel { padding: 160px 72px 80px; }
+      .sale-header { padding: 168px 64px 64px; }
       .cats { padding: 80px 64px; }
       .cats__grid { grid-template-columns: 1fr 1fr 1fr; }
       .closing { padding: 112px 64px; }
@@ -691,31 +623,14 @@
 </div>
 
 <!-- ══════════════════════════════
-     HERO
+     PAGE HEADER
 ══════════════════════════════ -->
-<section class="hero">
-  <div class="hero__image photo photo--hero">
-    <img src="tj-summer-sale-hero.png" width="1200" height="896" alt="Thomas Jeffery Men's Wear — Summer Sale">
-  </div>
-  <div class="hero__panel">
-    <span class="hero__eyebrow">Summer Sale &middot; 2026</span>
-    <h1 class="hero__title">Summer<br>Sale.</h1>
-    <div class="hero__rule"></div>
-    <p class="hero__sub">Up to 70% off on select pieces &mdash; big markdowns across sportcoats, suits, dress shirts, denim and more. Subscribers first this week; public access opens Monday, July 20.</p>
-    <a class="hero__cta" href="#categories">See the Sale</a>
-  </div>
-</section>
-
-<!-- ══════════════════════════════
-     ACCESS STRIP
-══════════════════════════════ -->
-<section class="access">
-  <div class="access__row">
-    <span class="access__eyebrow">Access</span>
-    <p class="access__text">
-      <strong>Subscriber preview</strong> through Sunday, July 19. <strong>Public access</strong> opens Monday, July 20. Sale ends <strong>Saturday, August 8</strong>.
-    </p>
-  </div>
+<section class="sale-header">
+  <span class="sale-header__eyebrow">Summer Sale &middot; 2026</span>
+  <h1 class="sale-header__title">Up to 70% off<br>across the store.</h1>
+  <p class="sale-header__sub">
+    <strong>Subscriber preview</strong> through Sunday, July 19. <strong>Public access</strong> opens Monday, July 20. Sale ends <strong>Saturday, August 8</strong>.
+  </p>
 </section>
 
 <!-- ══════════════════════════════
