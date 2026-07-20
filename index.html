@@ -93,22 +93,45 @@
     .tile {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 14px;
-      padding: 44px 28px;
       background: #1C2B39;
       border: 1px solid rgba(245,240,235,0.1);
       text-decoration: none;
       cursor: pointer;
-      transition: background 0.22s, border-color 0.22s, transform 0.22s, box-shadow 0.22s;
+      transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
       border-radius: 6px;
+      overflow: hidden;
     }
     .tile:hover {
-      background: #243649;
       border-color: rgba(245,240,235,0.28);
       transform: translateY(-3px);
       box-shadow: 0 8px 28px rgba(28,43,57,0.18);
+    }
+    .tile:hover .tile__photo img { transform: scale(1.04); }
+
+    .tile__photo {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #D9D3CC;
+    }
+    .tile__photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .tile__body {
+      padding: 22px 20px 26px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      background: #1C2B39;
     }
     .tile__name {
       font-size: 20px;
@@ -117,10 +140,6 @@
       text-transform: uppercase;
       color: #F5F0EB;
       line-height: 1.15;
-      min-height: 46px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       text-align: center;
     }
     .tile__sub {
@@ -538,16 +557,31 @@
 
   <div class="landing__tiles">
     <a class="tile" href="office" data-mode="office">
+      <div class="tile__photo">
+        <img src="office-hero.webp" srcset="office-hero-600w.webp 600w, office-hero.webp 928w" sizes="(min-width: 580px) 280px, 100vw" width="928" height="1200" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="tile__body">
       <span class="tile__name">Office</span>
       <span class="tile__sub">Sharp every day. Built to last.</span>
+      </div>
     </a>
     <a class="tile" href="wedding" data-mode="wedding">
+      <div class="tile__photo">
+        <img src="wedding-hero.webp" srcset="wedding-hero-600w.webp 600w, wedding-hero.webp 928w" sizes="(min-width: 580px) 280px, 100vw" width="896" height="1200" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="tile__body">
       <span class="tile__name">Wedding</span>
       <span class="tile__sub">From the groom to the last groomsman.</span>
+      </div>
     </a>
     <a class="tile" href="casual" data-mode="casual">
+      <div class="tile__photo">
+        <img src="casual-hero.webp" srcset="casual-hero-600w.webp 600w, casual-hero.webp 928w" sizes="(min-width: 580px) 280px, 100vw" width="928" height="1200" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="tile__body">
       <span class="tile__name">Casual</span>
       <span class="tile__sub">Well-made pieces worth keeping.</span>
+      </div>
     </a>
   </div>
 
