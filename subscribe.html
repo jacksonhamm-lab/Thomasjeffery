@@ -631,8 +631,8 @@
       <p class="section__body">Subscribe and we will send you $50 off your first purchase of $250 or more on full price items. Along with the occasional note on new arrivals and what we are working on in store.</p>
 
       <form class="subscribe__form" id="subscribe-form"
-            action="https://thomasjeffery.us1.list-manage.com/subscribe/post?u=a677e9b99521296ba09580ea8&amp;id=8352715181&amp;f_id=0023c9e4f0"
-            method="post" target="_blank" rel="noopener" novalidate>
+            action="/api/subscribe"
+            method="post" novalidate>
         <div class="field">
           <label for="sub-email">Email</label>
           <input type="email" name="EMAIL" id="sub-email" required>
@@ -754,22 +754,52 @@
     });
   }
 
-  /* ── Subscribe form: post to Mailchimp, show inline thanks, mark popup as seen ── */
+  /* ── Subscribe form: POST to /api/subscribe (Pages Function that adds
+       to Mailchimp + sends multi-recipient notification via Resend). Show
+       inline thanks on success, keep the form + surface an error on fail. ── */
   var subForm = document.getElementById('subscribe-form');
   var subSection = document.getElementById('subscribe');
+  var subError = null;
   if (subForm) {
-    subForm.addEventListener('submit', function (e) {
+    subForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
       var email = subForm.querySelector('[name="EMAIL"]').value.trim();
       if (!email) return;
-      // Let the form post normally (target="_blank") and immediately swap to the thanks state.
-      try { localStorage.setItem('tj_subscribed', '1'); } catch (e) {}
-      try { localStorage.setItem('tj_subscribe_seen', '1'); } catch (e) {}
-      if (window.fbq) fbq('track', 'Lead');
-      if (window.gtag) gtag('event', 'sign_up', { method: 'email' });
-      setTimeout(function () {
+
+      var submitBtn = subForm.querySelector('.subscribe__submit');
+      var originalLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      try {
+        var res = await fetch('/api/subscribe', {
+          method: 'POST',
+          body: new FormData(subForm),
+        });
+        var body = await res.json().catch(function () { return {}; });
+        if (!res.ok || body.ok === false) {
+          throw new Error(body.error || 'Signup failed');
+        }
+
+        try { localStorage.setItem('tj_subscribed', '1'); } catch (e) {}
+        try { localStorage.setItem('tj_subscribe_seen', '1'); } catch (e) {}
+        if (window.fbq) fbq('track', 'Lead');
+        if (window.gtag) gtag('event', 'sign_up', { method: 'email' });
+
         subSection.classList.add('submitted');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 50);
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+        if (!subError) {
+          subError = document.createElement('p');
+          subError.className = 'subscribe__fine';
+          subError.style.color = '#B03A2E';
+          subError.style.marginTop = '10px';
+          subForm.appendChild(subError);
+        }
+        subError.textContent = 'Something went wrong. Please try again or email hello@thomasjeffery.ca.';
+      }
     });
   }
 </script>
