@@ -691,7 +691,14 @@
       }).then(function (res) {
         if (res.ok) {
           if (window.fbq) fbq('track', 'Schedule');
-          if (window.gtag) gtag('event', 'generate_lead', { service: 'casual' });
+          if (window.gtag) {
+            gtag('event', 'generate_lead', { service: 'casual' });
+            gtag('event', 'conversion', {
+              'send_to': 'AW-17246500151/7sODCPmro9scELfq4p9A',
+              'value': 300.0,
+              'currency': 'CAD'
+            });
+          }
           document.getElementById('form-section').classList.add('hidden');
           document.getElementById('thanks-section').classList.remove('hidden');
           window.scrollTo({ top: 0, behavior: 'smooth' });
