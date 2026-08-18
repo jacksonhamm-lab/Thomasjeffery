@@ -55,3 +55,6 @@
 
 # Legacy homepage path
 /thomas-jeffery-homepage  /  301
+
+# Retired sale pages — sale ended, send visitors to browse brands instead.
+/summer-sale        /brands  301
