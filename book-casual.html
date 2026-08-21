@@ -12,12 +12,27 @@
   <title>Book a Casual Fitting — Thomas Jeffery Menswear Calgary</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
   <style>
+    /* ══════════════════════════════
+       COLOR PALETTE
+       Swap seasonal themes by overriding these variables.
+    ══════════════════════════════ */
+    :root {
+      --ink:          #1C2B39;   /* primary text & dark surfaces */
+      --ink-hover:    #243649;   /* hover state on dark surfaces */
+      --ground:       #F5F0EB;   /* page background — cream */
+      --ground-warm:  #E8E0D5;   /* section accent background */
+      --ground-taupe: #D9D3CC;   /* muted surface */
+      --white:        #FFFFFF;
+      --accent-red:   #AA2828;   /* CTAs / error states */
+    }
+
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Lato', Arial, sans-serif;
-      background: #F5F0EB;
-      color: #1C2B39;
+      background: var(--ground);
+      color: var(--ink);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
@@ -28,13 +43,13 @@
       align-items: center;
       justify-content: space-between;
       padding: 18px 24px;
-      background: #F5F0EB;
+      background: var(--ground);
       border-bottom: 1px solid rgba(28,43,57,0.07);
     }
     .header__logo { outline: none; -webkit-tap-highlight-color: transparent; display: inline-block; }
     .header__logo img { height: 56px; width: auto; display: block; transition: filter 0.2s; }
     .header__logo:focus-visible img, .header__logo:active img {
-      filter: drop-shadow(0 0 1px #1C2B39) drop-shadow(0 0 3px rgba(28,43,57,0.4));
+      filter: drop-shadow(0 0 1px var(--ink)) drop-shadow(0 0 3px rgba(28,43,57,0.4));
     }
     .header__back {
       font-size: 11px;
@@ -45,7 +60,7 @@
       text-decoration: none;
       transition: color 0.2s;
     }
-    .header__back:hover { color: #1C2B39; }
+    .header__back:hover { color: var(--ink); }
     @media (min-width: 700px) {
       .header { padding: 20px 40px; }
       .header__logo img { height: 62px; }
@@ -69,7 +84,7 @@
       font-size: clamp(30px, 6.5vw, 40px);
       font-weight: 300;
       letter-spacing: 0.01em;
-      color: #1C2B39;
+      color: var(--ink);
       line-height: 1.1;
       margin-bottom: 14px;
     }
@@ -84,10 +99,10 @@
 
     /* ══ STORE INFO ══ */
     .store-info {
-      background: #E8E0D5;
+      background: var(--ground-warm);
       padding: 28px 26px;
       margin-bottom: 24px;
-      border-left: 2px solid #1C2B39;
+      border-left: 2px solid var(--ink);
     }
     .store-info__address {
       font-size: 15px;
@@ -114,7 +129,7 @@
       font-weight: 700;
       letter-spacing: 0.02em;
     }
-    .store-info__phone a { color: #1C2B39; text-decoration: none; }
+    .store-info__phone a { color: var(--ink); text-decoration: none; }
 
     /* ══ MAP BUTTONS ══ */
     .map-buttons {
@@ -129,8 +144,8 @@
     .map-btn {
       display: block;
       padding: 16px 20px;
-      background: #1C2B39;
-      color: #F5F0EB;
+      background: var(--ink);
+      color: var(--ground);
       text-align: center;
       text-decoration: none;
       font-size: 11px;
@@ -140,7 +155,7 @@
       transition: background 0.2s;
       border-radius: 14px;
     }
-    .map-btn:hover { background: #243649; }
+    .map-btn:hover { background: var(--ink-hover); }
 
     /* ══ DIVIDER ══ */
     .divider {
@@ -164,7 +179,7 @@
       font-size: clamp(28px, 6vw, 36px);
       font-weight: 300;
       letter-spacing: 0.01em;
-      color: #1C2B39;
+      color: var(--ink);
       line-height: 1.1;
       margin-bottom: 14px;
     }
@@ -198,7 +213,7 @@
       width: 100%;
       background: rgba(28,43,57,0.04);
       border: 1px solid rgba(28,43,57,0.14);
-      color: #1C2B39;
+      color: var(--ink);
       font-family: 'Lato', Arial, sans-serif;
       font-size: 15px;
       font-weight: 300;
@@ -222,7 +237,7 @@
       cursor: pointer;
       padding-right: 32px;
     }
-    select option { background: #F5F0EB; color: #1C2B39; }
+    select option { background: var(--ground); color: var(--ink); }
 
     .form__notes-wrap { margin-bottom: 22px; }
     .form__confirm {
@@ -236,8 +251,8 @@
     .btn-submit {
       width: 100%;
       padding: 18px;
-      background: #1C2B39;
-      color: #F5F0EB;
+      background: var(--ink);
+      color: var(--ground);
       font-family: 'Lato', Arial, sans-serif;
       font-size: 11px;
       font-weight: 700;
@@ -248,7 +263,7 @@
       transition: background 0.2s;
       border-radius: 14px;
     }
-    .btn-submit:hover { background: #243649; }
+    .btn-submit:hover { background: var(--ink-hover); }
     .btn-submit:disabled { background: rgba(28,43,57,0.4); cursor: wait; }
     .hidden { display: none !important; }
 
@@ -271,7 +286,7 @@
     .thanks__title {
       font-size: clamp(32px, 5vw, 44px);
       font-weight: 300;
-      color: #1C2B39;
+      color: var(--ink);
       line-height: 1.2;
       margin-bottom: 22px;
     }
@@ -287,8 +302,8 @@
     .thanks__btn {
       display: inline-block;
       padding: 14px 32px;
-      border: 1px solid #1C2B39;
-      color: #1C2B39;
+      border: 1px solid var(--ink);
+      color: var(--ink);
       text-decoration: none;
       font-family: 'Lato', Arial, sans-serif;
       font-size: 11px;
@@ -298,7 +313,7 @@
       transition: background 0.2s, color 0.2s;
       border-radius: 10px;
     }
-    .thanks__btn:hover { background: #1C2B39; color: #F5F0EB; }
+    .thanks__btn:hover { background: var(--ink); color: var(--ground); }
 
     /* ══ CROSS-BOOKING ══ */
     .crossbook {
@@ -329,14 +344,14 @@
       font-weight: 700;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: #1C2B39;
+      color: var(--ink);
       text-decoration: none;
       border-bottom: 1px solid rgba(28,43,57,0.3);
       padding-bottom: 3px;
       transition: border-color 0.2s;
       border-radius: 10px;
     }
-    .crossbook__links a:hover { border-color: #1C2B39; }
+    .crossbook__links a:hover { border-color: var(--ink); }
 
     /* ══ BACK TO TOP BUTTON ══ */
     .back-to-top {
@@ -349,8 +364,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #1C2B39;
-      color: #F5F0EB;
+      background: var(--ink);
+      color: var(--ground);
       border: 1px solid rgba(245,240,235,0.2);
       cursor: pointer;
       opacity: 0;
@@ -364,12 +379,12 @@
       padding: 0;
     }
     .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
-    .back-to-top:hover { background: #243649; border-color: rgba(245,240,235,0.4); }
+    .back-to-top:hover { background: var(--ink-hover); border-color: rgba(245,240,235,0.4); }
     @media (max-width: 699px) { .back-to-top { bottom: 20px; right: 20px; } }
 
     /* ══ FOOTER ══ */
     .footer {
-      background: #1C2B39;
+      background: var(--ink);
       border-top: 1px solid rgba(245,240,235,0.06);
       padding: 20px 24px;
       text-align: center;
@@ -383,15 +398,15 @@
     .footer a:hover { color: rgba(245,240,235,0.85); }
   
     /* ══ COOKIE CONSENT BANNER ══ */
-    .tj-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:1000;background:#1C2B39;color:#F5F0EB;border-radius:8px;box-shadow:0 12px 32px rgba(0,0,0,0.18);transform:translateY(120%);opacity:0;transition:transform 320ms cubic-bezier(0.4,0,0.2,1),opacity 320ms;pointer-events:none;max-width:720px;margin-inline:auto}
+    .tj-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:1000;background:var(--ink);color:var(--ground);border-radius:8px;box-shadow:0 12px 32px rgba(0,0,0,0.18);transform:translateY(120%);opacity:0;transition:transform 320ms cubic-bezier(0.4,0,0.2,1),opacity 320ms;pointer-events:none;max-width:720px;margin-inline:auto}
     .tj-consent--show{transform:translateY(0);opacity:1;pointer-events:auto}
     .tj-consent__inner{padding:20px 22px;display:flex;flex-direction:column;gap:14px}
-    .tj-consent__text{margin:0;font-size:13px;line-height:1.6;color:#F5F0EB;font-family:'Lato',sans-serif;font-weight:300}
-    .tj-consent__link{color:#F5F0EB;text-decoration:underline}
+    .tj-consent__text{margin:0;font-size:13px;line-height:1.6;color:var(--ground);font-family:'Lato',sans-serif;font-weight:300}
+    .tj-consent__link{color:var(--ground);text-decoration:underline}
     .tj-consent__actions{display:flex;gap:10px;justify-content:flex-end}
-    .tj-consent__btn{font-family:'Lato',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;padding:10px 18px;border-radius:4px;border:1px solid #F5F0EB;cursor:pointer;background:transparent;color:#F5F0EB;transition:background 160ms,color 160ms}
-    .tj-consent__btn--primary{background:#F5F0EB;color:#1C2B39}
-    .tj-consent__btn--primary:hover{background:#E8E0D5}
+    .tj-consent__btn{font-family:'Lato',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;padding:10px 18px;border-radius:4px;border:1px solid var(--ground);cursor:pointer;background:transparent;color:var(--ground);transition:background 160ms,color 160ms}
+    .tj-consent__btn--primary{background:var(--ground);color:var(--ink)}
+    .tj-consent__btn--primary:hover{background:var(--ground-warm)}
     .tj-consent__btn--ghost:hover{background:rgba(245,240,235,0.10)}
     @media (min-width:700px){.tj-consent__inner{flex-direction:row;align-items:center}.tj-consent__text{flex:1}.tj-consent__actions{flex-shrink:0}}
     @media (prefers-reduced-motion: reduce){.tj-consent{transition:opacity 200ms}}
