@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1C2B39">
   <meta name="facebook-domain-verification" content="vrruclf3hfgl41dekz90zsejr3nz40" />
-  <title>Casual Menswear — Thomas Jeffery Calgary</title>
+  <title>Fall 2026 — Thomas Jeffery Menswear Calgary</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
   <style>
     /* ══════════════════════════════
@@ -24,6 +24,7 @@
       --ground-taupe: #D9D3CC;   /* muted surface */
       --white:        #FFFFFF;
       --accent-red:   #AA2828;   /* CTAs / error states */
+      --accent-fall:  #7A2E2A;   /* fall landing page only — deep maroon accent */
     }
 
 
@@ -725,7 +726,7 @@
 
       .hero {
         flex-direction: row;
-        padding-top: 0;
+        padding-top: 92px;
         min-height: 100svh;
       }
       .hero__image {
@@ -878,47 +879,208 @@
     @media (min-width:700px){.tj-consent__inner{flex-direction:row;align-items:center}.tj-consent__text{flex:1}.tj-consent__actions{flex-shrink:0}}
     @media (prefers-reduced-motion: reduce){.tj-consent{transition:opacity 200ms}}
     /* ══ END COOKIE CONSENT BANNER ══ */
+  
 
-    /* ══ FALL 2026 PROMO ══ */
-    .fall-promo { padding: 64px 20px; background: var(--ground-warm); text-align: center; }
-    @media (min-width: 700px) { .fall-promo { padding: 88px 48px; } }
-    @media (min-width: 1024px) { .fall-promo { padding: 104px 64px; } }
-    .fall-promo__inner { max-width: 640px; margin: 0 auto; }
-    .fall-promo__eyebrow { display: block; font-size: 11px; font-weight: 400; letter-spacing: 0.42em; text-transform: uppercase; color: rgba(28,43,57,0.55); margin-bottom: 20px; }
-    .fall-promo__title { font-size: clamp(30px, 5vw, 44px); font-weight: 300; line-height: 1.1; color: var(--ink); letter-spacing: -0.005em; margin-bottom: 20px; }
-    .fall-promo__body { font-size: 16px; font-weight: 300; line-height: 1.7; color: rgba(28,43,57,0.75); margin-bottom: 32px; }
-    .fall-promo__link { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 4px; transition: opacity 0.2s; }
-    .fall-promo__link:hover { opacity: 0.7; }
+    /* ══════════════════════════════
+       FALL 2026 EDITORIAL LAYOUT
+       Full-bleed hero + editor's letter + featured brand + alternating
+       image/text vignettes. Placeholders where photos will drop in later.
+    ══════════════════════════════ */
+
+    /* Reset the copied casual page structure. Hide anything from the base
+       template we're replacing (defensive — we've already removed the DOM
+       nodes but this keeps things clean). */
+
+    /* ── Full-bleed editorial hero ── */
+    /* ── Editor's letter ── */
+    .editor-letter {
+      max-width: 640px; margin: 112px auto 96px;
+      padding: 0 32px;
+    }
+    .editor-letter__eyebrow {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.44em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5); margin-bottom: 40px;
+      display: block; text-align: center;
+    }
+    .editor-letter__body {
+      font-size: 18px; font-weight: 300;
+      line-height: 1.85; color: rgba(28,43,57,0.86);
+      margin-bottom: 24px;
+    }
+    .editor-letter__body:last-of-type { margin-bottom: 0; }
+    .editor-letter__signoff {
+      margin-top: 44px; font-size: 11px;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5); text-align: center;
+    }
+    @media (min-width: 700px) {
+      .editor-letter { margin: 128px auto 120px; }
+    }
+
+    /* ── Featured brand — headline treatment ── */
+    .feature {
+      display: grid; grid-template-columns: 1fr; gap: 40px;
+      align-items: center; max-width: 1200px;
+      margin: 96px auto; padding: 0 32px;
+    }
+    @media (min-width: 900px) {
+      .feature {
+        grid-template-columns: 1.15fr 1fr; gap: 80px;
+        margin: 120px auto;
+      }
+    }
+    .feature__image {
+      aspect-ratio: 4/5; background: var(--ground-warm);
+      position: relative; overflow: hidden;
+    }
+    .feature__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .feature__eyebrow {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.44em; text-transform: uppercase;
+      color: rgba(28,43,57,0.55); margin-bottom: 24px; display: block;
+    }
+    .feature__title {
+      font-size: clamp(40px, 5.5vw, 64px); font-weight: 300;
+      line-height: 1.05; letter-spacing: -0.01em;
+      color: var(--ink); margin-bottom: 28px;
+    }
+    .feature__body {
+      font-size: 17px; font-weight: 300;
+      line-height: 1.85; color: rgba(28,43,57,0.82);
+      max-width: 500px;
+    }
+
+    /* ── Vignette — full-bleed alternating image + text ── */
+    .vignette {
+      display: grid; grid-template-columns: 1fr; gap: 0;
+      align-items: stretch;
+      padding: 48px 20px;
+      background: var(--ground);
+    }
+    .vignette + .vignette { background: var(--ground-warm); }
+    .vignette + .vignette + .vignette { background: var(--ground); }
+    .vignette + .vignette + .vignette + .vignette { background: var(--ground-warm); }
+    .vignette + .vignette + .vignette + .vignette + .vignette { background: var(--ground); }
+    @media (min-width: 900px) {
+      .vignette {
+        grid-template-columns: 1fr 1fr; gap: 64px;
+        padding: 96px 48px;
+        align-items: center;
+      }
+      .vignette--reverse .vignette__image { order: 2; }
+    }
+    @media (min-width: 1200px) {
+      .vignette { padding: 112px 64px; gap: 80px; }
+    }
+    .vignette__image {
+      aspect-ratio: 4/5; background: rgba(28,43,57,0.06);
+      position: relative; overflow: hidden;
+    }
+    .vignette__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .vignette__text { padding: 24px 0; }
+    @media (min-width: 900px) { .vignette__text { padding: 0 24px; } }
+    .vignette__eyebrow {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.42em; text-transform: uppercase;
+      color: rgba(28,43,57,0.55); margin-bottom: 18px; display: block;
+    }
+    .vignette__title {
+      font-size: clamp(28px, 4vw, 44px); font-weight: 300;
+      line-height: 1.15; letter-spacing: -0.005em;
+      color: var(--ink); margin-bottom: 22px;
+    }
+    .vignette__body {
+      font-size: 16px; font-weight: 300;
+      line-height: 1.85; color: rgba(28,43,57,0.8);
+      max-width: 520px;
+    }
+    .vignette__brand {
+      margin-top: 24px; font-size: 11px;
+      letter-spacing: 0.34em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5);
+    }
+
+    /* ── Image placeholder (until real photos land) ── */
+    .img-ph {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 400;
+      letter-spacing: 0.44em; text-transform: uppercase;
+      color: rgba(28,43,57,0.32);
+      background:
+        repeating-linear-gradient(45deg,
+          transparent 0, transparent 12px,
+          rgba(28,43,57,0.03) 12px, rgba(28,43,57,0.03) 13px);
+    }
+
+    /* ── Closing invitation ── */
+    .fall-closing {
+      text-align: center;
+      padding: 96px 20px 112px;
+      background: var(--ink);
+    }
+    @media (min-width: 900px) { .fall-closing { padding: 128px 48px 144px; } }
+    @media (min-width: 1200px) { .fall-closing { padding: 144px 64px 160px; } }
+    .fall-closing__inner { max-width: 720px; margin: 0 auto; }
+    .fall-closing__eyebrow {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.42em; text-transform: uppercase;
+      color: rgba(245,240,235,0.55); margin-bottom: 24px; display: block;
+    }
+    .fall-closing__title {
+      font-size: clamp(32px, 5vw, 52px); font-weight: 300;
+      line-height: 1.1; color: var(--ground); margin-bottom: 24px;
+      letter-spacing: -0.005em;
+    }
+    .fall-closing__body {
+      font-size: 17px; font-weight: 300;
+      line-height: 1.7; color: rgba(245,240,235,0.78);
+      margin-bottom: 44px; max-width: 540px;
+      margin-left: auto; margin-right: auto;
+    }
+    .fall-closing__cta {
+      display: inline-block; padding: 18px 44px;
+      background: var(--ground); color: var(--ink);
+      text-decoration: none; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      border-radius: 14px;
+      transition: background 0.2s;
+    }
+    .fall-closing__cta:hover { background: var(--white); }
+
   </style>
-  <meta name="description" content="The full wardrobe, not just the formal end. Knits, sport shirts, denim, trousers, and outerwear from the brands worth knowing. Calgary since 1968.">
-  <link rel="canonical" href="https://thomasjeffery.ca/casual">
+  <meta name="description" content="Fall 2026 at Thomas Jeffery Calgary. Knitwear from Ferrante, sport coats from 7 Downie St., sport shirts from Klauss Boehler, outerwear from Bugatti and Holebrook, and Coppley custom. In-store at Kingsland Village.">
+  <link rel="canonical" href="https://thomasjeffery.ca/fall-2026">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Thomas Jeffery Men's Wear">
-  <meta property="og:title" content="Casual Menswear — Thomas Jeffery Calgary">
-  <meta property="og:description" content="The full wardrobe, not just the formal end. Knits, sport shirts, denim, trousers, and outerwear from the brands worth knowing. Calgary since 1968.">
-  <meta property="og:url" content="https://thomasjeffery.ca/casual">
-  <meta property="og:image" content="https://thomasjeffery.ca/casual-hero.webp">
-  <meta property="og:image:alt" content="Casual Menswear — Thomas Jeffery Calgary">
+  <meta property="og:title" content="Fall 2026 — Thomas Jeffery Menswear Calgary">
+  <meta property="og:description" content="The layering season. Knitwear, sport coats, sport shirts, outerwear, and Coppley custom for fall at Thomas Jeffery in Calgary.">
+  <meta property="og:url" content="https://thomasjeffery.ca/fall-2026">
+  <meta property="og:image" content="https://thomasjeffery.ca/fall-hero.webp">
+  <meta property="og:image:alt" content="Fall 2026 at Thomas Jeffery — the layering season">
   <meta property="og:locale" content="en_CA">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Casual Menswear — Thomas Jeffery Calgary">
-  <meta name="twitter:description" content="The full wardrobe, not just the formal end. Knits, sport shirts, denim, trousers, and outerwear from the brands worth knowing. Calgary since 1968.">
-  <meta name="twitter:image" content="https://thomasjeffery.ca/casual-hero.webp">
+  <meta name="twitter:title" content="Fall 2026 — Thomas Jeffery Menswear Calgary">
+  <meta name="twitter:description" content="The layering season. Knitwear, sport coats, sport shirts, outerwear, and Coppley custom for fall at Thomas Jeffery in Calgary.">
+  <meta name="twitter:image" content="https://thomasjeffery.ca/fall-hero.webp">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Casual Menswear",
-  "serviceType": "Casual menswear retail and in-store fitting",
-  "description": "Knits, sport shirts, denim, trousers, and outerwear from Alberto, Codice, 7 Downie St., Bugatti, and more. In-store fitting at Thomas Jeffery Men's Wear in Calgary.",
-  "provider": {
+  "@type": "CollectionPage",
+  "name": "Fall 2026 — Thomas Jeffery Menswear",
+  "description": "Fall 2026 collection at Thomas Jeffery Calgary — knitwear, sport coats, sport shirts, outerwear, and Coppley custom.",
+  "url": "https://thomasjeffery.ca/fall-2026",
+  "isPartOf": {
     "@id": "https://thomasjeffery.ca/#store"
   },
-  "areaServed": {
-    "@type": "City",
-    "name": "Calgary"
-  },
-  "url": "https://thomasjeffery.ca/casual"
+  "about": [
+    { "@type": "Brand", "name": "Ferrante" },
+    { "@type": "Brand", "name": "7 Downie St." },
+    { "@type": "Brand", "name": "Klauss Boehler" },
+    { "@type": "Brand", "name": "Bugatti" },
+    { "@type": "Brand", "name": "Coppley" }
+  ]
 }
   </script>
   <script type="application/ld+json">
@@ -935,8 +1097,8 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Casual",
-      "item": "https://thomasjeffery.ca/casual"
+      "name": "Fall 2026",
+      "item": "https://thomasjeffery.ca/fall-2026"
     }
   ]
 }
@@ -1041,6 +1203,7 @@
   .tj-promo__eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(245,240,235,0.6); }
   .tj-promo__text { font-size: 13px; font-weight: 400; letter-spacing: 0.02em; color: rgba(245,240,235,0.96); }
   .tj-promo__cta { font-size: 11px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; border-bottom: 1px solid rgba(245,240,235,0.45); padding-bottom: 1px; }
+  /* darker maroon on hover */
   .tj-promo__close { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(245,240,235,0.55); font-size: 20px; line-height: 1; cursor: pointer; padding: 4px 10px; transition: color 0.15s; }
   .tj-promo__close:hover { color: var(--ground); }
   .tj-promo--hidden { display: none; }
@@ -1121,6 +1284,7 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav__links">
+      <li><a href="fall-2026">Fall 2026</a></li>
       <li><a href="about">About</a></li>
       <li><a href="brands">Brands</a></li>
       <li><a href="#" data-tj-subscribe>Subscribe</a></li>
@@ -1138,6 +1302,8 @@
 
 <!-- ══ MOBILE MENU ══ -->
 <div class="nav-menu" id="nav-menu">
+  <span class="nav-menu__section">This Season</span>
+  <a href="fall-2026">Fall 2026</a>
   <span class="nav-menu__section">Browse</span>
   <a href="office">Office</a>
   <a href="wedding">Wedding</a>
@@ -1150,226 +1316,109 @@
   <a class="nav-menu__book" href="book-casual">Book a Fitting →</a>
 </div>
 
+
+<!-- ══════════════════════════════
+     FALL 2026 — EDITORIAL LAYOUT
+══════════════════════════════ -->
+
 <!-- ══════════════════════════════
      HERO
 ══════════════════════════════ -->
 <section class="hero">
   <div class="hero__image photo photo--hero">
-    <img src="casual-hero.webp" width="896" height="1200" srcset="casual-hero-600w.webp 448w, casual-hero.webp 896w" sizes="100vw" alt="Thomas Jeffery casual menswear">
+    <img src="fall-hero.webp" width="1200" height="896" srcset="fall-hero-600w.webp 600w, fall-hero.webp 1200w" sizes="100vw" alt="Fall 2026 at Thomas Jeffery">
   </div>
   <div class="hero__panel">
-    <span class="hero__eyebrow">Casual · Summer 2026</span>
-    <h1 class="hero__title">More<br>Than<br>Suits.</h1>
+    <span class="hero__eyebrow">Thomas Jeffery · Fall 2026</span>
+    <h1 class="hero__title">The<br>Layering<br>Season.</h1>
     <div class="hero__rule"></div>
-    <p class="hero__sub">The full wardrobe, not just the formal end. Knits, sport shirts, denim, trousers, and outerwear from the brands worth knowing, in Calgary since 1968.</p>
-    <a class="hero__cta" href="book-casual">Walk-Ins Welcome</a>
-    <p class="hero__walkin">Saturdays fill up fast, so <a href="book-casual" style="color:rgba(245,240,235,0.82);text-decoration:underline;text-underline-offset:3px;">book ahead</a> to guarantee your spot.</p>
+    <p class="hero__sub">Knitwear, sportcoats, trousers, topcoats, and more. Layering essentials for fall in Calgary.</p>
+    <a class="hero__cta" href="book">Book a Fitting</a>
+    <p class="hero__walkin">Walk-ins welcome any day.</p>
   </div>
 </section>
 
-<!-- ══ FALL 2026 PROMO ══ -->
-<section class="fall-promo">
-  <div class="fall-promo__inner">
-    <span class="fall-promo__eyebrow">Fall 2026 · In-store now</span>
-    <h2 class="fall-promo__title">The layering season.</h2>
-    <p class="fall-promo__body">Knitwear, sport coats, sport shirts, outerwear, and Coppley custom for fall.</p>
-    <a class="fall-promo__link" href="fall-2026">See the season →</a>
+<!-- Vignette — Ferrante -->
+<section class="vignette">
+  <div class="vignette__image">
+    <img src="fall-vignette-ferrante.webp" width="896" height="1200" srcset="fall-vignette-ferrante-600w.webp 600w, fall-vignette-ferrante.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Ferrante knitwear on a walnut hanger">
+  </div>
+  <div class="vignette__text">
+    <span class="vignette__eyebrow">Knitwear</span>
+    <h2 class="vignette__title">Ferrante.</h2>
+    <p class="vignette__body">Italian-made knitwear, all merino wool, that layers cleanly under a sportcoat or over a dress shirt. Quarter zips and polos for fall. Pieces that hold under a jacket on the drive in, then work on their own once you're inside.</p>
+    <p class="vignette__brand">Featured: Ferrante</p>
   </div>
 </section>
 
-<!-- ══════════════════════════════
-     COLLECTIONS
-══════════════════════════════ -->
-<div class="collections">
-  <span class="section__eyebrow">What we carry</span>
-  <h2 class="section__title">Browse by category.</h2>
-  <p class="collections__hint">Tap any category to see what's in it.</p>
-
-  <div class="collections__grid">
-
-    <!-- 01 Knits & Fleece -->
-    <div class="collection" id="col-knits">
-      <div class="collection__header">
-        <div class="collection__left">
-          <span class="collection__cat">01</span>
-          <span class="collection__name">Knitwear</span>
-          <span class="collection__tagline">From fine Italian merino to casual layers.</span>
-        </div>
-        <div class="collection__toggle">+</div>
-      </div>
-      <div class="collection__detail">
-        <p class="collection__detail-body">Some of the best knitwear in Calgary under one roof. Ferrante and Codice bring Italian-made quality. Refined knits that sit above what you'd find in most Canadian stores. Robert Barakett is the luxury tee name you'll keep coming back to once you try it. Holebrook rounds out the casual layer end.</p>
-        <p class="collection__detail-brands">In this category: <span>Ferrante, Codice, Robert Barakett, Holebrook</span></p>
-      </div>
-    </div>
-
-    <!-- 02 Sport Shirts -->
-    <div class="collection" id="col-sport-shirts">
-      <div class="collection__header">
-        <div class="collection__left">
-          <span class="collection__cat">02</span>
-          <span class="collection__name">Sport Shirts</span>
-          <span class="collection__tagline">The casual shirt with a point of view.</span>
-        </div>
-        <div class="collection__toggle">+</div>
-      </div>
-      <div class="collection__detail">
-        <p class="collection__detail-body">Elevated casual shirts for weekends, travel, golf, and the occasions that don't need a tie. We carry both long sleeve and short sleeve options. Short sleeve leans more toward golf and warm-weather wear, long sleeve carries further into the fall. 7 Downie St. brings a Canadian perspective on golf and casual wear. DeSoto, Altemflower, and Codice round out the category, from dressed-down Friday to smarter casual dinner. Worth noting: DeSoto reads well in business casual settings too.</p>
-        <p class="collection__detail-brands">In this category: <span>7 Downie St., DeSoto, Altemflower, Codice</span></p>
-      </div>
-    </div>
-
-    <!-- 03 Denim -->
-    <div class="collection" id="col-denim">
-      <div class="collection__header">
-        <div class="collection__left">
-          <span class="collection__cat">03</span>
-          <span class="collection__name">Denim</span>
-          <span class="collection__tagline">Premium denim worth owning.</span>
-        </div>
-        <div class="collection__toggle">+</div>
-      </div>
-      <div class="collection__detail">
-        <p class="collection__detail-body">Denim that fits the way clothes should. 34 Heritage is designed with a higher rise and more room where most men actually need it. The cut makes a significant difference. Alberto brings European precision to casual trousers and denim alike. Fidelity rounds out the selection with quality denim built to last.</p>
-        <p class="collection__detail-brands">In this category: <span>34 Heritage, Alberto, Fidelity Denim</span></p>
-      </div>
-    </div>
-
-    <!-- 04 Trousers -->
-    <div class="collection" id="col-trousers">
-      <div class="collection__header">
-        <div class="collection__left">
-          <span class="collection__cat">04</span>
-          <span class="collection__name">Trousers</span>
-          <span class="collection__tagline">Dress it up or dress it down.</span>
-        </div>
-        <div class="collection__toggle">+</div>
-      </div>
-      <div class="collection__detail">
-        <p class="collection__detail-body">Non-denim casual and dress trousers across four brands. Alberto and 34 Heritage carry both their denim and non-denim lines. The non-denim side is where they shine for weekends and smarter casual. Meyer and Bugatti round out the selection with a strong range of fits and fabrics.</p>
-        <p class="collection__detail-brands">In this category: <span>Alberto, Meyer, 34 Heritage, Bugatti</span></p>
-        <p class="collection__note">Pant alterations go through our in-house alteration schedule, so plan for a fitting visit and a separate pickup when your trousers are ready.</p>
-      </div>
-    </div>
-
-    <!-- 05 Basics & Essentials -->
-    <div class="collection" id="col-basics">
-      <div class="collection__header">
-        <div class="collection__left">
-          <span class="collection__cat">05</span>
-          <span class="collection__name">Basics &amp; Essentials</span>
-          <span class="collection__tagline">The foundation everything else sits on.</span>
-        </div>
-        <div class="collection__toggle">+</div>
-      </div>
-      <div class="collection__detail">
-        <p class="collection__detail-body">The things you wear every day, done properly. Robert Barakett makes the case for a luxury tee. The gap between a good one and a great one is wider than most men realize. SAXX for underwear that actually fits. Benchcraft, Marcoliani, and Pantherella round out the socks and essentials end.</p>
-        <p class="collection__detail-brands">In this category: <span>SAXX, Robert Barakett, Benchcraft, Marcoliani, Pantherella</span></p>
-      </div>
-    </div>
-
-    <!-- 06 Outerwear — seasonal -->
-    <div class="collection" id="col-outerwear">
-      <div class="collection__header">
-        <div class="collection__left">
-          <span class="seasonal-tag">Seasonal · Summer</span>
-          <span class="collection__name">Outerwear</span>
-          <span class="collection__tagline">Updated each season.</span>
-        </div>
-        <div class="collection__toggle">+</div>
-      </div>
-      <div class="collection__detail">
-        <p class="collection__detail-body">Our outerwear selection rotates by season. We carry Bugatti's full outerwear range, including more formal overcoats that carry over into office wear, as well as Holebrook for lifestyle jackets, and Regency Leathers for leather options. For a custom overcoat, Coppley's made-to-measure program is available through us.</p>
-        <p class="collection__detail-brands">In this category: <span>Bugatti, Holebrook, Regency Leathers</span></p>
-        <p class="collection__detail-brands" style="margin-top:8px;">Custom: <span>Coppley Made to Measure</span></p>
-        <p class="collection__note">Outerwear alterations go through our in-house alteration schedule. A fitting visit and a separate pickup when it's ready.</p>
-      </div>
-    </div>
-
-  </div><!-- /collections__grid -->
-</div><!-- /collections -->
-
-<!-- ══════════════════════════════
-     EDITORIAL LOOKS — CAROUSEL
-══════════════════════════════ -->
-<section class="looks">
-  <div class="looks__header">
-    <span class="section__eyebrow">The look</span>
-    <h2 class="section__title">Casual, done right.</h2>
+<!-- Vignette — 7 Downie St. (reversed) -->
+<section class="vignette vignette--reverse">
+  <div class="vignette__image">
+    <img src="fall-vignette-7downie.webp" width="896" height="1200" srcset="fall-vignette-7downie-600w.webp 600w, fall-vignette-7downie.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="7 Downie St. sport coat on a walnut hanger">
   </div>
-  <div class="looks__carousel" id="looks-carousel">
-    <div class="looks__track" id="looks-track">
-      <div class="looks__slide">
-        <div class="photo photo--3x4">
-          <img loading="lazy" decoding="async" src="casual-carousel-1.webp" width="896" height="1200" srcset="casual-carousel-1-600w.webp 448w, casual-carousel-1.webp 896w" sizes="100vw" alt="Casual look — navy bomber, grey trousers">
-        </div>
-      </div>
-      <div class="looks__slide">
-        <div class="photo photo--3x4">
-          <img loading="lazy" decoding="async" src="casual-carousel-2.webp" width="896" height="1200" srcset="casual-carousel-2-600w.webp 448w, casual-carousel-2.webp 896w" sizes="100vw" alt="Casual look — blue knit polo, pleated trousers">
-        </div>
-      </div>
-      <div class="looks__slide">
-        <div class="photo photo--3x4">
-          <img loading="lazy" decoding="async" src="casual-carousel-3.webp" width="896" height="1200" srcset="casual-carousel-3-600w.webp 448w, casual-carousel-3.webp 896w" sizes="100vw" alt="Casual look — golf clubhouse style">
-        </div>
-      </div>
-    </div>
-    <button class="looks__btn looks__btn--prev" id="looks-prev" aria-label="Previous look">&#8592;</button>
-    <button class="looks__btn looks__btn--next" id="looks-next" aria-label="Next look">&#8594;</button>
-  </div>
-  <div class="looks__dots">
-    <button class="looks__dot looks__dot--active" data-index="0" aria-label="Look 1"></button>
-    <button class="looks__dot" data-index="1" aria-label="Look 2"></button>
-    <button class="looks__dot" data-index="2" aria-label="Look 3"></button>
+  <div class="vignette__text">
+    <span class="vignette__eyebrow">Sport Coats</span>
+    <h2 class="vignette__title">7 Downie St.</h2>
+    <p class="vignette__body">A run of new sportcoats for fall, including the hybrid model with a built-in zip-in vest. Textured weaves, natural shoulders, and a cut that reads equally at home with denim or a dress trouser. Fall is the season a sportcoat gets its full range of use. Worn over a knit, layered under a topcoat, or on its own with a shirt when the weather holds.</p>
+    <p class="vignette__brand">Featured: 7 Downie St.</p>
   </div>
 </section>
 
-<!-- ══════════════════════════════
-     BRAND SPOTLIGHTS
-══════════════════════════════ -->
-<div class="spotlights section--dark">
-  <span class="section__eyebrow">Featured brands</span>
-  <h2 class="section__title">Names worth knowing.</h2>
-  <p class="section__body">A few brands that deserve more than a tag on a shelf.</p>
-
-  <div class="spotlights__grid">
-
-    <div class="spotlight-card">
-      <span class="spotlight-card__tag">Shop in shop</span>
-      <span class="spotlight-card__name">Bugatti</span>
-      <p class="spotlight-card__body">Thomas Jeffery carries Bugatti's broadest range in Calgary: trousers, outerwear, knitwear, and essentials. If you're looking to build a complete casual wardrobe in one label, this is the place to do it. Stop by to see the full collection.</p>
-      <p class="spotlight-card__categories">Carrying: <span>Trousers, Outerwear, Knitwear, Sport Shirts</span></p>
-    </div>
-
-    <div class="spotlight-card">
-      <span class="spotlight-card__tag">Canadian brand</span>
-      <span class="spotlight-card__name">7 Downie St.</span>
-      <p class="spotlight-card__body">A Canadian brand built around the way people actually dress: golf, weekends, travel, and the hours in between. Sport shirts, casual knits, and versatile pieces that work across a lot of situations. One of the most consistently wearable labels in the store.</p>
-      <p class="spotlight-card__categories">Carrying: <span>Sport Shirts, Knitwear, Golf Wear</span></p>
-    </div>
-
-    <div class="spotlight-card">
-      <span class="spotlight-card__tag">Luxury basics</span>
-      <span class="spotlight-card__name">Robert Barakett</span>
-      <p class="spotlight-card__body">A Canadian brand making the case that what you wear every day deserves to be exceptional. The difference between a standard tee and one of these is something you notice immediately and don't forget. A wardrobe upgrade that doesn't require a wardrobe overhaul.</p>
-      <p class="spotlight-card__categories">Carrying: <span>T-Shirts, Casual Tops</span></p>
-    </div>
-
+<!-- Vignette — Klauss Boehler -->
+<section class="vignette">
+  <div class="vignette__image">
+    <img src="fall-vignette-klauss.webp" width="896" height="1200" srcset="fall-vignette-klauss-600w.webp 600w, fall-vignette-klauss.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Klauss Boehler sport shirt on a walnut hanger">
   </div>
-</div>
+  <div class="vignette__text">
+    <span class="vignette__eyebrow">Sport Shirts</span>
+    <h2 class="vignette__title">Klauss Boehler.</h2>
+    <p class="vignette__body">A strong sport shirt drop this fall. Patterned mid-weight cottons meant to layer easily under a knit or a jacket. German-made, cut for a familiar fit, with contrast button details on a handful of the styles. The kind of shirt you reach for on days that don't call for a tie.</p>
+    <p class="vignette__brand">Featured: Klauss Boehler</p>
+  </div>
+</section>
 
-<!-- ══════════════════════════════
-     BOOKING
-══════════════════════════════ -->
-<div class="booking">
-  <span class="booking__eyebrow">Come in</span>
-  <h2 class="booking__title">Come in and have a look.</h2>
-  <p class="booking__sub">No pressure, no agenda. Just good clothes and the people who know them. Walk-ins are perfect for casual shopping. If you'd like to spend dedicated time with one of our staff or have something specific in mind, booking ahead is easy.</p>
-  <a class="booking__cta" href="book-casual">Book a Fitting</a>
-  <p class="booking__walkin">Walk-ins welcome any day. Saturdays fill up fast, so book ahead to guarantee your spot.</p>
-</div>
+<!-- Vignette — Outerwear (Holebrook + Bugatti, reversed) -->
+<section class="vignette vignette--reverse">
+  <div class="vignette__image">
+    <img src="fall-vignette-bugatti.webp" width="896" height="1200" srcset="fall-vignette-bugatti-600w.webp 600w, fall-vignette-bugatti.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Bugatti topcoat on a walnut hanger">
+  </div>
+  <div class="vignette__text">
+    <span class="vignette__eyebrow">Outerwear</span>
+    <h2 class="vignette__title">The Layers.</h2>
+    <p class="vignette__body">Windproof knits, traditional overcoats, and casual jackets. Options that cover what you need for a Calgary fall. A light layer for the walk in, a heavier piece for when the wind actually picks up.</p>
+  </div>
+</section>
 
+<!-- Vignette — Coppley Custom -->
+<section class="vignette">
+  <div class="vignette__image">
+    <img src="fall-vignette-coppley.webp" width="896" height="1200" srcset="fall-vignette-coppley-600w.webp 600w, fall-vignette-coppley.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Coppley custom sportcoat on a walnut hanger">
+  </div>
+  <div class="vignette__text">
+    <span class="vignette__eyebrow">Custom Program</span>
+    <h2 class="vignette__title">Coppley.</h2>
+    <p class="vignette__body">Custom suits, sportcoats, trousers, overshirts, topcoats, and more. Built to your measurements in Hamilton, in a fabric of your choice. Fall is a good time to start something. Holiday events, a topcoat for the coming winter, or a wardrobe piece you've been meaning to commission properly.</p>
+    <p class="vignette__brand">Featured: Coppley</p>
+  </div>
+</section>
+
+<!-- Editor's letter (moved to bottom) -->
+<section class="editor-letter">
+  <span class="editor-letter__eyebrow">A note on the season</span>
+  <p class="editor-letter__body">Fall is when menswear starts getting interesting. Summer thins everything out. Fall asks you to layer, and layering is where personal choice shows up. A knit under a sportcoat lands differently than the same knit over a shirt. The order of the pieces, the balance of texture, the weight of the fabric. All of it becomes the outfit.</p>
+  <p class="editor-letter__body">Menswear right now is in a quieter place than it's been for a few years. Less streetwear crossover, more focus on the material. Knitwear paired with soft tailoring. Sportcoats worn the way you'd wear a sweater. Fabrics that read from across a room. Donegal, boiled wool, chunky merino, cashmere blends. The brands leaning into this are the ones with real craft behind them, and that's most of what we carry.</p>
+  <p class="editor-letter__signoff">— The Thomas Jeffery Team</p>
+</section>
+
+<!-- Closing invitation -->
+<section class="fall-closing">
+  <div class="fall-closing__inner">
+    <span class="fall-closing__eyebrow">In-store</span>
+    <h2 class="fall-closing__title">Come find the season.</h2>
+    <p class="fall-closing__body">Everything above is on the floor at Kingsland Village. Walk-ins welcome any day, or book a fitting for dedicated time with our staff.</p>
+    <a class="fall-closing__cta" href="book">Book a Fitting</a>
+  </div>
+</section>
 <!-- ══════════════════════════════
      FOOTER
 ══════════════════════════════ -->

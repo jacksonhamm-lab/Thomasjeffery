@@ -58,3 +58,6 @@
 
 # Retired sale pages — sale ended, send visitors to browse brands instead.
 /summer-sale        /brands  301
+
+# Short seasonal landing URL
+/fall               /fall-2026  301

@@ -188,6 +188,12 @@
       display: inline-block;
     }
     .landing__skip:hover { color: rgba(28,43,57,0.82); }
+    .landing__skip--fall {
+      margin-top: 20px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .landing__skip--fall + .landing__skip { margin-top: 6px; }
 
     /* ══════════════════════════════
        FOOTER LINE
@@ -600,6 +606,7 @@
     </a>
   </div>
 
+  <a class="landing__skip landing__skip--fall" href="fall-2026">Fall 2026 has landed →</a>
   <a class="landing__skip" href="brands">Browse all →</a>
 </main>
 
