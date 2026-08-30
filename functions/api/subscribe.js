@@ -153,7 +153,7 @@ function renderHtml(d, displayName) {
             ${row('Name', displayName)}
             ${row('Email', d.email)}
           </table>
-          <p style="margin:32px 0 0 0;padding-top:24px;border-top:1px solid #E5E5E5;font-size:12px;color:#6B6B6B;line-height:1.6;">They are in Mailchimp already. Welcome email fires automatically.</p>
+          <p style="margin:32px 0 0 0;padding-top:24px;border-top:1px solid #E5E5E5;font-size:12px;color:#6B6B6B;line-height:1.6;">Just added to Mailchimp.</p>
         </td></tr>
       </table>
     </td></tr>
@@ -168,7 +168,7 @@ function renderText(d, displayName) {
     `Name: ${displayName}`,
     `Email: ${d.email}`,
     '',
-    `They are in Mailchimp already. Welcome email fires automatically.`,
+    `Just added to Mailchimp.`,
   ].join('\n');
 }
 
