@@ -862,7 +862,50 @@
       .looks__carousel { padding: 0 64px; }
       .looks__track { gap: 28px; }
     }
-  
+
+    /* ══ VIGNETTE — full-bleed alternating image + text ══ */
+    .vignette {
+      display: grid; grid-template-columns: 1fr; gap: 0;
+      align-items: stretch;
+      padding: 48px 20px;
+      background: var(--ground);
+    }
+    .vignette + .vignette { background: var(--ground-warm); }
+    .vignette + .vignette + .vignette { background: var(--ground); }
+    @media (min-width: 900px) {
+      .vignette {
+        grid-template-columns: 1fr 1fr; gap: 64px;
+        padding: 96px 48px;
+        align-items: center;
+      }
+      .vignette--reverse .vignette__image { order: 2; }
+    }
+    @media (min-width: 1200px) {
+      .vignette { padding: 112px 64px; gap: 80px; }
+    }
+    .vignette__image {
+      aspect-ratio: 4/5; background: rgba(28,43,57,0.06);
+      position: relative; overflow: hidden;
+    }
+    .vignette__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .vignette__text { padding: 24px 0; }
+    @media (min-width: 900px) { .vignette__text { padding: 0 24px; } }
+    .vignette__eyebrow {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.42em; text-transform: uppercase;
+      color: rgba(28,43,57,0.55); margin-bottom: 18px; display: block;
+    }
+    .vignette__title {
+      font-size: clamp(28px, 4vw, 44px); font-weight: 300;
+      line-height: 1.15; letter-spacing: -0.005em;
+      color: var(--ink); margin-bottom: 22px;
+    }
+    .vignette__body {
+      font-size: 16px; font-weight: 300;
+      line-height: 1.85; color: rgba(28,43,57,0.8);
+      max-width: 520px;
+    }
+
     /* ══ COOKIE CONSENT BANNER ══ */
     .tj-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:1000;background:var(--ink);color:var(--ground);border-radius:8px;box-shadow:0 12px 32px rgba(0,0,0,0.18);transform:translateY(120%);opacity:0;transition:transform 320ms cubic-bezier(0.4,0,0.2,1),opacity 320ms;pointer-events:none;max-width:720px;margin-inline:auto}
     .tj-consent--show{transform:translateY(0);opacity:1;pointer-events:auto}
@@ -1287,36 +1330,40 @@
 <!-- ══════════════════════════════
      EDITORIAL LOOKS — CAROUSEL
 ══════════════════════════════ -->
-<section class="looks">
-  <div class="looks__header">
-    <span class="section__eyebrow">The look</span>
-    <h2 class="section__title">Casual, done right.</h2>
+<!-- ══════════════════════════════
+     THE LOOK — Knitwear, Trousers & Denim, Outerwear
+══════════════════════════════ -->
+
+<section class="vignette">
+  <div class="vignette__image">
+    <img loading="lazy" decoding="async" src="casual-vignette-knitwear.webp" width="896" height="1200" srcset="casual-vignette-knitwear-600w.webp 600w, casual-vignette-knitwear.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Ferrante fine-gauge merino quarter-zip on a walnut hanger">
   </div>
-  <div class="looks__carousel" id="looks-carousel">
-    <div class="looks__track" id="looks-track">
-      <div class="looks__slide">
-        <div class="photo photo--3x4">
-          <img loading="lazy" decoding="async" src="casual-carousel-1.webp" width="896" height="1200" srcset="casual-carousel-1-600w.webp 448w, casual-carousel-1.webp 896w" sizes="100vw" alt="Casual look — navy bomber, grey trousers">
-        </div>
-      </div>
-      <div class="looks__slide">
-        <div class="photo photo--3x4">
-          <img loading="lazy" decoding="async" src="casual-carousel-2.webp" width="896" height="1200" srcset="casual-carousel-2-600w.webp 448w, casual-carousel-2.webp 896w" sizes="100vw" alt="Casual look — blue knit polo, pleated trousers">
-        </div>
-      </div>
-      <div class="looks__slide">
-        <div class="photo photo--3x4">
-          <img loading="lazy" decoding="async" src="casual-carousel-3.webp" width="896" height="1200" srcset="casual-carousel-3-600w.webp 448w, casual-carousel-3.webp 896w" sizes="100vw" alt="Casual look — golf clubhouse style">
-        </div>
-      </div>
-    </div>
-    <button class="looks__btn looks__btn--prev" id="looks-prev" aria-label="Previous look">&#8592;</button>
-    <button class="looks__btn looks__btn--next" id="looks-next" aria-label="Next look">&#8594;</button>
+  <div class="vignette__text">
+    <span class="vignette__eyebrow">Knitwear</span>
+    <h2 class="vignette__title">The layer that works both ways.</h2>
+    <p class="vignette__body">Fine-gauge merino from Ferrante, cotton knits from Robert Barakett, and casual knits from 7 Downie St. Wear over a shirt, under a jacket, or on their own. The layer that carries a look through fall and pulls double duty for the office.</p>
   </div>
-  <div class="looks__dots">
-    <button class="looks__dot looks__dot--active" data-index="0" aria-label="Look 1"></button>
-    <button class="looks__dot" data-index="1" aria-label="Look 2"></button>
-    <button class="looks__dot" data-index="2" aria-label="Look 3"></button>
+</section>
+
+<section class="vignette vignette--reverse">
+  <div class="vignette__image">
+    <img loading="lazy" decoding="async" src="casual-vignette-trousers.webp" width="896" height="1200" srcset="casual-vignette-trousers-600w.webp 600w, casual-vignette-trousers.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Stack of 34 Heritage denim in a range of washes">
+  </div>
+  <div class="vignette__text">
+    <span class="vignette__eyebrow">Trousers &amp; Denim</span>
+    <h2 class="vignette__title">Fits that actually fit.</h2>
+    <p class="vignette__body">34 Heritage denim across a range of washes, Alberto for European precision on both denim and non-denim, and Meyer and Bugatti for casual and dress trousers. Cut with a higher rise and more room where most men actually need it.</p>
+  </div>
+</section>
+
+<section class="vignette">
+  <div class="vignette__image">
+    <img loading="lazy" decoding="async" src="casual-vignette-outerwear.webp" width="896" height="1200" srcset="casual-vignette-outerwear-600w.webp 600w, casual-vignette-outerwear.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Bugatti quilted navy vest on a walnut hanger">
+  </div>
+  <div class="vignette__text">
+    <span class="vignette__eyebrow">Outerwear</span>
+    <h2 class="vignette__title">Layers for a Calgary fall.</h2>
+    <p class="vignette__body">Bugatti vests and jackets, Holebrook wind-knits, and casual outerwear from the brands built for weather that changes fast. Windproof knits for the walk in, heavier pieces for when the wind actually picks up.</p>
   </div>
 </section>
 
