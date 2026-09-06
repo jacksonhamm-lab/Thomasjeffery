@@ -83,6 +83,7 @@
       text-decoration: none; transition: color 0.2s;
     }
     .nav__links a:hover { color: var(--ink); }
+    .nav__links a.active { color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
     .nav__book a {
       color: var(--ink);
       border-bottom: 1px solid rgba(28,43,57,0.3);
@@ -794,15 +795,11 @@
     </button>
     <ul class="nav__links">
       <li><a href="fall-2026">Fall 2026</a></li>
-      <li><a href="about">About</a></li>
-      <li><a href="#" data-tj-subscribe>Subscribe</a></li>
-      <li><a href="contact">Contact</a></li>
+      <li><a href="office">Office</a></li>
+      <li><a href="wedding">Wedding</a></li>
+      <li><a href="casual">Casual</a></li>
       <li class="nav__book"><a href="book-office">Book a Fitting</a></li>
     </ul>
-    <div class="nav__modes">
-      <span class="nav__mode-sep">Viewing</span>
-      <span class="nav__mode-btn active">Brands</span>
-    </div>
   </div>
 </nav>
 
