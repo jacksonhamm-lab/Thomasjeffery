@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1C2B39">
   <meta name="facebook-domain-verification" content="vrruclf3hfgl41dekz90zsejr3nz40" />
-  <title>About Thomas Jeffery — Calgary Menswear Since 1968</title>
+  <title>Paul Betenly Outerwear Sale — Thomas Jeffery Calgary</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
   <style>
     /* ══════════════════════════════
@@ -24,6 +24,7 @@
       --ground-taupe: #D9D3CC;   /* muted surface */
       --white:        #FFFFFF;
       --accent-red:   #AA2828;   /* CTAs / error states */
+      --accent-fall:  #7A2E2A;   /* fall landing page only — deep maroon accent */
     }
 
 
@@ -37,7 +38,9 @@
       overflow-x: hidden;
     }
 
-    /* ══ PHOTO PLACEHOLDERS ══ */
+    /* ══════════════════════════════
+       IMAGE PLACEHOLDERS
+    ══════════════════════════════ */
     .photo {
       background: var(--ground-taupe);
       position: relative;
@@ -56,8 +59,11 @@
       display: block;
     }
     .photo--3x4 { aspect-ratio: 3/4; }
+    .photo--hero { height: 100%; min-height: 320px; }
 
-    /* ══ NAV ══ */
+    /* ══════════════════════════════
+       NAV
+    ══════════════════════════════ */
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -73,14 +79,31 @@
     }
     .nav.scrolled { padding: 10px 20px; }
     
-    .nav__logo img { height: 64px; width: auto; display: block; }
-    .nav__right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
-    .nav__links { display: flex; align-items: center; gap: 20px; list-style: none; }
+    .nav__logo img {
+      height: 64px;
+      width: auto;
+      display: block;
+    }
+    .nav__right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
     .nav__links a {
-      font-size: 13px; font-weight: 400;
-      letter-spacing: 0.28em; text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
       color: rgba(28,43,57,0.7);
-      text-decoration: none; transition: color 0.2s;
+      text-decoration: none;
+      transition: color 0.2s;
     }
     .nav__links a:hover { color: var(--ink); }
     .nav__links a.active { color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
@@ -89,21 +112,37 @@
       border-bottom: 1px solid rgba(28,43,57,0.3);
       padding-bottom: 2px;
     }
-    .nav__modes { display: none; align-items: center; gap: 16px; }
-    .nav__mode-sep { font-size: 11px; color: rgba(28,43,57,0.35); letter-spacing: 0.2em; }
+    .nav__modes {
+      display: none;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav__mode-sep {
+      font-size: 11px;
+      color: rgba(28,43,57,0.35);
+      letter-spacing: 0.2em;
+    }
     .nav__mode-btn {
-      background: none; border: none;
+      background: none;
+      border: none;
       font-family: 'Lato', sans-serif;
-      font-size: 11px; font-weight: 400;
-      letter-spacing: 0.32em; text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
       color: rgba(28,43,57,0.45);
-      cursor: pointer; padding: 2px 0;
+      cursor: pointer;
+      padding: 2px 0;
       border-bottom: 1px solid transparent;
       transition: color 0.2s, border-color 0.2s;
-      text-decoration: none; display: inline-block;
+      text-decoration: none;
+      display: inline-block;
     }
     .nav__mode-btn:hover { color: rgba(28,43,57,0.8); }
-    .nav__mode-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
+    .nav__mode-btn.active {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
+    }
 
     /* ══ LOGO FOCUS GLOW (transparent PNG — drop-shadow follows the letters, not the box) ══ */
     .nav__logo { outline: none; -webkit-tap-highlight-color: transparent; display: inline-block; }
@@ -202,78 +241,391 @@
       .nav.mobile-collapsed .nav__hamburger span { background: var(--ground); }
     }
 
-    /* ══ SECTION SHARED ══ */
+    /* ══════════════════════════════
+       HERO — split panel
+    ══════════════════════════════ */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
+      padding-top: 92px;
+    }
+    .hero__image {
+      flex-shrink: 0;
+      height: 80vw;
+      min-height: 320px;
+      order: -1;
+    }
+    .hero__panel {
+      background: var(--ink);
+      padding: 36px 24px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
+    .hero__eyebrow {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(245,240,235,0.55);
+      margin-bottom: 18px;
+      display: block;
+    }
+    .hero__title {
+      font-size: clamp(48px, 12vw, 92px);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: var(--ground);
+      line-height: 0.92;
+      margin-bottom: 24px;
+    }
+    .hero__rule {
+      width: 40px;
+      height: 1px;
+      background: rgba(245,240,235,0.3);
+      margin-bottom: 20px;
+    }
+    .hero__sub {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(245,240,235,0.85);
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 380px;
+    }
+    .hero__cta {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--ground);
+      padding: 16px 40px;
+      text-decoration: none;
+      transition: background 0.2s;
+      align-self: flex-start;
+      border-radius: 14px;
+    }
+    .hero__cta:hover { background: #fff; }
+    .hero__walkin {
+      margin-top: 14px;
+      font-size: 13px;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(245,240,235,0.6);
+      letter-spacing: 0.04em;
+    }
+
+    /* ══════════════════════════════
+       SECTION SHARED STYLES
+    ══════════════════════════════ */
+    .section--dark {
+      background: var(--ink);
+    }
     .section__eyebrow {
-      display: block; font-size: 12px; font-weight: 700;
-      letter-spacing: 0.38em; text-transform: uppercase;
-      color: rgba(28,43,57,0.5); margin-bottom: 12px;
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.5);
+      margin-bottom: 12px;
+    }
+    .section--dark .section__eyebrow {
+      color: rgba(245,240,235,0.5);
     }
     .section__title {
       font-size: clamp(32px, 6vw, 52px);
-      font-weight: 300; letter-spacing: 0.01em;
-      color: var(--ink); line-height: 1.1; margin-bottom: 18px;
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 14px;
     }
+    .section--dark .section__title { color: var(--ground); }
     .section__body {
-      font-size: 16px; font-weight: 400; line-height: 1.85;
-      color: rgba(28,43,57,0.78); margin-bottom: 20px; max-width: 640px;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: rgba(28,43,57,0.78);
+      margin-bottom: 32px;
+      max-width: 560px;
     }
-    .section__body + .section__body { margin-top: 0; }
+    .section--dark .section__body { color: rgba(245,240,235,0.78); }
 
-    /* ══ STORY ══ */
-    .story { padding: 48px 20px; }
-    .story--top { padding-top: 120px; }
-    .story__inner { display: grid; grid-template-columns: 1fr; gap: 24px; }
-    .story__photo { aspect-ratio: 3/4; }
-
-    /* ══ PHILOSOPHY ══ */
-    .philosophy { padding: 48px 20px; background: var(--ground-warm); }
-    .philosophy__grid {
+    /* ══════════════════════════════
+       COLLECTIONS — expandable cards
+    ══════════════════════════════ */
+    .collections {
+      padding: 44px 20px;
+    }
+    .collections__hint {
+      font-size: 12px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(28,43,57,0.45);
+      margin-top: 4px;
+      margin-bottom: 36px;
+      letter-spacing: 0.04em;
+    }
+    .collections__grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 16px;
-      margin-top: 32px;
+      gap: 12px;
     }
-    .principle {
+    .collection {
+      border: 1px solid rgba(28,43,57,0.12);
       background: var(--ground);
-      border-left: 2px solid var(--ink);
-      padding: 24px 24px 26px;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .principle__num {
-      font-size: 28px;
-      font-weight: 300;
-      color: rgba(28,43,57,0.22);
-      line-height: 1;
-      display: block;
-      margin-bottom: 12px;
+    .collection:hover {
+      border-color: rgba(28,43,57,0.28);
+      box-shadow: 0 4px 20px rgba(28,43,57,0.07);
     }
-    .principle__title {
-      font-size: 16px;
+    .collection.open {
+      border-color: var(--ink);
+    }
+    .collection__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 24px;
+      gap: 16px;
+    }
+    .collection__left { flex: 1; }
+    .collection__cat {
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
+      color: rgba(28,43,57,0.45);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .collection__name {
+      font-size: 20px;
+      font-weight: 300;
+      letter-spacing: 0.05em;
       color: var(--ink);
       display: block;
-      margin-bottom: 10px;
     }
-    .principle__body {
+    .collection__tagline {
+      font-size: 15px;
+      font-weight: 700;
+      font-style: italic;
+      color: rgba(28,43,57,0.72);
+      display: block;
+      margin-top: 4px;
+    }
+    .collection__toggle {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(28,43,57,0.2);
+      border-radius: 50%;
+      font-size: 20px;
+      line-height: 1;
+      color: rgba(28,43,57,0.45);
+      flex-shrink: 0;
+      transition: transform 0.3s, color 0.22s, background 0.22s, border-color 0.22s;
+    }
+    .collection:hover .collection__toggle {
+      border-color: rgba(28,43,57,0.4);
+      color: var(--ink);
+    }
+    .collection.open .collection__toggle {
+      transform: rotate(45deg);
+      color: var(--ground);
+      background: var(--ink);
+      border-color: var(--ink);
+    }
+    .collection__detail {
+      display: none;
+      padding: 0 24px 28px;
+      border-top: 1px solid rgba(28,43,57,0.08);
+    }
+    .collection.open .collection__detail { display: block; }
+    .collection__detail-body {
       font-size: 15px;
       font-weight: 400;
       line-height: 1.8;
       color: rgba(28,43,57,0.78);
+      padding-top: 20px;
+      margin-bottom: 16px;
+    }
+    .collection__detail-brands {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .collection__detail-brands span {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(28,43,57,0.7);
+      letter-spacing: 0.04em;
+      text-transform: none;
+    }
+    .collection__note {
+      font-size: 13px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.7;
+      color: rgba(28,43,57,0.58);
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(28,43,57,0.07);
     }
 
-    /* ══ TEAM ══ */
-    .team { padding: 48px 20px; }
-    .team__inner { display: grid; grid-template-columns: 1fr; gap: 24px; }
-    .team__photo { aspect-ratio: 3/4; }
-    .team__body {
+    /* Seasonal tag for outerwear */
+    .seasonal-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.55);
+      background: rgba(28,43,57,0.06);
+      border: 1px solid rgba(28,43,57,0.12);
+      padding: 5px 12px;
+      margin-bottom: 6px;
+    }
+
+
+    /* ══════════════════════════════
+       BRAND SPOTLIGHTS
+    ══════════════════════════════ */
+    .spotlights {
+      padding: 40px 20px;
+      background: var(--ink);
+    }
+    .spotlights .section__eyebrow {
+      color: rgba(245,240,235,0.5);
+    }
+    .spotlights .section__title {
+      color: var(--ground);
+    }
+    .spotlights .section__body {
+      color: rgba(245,240,235,0.75);
+      margin-bottom: 24px;
+    }
+    .spotlights__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .spotlight-card {
+      background: rgba(245,240,235,0.05);
+      border: 1px solid rgba(245,240,235,0.12);
+      padding: 28px 24px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .spotlight-card:hover {
+      background: rgba(245,240,235,0.09);
+      border-color: rgba(245,240,235,0.24);
+    }
+    .spotlight-card__tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(245,240,235,0.4);
+      display: block;
+      margin-bottom: 10px;
+    }
+    .spotlight-card__name {
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ground);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .spotlight-card__body {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: rgba(245,240,235,0.75);
+    }
+    .spotlight-card__categories {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245,240,235,0.45);
+      margin-top: 18px;
+    }
+    .spotlight-card__categories span {
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      color: rgba(245,240,235,0.65);
+    }
+
+    /* ══════════════════════════════
+       BOOKING SECTION
+    ══════════════════════════════ */
+    .booking {
+      padding: 56px 20px;
+      background: var(--ground-warm);
+      text-align: center;
+    }
+    .booking__eyebrow {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(28,43,57,0.5);
+      margin-bottom: 16px;
+    }
+    .booking__title {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .booking__sub {
       font-size: 16px;
       font-weight: 400;
-      line-height: 1.85;
-      color: rgba(28,43,57,0.78);
-      max-width: 640px;
+      color: rgba(28,43,57,0.75);
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .team__body + .team__body { margin-top: 20px; }
+    .booking__cta {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ground);
+      background: var(--ink);
+      padding: 18px 52px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      border-radius: 14px;
+    }
+    .booking__cta:hover { opacity: 0.82; }
+    .booking__walkin {
+      margin-top: 20px;
+      font-size: 14px;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(28,43,57,0.62);
+      letter-spacing: 0.02em;
+    }
 
     /* ══ FOOTER (unified across site) ══ */
     .footer { background: var(--ink); padding: 64px 24px 36px; border-top: 1px solid rgba(245,240,235,0.07); }
@@ -335,14 +687,25 @@
     }
     .footer__social a:hover { color: rgba(245,240,235,0.9); }
 
-    /* ══ MOBILE STICKY BOOK ══ */
+    /* ══════════════════════════════
+       MOBILE STICKY BOOK BUTTON
+    ══════════════════════════════ */
     .sticky-book {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
-      display: block; background: var(--ink); color: var(--ground);
-      font-family: 'Lato', sans-serif; font-size: 11px; font-weight: 700;
-      letter-spacing: 0.3em; text-transform: uppercase;
-      text-align: center; text-decoration: none;
-      padding: 18px 20px; border-top: 1px solid rgba(245,240,235,0.1);
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 99;
+      display: block;
+      background: var(--ink);
+      color: var(--ground);
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
+      padding: 18px 20px;
+      border-top: 1px solid rgba(245,240,235,0.1);
       transition: background 0.2s;
     }
     .sticky-book:hover { background: var(--ink-hover); }
@@ -350,7 +713,9 @@
        so Instagram / Facebook (last row of the footer) stay tappable. */
     @media (max-width: 699px) { body { padding-bottom: 60px; } }
 
-    /* ══ RESPONSIVE ══ */
+    /* ══════════════════════════════
+       RESPONSIVE — TABLET / DESKTOP
+    ══════════════════════════════ */
     @media (min-width: 700px) {
       .nav { padding: 14px 40px; }
       .nav.scrolled { padding: 10px 40px; }
@@ -358,33 +723,145 @@
       .nav__links { gap: 32px; }
       .nav__modes { display: flex; }
 
-      .story { padding: 80px 48px; }
-      .story--top { padding-top: 148px; }
-      .story__inner { grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start; }
-      .story__photo { aspect-ratio: 1/1; position: sticky; top: 110px; }
-      .team { padding: 80px 48px; }
-      .team__inner { grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: start; }
-      .team__photo { aspect-ratio: 1/1; }
-      .team__photo--order { order: -1; }
-      .philosophy { padding: 80px 48px; }
-      .philosophy__grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+      .hero {
+        flex-direction: row;
+        padding-top: 92px;
+        min-height: 100svh;
+      }
+      .hero__image {
+        order: 0;
+        width: 45%;
+        height: auto;
+        min-height: unset;
+      }
+      .hero__panel { padding: 140px 52px 72px; }
+
+      .collections { padding: 64px 48px; }
+      .collections__grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+
+
+      .spotlights { padding: 56px 48px; }
+      .spotlights__grid { grid-template-columns: 1fr 1fr 1fr; }
+
+      .booking { padding: 96px 48px; }
+
       .footer { padding: 80px 48px 40px; }
       .footer__logo { height: 100px; margin: 0 0 44px; }
       .footer__title { margin-bottom: 48px; }
       .footer__grid { grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
       .footer__cta-row { flex-direction: row; gap: 14px; margin-bottom: 48px; }
       .footer__bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+
       .sticky-book { display: none; }
     }
+
     @media (min-width: 1024px) {
       .nav { padding: 14px 64px; }
-      .story { padding: 96px 64px; }
-      .story--top { padding-top: 168px; }
-      .team { padding: 96px 64px; }
-      .philosophy { padding: 96px 64px; }
-      .philosophy__grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
+      .hero__image { width: 47%; }
+      .hero__panel { padding: 160px 72px 80px; }
+      .collections { padding: 80px 64px; }
+      .spotlights { padding: 64px 64px; }
+      .booking { padding: 112px 64px; }
       .footer { padding: 96px 64px 44px; }
       .footer__logo { height: 112px; }
+    }
+
+    /* ══════════════════════════════
+       EDITORIAL LOOKS — CAROUSEL
+    ══════════════════════════════ */
+    .looks {
+      padding: 56px 0 48px;
+      background: var(--ink);
+    }
+    .looks__header {
+      padding: 0 24px 32px;
+    }
+    .looks .section__eyebrow { color: rgba(245,240,235,0.5); }
+    .looks .section__title { color: var(--ground); margin-bottom: 0; }
+
+    .looks__carousel {
+      position: relative;
+      overflow: hidden;
+    }
+    .looks__track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .looks__slide {
+      min-width: 100%;
+      padding: 0 24px;
+    }
+    .looks__slide .photo img { object-position: center top; }
+
+    .looks__btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(245,240,235,0.1);
+      border: 1px solid rgba(245,240,235,0.2);
+      color: var(--ground);
+      font-size: 18px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      z-index: 2;
+      border-radius: 14px;
+    }
+    .looks__btn:hover {
+      background: rgba(245,240,235,0.2);
+      border-color: rgba(245,240,235,0.4);
+    }
+    .looks__btn--prev { left: 28px; }
+    .looks__btn--next { right: 28px; }
+
+    .looks__dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 24px 0 0;
+    }
+    .looks__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(245,240,235,0.3);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .looks__dot--active {
+      background: var(--ground);
+      transform: scale(1.35);
+    }
+
+    @media (min-width: 700px) {
+      .looks { padding: 72px 0 60px; }
+      .looks__header { padding: 0 48px 36px; }
+      .looks__carousel { overflow: visible; padding: 0 48px; }
+      .looks__track {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        transform: none !important;
+        transition: none;
+      }
+      .looks__slide { min-width: unset; padding: 0; }
+      .looks__btn { display: none;
+ border-radius: 14px;
+    }
+      .looks__dots { display: none; }
+    }
+    @media (min-width: 1024px) {
+      .looks { padding: 88px 0 72px; }
+      .looks__header { padding: 0 64px 40px; }
+      .looks__carousel { padding: 0 64px; }
+      .looks__track { gap: 28px; }
     }
   
     /* ══ COOKIE CONSENT BANNER ══ */
@@ -401,21 +878,210 @@
     @media (min-width:700px){.tj-consent__inner{flex-direction:row;align-items:center}.tj-consent__text{flex:1}.tj-consent__actions{flex-shrink:0}}
     @media (prefers-reduced-motion: reduce){.tj-consent{transition:opacity 200ms}}
     /* ══ END COOKIE CONSENT BANNER ══ */
+  
+
+    /* ══════════════════════════════
+       FALL 2026 EDITORIAL LAYOUT
+       Full-bleed hero + editor's letter + featured brand + alternating
+       image/text vignettes. Placeholders where photos will drop in later.
+    ══════════════════════════════ */
+
+    /* Reset the copied casual page structure. Hide anything from the base
+       template we're replacing (defensive — we've already removed the DOM
+       nodes but this keeps things clean). */
+
+    /* ── Full-bleed editorial hero ── */
+    /* ── Editor's letter ── */
+    .editor-letter {
+      max-width: 640px; margin: 112px auto 96px;
+      padding: 0 32px;
+    }
+    .editor-letter__eyebrow {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.44em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5); margin-bottom: 40px;
+      display: block; text-align: center;
+    }
+    .editor-letter__body {
+      font-size: 18px; font-weight: 300;
+      line-height: 1.85; color: rgba(28,43,57,0.86);
+      margin-bottom: 24px;
+    }
+    .editor-letter__body:last-of-type { margin-bottom: 0; }
+    .editor-letter__signoff {
+      margin-top: 44px; font-size: 11px;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5); text-align: center;
+    }
+    @media (min-width: 700px) {
+      .editor-letter { margin: 128px auto 120px; }
+    }
+
+    /* ── Featured brand — headline treatment ── */
+    .feature {
+      display: grid; grid-template-columns: 1fr; gap: 40px;
+      align-items: center; max-width: 1200px;
+      margin: 96px auto; padding: 0 32px;
+    }
+    @media (min-width: 900px) {
+      .feature {
+        grid-template-columns: 1.15fr 1fr; gap: 80px;
+        margin: 120px auto;
+      }
+    }
+    .feature__image {
+      aspect-ratio: 4/5; background: var(--ground-warm);
+      position: relative; overflow: hidden;
+    }
+    .feature__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .feature__eyebrow {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.44em; text-transform: uppercase;
+      color: rgba(28,43,57,0.55); margin-bottom: 24px; display: block;
+    }
+    .feature__title {
+      font-size: clamp(40px, 5.5vw, 64px); font-weight: 300;
+      line-height: 1.05; letter-spacing: -0.01em;
+      color: var(--ink); margin-bottom: 28px;
+    }
+    .feature__body {
+      font-size: 17px; font-weight: 300;
+      line-height: 1.85; color: rgba(28,43,57,0.82);
+      max-width: 500px;
+    }
+
+    /* ── Vignette — full-bleed alternating image + text ── */
+    .vignette {
+      display: grid; grid-template-columns: 1fr; gap: 0;
+      align-items: stretch;
+      padding: 48px 20px;
+      background: var(--ground);
+    }
+    .vignette + .vignette { background: var(--ground-warm); }
+    .vignette + .vignette + .vignette { background: var(--ground); }
+    .vignette + .vignette + .vignette + .vignette { background: var(--ground-warm); }
+    .vignette + .vignette + .vignette + .vignette + .vignette { background: var(--ground); }
+    @media (min-width: 900px) {
+      .vignette {
+        grid-template-columns: 1fr 1fr; gap: 64px;
+        padding: 96px 48px;
+        align-items: center;
+      }
+      .vignette--reverse .vignette__image { order: 2; }
+    }
+    @media (min-width: 1200px) {
+      .vignette { padding: 112px 64px; gap: 80px; }
+    }
+    .vignette__image {
+      aspect-ratio: 4/5; background: rgba(28,43,57,0.06);
+      position: relative; overflow: hidden;
+    }
+    .vignette__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .vignette__text { padding: 24px 0; }
+    @media (min-width: 900px) { .vignette__text { padding: 0 24px; } }
+    .vignette__eyebrow {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.42em; text-transform: uppercase;
+      color: rgba(28,43,57,0.55); margin-bottom: 18px; display: block;
+    }
+    .vignette__title {
+      font-size: clamp(28px, 4vw, 44px); font-weight: 300;
+      line-height: 1.15; letter-spacing: -0.005em;
+      color: var(--ink); margin-bottom: 22px;
+    }
+    .vignette__body {
+      font-size: 16px; font-weight: 300;
+      line-height: 1.85; color: rgba(28,43,57,0.8);
+      max-width: 520px;
+    }
+    .vignette__brand {
+      margin-top: 24px; font-size: 11px;
+      letter-spacing: 0.34em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5);
+    }
+
+    /* ── Image placeholder (until real photos land) ── */
+    .img-ph {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 400;
+      letter-spacing: 0.44em; text-transform: uppercase;
+      color: rgba(28,43,57,0.32);
+      background:
+        repeating-linear-gradient(45deg,
+          transparent 0, transparent 12px,
+          rgba(28,43,57,0.03) 12px, rgba(28,43,57,0.03) 13px);
+    }
+
+    /* ── Closing invitation ── */
+    .fall-closing {
+      text-align: center;
+      padding: 96px 20px 112px;
+      background: var(--ink);
+    }
+    @media (min-width: 900px) { .fall-closing { padding: 128px 48px 144px; } }
+    @media (min-width: 1200px) { .fall-closing { padding: 144px 64px 160px; } }
+    .fall-closing__inner { max-width: 720px; margin: 0 auto; }
+    .fall-closing__eyebrow {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.42em; text-transform: uppercase;
+      color: rgba(245,240,235,0.55); margin-bottom: 24px; display: block;
+    }
+    .fall-closing__title {
+      font-size: clamp(32px, 5vw, 52px); font-weight: 300;
+      line-height: 1.1; color: var(--ground); margin-bottom: 24px;
+      letter-spacing: -0.005em;
+    }
+    .fall-closing__body {
+      font-size: 17px; font-weight: 300;
+      line-height: 1.7; color: rgba(245,240,235,0.78);
+      margin-bottom: 44px; max-width: 540px;
+      margin-left: auto; margin-right: auto;
+    }
+    .fall-closing__cta {
+      display: inline-block; padding: 18px 44px;
+      background: var(--ground); color: var(--ink);
+      text-decoration: none; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      border-radius: 14px;
+      transition: background 0.2s;
+    }
+    .fall-closing__cta:hover { background: var(--white); }
+
   </style>
-  <meta name="description" content="A Calgary menswear store since 1968. Family-owned, locally run. Honest fitting, in-house tailoring, and the brands we believe in.">
-  <link rel="canonical" href="https://thomasjeffery.ca/about">
+  <meta name="description" content="Fall 2026 at Thomas Jeffery Calgary. Knitwear from Ferrante, sport coats from 7 Downie St., sport shirts from Klauss Boehler, outerwear from Bugatti and Holebrook, and Coppley custom. In-store at Kingsland Village.">
+  <link rel="canonical" href="https://thomasjeffery.ca/fall-2026">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Thomas Jeffery Men's Wear">
-  <meta property="og:title" content="About Thomas Jeffery — Calgary Menswear Since 1968">
-  <meta property="og:description" content="A Calgary menswear store since 1968. Family-owned, locally run. Honest fitting, in-house tailoring, and the brands we believe in.">
-  <meta property="og:url" content="https://thomasjeffery.ca/about">
-  <meta property="og:image" content="https://thomasjeffery.ca/about-storefront.webp">
-  <meta property="og:image:alt" content="About — Thomas Jeffery Men's Wear Calgary">
+  <meta property="og:title" content="Fall 2026 — Thomas Jeffery Menswear Calgary">
+  <meta property="og:description" content="The layering season. Knitwear, sport coats, sport shirts, outerwear, and Coppley custom for fall at Thomas Jeffery in Calgary.">
+  <meta property="og:url" content="https://thomasjeffery.ca/fall-2026">
+  <meta property="og:image" content="https://thomasjeffery.ca/fall-hero.webp">
+  <meta property="og:image:alt" content="Fall 2026 at Thomas Jeffery — the layering season">
   <meta property="og:locale" content="en_CA">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="About — Thomas Jeffery Men's Wear Calgary">
-  <meta name="twitter:description" content="A Calgary menswear store since 1968. Family-owned, locally run. Honest fitting, in-house tailoring, and the brands we believe in.">
-  <meta name="twitter:image" content="https://thomasjeffery.ca/about-storefront.webp">
+  <meta name="twitter:title" content="Fall 2026 — Thomas Jeffery Menswear Calgary">
+  <meta name="twitter:description" content="The layering season. Knitwear, sport coats, sport shirts, outerwear, and Coppley custom for fall at Thomas Jeffery in Calgary.">
+  <meta name="twitter:image" content="https://thomasjeffery.ca/fall-hero.webp">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Fall 2026 — Thomas Jeffery Menswear",
+  "description": "Fall 2026 collection at Thomas Jeffery Calgary — knitwear, sport coats, sport shirts, outerwear, and Coppley custom.",
+  "url": "https://thomasjeffery.ca/fall-2026",
+  "isPartOf": {
+    "@id": "https://thomasjeffery.ca/#store"
+  },
+  "about": [
+    { "@type": "Brand", "name": "Ferrante" },
+    { "@type": "Brand", "name": "7 Downie St." },
+    { "@type": "Brand", "name": "Klauss Boehler" },
+    { "@type": "Brand", "name": "Bugatti" },
+    { "@type": "Brand", "name": "Coppley" }
+  ]
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -430,8 +1096,8 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "About",
-      "item": "https://thomasjeffery.ca/about"
+      "name": "Fall 2026",
+      "item": "https://thomasjeffery.ca/fall-2026"
     }
   ]
 }
@@ -536,6 +1202,7 @@
   .tj-promo__eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(245,240,235,0.6); }
   .tj-promo__text { font-size: 13px; font-weight: 400; letter-spacing: 0.02em; color: rgba(245,240,235,0.96); }
   .tj-promo__cta { font-size: 11px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; border-bottom: 1px solid rgba(245,240,235,0.45); padding-bottom: 1px; }
+  /* darker maroon on hover */
   .tj-promo__close { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(245,240,235,0.55); font-size: 20px; line-height: 1; cursor: pointer; padding: 4px 10px; transition: color 0.15s; }
   .tj-promo__close:hover { color: var(--ground); }
   .tj-promo--hidden { display: none; }
@@ -597,17 +1264,19 @@
 <!-- ══ END SITE-WIDE PROMO BAR ══ -->
 
 
-<!-- ══ MOBILE STICKY BOOK ══ -->
-<a class="sticky-book" href="book-office">Book a Fitting →</a>
+<!-- ══ MOBILE STICKY BOOK BUTTON ══ -->
+<a class="sticky-book" href="book-casual">Book a Fitting →</a>
 
 <!-- ══ BACK TO TOP ══ -->
 <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 
-<!-- ══ NAV ══ -->
+<!-- ══════════════════════════════
+     NAV
+══════════════════════════════ -->
 <nav class="nav" id="nav">
   <a class="nav__logo" href="/" aria-label="Back to home">
     <img src="https://mcusercontent.com/a677e9b99521296ba09580ea8/images/8c767aaa-8e17-aad6-db85-b0383c08bd33.png"
-         alt="Thomas Jeffery Men's Wear">
+         alt="Thomas Jeffery Men's Wear" style="height:64px;width:auto;display:block;">
   </a>
   <div class="nav__right">
     <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
@@ -618,7 +1287,7 @@
       <li><a href="office">Office</a></li>
       <li><a href="wedding">Wedding</a></li>
       <li><a href="casual">Casual</a></li>
-      <li class="nav__book"><a href="book-office">Book a Fitting</a></li>
+      <li class="nav__book"><a href="book">Book a Fitting</a></li>
     </ul>
   </div>
 </nav>
@@ -632,87 +1301,113 @@
   <a href="wedding">Wedding</a>
   <a href="casual">Casual</a>
   <span class="nav-menu__section">More</span>
-  <a href="about" class="active">About</a>
+  <a href="about">About</a>
   <a href="contact">Contact</a>
   <a href="brands">Brands</a>
   <a href="#" data-tj-subscribe>Subscribe</a>
-  <a class="nav-menu__book" href="book-office">Book a Fitting →</a>
+  <a class="nav-menu__book" href="book-casual">Book a Fitting →</a>
 </div>
 
-<!-- ══ STORY ══ -->
-<section class="story story--top" id="story">
-  <div class="story__inner">
-    <div class="story__text">
-      <span class="section__eyebrow">The Store</span>
-      <h1 class="section__title">A Calgary store,<br>with Calgary roots.</h1>
 
-      <p class="section__body">Thomas Jeffery has been part of Calgary's menswear scene since 1968. The store carries the names of two sons from one of its earlier owners, Thomas and Jeffery. Today it is family-owned and answerable to the city it has served for over half a century.</p>
+<!-- ══════════════════════════════
+     PAUL BETENLY OUTERWEAR — MANUFACTURER CLEARANCE
+══════════════════════════════ -->
 
-      <p class="section__body">What that means in practice is straightforward. We carry the brands we believe in. We fit every piece in-store. We don't sell what we wouldn't wear ourselves. And the people who walk you through a fitting are usually the same ones you will see next time, often for years.</p>
+<style>
+  /* Longer words than the Fall hero, so dial the display size back. */
+  .hero__title { font-size: clamp(38px, 7vw, 72px); }
+  .coats { padding: 64px 20px 72px; background: var(--ground); }
+  @media (min-width: 900px) { .coats { padding: 96px 48px 104px; } }
+  .coats__head { max-width: 720px; margin: 0 auto 48px; text-align: center; }
+  .coats__eyebrow {
+    font-size: 11px; font-weight: 400; letter-spacing: 0.42em;
+    text-transform: uppercase; color: rgba(28,43,57,0.55);
+    display: block; margin-bottom: 18px;
+  }
+  .coats__title {
+    font-size: clamp(28px, 4vw, 44px); font-weight: 300; line-height: 1.15;
+    color: var(--ink); margin: 0 0 18px;
+  }
+  .coats__body {
+    font-size: 16px; font-weight: 300; line-height: 1.85;
+    color: rgba(28,43,57,0.8); margin: 0;
+  }
+  .coats__grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 1080px; margin: 0 auto; }
+  @media (min-width: 700px) { .coats__grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+  .coat__img { background: #000; overflow: hidden; }
+  .coat__img img { width: 100%; height: auto; display: block; }
+  .coat__name {
+    display: block; text-align: center; margin-top: 14px;
+    font-size: 11px; letter-spacing: 0.36em; text-transform: uppercase;
+    color: rgba(28,43,57,0.55);
+  }
+</style>
 
-      <p class="section__body">That last part is no accident. Tim Beggs and Jim Smith have each dedicated decades to this store, building relationships with clients, developing real expertise, and doing the kind of one-on-one work that can't be rushed. Alongside owner Len Hamm, they are the people behind the counter when you come in.</p>
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero__image photo photo--hero">
+    <img src="betenly-topcoat-vicuna.webp" width="1200" height="1600"
+         srcset="betenly-topcoat-vicuna-600w.webp 600w, betenly-topcoat-vicuna.webp 1200w"
+         sizes="100vw" alt="Paul Betenly topcoat in vicuna">
+  </div>
+  <div class="hero__panel">
+    <span class="hero__eyebrow">Manufacturer Clearance</span>
+    <h1 class="hero__title">20% Off<br>Paul Betenly<br>Outerwear.</h1>
+    <div class="hero__rule"></div>
+    <p class="hero__sub">Paul Betenly is putting the incentive behind this one, so the discount comes straight from the maker. Topcoats plus assorted outerwear, 20% off in store.</p>
+    <a class="hero__cta" href="book">Book a Fitting</a>
+    <p class="hero__walkin">Walk-ins welcome any day.</p>
+  </div>
+</section>
 
-      <p class="section__body">Thomas Jeffery is at Kingsland Village. One store, more space under one roof, the same people you've always known.</p>
+<!-- ══ THE COATS ══ -->
+<section class="coats">
+  <div class="coats__head">
+    <span class="coats__eyebrow">In three colours</span>
+    <h2 class="coats__title">Navy, Grey, and Vicuna.</h2>
+    <p class="coats__body">The Paul Betenly topcoat in three colours. Other outerwear in store is included in the sale as well.</p>
+  </div>
+  <div class="coats__grid">
+    <div>
+      <div class="coat__img">
+        <img src="betenly-topcoat-navy.webp" width="1200" height="1600"
+             srcset="betenly-topcoat-navy-600w.webp 600w, betenly-topcoat-navy.webp 1200w"
+             sizes="(min-width: 700px) 33vw, 100vw" alt="Paul Betenly topcoat in navy" loading="lazy">
+      </div>
+      <span class="coat__name">Navy</span>
     </div>
-    <div class="story__photo photo photo--3x4">
-      <img src="about-storefront.webp" width="1200" height="896" srcset="about-storefront-600w.webp 600w, about-storefront.webp 1200w" sizes="100vw" alt="Thomas Jeffery Men's Wear — Kingsland Village storefront">
+    <div>
+      <div class="coat__img">
+        <img src="betenly-topcoat-grey.webp" width="1200" height="1600"
+             srcset="betenly-topcoat-grey-600w.webp 600w, betenly-topcoat-grey.webp 1200w"
+             sizes="(min-width: 700px) 33vw, 100vw" alt="Paul Betenly topcoat in grey" loading="lazy">
+      </div>
+      <span class="coat__name">Grey</span>
+    </div>
+    <div>
+      <div class="coat__img">
+        <img src="betenly-topcoat-vicuna.webp" width="1200" height="1600"
+             srcset="betenly-topcoat-vicuna-600w.webp 600w, betenly-topcoat-vicuna.webp 1200w"
+             sizes="(min-width: 700px) 33vw, 100vw" alt="Paul Betenly topcoat in vicuna" loading="lazy">
+      </div>
+      <span class="coat__name">Vicuna</span>
     </div>
   </div>
 </section>
 
-<!-- ══ PHILOSOPHY ══ -->
-<section class="philosophy">
-  <span class="section__eyebrow">What We Do</span>
-  <h2 class="section__title">A different kind<br>of menswear store.</h2>
-  <p class="section__body">There are bigger stores and there are flashier stores. We are neither. Here is what we are instead.</p>
-
-  <div class="philosophy__grid">
-
-    <div class="principle">
-      <span class="principle__num">01</span>
-      <span class="principle__title">Personal, Not Transactional</span>
-      <p class="principle__body">We are not a chain. Every fitting happens with one staff member from start to finish. They learn your taste, your build, and what you actually wear. Next time you come in, you don't start over.</p>
-    </div>
-
-    <div class="principle">
-      <span class="principle__num">02</span>
-      <span class="principle__title">Honest Opinions</span>
-      <p class="principle__body">If a piece isn't right for you, we will tell you. If you don't need three suits, we won't sell you three. The point isn't to move stock. The point is that you walk out with something you will actually wear.</p>
-    </div>
-
-    <div class="principle">
-      <span class="principle__num">03</span>
-      <span class="principle__title">Tailoring In-House</span>
-      <p class="principle__body">Our tailor works in the same building, on the same schedule we do. Nothing leaves the store until it fits the way it should.</p>
-    </div>
-
-    <div class="principle">
-      <span class="principle__num">04</span>
-      <span class="principle__title">Brands We Believe In</span>
-      <p class="principle__body">We don't carry a label because it pays for shelf space. Every brand on the floor earned its place because the construction holds up, the fit works for our customers, or it does something specific better than anyone else.</p>
-    </div>
-
+<!-- ══ CLOSING ══ -->
+<section class="fall-closing">
+  <div class="fall-closing__inner">
+    <span class="fall-closing__eyebrow">In-store</span>
+    <h2 class="fall-closing__title">Come try one on.</h2>
+    <p class="fall-closing__body">The sale is on now at Kingsland Village. Walk-ins welcome any day, or book a fitting for dedicated time with our staff.</p>
+    <a class="fall-closing__cta" href="book">Book a Fitting</a>
   </div>
 </section>
 
-<!-- ══ TEAM ══ -->
-<section class="team">
-  <div class="team__inner">
-    <div class="team__photo photo photo--3x4 team__photo--order">
-      <img loading="lazy" decoding="async" src="about-fitting.webp" width="1200" height="896" srcset="about-fitting-600w.webp 600w, about-fitting.webp 1200w" sizes="100vw" alt="In-store suit fitting at Thomas Jeffery Men's Wear">
-    </div>
-    <div class="team__text">
-      <span class="section__eyebrow">The People</span>
-      <h2 class="section__title">Experienced menswear<br>professionals.</h2>
-
-      <p class="team__body">The Thomas Jeffery team is part of what the store is. Many of them have been here for decades, learning the craft from the people who came before them and now passing it on themselves. They are experienced menswear professionals: the kind of people who can read a shoulder seam from across the room, and who, more often than you would expect, remember what you bought the last time you came in.</p>
-
-      <p class="team__body">Come in and meet them. They are the ones fitting you, picking the right shirt for the right suit, and telling you honestly when a piece works and when it doesn't. That part has not changed in over fifty years.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FOOTER ══ -->
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
 <footer class="footer">
   <span class="footer__eyebrow">Find Us</span>
   <h2 class="footer__title">One store.<br>Kingsland Village.</h2>
@@ -721,14 +1416,12 @@
     <div class="footer__col">
       <h4>Navigate</h4>
       <ul>
-        <li><a href="fall-2026">Fall 2026</a></li>
-      <li><a href="about">About</a></li>
+        <li><a href="about">About</a></li>
         <li><a href="brands">Brands</a></li>
           <li><a href="wedding">Wedding</a></li>
         <li><a href="casual">Casual</a></li>
         <li><a href="subscribe">Subscribe</a></li>
-        <li><a href="contact">Contact</a></li>
-        <li><a href="book-office">Book a Fitting</a></li>
+        <li><a href="book-casual">Book a Fitting</a></li>
       </ul>
     </div>
     <div class="footer__col">
@@ -752,7 +1445,7 @@
   </div>
 
   <div class="footer__cta-row">
-    <a class="footer__btn footer__btn--primary" href="book-office">Book a Fitting</a>
+    <a class="footer__btn footer__btn--primary" href="book-casual">Book a Fitting</a>
     <a class="footer__btn footer__btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Thomas+Jeffery+Mens+Wear+7337+Macleod+Trail+SW+Calgary+AB" target="_blank" rel="noopener">Open in Maps</a>
   </div>
 
@@ -770,38 +1463,86 @@
 </footer>
 
 <script>
-  /* ── Nav scroll ── */
-  var nav = document.getElementById('nav');
-  window.addEventListener('scroll', function () {
+  // ── Nav scroll behaviour ──────────────────────────────────
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
     var _p = document.getElementById('tj-promo');
     if (_p) _p.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
+  });
 
-  /* ── Mobile hamburger menu ── */
-  var hamburger = document.getElementById('nav-hamburger');
-  var navMenu = document.getElementById('nav-menu');
+  // ── Mobile hamburger menu ────────────────────────────────
+  const hamburger = document.getElementById('nav-hamburger');
+  const navMenu = document.getElementById('nav-menu');
   if (hamburger && navMenu) {
-    hamburger.addEventListener('click', function () {
-      var isOpen = navMenu.classList.toggle('open');
+    hamburger.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
       hamburger.classList.toggle('open', isOpen);
       hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   }
 
-  /* ── Back to top ── */
-  var backToTop = document.getElementById('back-to-top');
+  // ── Back to top ───────────────────────────────────────────
+  const backToTop = document.getElementById('back-to-top');
   if (backToTop) {
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', () => {
       backToTop.classList.toggle('visible', window.scrollY > 400);
     }, { passive: true });
-    backToTop.addEventListener('click', function () {
+    backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
-</script>
+  // ── Collections accordion ─────────────────────────────────
+  document.querySelectorAll('.collection').forEach(col => {
+    col.addEventListener('click', () => {
+      const isOpen = col.classList.contains('open');
+      document.querySelectorAll('.collection').forEach(c => c.classList.remove('open'));
+      if (!isOpen) col.classList.add('open');
+    });
+  });
 
+  // ── Looks carousel ────────────────────────────────────────
+  (function () {
+    var track = document.getElementById('looks-track');
+    var dots = document.querySelectorAll('.looks__dot');
+    var total = 3;
+    var current = 0;
+    if (!track) return;
+
+    function goTo(n) {
+      current = ((n % total) + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function (d, i) {
+        d.classList.toggle('looks__dot--active', i === current);
+      });
+    }
+
+    var prevBtn = document.getElementById('looks-prev');
+    var nextBtn = document.getElementById('looks-next');
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        goTo(parseInt(this.dataset.index, 10));
+      });
+    });
+
+    // Touch swipe
+    var startX = 0;
+    var el = document.getElementById('looks-carousel');
+    if (el) {
+      el.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+      el.addEventListener('touchend', function (e) {
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+      });
+    }
+  })();
+</script>
 <!-- ══ SUBSCRIBE POPUP ══ -->
 <style>
   .tj-popup { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
