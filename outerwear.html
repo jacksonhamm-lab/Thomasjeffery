@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1C2B39">
   <meta name="facebook-domain-verification" content="vrruclf3hfgl41dekz90zsejr3nz40" />
-  <title>Office Suiting — Thomas Jeffery Men's Wear Calgary</title>
+  <title>Paul Betenly Outerwear Sale — Thomas Jeffery Calgary</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
   <style>
     /* ══════════════════════════════
@@ -24,6 +24,7 @@
       --ground-taupe: #D9D3CC;   /* muted surface */
       --white:        #FFFFFF;
       --accent-red:   #AA2828;   /* CTAs / error states */
+      --accent-fall:  #7A2E2A;   /* fall landing page only — deep maroon accent */
     }
 
 
@@ -57,7 +58,7 @@
       object-position: center top;
       display: block;
     }
-    .photo--4x3 { aspect-ratio: 4/3; }
+    .photo--3x4 { aspect-ratio: 3/4; }
     .photo--hero { height: 100%; min-height: 320px; }
 
     /* ══════════════════════════════
@@ -181,23 +182,12 @@
 
     /* ══ MOBILE HAMBURGER + MENU ══ */
     .nav__hamburger {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-      width: 36px;
-      height: 36px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      gap: 5px; width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer; padding: 0;
     }
     .nav__hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--ink);
+      display: block; width: 22px; height: 2px; background: var(--ink);
       transition: transform 0.25s ease, opacity 0.2s ease;
     }
     .nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -205,48 +195,30 @@
     .nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     .nav-menu {
-      position: fixed;
-      top: 92px; left: 0; right: 0;
-      background: var(--ground);
-      border-bottom: 1px solid rgba(28,43,57,0.1);
-      z-index: 99;
-      padding: 12px 0 20px;
-      transform: translateY(-110%);
-      opacity: 0;
-      pointer-events: none;
+      position: fixed; top: 92px; left: 0; right: 0;
+      background: var(--ground); border-bottom: 1px solid rgba(28,43,57,0.1);
+      z-index: 99; padding: 12px 0 20px;
+      transform: translateY(-110%); opacity: 0; pointer-events: none;
       transition: transform 0.3s ease, opacity 0.2s ease;
-      max-height: calc(100vh - 92px);
-      overflow-y: auto;
+      max-height: calc(100vh - 92px); overflow-y: auto;
     }
     .nav-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
     .nav-menu__section {
-      display: block;
-      padding: 14px 24px 6px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.36em;
-      text-transform: uppercase;
-      color: rgba(28,43,57,0.4);
+      display: block; padding: 14px 24px 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.36em;
+      text-transform: uppercase; color: rgba(28,43,57,0.4);
     }
     .nav-menu a {
-      display: block;
-      padding: 14px 24px;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: rgba(28,43,57,0.78);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(28,43,57,0.06);
+      display: block; padding: 14px 24px;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(28,43,57,0.78);
+      text-decoration: none; border-bottom: 1px solid rgba(28,43,57,0.06);
     }
     .nav-menu a:hover { background: rgba(28,43,57,0.04); color: var(--ink); }
     .nav-menu a.active { color: var(--ink); font-weight: 700; background: rgba(28,43,57,0.04); }
     .nav-menu a.nav-menu__book { color: var(--ink); font-weight: 700; background: rgba(28,43,57,0.05); }
 
-    @media (max-width: 699px) {
-      .nav__links { display: none; }
-    }
-
+    @media (max-width: 699px) { .nav__links { display: none; } }
     /* Mobile: after scroll past hero, collapse the nav bar to a floating hamburger */
     @media (max-width: 699px) {
       .nav.mobile-collapsed {
@@ -350,8 +322,8 @@
     /* ══════════════════════════════
        SECTION SHARED STYLES
     ══════════════════════════════ */
-    .section {
-      padding: 44px 20px;
+    .section--dark {
+      background: var(--ink);
     }
     .section__eyebrow {
       display: block;
@@ -362,6 +334,9 @@
       color: rgba(28,43,57,0.5);
       margin-bottom: 12px;
     }
+    .section--dark .section__eyebrow {
+      color: rgba(245,240,235,0.5);
+    }
     .section__title {
       font-size: clamp(32px, 6vw, 52px);
       font-weight: 300;
@@ -370,6 +345,7 @@
       line-height: 1.1;
       margin-bottom: 14px;
     }
+    .section--dark .section__title { color: var(--ground); }
     .section__body {
       font-size: 16px;
       font-weight: 400;
@@ -378,132 +354,50 @@
       margin-bottom: 32px;
       max-width: 560px;
     }
+    .section--dark .section__body { color: rgba(245,240,235,0.78); }
 
     /* ══════════════════════════════
-       WHERE DO YOU START — TABS
+       COLLECTIONS — expandable cards
     ══════════════════════════════ */
-    .start {
-      padding: 40px 20px;
-    }
-    .start__inner {
-      display: block;
-    }
-    .start__left { }
-    .start__label {
-      display: block;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.38em;
-      text-transform: uppercase;
-      color: rgba(28,43,57,0.5);
-      margin-bottom: 20px;
-    }
-    .start__tabs {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .start__tab {
-      background: none;
-      border: 1px solid rgba(28,43,57,0.15);
-      cursor: pointer;
-      font-family: 'Lato', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(28,43,57,0.65);
-      padding: 14px 20px;
-      text-align: left;
-      transition: all 0.2s;
-      border-radius: 10px;
-    }
-    .start__tab.active,
-    .start__tab:hover {
-      background: var(--ink);
-      border-color: var(--ink);
-      color: var(--ground);
-    }
-    .start__panels {
-      margin-top: 0;
-    }
-    .start__panel {
-      display: none;
-      padding: 28px 0 0;
-    }
-    .start__panel.active { display: block; }
-    .start__panel p {
-      font-size: 16px;
-      font-weight: 400;
-      font-style: italic;
-      line-height: 1.8;
-      color: rgba(28,43,57,0.75);
-      border-left: 2px solid var(--ink);
-      padding-left: 20px;
-      margin-bottom: 24px;
-    }
-    .start__panel-cta {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--ground);
-      background: var(--ink);
-      padding: 13px 30px;
-      text-decoration: none;
-      transition: opacity 0.2s;
-      border-radius: 14px;
-    }
-    .start__panel-cta:hover { opacity: 0.85; }
-    .start__photo {
-      display: none;
-    }
-    .start__photo img { opacity: 0; transition: opacity 0.4s ease; }
-    .start__photo img.active { opacity: 1; }
-
-    /* ══════════════════════════════
-       WARDROBE FRAMEWORK CARDS
-    ══════════════════════════════ */
-    .framework {
+    .collections {
       padding: 44px 20px;
     }
-    .framework__hint {
+    .collections__hint {
       font-size: 12px;
       font-weight: 300;
       font-style: italic;
       color: rgba(28,43,57,0.45);
-      margin-top: -20px;
+      margin-top: 4px;
       margin-bottom: 36px;
       letter-spacing: 0.04em;
     }
-    .framework__grid {
+    .collections__grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 12px;
     }
-    .pillar {
+    .collection {
       border: 1px solid rgba(28,43,57,0.12);
       background: var(--ground);
       cursor: pointer;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .pillar:hover {
+    .collection:hover {
       border-color: rgba(28,43,57,0.28);
       box-shadow: 0 4px 20px rgba(28,43,57,0.07);
     }
-    .pillar.open {
+    .collection.open {
       border-color: var(--ink);
     }
-    .pillar__header {
+    .collection__header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 24px 24px;
       gap: 16px;
     }
-    .pillar__left { flex: 1; }
-    .pillar__num {
+    .collection__left { flex: 1; }
+    .collection__cat {
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.32em;
@@ -512,14 +406,14 @@
       display: block;
       margin-bottom: 6px;
     }
-    .pillar__name {
+    .collection__name {
       font-size: 20px;
       font-weight: 300;
       letter-spacing: 0.05em;
       color: var(--ink);
       display: block;
     }
-    .pillar__tagline {
+    .collection__tagline {
       font-size: 15px;
       font-weight: 700;
       font-style: italic;
@@ -527,7 +421,7 @@
       display: block;
       margin-top: 4px;
     }
-    .pillar__toggle {
+    .collection__toggle {
       width: 36px;
       height: 36px;
       display: flex;
@@ -541,23 +435,23 @@
       flex-shrink: 0;
       transition: transform 0.3s, color 0.22s, background 0.22s, border-color 0.22s;
     }
-    .pillar:hover .pillar__toggle {
+    .collection:hover .collection__toggle {
       border-color: rgba(28,43,57,0.4);
       color: var(--ink);
     }
-    .pillar.open .pillar__toggle {
+    .collection.open .collection__toggle {
       transform: rotate(45deg);
       color: var(--ground);
       background: var(--ink);
       border-color: var(--ink);
     }
-    .pillar__detail {
+    .collection__detail {
       display: none;
       padding: 0 24px 28px;
       border-top: 1px solid rgba(28,43,57,0.08);
     }
-    .pillar.open .pillar__detail { display: block; }
-    .pillar__detail-body {
+    .collection.open .collection__detail { display: block; }
+    .collection__detail-body {
       font-size: 15px;
       font-weight: 400;
       line-height: 1.8;
@@ -565,190 +459,115 @@
       padding-top: 20px;
       margin-bottom: 16px;
     }
-    .pillar__detail-brands {
+    .collection__detail-brands {
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--ink);
     }
-    .pillar__detail-brands span {
+    .collection__detail-brands span {
       font-size: 13px;
       font-weight: 400;
       color: rgba(28,43,57,0.7);
       letter-spacing: 0.04em;
       text-transform: none;
     }
-
-    /* ══════════════════════════════
-       TWO PATHS
-    ══════════════════════════════ */
-    .paths {
-      padding: 44px 20px;
-      background: var(--ground-warm);
-    }
-    .paths__grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      margin-top: 36px;
-    }
-    .path {
-      background: var(--ground);
-      display: flex;
-      flex-direction: column;
-    }
-    .path__photo { flex-shrink: 0; }
-    .path__content { padding: 28px 24px 32px; flex: 1; display: flex; flex-direction: column; }
-    .path__tag {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.34em;
-      text-transform: uppercase;
-      color: rgba(28,43,57,0.5);
-      display: block;
-      margin-bottom: 10px;
-    }
-    .path__title {
-      font-size: 24px;
-      font-weight: 300;
-      color: var(--ink);
-      margin-bottom: 14px;
-      line-height: 1.2;
-    }
-    .path__body {
-      font-size: 15px;
+    .collection__note {
+      font-size: 13px;
       font-weight: 400;
-      line-height: 1.8;
-      color: rgba(28,43,57,0.76);
-      margin-bottom: 28px;
-      flex: 1;
+      font-style: italic;
+      line-height: 1.7;
+      color: rgba(28,43,57,0.58);
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(28,43,57,0.07);
     }
-    .path__cta {
+
+    /* Seasonal tag for outerwear */
+    .seasonal-tag {
       display: inline-block;
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--ground);
-      background: var(--ink);
-      padding: 14px 30px;
-      text-decoration: none;
-      transition: opacity 0.2s;
-      align-self: flex-start;
-      border-radius: 14px;
-    }
-    .path__cta:hover { opacity: 0.82; }
-    .path--custom { background: var(--ink); }
-    .path--custom .path__tag   { color: rgba(245,240,235,0.45); }
-    .path--custom .path__title { color: var(--ground); }
-    .path--custom .path__body  { color: rgba(245,240,235,0.8); }
-    .path--custom .path__cta   { background: var(--ground); color: var(--ink);
- border-radius: 14px;
-    }
-    .path--custom .path__cta:hover { background: #fff; opacity: 1; }
-
-    /* ══════════════════════════════
-       FIT PRINCIPLES
-    ══════════════════════════════ */
-    .fit {
-      padding: 44px 20px;
-    }
-    .fit__principles {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      margin-top: 36px;
-    }
-    .principle {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      padding: 24px;
-      border-left: 2px solid var(--ink);
-      background: #EDE7DE;
-    }
-    .principle__num {
-      font-size: 28px;
-      font-weight: 300;
-      color: rgba(28,43,57,0.2);
-      line-height: 1;
-      flex-shrink: 0;
-      min-width: 36px;
-    }
-    .principle__text {
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 1.75;
-      color: rgba(28,43,57,0.82);
-    }
-    .principle__text strong {
-      font-weight: 700;
-      color: var(--ink);
-      display: block;
-      font-size: 14px;
-      letter-spacing: 0.06em;
+      color: rgba(28,43,57,0.55);
+      background: rgba(28,43,57,0.06);
+      border: 1px solid rgba(28,43,57,0.12);
+      padding: 5px 12px;
       margin-bottom: 6px;
     }
-    .fit__photo-wrap {
-      margin-top: 36px;
-    }
+
 
     /* ══════════════════════════════
-       FEATURED BRANDS
+       BRAND SPOTLIGHTS
     ══════════════════════════════ */
-    .featured-brands {
+    .spotlights {
       padding: 40px 20px;
       background: var(--ink);
     }
-    .featured-brands .section__eyebrow {
-      color: rgba(245,240,235,0.55);
+    .spotlights .section__eyebrow {
+      color: rgba(245,240,235,0.5);
     }
-    .featured-brands .section__title {
+    .spotlights .section__title {
       color: var(--ground);
     }
-    .featured-brands .section__body {
+    .spotlights .section__body {
       color: rgba(245,240,235,0.75);
       margin-bottom: 24px;
     }
-    .featured-brands__grid {
+    .spotlights__grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
     }
-    .brand-card {
+    .spotlight-card {
       background: rgba(245,240,235,0.05);
       border: 1px solid rgba(245,240,235,0.12);
       padding: 28px 24px;
       transition: background 0.2s, border-color 0.2s;
     }
-    .brand-card:hover {
+    .spotlight-card:hover {
       background: rgba(245,240,235,0.09);
       border-color: rgba(245,240,235,0.24);
     }
-    .brand-card__name {
-      font-size: 18px;
+    .spotlight-card__tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(245,240,235,0.4);
+      display: block;
+      margin-bottom: 10px;
+    }
+    .spotlight-card__name {
+      font-size: 22px;
       font-weight: 400;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--ground);
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
-    .brand-card__origin {
+    .spotlight-card__body {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: rgba(245,240,235,0.75);
+    }
+    .spotlight-card__categories {
       font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.26em;
+      font-weight: 700;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(245,240,235,0.55);
-      display: block;
-      margin-bottom: 14px;
+      color: rgba(245,240,235,0.45);
+      margin-top: 18px;
     }
-    .brand-card__body {
-      font-size: 14px;
+    .spotlight-card__categories span {
       font-weight: 400;
-      line-height: 1.75;
-      color: rgba(245,240,235,0.78);
+      letter-spacing: 0.04em;
+      text-transform: none;
+      color: rgba(245,240,235,0.65);
     }
 
     /* ══════════════════════════════
@@ -807,7 +626,6 @@
       color: rgba(28,43,57,0.62);
       letter-spacing: 0.02em;
     }
-    .booking__walkin strong { font-weight: 700; font-style: normal; color: rgba(28,43,57,0.78); }
 
     /* ══ FOOTER (unified across site) ══ */
     .footer { background: var(--ink); padding: 64px 24px 36px; border-top: 1px solid rgba(245,240,235,0.07); }
@@ -907,7 +725,7 @@
 
       .hero {
         flex-direction: row;
-        padding-top: 0;
+        padding-top: 92px;
         min-height: 100svh;
       }
       .hero__image {
@@ -918,45 +736,12 @@
       }
       .hero__panel { padding: 140px 52px 72px; }
 
-      /* Where do you start — 2 col */
-      .start { padding: 48px 48px; }
-      .start__inner {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 48px;
-        align-items: stretch;
-      }
-      .start__tabs { flex-direction: column; }
-      .start__tab { text-align: left; padding: 14px 20px;
- border-radius: 10px;
-    }
-      .start__photo {
-        display: block;
-        min-height: 280px;
-        aspect-ratio: unset;
-        height: 100%;
-        position: relative;
-      }
+      .collections { padding: 64px 48px; }
+      .collections__grid { grid-template-columns: 1fr 1fr; gap: 14px; }
 
-      .framework { padding: 64px 48px; }
-      .framework__grid { grid-template-columns: 1fr 1fr; gap: 14px; }
 
-      .paths { padding: 64px 48px; }
-      .paths__grid { grid-template-columns: 1fr 1fr; }
-
-      .fit { padding: 64px 48px; }
-      .fit__inner {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 52px;
-        align-items: stretch;
-      }
-      .fit__photo-wrap { margin-top: 0; display: flex; flex-direction: column; }
-      .fit__photo-wrap .photo { flex: 1; min-height: 300px; }
-      .fit__principles { margin-top: 0; }
-
-      .featured-brands { padding: 56px 48px; }
-      .featured-brands__grid { grid-template-columns: 1fr 1fr 1fr; }
+      .spotlights { padding: 56px 48px; }
+      .spotlights__grid { grid-template-columns: 1fr 1fr 1fr; }
 
       .booking { padding: 96px 48px; }
 
@@ -967,7 +752,6 @@
       .footer__cta-row { flex-direction: row; gap: 14px; margin-bottom: 48px; }
       .footer__bottom { flex-direction: row; justify-content: space-between; align-items: center; }
 
-      /* Hide sticky button on desktop */
       .sticky-book { display: none; }
     }
 
@@ -975,14 +759,109 @@
       .nav { padding: 14px 64px; }
       .hero__image { width: 47%; }
       .hero__panel { padding: 160px 72px 80px; }
-      .framework { padding: 80px 64px; }
-      .paths { padding: 80px 64px; }
-      .fit { padding: 80px 64px; }
-      .featured-brands { padding: 64px 64px; }
+      .collections { padding: 80px 64px; }
+      .spotlights { padding: 64px 64px; }
       .booking { padding: 112px 64px; }
       .footer { padding: 96px 64px 44px; }
       .footer__logo { height: 112px; }
-      .start { padding: 56px 64px; }
+    }
+
+    /* ══════════════════════════════
+       EDITORIAL LOOKS — CAROUSEL
+    ══════════════════════════════ */
+    .looks {
+      padding: 56px 0 48px;
+      background: var(--ink);
+    }
+    .looks__header {
+      padding: 0 24px 32px;
+    }
+    .looks .section__eyebrow { color: rgba(245,240,235,0.5); }
+    .looks .section__title { color: var(--ground); margin-bottom: 0; }
+
+    .looks__carousel {
+      position: relative;
+      overflow: hidden;
+    }
+    .looks__track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .looks__slide {
+      min-width: 100%;
+      padding: 0 24px;
+    }
+    .looks__slide .photo img { object-position: center top; }
+
+    .looks__btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(245,240,235,0.1);
+      border: 1px solid rgba(245,240,235,0.2);
+      color: var(--ground);
+      font-size: 18px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      z-index: 2;
+      border-radius: 14px;
+    }
+    .looks__btn:hover {
+      background: rgba(245,240,235,0.2);
+      border-color: rgba(245,240,235,0.4);
+    }
+    .looks__btn--prev { left: 28px; }
+    .looks__btn--next { right: 28px; }
+
+    .looks__dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 24px 0 0;
+    }
+    .looks__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(245,240,235,0.3);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .looks__dot--active {
+      background: var(--ground);
+      transform: scale(1.35);
+    }
+
+    @media (min-width: 700px) {
+      .looks { padding: 72px 0 60px; }
+      .looks__header { padding: 0 48px 36px; }
+      .looks__carousel { overflow: visible; padding: 0 48px; }
+      .looks__track {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        transform: none !important;
+        transition: none;
+      }
+      .looks__slide { min-width: unset; padding: 0; }
+      .looks__btn { display: none;
+ border-radius: 14px;
+    }
+      .looks__dots { display: none; }
+    }
+    @media (min-width: 1024px) {
+      .looks { padding: 88px 0 72px; }
+      .looks__header { padding: 0 64px 40px; }
+      .looks__carousel { padding: 0 64px; }
+      .looks__track { gap: 28px; }
     }
   
     /* ══ COOKIE CONSENT BANNER ══ */
@@ -999,47 +878,208 @@
     @media (min-width:700px){.tj-consent__inner{flex-direction:row;align-items:center}.tj-consent__text{flex:1}.tj-consent__actions{flex-shrink:0}}
     @media (prefers-reduced-motion: reduce){.tj-consent{transition:opacity 200ms}}
     /* ══ END COOKIE CONSENT BANNER ══ */
+  
 
-    /* ══ FALL 2026 PROMO ══ */
-    .fall-promo { padding: 64px 20px; background: var(--ground-warm); text-align: center; }
-    @media (min-width: 700px) { .fall-promo { padding: 88px 48px; } }
-    @media (min-width: 1024px) { .fall-promo { padding: 104px 64px; } }
-    .fall-promo__inner { max-width: 640px; margin: 0 auto; }
-    .fall-promo__eyebrow { display: block; font-size: 11px; font-weight: 400; letter-spacing: 0.42em; text-transform: uppercase; color: rgba(28,43,57,0.55); margin-bottom: 20px; }
-    .fall-promo__title { font-size: clamp(30px, 5vw, 44px); font-weight: 300; line-height: 1.1; color: var(--ink); letter-spacing: -0.005em; margin-bottom: 20px; }
-    .fall-promo__body { font-size: 16px; font-weight: 300; line-height: 1.7; color: rgba(28,43,57,0.75); margin-bottom: 32px; }
-    .fall-promo__link { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 4px; transition: opacity 0.2s; }
-    .fall-promo__link:hover { opacity: 0.7; }
+    /* ══════════════════════════════
+       FALL 2026 EDITORIAL LAYOUT
+       Full-bleed hero + editor's letter + featured brand + alternating
+       image/text vignettes. Placeholders where photos will drop in later.
+    ══════════════════════════════ */
+
+    /* Reset the copied casual page structure. Hide anything from the base
+       template we're replacing (defensive — we've already removed the DOM
+       nodes but this keeps things clean). */
+
+    /* ── Full-bleed editorial hero ── */
+    /* ── Editor's letter ── */
+    .editor-letter {
+      max-width: 640px; margin: 112px auto 96px;
+      padding: 0 32px;
+    }
+    .editor-letter__eyebrow {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.44em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5); margin-bottom: 40px;
+      display: block; text-align: center;
+    }
+    .editor-letter__body {
+      font-size: 18px; font-weight: 300;
+      line-height: 1.85; color: rgba(28,43,57,0.86);
+      margin-bottom: 24px;
+    }
+    .editor-letter__body:last-of-type { margin-bottom: 0; }
+    .editor-letter__signoff {
+      margin-top: 44px; font-size: 11px;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5); text-align: center;
+    }
+    @media (min-width: 700px) {
+      .editor-letter { margin: 128px auto 120px; }
+    }
+
+    /* ── Featured brand — headline treatment ── */
+    .feature {
+      display: grid; grid-template-columns: 1fr; gap: 40px;
+      align-items: center; max-width: 1200px;
+      margin: 96px auto; padding: 0 32px;
+    }
+    @media (min-width: 900px) {
+      .feature {
+        grid-template-columns: 1.15fr 1fr; gap: 80px;
+        margin: 120px auto;
+      }
+    }
+    .feature__image {
+      aspect-ratio: 4/5; background: var(--ground-warm);
+      position: relative; overflow: hidden;
+    }
+    .feature__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .feature__eyebrow {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.44em; text-transform: uppercase;
+      color: rgba(28,43,57,0.55); margin-bottom: 24px; display: block;
+    }
+    .feature__title {
+      font-size: clamp(40px, 5.5vw, 64px); font-weight: 300;
+      line-height: 1.05; letter-spacing: -0.01em;
+      color: var(--ink); margin-bottom: 28px;
+    }
+    .feature__body {
+      font-size: 17px; font-weight: 300;
+      line-height: 1.85; color: rgba(28,43,57,0.82);
+      max-width: 500px;
+    }
+
+    /* ── Vignette — full-bleed alternating image + text ── */
+    .vignette {
+      display: grid; grid-template-columns: 1fr; gap: 0;
+      align-items: stretch;
+      padding: 48px 20px;
+      background: var(--ground);
+    }
+    .vignette + .vignette { background: var(--ground-warm); }
+    .vignette + .vignette + .vignette { background: var(--ground); }
+    .vignette + .vignette + .vignette + .vignette { background: var(--ground-warm); }
+    .vignette + .vignette + .vignette + .vignette + .vignette { background: var(--ground); }
+    @media (min-width: 900px) {
+      .vignette {
+        grid-template-columns: 1fr 1fr; gap: 64px;
+        padding: 96px 48px;
+        align-items: center;
+      }
+      .vignette--reverse .vignette__image { order: 2; }
+    }
+    @media (min-width: 1200px) {
+      .vignette { padding: 112px 64px; gap: 80px; }
+    }
+    .vignette__image {
+      aspect-ratio: 4/5; background: rgba(28,43,57,0.06);
+      position: relative; overflow: hidden;
+    }
+    .vignette__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .vignette__text { padding: 24px 0; }
+    @media (min-width: 900px) { .vignette__text { padding: 0 24px; } }
+    .vignette__eyebrow {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.42em; text-transform: uppercase;
+      color: rgba(28,43,57,0.55); margin-bottom: 18px; display: block;
+    }
+    .vignette__title {
+      font-size: clamp(28px, 4vw, 44px); font-weight: 300;
+      line-height: 1.15; letter-spacing: -0.005em;
+      color: var(--ink); margin-bottom: 22px;
+    }
+    .vignette__body {
+      font-size: 16px; font-weight: 300;
+      line-height: 1.85; color: rgba(28,43,57,0.8);
+      max-width: 520px;
+    }
+    .vignette__brand {
+      margin-top: 24px; font-size: 11px;
+      letter-spacing: 0.34em; text-transform: uppercase;
+      color: rgba(28,43,57,0.5);
+    }
+
+    /* ── Image placeholder (until real photos land) ── */
+    .img-ph {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 400;
+      letter-spacing: 0.44em; text-transform: uppercase;
+      color: rgba(28,43,57,0.32);
+      background:
+        repeating-linear-gradient(45deg,
+          transparent 0, transparent 12px,
+          rgba(28,43,57,0.03) 12px, rgba(28,43,57,0.03) 13px);
+    }
+
+    /* ── Closing invitation ── */
+    .fall-closing {
+      text-align: center;
+      padding: 96px 20px 112px;
+      background: var(--ink);
+    }
+    @media (min-width: 900px) { .fall-closing { padding: 128px 48px 144px; } }
+    @media (min-width: 1200px) { .fall-closing { padding: 144px 64px 160px; } }
+    .fall-closing__inner { max-width: 720px; margin: 0 auto; }
+    .fall-closing__eyebrow {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.42em; text-transform: uppercase;
+      color: rgba(245,240,235,0.55); margin-bottom: 24px; display: block;
+    }
+    .fall-closing__title {
+      font-size: clamp(32px, 5vw, 52px); font-weight: 300;
+      line-height: 1.1; color: var(--ground); margin-bottom: 24px;
+      letter-spacing: -0.005em;
+    }
+    .fall-closing__body {
+      font-size: 17px; font-weight: 300;
+      line-height: 1.7; color: rgba(245,240,235,0.78);
+      margin-bottom: 44px; max-width: 540px;
+      margin-left: auto; margin-right: auto;
+    }
+    .fall-closing__cta {
+      display: inline-block; padding: 18px 44px;
+      background: var(--ground); color: var(--ink);
+      text-decoration: none; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      border-radius: 14px;
+      transition: background 0.2s;
+    }
+    .fall-closing__cta:hover { background: var(--white); }
+
   </style>
-  <meta name="description" content="Build a professional wardrobe that works as hard as you do. Suits, sport coats, and trousers fitted in-store. Coppley, Paul Betenly, Jack Victor, and more.">
-  <link rel="canonical" href="https://thomasjeffery.ca/office">
+  <meta name="description" content="Fall 2026 at Thomas Jeffery Calgary. Knitwear from Ferrante, sport coats from 7 Downie St., sport shirts from Klauss Boehler, outerwear from Bugatti and Holebrook, and Coppley custom. In-store at Kingsland Village.">
+  <link rel="canonical" href="https://thomasjeffery.ca/fall-2026">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Thomas Jeffery Men's Wear">
-  <meta property="og:title" content="Office Suiting — Thomas Jeffery Men's Wear Calgary">
-  <meta property="og:description" content="Build a professional wardrobe that works as hard as you do. Suits, sport coats, and trousers fitted in-store. Coppley, Paul Betenly, Jack Victor, and more.">
-  <meta property="og:url" content="https://thomasjeffery.ca/office">
-  <meta property="og:image" content="https://thomasjeffery.ca/office-hero.webp">
-  <meta property="og:image:alt" content="Office Suiting — Thomas Jeffery Men's Wear Calgary">
+  <meta property="og:title" content="Fall 2026 — Thomas Jeffery Menswear Calgary">
+  <meta property="og:description" content="The layering season. Knitwear, sport coats, sport shirts, outerwear, and Coppley custom for fall at Thomas Jeffery in Calgary.">
+  <meta property="og:url" content="https://thomasjeffery.ca/fall-2026">
+  <meta property="og:image" content="https://thomasjeffery.ca/fall-hero.webp">
+  <meta property="og:image:alt" content="Fall 2026 at Thomas Jeffery — the layering season">
   <meta property="og:locale" content="en_CA">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Office Suiting — Thomas Jeffery Men's Wear Calgary">
-  <meta name="twitter:description" content="Build a professional wardrobe that works as hard as you do. Suits, sport coats, and trousers fitted in-store. Coppley, Paul Betenly, Jack Victor, and more.">
-  <meta name="twitter:image" content="https://thomasjeffery.ca/office-hero.webp">
+  <meta name="twitter:title" content="Fall 2026 — Thomas Jeffery Menswear Calgary">
+  <meta name="twitter:description" content="The layering season. Knitwear, sport coats, sport shirts, outerwear, and Coppley custom for fall at Thomas Jeffery in Calgary.">
+  <meta name="twitter:image" content="https://thomasjeffery.ca/fall-hero.webp">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Office & Business Menswear",
-  "serviceType": "Menswear retail, in-store fitting, and tailoring",
-  "description": "Suits, sportcoats, dress shirts, trousers, and outerwear for professional wardrobes. In-store fitting, made-to-measure, and Coppley custom available at Thomas Jeffery in Calgary.",
-  "provider": {
+  "@type": "CollectionPage",
+  "name": "Fall 2026 — Thomas Jeffery Menswear",
+  "description": "Fall 2026 collection at Thomas Jeffery Calgary — knitwear, sport coats, sport shirts, outerwear, and Coppley custom.",
+  "url": "https://thomasjeffery.ca/fall-2026",
+  "isPartOf": {
     "@id": "https://thomasjeffery.ca/#store"
   },
-  "areaServed": {
-    "@type": "City",
-    "name": "Calgary"
-  },
-  "url": "https://thomasjeffery.ca/office"
+  "about": [
+    { "@type": "Brand", "name": "Ferrante" },
+    { "@type": "Brand", "name": "7 Downie St." },
+    { "@type": "Brand", "name": "Klauss Boehler" },
+    { "@type": "Brand", "name": "Bugatti" },
+    { "@type": "Brand", "name": "Coppley" }
+  ]
 }
   </script>
   <script type="application/ld+json">
@@ -1056,8 +1096,8 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Office",
-      "item": "https://thomasjeffery.ca/office"
+      "name": "Fall 2026",
+      "item": "https://thomasjeffery.ca/fall-2026"
     }
   ]
 }
@@ -1162,6 +1202,7 @@
   .tj-promo__eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(245,240,235,0.6); }
   .tj-promo__text { font-size: 13px; font-weight: 400; letter-spacing: 0.02em; color: rgba(245,240,235,0.96); }
   .tj-promo__cta { font-size: 11px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; border-bottom: 1px solid rgba(245,240,235,0.45); padding-bottom: 1px; }
+  /* darker maroon on hover */
   .tj-promo__close { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(245,240,235,0.55); font-size: 20px; line-height: 1; cursor: pointer; padding: 4px 10px; transition: color 0.15s; }
   .tj-promo__close:hover { color: var(--ground); }
   .tj-promo--hidden { display: none; }
@@ -1224,7 +1265,7 @@
 
 
 <!-- ══ MOBILE STICKY BOOK BUTTON ══ -->
-<a class="sticky-book" href="book-office">Book a Fitting →</a>
+<a class="sticky-book" href="book-casual">Book a Fitting →</a>
 
 <!-- ══ BACK TO TOP ══ -->
 <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
@@ -1243,10 +1284,10 @@
     </button>
     <ul class="nav__links">
       <li><a href="fall-2026">Fall 2026</a></li>
-      <li><a href="office" class="active">Office</a></li>
+      <li><a href="office">Office</a></li>
       <li><a href="wedding">Wedding</a></li>
       <li><a href="casual">Casual</a></li>
-      <li class="nav__book"><a href="book-office">Book a Fitting</a></li>
+      <li class="nav__book"><a href="book">Book a Fitting</a></li>
     </ul>
   </div>
 </nav>
@@ -1256,7 +1297,7 @@
   <span class="nav-menu__section">This Season</span>
   <a href="fall-2026">Fall 2026</a>
   <span class="nav-menu__section">Browse</span>
-  <a href="office" class="active">Office</a>
+  <a href="office">Office</a>
   <a href="wedding">Wedding</a>
   <a href="casual">Casual</a>
   <span class="nav-menu__section">More</span>
@@ -1264,267 +1305,153 @@
   <a href="contact">Contact</a>
   <a href="brands">Brands</a>
   <a href="#" data-tj-subscribe>Subscribe</a>
-  <a class="nav-menu__book" href="book-office">Book a Fitting →</a>
+  <a class="nav-menu__book" href="book-casual">Book a Fitting →</a>
 </div>
 
+
 <!-- ══════════════════════════════
-     HERO
+     PAUL BETENLY OUTERWEAR — MANUFACTURER CLEARANCE
 ══════════════════════════════ -->
+
+<style>
+  /* Longer words than the Fall hero, so dial the display size back. */
+  .hero__title { font-size: clamp(38px, 7vw, 72px); }
+
+  .specs { list-style: none; margin: 28px 0 0; padding: 0; }
+  .specs li {
+    font-size: 14px; font-weight: 300; letter-spacing: 0.02em;
+    color: rgba(28,43,57,0.8); padding: 10px 0;
+    border-bottom: 1px solid rgba(28,43,57,0.12);
+  }
+  .specs li:first-child { border-top: 1px solid rgba(28,43,57,0.12); }
+
+  .coats { padding: 64px 20px 72px; background: var(--ground); }
+  @media (min-width: 900px) { .coats { padding: 96px 48px 104px; } }
+  .coats__head { max-width: 720px; margin: 0 auto 48px; text-align: center; }
+  .coats__eyebrow {
+    font-size: 11px; font-weight: 400; letter-spacing: 0.42em;
+    text-transform: uppercase; color: rgba(28,43,57,0.55);
+    display: block; margin-bottom: 18px;
+  }
+  .coats__title {
+    font-size: clamp(28px, 4vw, 44px); font-weight: 300; line-height: 1.15;
+    color: var(--ink); margin: 0 0 18px;
+  }
+  .coats__grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 1080px; margin: 0 auto; }
+  @media (min-width: 700px) { .coats__grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+  .coat__img { overflow: hidden; }
+  .coat__img img { width: 100%; height: auto; display: block; }
+  .coat__name {
+    display: block; text-align: center; margin-top: 14px;
+    font-size: 11px; letter-spacing: 0.36em; text-transform: uppercase;
+    color: rgba(28,43,57,0.55);
+  }
+
+  .maker { padding: 72px 20px 80px; background: var(--ground-warm, #EFE9E1); text-align: center; }
+  @media (min-width: 900px) { .maker { padding: 104px 48px 112px; } }
+  .maker__inner { max-width: 680px; margin: 0 auto; }
+  .maker__eyebrow {
+    font-size: 11px; font-weight: 400; letter-spacing: 0.42em;
+    text-transform: uppercase; color: rgba(28,43,57,0.55);
+    display: block; margin-bottom: 26px;
+  }
+  .maker__logo { width: 220px; max-width: 60%; height: auto; display: block; margin: 0 auto 30px; }
+  .maker__body {
+    font-size: 16px; font-weight: 300; line-height: 1.85;
+    color: rgba(28,43,57,0.8); margin: 0 0 18px;
+  }
+  .maker__body:last-child { margin-bottom: 0; }
+</style>
+
+<!-- ══ HERO ══ -->
 <section class="hero">
   <div class="hero__image photo photo--hero">
-    <img src="office-hero.webp" width="896" height="1200" srcset="office-hero-600w.webp 600w, office-hero.webp 896w" sizes="100vw" alt="Thomas Jeffery Men's Wear — Office suiting in fall">
+    <img src="betenly-hero.webp" width="896" height="1200"
+         srcset="betenly-hero-600w.webp 600w, betenly-hero.webp 896w"
+         sizes="100vw" alt="Paul Betenly grey topcoat worn open over a burgundy quarter-zip">
   </div>
   <div class="hero__panel">
-    <span class="hero__eyebrow">Office · Fall 2026</span>
-    <h1 class="hero__title">Dressed<br>For<br>Work.</h1>
+    <span class="hero__eyebrow">Manufacturer Clearance</span>
+    <h1 class="hero__title">20% Off<br>Paul Betenly<br>Outerwear.</h1>
     <div class="hero__rule"></div>
-    <p class="hero__sub">Calgary's destination for menswear that works as hard as you do. Expert fitting, in-house tailoring, and the brands worth knowing.</p>
-    <a class="hero__cta" href="book-office">Book a Fitting</a>
-    <p class="hero__walkin">Walk-ins welcome. Saturdays fill up fast, so book ahead.</p>
+    <p class="hero__sub">Built for both ends of the day. A zip-in vest with a detachable fur collar adjusts as temperatures drop or rise. 20% off topcoats and select outerwear, in store now.</p>
+    <a class="hero__cta" href="book">Book a Fitting</a>
+    <p class="hero__walkin">Walk-ins welcome any day.</p>
   </div>
 </section>
 
-<!-- ══ FALL 2026 PROMO ══ -->
-<section class="fall-promo">
-  <div class="fall-promo__inner">
-    <span class="fall-promo__eyebrow">Fall 2026 · In-store now</span>
-    <h2 class="fall-promo__title">The layering season.</h2>
-    <p class="fall-promo__body">Knitwear, sport coats, sport shirts, outerwear, and Coppley custom for fall.</p>
-    <a class="fall-promo__link" href="fall-2026">See the season →</a>
+<!-- ══ THE COAT ══ -->
+<section class="vignette">
+  <div class="vignette__image">
+    <img src="betenly-topcoat-grey.webp" width="896" height="1200"
+         srcset="betenly-topcoat-grey-600w.webp 600w, betenly-topcoat-grey.webp 896w"
+         sizes="(min-width: 900px) 50vw, 100vw" alt="Paul Betenly topcoat in grey" loading="lazy">
+  </div>
+  <div class="vignette__text">
+    <span class="vignette__eyebrow">The Coat</span>
+    <h2 class="vignette__title">One Coat, Two Seasons.</h2>
+    <p class="vignette__body">The topcoat is 100% wool with a quilted interior and a zip-in vest that comes out when you do not need it. The fur collar detaches as well, so the same coat carries you from a cold morning over a suit to a milder afternoon over a knit.</p>
+    <ul class="specs">
+      <li>100% wool</li>
+      <li>Zip-in vest</li>
+      <li>Detachable fur collar</li>
+      <li>Quilted interior</li>
+    </ul>
   </div>
 </section>
 
-<!-- ══════════════════════════════
-     WHERE DO YOU START
-══════════════════════════════ -->
-<div class="start">
-  <div class="start__inner">
-    <div class="start__left">
-      <span class="start__label">Where do you start?</span>
-      <div class="start__tabs">
-        <button class="start__tab active" data-tab="scratch">Building from scratch</button>
-        <button class="start__tab" data-tab="refresh">Refreshing my wardrobe</button>
-        <button class="start__tab" data-tab="event">One event coming up</button>
-      </div>
-      <div class="start__panels">
-        <div class="start__panel active" id="panel-scratch">
-          <p>Start with two suits and build from there. The wardrobe framework below is your roadmap. We'll take you through each piece in order, help you try things on, and make sure every item fits before it leaves the store.</p>
-          <a class="start__panel-cta" href="book-office?type=wardrobe">Book a Wardrobe Consultation</a>
-        </div>
-        <div class="start__panel" id="panel-refresh">
-          <p>Bring in what you have. We'll assess the fit, identify what's worth keeping, and fill the gaps with the right pieces. Sometimes one great addition changes everything.</p>
-          <a class="start__panel-cta" href="book-office?type=ready-to-wear">Book a Fitting</a>
-        </div>
-        <div class="start__panel" id="panel-event">
-          <p>Tell us the occasion and the date. We'll put together exactly what you need, off the rack or made to measure, fitted right and ready in time. If you're thinking Saturday, book ahead.</p>
-          <a class="start__panel-cta" href="book-office?type=ready-to-wear">Book Now</a>
-        </div>
-      </div>
-    </div>
-    <div class="start__photo photo">
-      <img loading="lazy" decoding="async" src="office-consultation-tight.webp" width="896" height="600" srcset="office-consultation-tight-600w.webp 600w, office-consultation-tight.webp 896w" sizes="100vw" data-key="scratch" alt="Building a wardrobe from scratch at Thomas Jeffery" class="active">
-      <img loading="lazy" decoding="async" src="office-wardrobe-refresh.webp" width="1200" height="896" srcset="office-wardrobe-refresh-600w.webp 600w, office-wardrobe-refresh.webp 1200w" sizes="100vw" data-key="refresh" alt="Refreshing a wardrobe at Thomas Jeffery">
-      <img loading="lazy" decoding="async" src="office-event.webp" width="1200" height="896" srcset="office-event-600w.webp 600w, office-event.webp 1200w" sizes="100vw" data-key="event" alt="One-event fitting at Thomas Jeffery">
-    </div>
+<!-- ══ THREE COLOURS ══ -->
+<section class="coats">
+  <div class="coats__head">
+    <span class="coats__eyebrow">In three colours</span>
+    <h2 class="coats__title">Navy, Grey, and Vicuna.</h2>
   </div>
-</div>
-
-<!-- ══════════════════════════════
-     WARDROBE FRAMEWORK
-══════════════════════════════ -->
-<section class="framework">
-  <span class="section__eyebrow">The Foundation</span>
-  <h2 class="section__title">Four pieces.<br>A complete wardrobe.</h2>
-  <p class="section__body">Most professional wardrobes need less than you think, and benefit from better buying. Start here.</p>
-  <p class="framework__hint">Select any piece to learn more.</p>
-
-  <div class="framework__grid">
-
-    <!-- PILLAR 1 -->
-    <div class="pillar" data-pillar="1">
-      <div class="pillar__header">
-        <div class="pillar__left">
-          <span class="pillar__num">01</span>
-          <span class="pillar__name">The Navy Suit</span>
-          <span class="pillar__tagline">Your most versatile piece.</span>
-        </div>
-        <span class="pillar__toggle">+</span>
-      </div>
-      <div class="pillar__detail">
-        <p class="pillar__detail-body">A 180–200g tropical wool in navy handles Calgary's temperature swings year-round. Cool enough for a warm boardroom in May, structured enough for a January client dinner. Dressed up with a white shirt and tie, dressed down with an open collar and no tie. It's the hardest-working garment in a professional wardrobe. Available ready-to-wear or custom through Coppley.</p>
-        <p class="pillar__detail-brands">Best for this: <span>Coppley, Paul Betenly, Atelier</span></p>
-      </div>
-    </div>
-
-    <!-- PILLAR 2 -->
-    <div class="pillar" data-pillar="2">
-      <div class="pillar__header">
-        <div class="pillar__left">
-          <span class="pillar__num">02</span>
-          <span class="pillar__name">The Charcoal Suit</span>
-          <span class="pillar__tagline">Boardroom to black tie.</span>
-        </div>
-        <span class="pillar__toggle">+</span>
-      </div>
-      <div class="pillar__detail">
-        <p class="pillar__detail-body">Charcoal reads more formal than navy. It's the right choice for high-stakes meetings, formal presentations, and events where a darker, more serious suit is called for. The same 180g tropical wool works year-round. These two suits together cover nearly every professional situation you'll encounter.</p>
-        <p class="pillar__detail-brands">Best for this: <span>Coppley, Paul Betenly, Atelier</span></p>
-      </div>
-    </div>
-
-    <!-- PILLAR 3 -->
-    <div class="pillar" data-pillar="3">
-      <div class="pillar__header">
-        <div class="pillar__left">
-          <span class="pillar__num">03</span>
-          <span class="pillar__name">The Sport Coat</span>
-          <span class="pillar__tagline">Business casual, elevated.</span>
-        </div>
-        <span class="pillar__toggle">+</span>
-      </div>
-      <div class="pillar__detail">
-        <p class="pillar__detail-body">A sport coat worn with quality trousers is the backbone of business casual. Smarter than a sweater, less formal than a suit. Choose a textured fabric like herringbone, houndstooth, or a soft tweed. It adds visual interest without competing with your trousers. This is where your personal style starts to show through.</p>
-        <p class="pillar__detail-brands">Best for this: <span>Jack Victor, 7 Downie St., Aristo, Leif Horsens</span></p>
-      </div>
-    </div>
-
-    <!-- PILLAR 4 -->
-    <div class="pillar" data-pillar="4">
-      <div class="pillar__header">
-        <div class="pillar__left">
-          <span class="pillar__num">04</span>
-          <span class="pillar__name">Two Trousers</span>
-          <span class="pillar__tagline">Multiply your combinations.</span>
-        </div>
-        <span class="pillar__toggle">+</span>
-      </div>
-      <div class="pillar__detail">
-        <p class="pillar__detail-body">A textured dress pant and a chino give you the flexibility to mix and match across your suits, sport coat, and dress shirts. These two pairs effectively double the number of distinct outfits in your wardrobe. Trouser fit is everything: the rise, the seat, the break. We fit these on you in-store and handle any alterations through our schedule.</p>
-        <p class="pillar__detail-brands">Best for this: <span>Alberto, Meyer, 34 Heritage, Bugatti</span></p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════
-     TWO PATHS
-══════════════════════════════ -->
-<section class="paths">
-  <span class="section__eyebrow">How We Work</span>
-  <h2 class="section__title">Two ways to dress well.</h2>
-
-  <div class="paths__grid">
-
-    <!-- PATH 1: READY TO WEAR -->
-    <div class="path">
-      <div class="path__photo photo photo--4x3">
-        <img loading="lazy" decoding="async" src="office-rtw-rack.webp" width="1200" height="896" srcset="office-rtw-rack-600w.webp 600w, office-rtw-rack.webp 1200w" sizes="100vw" alt="Ready to wear suits at Thomas Jeffery">
-      </div>
-      <div class="path__content">
-        <span class="path__tag">In Store Now</span>
-        <h3 class="path__title">Ready to wear.<br>Ready today.</h3>
-        <p class="path__body">Seasonal selections on the rack, fitted to you in-store. Try it on, see how it moves, and get a clear picture of how it'll look. If the size or colour you need isn't on the floor when you visit, we can order it in well before you need it. Alterations are handled in-house on our schedule.</p>
-        <a class="path__cta" href="/">Visit Us</a>
-      </div>
-    </div>
-
-    <!-- PATH 2: COPPLEY CUSTOM -->
-    <div class="path path--custom">
-      <div class="path__photo photo photo--4x3">
-        <img loading="lazy" decoding="async" src="office-swatches.webp" width="1200" height="896" srcset="office-swatches-600w.webp 600w, office-swatches.webp 1200w" sizes="100vw" alt="Coppley fabric swatches for custom suiting">
-      </div>
-      <div class="path__content">
-        <span class="path__tag">Made for You</span>
-        <h3 class="path__title">Coppley custom.<br>Built from scratch.</h3>
-        <p class="path__body">A full range of fabrics, from lightweight seasonal blends through heavier wools, all made to your exact measurements. This isn't alterations. This is your suit, built from the first stitch by one of Canada's oldest tailoring houses. Est. 1883.</p>
-        <a class="path__cta" href="book-office?type=custom">Book a Custom Consultation</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════
-     FIT PRINCIPLES
-══════════════════════════════ -->
-<section class="fit section">
-  <div class="fit__inner">
+  <div class="coats__grid">
     <div>
-      <span class="section__eyebrow">The Fit</span>
-      <h2 class="section__title">The one thing<br>that matters most.</h2>
-      <p class="section__body">The right fabric and the right brand mean nothing if the fit is wrong. Here's what our fitters are looking for.</p>
-      <div class="fit__principles">
-        <div class="principle">
-          <span class="principle__num">1</span>
-          <p class="principle__text">
-            <strong>The Shoulder Matters Most</strong>
-            It's the part of a jacket that can't be meaningfully altered. The seam should sit close to the edge of your shoulder. With off-the-rack, sometimes that means sizing up to a slightly broader shoulder to get the room you need through the chest or waist. A perfect shoulder on a jacket that's too tight elsewhere isn't a win. We balance the trade-offs when we fit you.
-          </p>
-        </div>
-        <div class="principle">
-          <span class="principle__num">2</span>
-          <p class="principle__text">
-            <strong>Waist and Sleeves Have a Range</strong>
-            Both can be brought in or let out, but only within a few centimetres. A jacket that's wildly oversized through the body won't come back to a clean fit. Our in-house tailor handles fine-tuning, not rebuilds. The closer the jacket starts to your body off the rack, the better the finished result.
-          </p>
-        </div>
-        <div class="principle">
-          <span class="principle__num">3</span>
-          <p class="principle__text">
-            <strong>Trouser Break Depends on the Shoe</strong>
-            A dress oxford takes a different break than a heavier loafer or brogue. We set the break on you in-store, ideally with the shoes you plan to wear with the suit most often, so bring them if you can. No break is clean and contemporary. A slight break is the classic standard. What you want to avoid is the trouser pooling over the shoe.
-          </p>
-        </div>
+      <div class="coat__img">
+        <img src="betenly-topcoat-navy.webp" width="896" height="1200"
+             srcset="betenly-topcoat-navy-600w.webp 600w, betenly-topcoat-navy.webp 896w"
+             sizes="(min-width: 700px) 33vw, 100vw" alt="Paul Betenly topcoat in navy" loading="lazy">
       </div>
+      <span class="coat__name">Navy</span>
     </div>
-    <div class="fit__photo-wrap">
-      <div class="photo">
-        <img loading="lazy" decoding="async" src="office-fit-closeup.webp" width="896" height="1200" srcset="office-fit-closeup-600w.webp 448w, office-fit-closeup.webp 896w" sizes="100vw" alt="Well-fitted suit jacket at Thomas Jeffery">
+    <div>
+      <div class="coat__img">
+        <img src="betenly-topcoat-grey.webp" width="896" height="1200"
+             srcset="betenly-topcoat-grey-600w.webp 600w, betenly-topcoat-grey.webp 896w"
+             sizes="(min-width: 700px) 33vw, 100vw" alt="Paul Betenly topcoat in grey" loading="lazy">
       </div>
+      <span class="coat__name">Grey</span>
+    </div>
+    <div>
+      <div class="coat__img">
+        <img src="betenly-topcoat-vicuna.webp" width="896" height="1200"
+             srcset="betenly-topcoat-vicuna-600w.webp 600w, betenly-topcoat-vicuna.webp 896w"
+             sizes="(min-width: 700px) 33vw, 100vw" alt="Paul Betenly topcoat in vicuna" loading="lazy">
+      </div>
+      <span class="coat__name">Vicuna</span>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════
-     FEATURED BRANDS
-══════════════════════════════ -->
-<section class="featured-brands">
-  <span class="section__eyebrow">Why These Brands</span>
-  <h2 class="section__title">Carried for a reason.</h2>
-  <p class="section__body">Every brand in this store was chosen deliberately. Here are the three we reach for first when building an office wardrobe.</p>
-
-  <div class="featured-brands__grid">
-    <div class="brand-card">
-      <span class="brand-card__name">Coppley</span>
-      <span class="brand-card__origin">Canada · Est. 1883</span>
-      <p class="brand-card__body">One of the last remaining North American makers doing genuine half-canvas construction. Your jacket molds to your body over time rather than holding a generic shape. Available ready-to-wear and through our custom program.</p>
-    </div>
-    <div class="brand-card">
-      <span class="brand-card__name">Jack Victor</span>
-      <span class="brand-card__origin">Montreal, Canada · Est. 1913</span>
-      <p class="brand-card__body">Fabrics selected in Europe, everything cut and sewn in Montreal. Their wool quality at this price point is genuinely hard to match. Over a century of Canadian tailoring in every jacket.</p>
-    </div>
-    <div class="brand-card">
-      <span class="brand-card__name">Paul Betenly</span>
-      <span class="brand-card__origin">Italy · Est. 1981</span>
-      <p class="brand-card__body">Hand-sewn armholes, pick stitching, performance fabrics built to move. Italian tailoring tradition at a price point that doesn't require a raise to justify. Their fit through the chest and waist is consistently excellent.</p>
-    </div>
+<!-- ══ THE MAKER ══ -->
+<section class="maker">
+  <div class="maker__inner">
+    <span class="maker__eyebrow">The maker</span>
+    <img class="maker__logo" src="betenly-logo.webp" width="641" height="276" alt="Paul Betenly" loading="lazy">
+    <p class="maker__body">Paul Betenly was an English tailor who started his business in Milan in 1981. The fabric is still designed there, and the company runs a setup that is rare in tailored menswear. They own the process end to end, from their own sheep farms in Australia and New Zealand through their own yarn, their own fabric, and their own factory.</p>
+    <p class="maker__body">That control is where the value comes from. Owning every step cuts out the margins stacked in between, so the price lands well under what the fabric and the make would normally suggest. It is why Paul Betenly has become one of the easiest recommendations we make on the floor.</p>
   </div>
 </section>
 
-<!-- ══════════════════════════════
-     BOOKING SECTION
-══════════════════════════════ -->
-<section class="booking">
-  <span class="booking__eyebrow">Book a Fitting</span>
-  <h2 class="booking__title">45 minutes<br>changes everything.</h2>
-  <p class="booking__sub">Come in, try things on, and leave with a plan. No pressure, no commitment. Just honest advice from people with years of experience in menswear.</p>
-  <a class="booking__cta" href="book-office">Book Your Appointment</a>
-  <p class="booking__walkin">
-    Walk-ins welcome any day.<br>
-    <strong>Saturdays fill up fast</strong>, so book ahead to guarantee your spot.
-  </p>
+<!-- ══ CLOSING ══ -->
+<section class="fall-closing">
+  <div class="fall-closing__inner">
+    <span class="fall-closing__eyebrow">In-store</span>
+    <h2 class="fall-closing__title">Come try one on.</h2>
+    <p class="fall-closing__body">This is a manufacturer clearance, so the incentive comes from Paul Betenly directly. Topcoats and select outerwear are 20% off at Kingsland Village while quantities last. Walk-ins welcome any day, or book a fitting for dedicated time with our staff.</p>
+    <a class="fall-closing__cta" href="book">Book a Fitting</a>
+  </div>
 </section>
 
 <!-- ══════════════════════════════
@@ -1543,8 +1470,7 @@
           <li><a href="wedding">Wedding</a></li>
         <li><a href="casual">Casual</a></li>
         <li><a href="subscribe">Subscribe</a></li>
-        <li><a href="contact">Contact</a></li>
-        <li><a href="book-office">Book a Fitting</a></li>
+        <li><a href="book-casual">Book a Fitting</a></li>
       </ul>
     </div>
     <div class="footer__col">
@@ -1568,7 +1494,7 @@
   </div>
 
   <div class="footer__cta-row">
-    <a class="footer__btn footer__btn--primary" href="book-office">Book a Fitting</a>
+    <a class="footer__btn footer__btn--primary" href="book-casual">Book a Fitting</a>
     <a class="footer__btn footer__btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Thomas+Jeffery+Mens+Wear+7337+Macleod+Trail+SW+Calgary+AB" target="_blank" rel="noopener">Open in Maps</a>
   </div>
 
@@ -1586,67 +1512,86 @@
 </footer>
 
 <script>
-  /* ── Nav scroll ── */
-  var nav = document.getElementById('nav');
-  window.addEventListener('scroll', function () {
+  // ── Nav scroll behaviour ──────────────────────────────────
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
     var _p = document.getElementById('tj-promo');
     if (_p) _p.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
+  });
 
-  /* ── Mobile hamburger menu ── */
-  var hamburger = document.getElementById('nav-hamburger');
-  var navMenu = document.getElementById('nav-menu');
+  // ── Mobile hamburger menu ────────────────────────────────
+  const hamburger = document.getElementById('nav-hamburger');
+  const navMenu = document.getElementById('nav-menu');
   if (hamburger && navMenu) {
-    hamburger.addEventListener('click', function () {
-      var isOpen = navMenu.classList.toggle('open');
+    hamburger.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
       hamburger.classList.toggle('open', isOpen);
       hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   }
 
-  /* ── Back to top ── */
-  var backToTop = document.getElementById('back-to-top');
+  // ── Back to top ───────────────────────────────────────────
+  const backToTop = document.getElementById('back-to-top');
   if (backToTop) {
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', () => {
       backToTop.classList.toggle('visible', window.scrollY > 400);
     }, { passive: true });
-    backToTop.addEventListener('click', function () {
+    backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
-  /* ── Where do you start tabs ── */
-  var tabs   = document.querySelectorAll('.start__tab');
-  var panels = document.querySelectorAll('.start__panel');
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      var target = this.getAttribute('data-tab');
-      tabs.forEach(function (t) { t.classList.remove('active'); });
-      panels.forEach(function (p) { p.classList.remove('active'); });
-      this.classList.add('active');
-      var panel = document.getElementById('panel-' + target);
-      if (panel) panel.classList.add('active');
-      document.querySelectorAll('.start__photo img').forEach(function (img) {
-        img.classList.toggle('active', img.getAttribute('data-key') === target);
-      });
+  // ── Collections accordion ─────────────────────────────────
+  document.querySelectorAll('.collection').forEach(col => {
+    col.addEventListener('click', () => {
+      const isOpen = col.classList.contains('open');
+      document.querySelectorAll('.collection').forEach(c => c.classList.remove('open'));
+      if (!isOpen) col.classList.add('open');
     });
   });
 
-  /* ── Wardrobe framework expand / collapse ── */
-  document.querySelectorAll('.pillar').forEach(function (pillar) {
-    pillar.addEventListener('click', function () {
-      var isOpen = this.classList.contains('open');
-      /* Close all */
-      document.querySelectorAll('.pillar').forEach(function (p) {
-        p.classList.remove('open');
+  // ── Looks carousel ────────────────────────────────────────
+  (function () {
+    var track = document.getElementById('looks-track');
+    var dots = document.querySelectorAll('.looks__dot');
+    var total = 3;
+    var current = 0;
+    if (!track) return;
+
+    function goTo(n) {
+      current = ((n % total) + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function (d, i) {
+        d.classList.toggle('looks__dot--active', i === current);
       });
-      /* Open clicked (if it wasn't already open) */
-      if (!isOpen) this.classList.add('open');
+    }
+
+    var prevBtn = document.getElementById('looks-prev');
+    var nextBtn = document.getElementById('looks-next');
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        goTo(parseInt(this.dataset.index, 10));
+      });
     });
-  });
+
+    // Touch swipe
+    var startX = 0;
+    var el = document.getElementById('looks-carousel');
+    if (el) {
+      el.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+      el.addEventListener('touchend', function (e) {
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+      });
+    }
+  })();
 </script>
-
 <!-- ══ SUBSCRIBE POPUP ══ -->
 <style>
   .tj-popup { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
@@ -1801,6 +1746,7 @@
   })();
 </script>
 <!-- ══ END COOKIE CONSENT BANNER ══ -->
+
 
 <script>
 (function(){
