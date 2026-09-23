@@ -20,7 +20,9 @@
 
 ## Brands we carry
 
-Coppley, Paul Betenly, Jack Victor, Bugatti, 7 Downie St., Alberto, Stenstroms, Robert Barakett, Pantherella, DeSoto, Meyer, Brunello, and more.
+Coppley, Paul Betenly, Jack Victor, Atelier, Aristo, Lief Horsens, Bugatti, 7 Downie St., Alberto, Meyer, 34 Heritage, Fidelity Denim, Stenstroms, Lugano, Polifroni Milano, Blu by Polifroni, Klauss Boehler, DeSoto, Altemflower, Codice, Ferrante, Robert Barakett, Holebrook, Regency Leathers, Benchcraft, SAXX, Dion, Marcoliani, Pantherella, and more.
+
+The full list with a short note on each, including country of origin and why we carry it, is at https://thomasjeffery.ca/brands (Markdown: https://thomasjeffery.ca/brands.md) and is published as schema.org Brand entities in the page's JSON-LD.
 
 ## Pages
 
