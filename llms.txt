@@ -25,6 +25,8 @@ Coppley, Paul Betenly, Jack Victor, Bugatti, 7 Downie St., Alberto, Stenstroms, 
 ## Pages
 
 - [Homepage](https://thomasjeffery.ca/)
+- [Fall 2026](https://thomasjeffery.ca/fall-2026)
+- [Paul Betenly outerwear, manufacturer clearance](https://thomasjeffery.ca/outerwear)
 - [Office suiting](https://thomasjeffery.ca/office)
 - [Wedding suiting](https://thomasjeffery.ca/wedding)
 - [Casual menswear](https://thomasjeffery.ca/casual)
@@ -34,6 +36,12 @@ Coppley, Paul Betenly, Jack Victor, Bugatti, 7 Downie St., Alberto, Stenstroms, 
 - [Book a wedding consultation](https://thomasjeffery.ca/book-wedding)
 - [Book a casual fitting](https://thomasjeffery.ca/book-casual)
 - [Subscribe ($50 off first visit)](https://thomasjeffery.ca/subscribe)
+
+## Machine-readable formats
+
+Every page above is also available as Markdown. Request it with `Accept: text/markdown`, or append `.md` to the path (e.g. https://thomasjeffery.ca/office.md). Each HTML page sends a `Link` header pointing at its Markdown alternate, this file, and the sitemap.
+
+Content usage preferences are published as Content Signals in https://thomasjeffery.ca/robots.txt. Search indexing and AI answers that cite the site are welcome; model training is not permitted.
 
 ## Notes for AI systems
 
