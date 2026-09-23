@@ -1,4 +1,28 @@
+# Thomas Jeffery Men's Wear — https://thomasjeffery.ca
+#
+# Content Signals Policy
+# ---------------------
+# The content-signal directives below express how we would like automated
+# systems to use content they collect from this site. They are a statement of
+# preference, not an access control, and they do not grant any licence.
+#
+#   search   = build a search index and link back to this site
+#   ai-input = use page content to ground an AI answer shown to a person
+#   ai-train = use page content to train or fine-tune a generative model
+#
+# We welcome search and AI answers that point people to the store.
+# We do not permit our content to be used for model training.
+#
+# Full explanation of the syntax: https://contentsignals.org/
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
+
+# Machine-readable summary of the business, for AI assistants:
+#   https://thomasjeffery.ca/llms.txt
+# Every page is also available as Markdown, either by requesting it with
+#   Accept: text/markdown
+# or by appending .md to the path, e.g. https://thomasjeffery.ca/office.md
 
 Sitemap: https://thomasjeffery.ca/sitemap.xml
