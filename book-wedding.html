@@ -739,11 +739,11 @@
 
     <span class="form__eyebrow">Your Details</span>
 
-    <form action="/api/booking" method="POST" id="booking-form">
+    <form action="/api/booking" method="POST" id="booking-form" data-guard>
       <input type="hidden" name="_subject" value="Wedding Appointment Request">
       <input type="hidden" name="appointmentType" id="appointmentType">
       <input type="hidden" name="customAppointment" id="customAppointment" value="No">
-      <input type="text" name="_gotcha" style="display:none">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-5000px;width:1px;height:1px;">
 
       <div class="form-row">
         <div class="field">
@@ -1004,5 +1004,6 @@
 </script>
 <!-- ══ END COOKIE CONSENT BANNER ══ -->
 
+<script src="/form-guard.js" defer></script>
 </body>
 </html>
