@@ -5,21 +5,19 @@
  * Sends a branded notification email to appointments@thomasjeffery.ca via Resend.
  *
  * Env vars (configured in Cloudflare Pages dashboard → Settings → Environment):
+ *   TURNSTILE_SITE_KEY / TURNSTILE_SECRET_KEY — optional; enables Cloudflare Turnstile (see functions/_lib/spam.js)
  *   RESEND_API_KEY  — Resend API key (starts with "re_")
  *   BOOKING_TO      — recipient email (defaults to appointments@thomasjeffery.ca)
  *   BOOKING_FROM    — sender (defaults to "Thomas Jeffery <bookings@thomasjeffery.ca>")
  */
+
+import { checkSubmission } from '../_lib/spam.js';
 
 export async function onRequestPost(context) {
   const { request, env } = context;
 
   try {
     const form = await request.formData();
-
-    // Honeypot — bots will fill this; humans won't see it.
-    if (form.get('_gotcha')) {
-      return json({ ok: true });
-    }
 
     // Pull the fields. Anything missing comes through as empty string.
     const data = {
@@ -38,6 +36,13 @@ export async function onRequestPost(context) {
 
     if (!data.firstName || !data.email) {
       return json({ ok: false, error: 'Missing required fields.' }, 400);
+    }
+
+    const blocked = await checkSubmission(form, request, env, [data.firstName, data.lastName, data.notes, data.customAppointment]);
+    if (blocked) {
+      return blocked.silent
+        ? json({ ok: true })
+        : json({ ok: false, error: 'Verification failed. Please try again.' }, 400);
     }
 
     const to = env.BOOKING_TO || 'appointments@thomasjeffery.ca';

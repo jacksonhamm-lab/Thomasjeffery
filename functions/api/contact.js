@@ -6,21 +6,20 @@
  *   inquiryType=business → len@thomasjeffery.ca
  *
  * Env vars (configured in Cloudflare Pages dashboard → Settings → Environment):
+ *   TURNSTILE_SITE_KEY / TURNSTILE_SECRET_KEY — optional; enables Cloudflare Turnstile (see functions/_lib/spam.js)
  *   RESEND_API_KEY      — Resend API key (shared with booking.js)
  *   CONTACT_FROM        — sender (defaults to "Thomas Jeffery <contact@thomasjeffery.ca>")
  *   CONTACT_CUSTOMER_TO — customer recipients, comma-separated (defaults to info@ + sales@)
  *   CONTACT_BUSINESS_TO — business recipients, comma-separated (defaults to len@)
  */
 
+import { checkSubmission } from '../_lib/spam.js';
+
 export async function onRequestPost(context) {
   const { request, env } = context;
 
   try {
     const form = await request.formData();
-
-    if (form.get('_gotcha')) {
-      return json({ ok: true });
-    }
 
     const data = {
       inquiryType: (form.get('inquiryType') || 'customer').toString().toLowerCase(),
@@ -33,6 +32,13 @@ export async function onRequestPost(context) {
 
     if (!data.firstName || !data.email || !data.message) {
       return json({ ok: false, error: 'Missing required fields.' }, 400);
+    }
+
+    const blocked = await checkSubmission(form, request, env, [data.firstName, data.lastName, data.message]);
+    if (blocked) {
+      return blocked.silent
+        ? json({ ok: true })
+        : json({ ok: false, error: 'Verification failed. Please try again.' }, 400);
     }
 
     const isBusiness = data.inquiryType === 'business';

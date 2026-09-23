@@ -751,7 +751,7 @@
         </div>
       </div>
 
-      <form class="subscribe__form" id="contact-form" action="/api/contact" method="post" novalidate>
+      <form class="subscribe__form" id="contact-form" action="/api/contact" method="post" novalidate data-guard>
         <div class="field">
           <span class="field__label-text">Type of inquiry</span>
           <div class="radio-group">
@@ -788,7 +788,7 @@
         </div>
 
         <div class="subscribe__honey" aria-hidden="true">
-          <input type="text" name="_gotcha" tabindex="-1" value="">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" value="">
         </div>
 
         <button type="submit" class="subscribe__submit">Send Message</button>
@@ -1018,5 +1018,6 @@
 })();
 </script>
 
+<script src="/form-guard.js" defer></script>
 </body>
 </html>
