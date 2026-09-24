@@ -1178,6 +1178,15 @@
     body:not(.tj-promo-dismissed) .nav.mobile-collapsed { top: calc(var(--promo-h) + 14px); }
   }
 </style>
+
+<style>
+  /* Consent bar is fixed and eats the bottom of small screens. Tighten it. */
+  @media (max-width: 699px) {
+    .tj-consent__inner { padding: 14px 16px; gap: 10px; }
+    .tj-consent__text { font-size: 12px; line-height: 1.5; }
+    .tj-consent__btn { padding: 9px 16px; }
+  }
+</style>
 </head>
 <body>
 
