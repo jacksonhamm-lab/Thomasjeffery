@@ -29,4 +29,4 @@ Every fitting happens with one staff member from start to finish. Alterations ar
 - [About the store](https://thomasjeffery.ca/about)
 - [Brands we carry](https://thomasjeffery.ca/brands)
 - [Contact](https://thomasjeffery.ca/contact)
-- [Subscribe, $50 off your first visit](https://thomasjeffery.ca/subscribe)
+- [Subscribe, $50 off your first visit plus exclusive client offers](https://thomasjeffery.ca/subscribe)
