@@ -42,22 +42,17 @@
     .then(function (res) { return res.ok ? res.json() : {}; })
     .then(function (cfg) {
       if (!cfg || !cfg.siteKey) return;
-      // In interaction-only mode Turnstile is invisible unless it actually needs
-      // a challenge, but it still holds its box open: 68px plus margin of dead
-      // space above the submit button. Collapse the slot until an iframe exists.
-      // :has() means this reverses itself the moment a real challenge appears,
-      // with no callback to miss.
-      var css = document.createElement('style');
-      css.textContent =
-        '.turnstile-slot{margin:0}' +
-        '.turnstile-slot:not(:has(iframe)){height:0;overflow:hidden}' +
-        '.turnstile-slot:has(iframe){margin:8px 0 16px}';
-      document.head.appendChild(css);
-
       window.tjTurnstileReady = function () {
         forms.forEach(function (form) {
           var slot = document.createElement('div');
           slot.className = 'turnstile-slot';
+          // Do NOT collapse this slot to reclaim space. Turnstile renders its
+          // visible "Verify you are human" box as plain divs, with no iframe, so
+          // there is no DOM signal that reliably distinguishes the invisible
+          // pass from a live challenge. Clipping it would leave a real visitor
+          // unable to complete the challenge, and the submit handler below would
+          // then block the form. Measured on the live page Sept 24 2026.
+          slot.style.margin = '8px 0 12px';
           var submit = form.querySelector('[type="submit"]');
           submit.parentNode.insertBefore(slot, submit);
           widgets.push(window.turnstile.render(slot, {
