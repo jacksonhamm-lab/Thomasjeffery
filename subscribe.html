@@ -559,11 +559,15 @@
   /* QR code lands here. At 375x812 the Subscribe button has to sit clear of
      the fixed consent bar, so the rhythm is tighter than the other pages. */
   @media (max-width: 699px) {
-    .subscribe { padding-top: 104px; }
-    .section__title { margin-bottom: 12px; }
-    .section__body { line-height: 1.7; margin-bottom: 14px; }
-    .subscribe__form { margin-top: 16px; gap: 14px; }
-    .subscribe__submit { padding-top: 14px; padding-bottom: 14px; }
+    /* Nav is 93px and fixed, so 100px is about the floor here. Everything
+       below is page rhythm only: the Turnstile slot is deliberately left at
+       its natural size, because clipping it can block a real challenge. */
+    .subscribe { padding-top: 100px; }
+    .section__title { margin-bottom: 10px; }
+    .section__body { line-height: 1.7; margin-bottom: 12px; }
+    .subscribe__form { margin-top: 14px; gap: 12px; }
+    .subscribe__submit { margin-top: 4px; padding-top: 13px; padding-bottom: 13px; }
+    .subscribe__fine { margin-top: 10px; }
   }
 </style>
 </head>
