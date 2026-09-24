@@ -111,37 +111,6 @@
       border-bottom: 1px solid rgba(28,43,57,0.3);
       padding-bottom: 2px;
     }
-    .nav__modes {
-      display: none;
-      align-items: center;
-      gap: 16px;
-    }
-    .nav__mode-sep {
-      font-size: 11px;
-      color: rgba(28,43,57,0.35);
-      letter-spacing: 0.2em;
-    }
-    .nav__mode-btn {
-      background: none;
-      border: none;
-      font-family: 'Lato', sans-serif;
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: rgba(28,43,57,0.45);
-      cursor: pointer;
-      padding: 2px 0;
-      border-bottom: 1px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .nav__mode-btn:hover { color: rgba(28,43,57,0.8); }
-    .nav__mode-btn.active {
-      color: var(--ink);
-      border-bottom-color: var(--ink);
-    }
 
     /* ══ LOGO FOCUS GLOW (transparent PNG — drop-shadow follows the letters, not the box) ══ */
     .nav__logo { outline: none; -webkit-tap-highlight-color: transparent; display: inline-block; }
@@ -763,104 +732,6 @@
       .booking { padding: 112px 64px; }
       .footer { padding: 96px 64px 44px; }
       .footer__logo { height: 112px; }
-    }
-
-    /* ══════════════════════════════
-       EDITORIAL LOOKS — CAROUSEL
-    ══════════════════════════════ */
-    .looks {
-      padding: 56px 0 48px;
-      background: var(--ink);
-    }
-    .looks__header {
-      padding: 0 24px 32px;
-    }
-    .looks .section__eyebrow { color: rgba(245,240,235,0.5); }
-    .looks .section__title { color: var(--ground); margin-bottom: 0; }
-
-    .looks__carousel {
-      position: relative;
-      overflow: hidden;
-    }
-    .looks__track {
-      display: flex;
-      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-      will-change: transform;
-    }
-    .looks__slide {
-      min-width: 100%;
-      padding: 0 24px;
-    }
-    .looks__slide .photo img { object-position: center top; }
-
-    .looks__btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(245,240,235,0.1);
-      border: 1px solid rgba(245,240,235,0.2);
-      color: var(--ground);
-      font-size: 18px;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
-      z-index: 2;
-      border-radius: 14px;
-    }
-    .looks__btn:hover {
-      background: rgba(245,240,235,0.2);
-      border-color: rgba(245,240,235,0.4);
-    }
-    .looks__btn--prev { left: 28px; }
-    .looks__btn--next { right: 28px; }
-
-    .looks__dots {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      padding: 24px 0 0;
-    }
-    .looks__dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(245,240,235,0.3);
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .looks__dot--active {
-      background: var(--ground);
-      transform: scale(1.35);
-    }
-
-    @media (min-width: 700px) {
-      .looks { padding: 72px 0 60px; }
-      .looks__header { padding: 0 48px 36px; }
-      .looks__carousel { overflow: visible; padding: 0 48px; }
-      .looks__track {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        transform: none !important;
-        transition: none;
-      }
-      .looks__slide { min-width: unset; padding: 0; }
-      .looks__btn { display: none;
- border-radius: 14px;
-    }
-      .looks__dots { display: none; }
-    }
-    @media (min-width: 1024px) {
-      .looks { padding: 88px 0 72px; }
-      .looks__header { padding: 0 64px 40px; }
-      .looks__carousel { padding: 0 64px; }
-      .looks__track { gap: 28px; }
     }
 
     /* ══ VIGNETTE — full-bleed alternating image + text ══ */
@@ -1494,63 +1365,6 @@
     if (_p) _p.classList.toggle('scrolled', window.scrollY > 40);
   });
 
-  /* ── Mobile hamburger menu ── */
-  var hamburger = document.getElementById('nav-hamburger');
-  var navMenu = document.getElementById('nav-menu');
-  if (hamburger && navMenu) {
-    // The menu is a fixed overlay, so the page behind it must stop scrolling.
-    // overflow:hidden alone does not hold on iOS Safari, so the body gets
-    // pinned and the scroll position is restored on close. The menu itself
-    // keeps its own overflow-y, so a long menu still scrolls.
-    var lockedY = 0;
-    var prevPadRight = '';
-
-    function setOpen(open) {
-      var wasOpen = navMenu.classList.contains('open');
-      if (open === wasOpen) return;
-      navMenu.classList.toggle('open', open);
-      hamburger.classList.toggle('open', open);
-      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open) {
-        lockedY = window.scrollY || window.pageYOffset || 0;
-        prevPadRight = document.body.style.paddingRight;
-        // Compensate for the scrollbar so the page does not jump sideways.
-        var sbw = window.innerWidth - document.documentElement.clientWidth;
-        if (sbw > 0) document.body.style.paddingRight = sbw + 'px';
-        document.body.style.top = (-lockedY) + 'px';
-        document.body.classList.add('nav-open');
-      } else {
-        document.body.classList.remove('nav-open');
-        document.body.style.top = '';
-        document.body.style.paddingRight = prevPadRight;
-        // html has scroll-behavior: smooth, which would animate the restore and
-        // make the page visibly slide back after the menu closes. Jump instead.
-        var prevBehavior = document.documentElement.style.scrollBehavior;
-        document.documentElement.style.scrollBehavior = 'auto';
-        window.scrollTo(0, lockedY);
-        document.documentElement.style.scrollBehavior = prevBehavior;
-      }
-    }
-
-    hamburger.addEventListener('click', function (e) {
-      e.stopPropagation();
-      setOpen(!navMenu.classList.contains('open'));
-    });
-    // Tapping a destination should not leave the menu open behind it.
-    navMenu.addEventListener('click', function (e) {
-      if (e.target.closest && e.target.closest('a')) setOpen(false);
-    });
-    document.addEventListener('click', function (e) {
-      if (!navMenu.classList.contains('open')) return;
-      if (navMenu.contains(e.target) || hamburger.contains(e.target)) return;
-      setOpen(false);
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' || e.key === 'Esc') setOpen(false);
-    });
-    // Rotating the phone re-lays the menu out against a different viewport.
-    window.addEventListener('resize', function () { setOpen(false); });
-  }
 
   // ── Back to top ───────────────────────────────────────────
   const backToTop = document.getElementById('back-to-top');
@@ -1654,43 +1468,6 @@
     </div>
   </div>
 </div>
-<script>
-(function () {
-  var STORAGE_KEY = 'tj_subscribe_seen';
-  var SUBSCRIBED_KEY = 'tj_subscribed';
-  var DELAY_MS = 3000;
-  function getFlag(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
-  function setFlag(k){ try { localStorage.setItem(k, '1'); } catch (e) {} }
-  var subscribed = getFlag(SUBSCRIBED_KEY);
-  var seen = getFlag(STORAGE_KEY);
-  var popup = document.getElementById('tj-popup');
-  if (!popup) return;
-  function show(){ popup.classList.add('tj-popup--show'); }
-  function dismiss(){ setFlag(STORAGE_KEY); popup.classList.remove('tj-popup--show'); }
-  window.tjShowPopup = show;
-  if (!subscribed && !seen) {
-    setTimeout(show, DELAY_MS);
-  }
-  popup.addEventListener('click', function (e) {
-    if (e.target.closest('[data-tj-popup-close]')) dismiss();
-    if (e.target.closest('[data-tj-popup-cta]')) setFlag(STORAGE_KEY);
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && popup.classList.contains('tj-popup--show')) dismiss();
-  });
-  document.querySelectorAll('[data-tj-subscribe]').forEach(function (t) {
-    if (subscribed) {
-      var hideTarget = t.closest('li') || t;
-      hideTarget.style.display = 'none';
-    } else {
-      t.addEventListener('click', function (e) {
-        e.preventDefault();
-        show();
-      });
-    }
-  });
-})();
-</script>
 <!-- ══ END SUBSCRIBE POPUP ══ -->
 
 <!-- ══ TJ REVEAL ANIMATIONS ══ -->
@@ -1750,52 +1527,9 @@
     </div>
   </div>
 </div>
-<script>
-  (function(){
-    var banner = document.getElementById('tj-consent');
-    if(!banner) return;
-    function show(){
-      banner.classList.add('tj-consent--show');
-      // Reserve room for the bar, or it overlaps whatever sits at the bottom of
-      // the viewport (it was covering the Subscribe button on /subscribe, where
-      // the in-store QR code sends people).
-      document.documentElement.style.setProperty('--tj-consent-h', (banner.offsetHeight + 32) + 'px');
-      document.body.classList.add('tj-consent-open');
-    }
-    function hide(){
-      banner.classList.remove('tj-consent--show');
-      document.body.classList.remove('tj-consent-open');
-    }
-    banner.addEventListener('click', function(e){
-      var btn = e.target.closest('[data-tj-consent]');
-      if(!btn) return;
-      if(window.tjConsent) window.tjConsent.set(btn.getAttribute('data-tj-consent'));
-      hide();
-    });
-    if(!window.tjConsent || !window.tjConsent.get()) show();
-    window.tjConsentOpen = show;
-  })();
-</script>
 <!-- ══ END COOKIE CONSENT BANNER ══ -->
 
 
-<script>
-(function(){
-  var nav = document.querySelector('.nav');
-  if (!nav) return;
-  var mql = window.matchMedia('(max-width: 699px)');
-  var threshold = 400;
-  function onScroll(){
-    if (!mql.matches) { nav.classList.remove('mobile-collapsed'); return; }
-    var y = window.scrollY || window.pageYOffset;
-    if (y > threshold) nav.classList.add('mobile-collapsed');
-    else nav.classList.remove('mobile-collapsed');
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  mql.addEventListener ? mql.addEventListener('change', onScroll) : mql.addListener(onScroll);
-  onScroll();
-})();
-</script>
-
+<script src="/site.js" defer></script>
 </body>
 </html>

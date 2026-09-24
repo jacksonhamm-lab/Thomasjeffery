@@ -165,7 +165,6 @@
     }
 
     /* ══ FORM ══ */
-    .form-section { }
     .form__eyebrow {
       display: block;
       font-size: 11px;
@@ -758,34 +757,9 @@
     </div>
   </div>
 </div>
-<script>
-  (function(){
-    var banner = document.getElementById('tj-consent');
-    if(!banner) return;
-    function show(){
-      banner.classList.add('tj-consent--show');
-      // Reserve room for the bar, or it overlaps whatever sits at the bottom of
-      // the viewport (it was covering the Subscribe button on /subscribe, where
-      // the in-store QR code sends people).
-      document.documentElement.style.setProperty('--tj-consent-h', (banner.offsetHeight + 32) + 'px');
-      document.body.classList.add('tj-consent-open');
-    }
-    function hide(){
-      banner.classList.remove('tj-consent--show');
-      document.body.classList.remove('tj-consent-open');
-    }
-    banner.addEventListener('click', function(e){
-      var btn = e.target.closest('[data-tj-consent]');
-      if(!btn) return;
-      if(window.tjConsent) window.tjConsent.set(btn.getAttribute('data-tj-consent'));
-      hide();
-    });
-    if(!window.tjConsent || !window.tjConsent.get()) show();
-    window.tjConsentOpen = show;
-  })();
-</script>
 <!-- ══ END COOKIE CONSENT BANNER ══ -->
 
 <script src="/form-guard.js" defer></script>
+<script src="/site.js" defer></script>
 </body>
 </html>

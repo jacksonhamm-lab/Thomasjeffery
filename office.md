@@ -14,7 +14,7 @@ Walk-ins welcome. Saturdays fill up fast, so book ahead.
 
 1. **The navy suit.** Your most versatile piece. A 180 to 200g tropical wool handles Calgary's temperature swings year round. Available ready-to-wear or custom through Coppley. Best for this: Coppley, Paul Betenly, Atelier.
 2. **The charcoal suit.** Reads more formal than navy. The right choice for high-stakes meetings and formal events. Best for this: Coppley, Paul Betenly, Atelier.
-3. **The sport coat.** The backbone of business casual. Herringbone, houndstooth, or a soft tweed. Best for this: Jack Victor, 7 Downie St., Aristo, Leif Horsens.
+3. **The sport coat.** The backbone of business casual. Herringbone, houndstooth, or a soft tweed. Best for this: Jack Victor, 7 Downie St., Aristo, Lief Horsens.
 4. **Two trousers.** A textured dress pant and a chino effectively double the number of distinct outfits in your wardrobe. Best for this: Alberto, Meyer, 34 Heritage, Bugatti.
 
 ## Two ways to dress well

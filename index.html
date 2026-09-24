@@ -681,16 +681,7 @@
   .tj-promo { position: fixed; top: 0; left: 0; right: 0; background: var(--ink); color: var(--ground); border-bottom: 1px solid rgba(245,240,235,0.12); z-index: 101; }
   /* Push everything else down by promo height so nav + hero don't hide behind it */
   body:not(.tj-promo-dismissed) { padding-top: var(--promo-h); }
-  body:not(.tj-promo-dismissed) .nav { top: var(--promo-h); }
-  body:not(.tj-promo-dismissed) .nav-menu { top: calc(var(--promo-h) + 92px); }
-  @media (max-width: 699px) {
-    /* When nav is collapsed to floating hamburger, open menu right below promo */
-    .nav.mobile-collapsed ~ .nav-menu,
-    body:not(.tj-promo-dismissed) .nav.mobile-collapsed ~ .nav-menu { top: var(--promo-h); }
-    body.tj-promo-dismissed .nav.mobile-collapsed ~ .nav-menu { top: 0; }
-  }
   .tj-promo__inner { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 11px 44px; text-decoration: none; color: inherit; font-family: 'Lato', Arial, sans-serif; transition: padding 0.24s cubic-bezier(0.4, 0, 0.2, 1); }
-  .tj-promo.scrolled .tj-promo__inner { padding: 15px 44px; }
   .tj-promo__eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(245,240,235,0.6); }
   .tj-promo__text { font-size: 13px; font-weight: 400; letter-spacing: 0.02em; color: rgba(245,240,235,0.96); }
   .tj-promo__cta { font-size: 11px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; border-bottom: 1px solid rgba(245,240,235,0.45); padding-bottom: 1px; }
@@ -699,13 +690,9 @@
   .tj-promo--hidden { display: none; }
   @media (max-width: 699px) {
     .tj-promo__inner { flex-direction: column; gap: 4px; padding: 9px 38px; text-align: center; }
-    /* Keep the promo's mobile padding constant even when .scrolled */
-    .tj-promo.scrolled .tj-promo__inner { padding: 9px 38px; }
     .tj-promo__eyebrow { font-size: 9px; letter-spacing: 0.3em; }
     .tj-promo__text { font-size: 12px; }
     .tj-promo__cta { font-size: 10px; }
-    /* Push the collapsed hamburger container down so it clears the promo */
-    body:not(.tj-promo-dismissed) .nav.mobile-collapsed { top: calc(var(--promo-h) + 14px); }
   }
 </style>
 
@@ -850,33 +837,8 @@
     </div>
   </div>
 </div>
-<script>
-  (function(){
-    var banner = document.getElementById('tj-consent');
-    if(!banner) return;
-    function show(){
-      banner.classList.add('tj-consent--show');
-      // Reserve room for the bar, or it overlaps whatever sits at the bottom of
-      // the viewport (it was covering the Subscribe button on /subscribe, where
-      // the in-store QR code sends people).
-      document.documentElement.style.setProperty('--tj-consent-h', (banner.offsetHeight + 32) + 'px');
-      document.body.classList.add('tj-consent-open');
-    }
-    function hide(){
-      banner.classList.remove('tj-consent--show');
-      document.body.classList.remove('tj-consent-open');
-    }
-    banner.addEventListener('click', function(e){
-      var btn = e.target.closest('[data-tj-consent]');
-      if(!btn) return;
-      if(window.tjConsent) window.tjConsent.set(btn.getAttribute('data-tj-consent'));
-      hide();
-    });
-    if(!window.tjConsent || !window.tjConsent.get()) show();
-    window.tjConsentOpen = show;
-  })();
-</script>
 <!-- ══ END COOKIE CONSENT BANNER ══ -->
 
+<script src="/site.js" defer></script>
 </body>
 </html>

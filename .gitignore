@@ -1,2 +1,5 @@
 .wrangler/
 node_modules/
+
+# One-off fix scripts, already applied. Kept locally, never deployed.
+*.py
