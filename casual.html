@@ -1108,6 +1108,11 @@
     .tj-consent__btn { padding: 9px 16px; }
   }
 </style>
+
+<style>
+  /* Page is pinned while the nav overlay is open; see setOpen() below. */
+  body.nav-open { position: fixed; left: 0; right: 0; width: 100%; overflow: hidden; }
+</style>
 </head>
 <body>
 
@@ -1489,15 +1494,62 @@
     if (_p) _p.classList.toggle('scrolled', window.scrollY > 40);
   });
 
-  // ── Mobile hamburger menu ────────────────────────────────
-  const hamburger = document.getElementById('nav-hamburger');
-  const navMenu = document.getElementById('nav-menu');
+  /* ── Mobile hamburger menu ── */
+  var hamburger = document.getElementById('nav-hamburger');
+  var navMenu = document.getElementById('nav-menu');
   if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => {
-      const isOpen = navMenu.classList.toggle('open');
-      hamburger.classList.toggle('open', isOpen);
-      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    // The menu is a fixed overlay, so the page behind it must stop scrolling.
+    // overflow:hidden alone does not hold on iOS Safari, so the body gets
+    // pinned and the scroll position is restored on close. The menu itself
+    // keeps its own overflow-y, so a long menu still scrolls.
+    var lockedY = 0;
+    var prevPadRight = '';
+
+    function setOpen(open) {
+      var wasOpen = navMenu.classList.contains('open');
+      if (open === wasOpen) return;
+      navMenu.classList.toggle('open', open);
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) {
+        lockedY = window.scrollY || window.pageYOffset || 0;
+        prevPadRight = document.body.style.paddingRight;
+        // Compensate for the scrollbar so the page does not jump sideways.
+        var sbw = window.innerWidth - document.documentElement.clientWidth;
+        if (sbw > 0) document.body.style.paddingRight = sbw + 'px';
+        document.body.style.top = (-lockedY) + 'px';
+        document.body.classList.add('nav-open');
+      } else {
+        document.body.classList.remove('nav-open');
+        document.body.style.top = '';
+        document.body.style.paddingRight = prevPadRight;
+        // html has scroll-behavior: smooth, which would animate the restore and
+        // make the page visibly slide back after the menu closes. Jump instead.
+        var prevBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.scrollTo(0, lockedY);
+        document.documentElement.style.scrollBehavior = prevBehavior;
+      }
+    }
+
+    hamburger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(!navMenu.classList.contains('open'));
     });
+    // Tapping a destination should not leave the menu open behind it.
+    navMenu.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('click', function (e) {
+      if (!navMenu.classList.contains('open')) return;
+      if (navMenu.contains(e.target) || hamburger.contains(e.target)) return;
+      setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' || e.key === 'Esc') setOpen(false);
+    });
+    // Rotating the phone re-lays the menu out against a different viewport.
+    window.addEventListener('resize', function () { setOpen(false); });
   }
 
   // ── Back to top ───────────────────────────────────────────
