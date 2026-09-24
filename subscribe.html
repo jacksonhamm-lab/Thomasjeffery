@@ -546,17 +546,11 @@
   }
 </style>
 </head>
-<body>
+<body class="tj-promo-dismissed">
 
-<!-- ══ SITE-WIDE PROMO BAR — swap copy monthly ══ -->
-<div class="tj-promo" id="tj-promo" role="region" aria-label="Current promotion">
-  <a class="tj-promo__inner" href="/outerwear">
-    <span class="tj-promo__eyebrow">In-Store Now</span>
-    <span class="tj-promo__text">New fall arrivals, plus 20% off Paul Betenly outerwear.</span>
-    <span class="tj-promo__cta">See More →</span>
-  </a>
-  <button type="button" class="tj-promo__close" data-tj-promo-close aria-label="Dismiss">&times;</button>
-</div>
+<!-- No promo bar on this page. It is the in-store QR destination, so the only
+     job is the form; the bar cost 67px of a phone viewport above it. The class
+     on <body> puts the nav back at top: 0. -->
 <script>
 (function(){
   var KEY = 'tj_promo_2026_09_betenly';
