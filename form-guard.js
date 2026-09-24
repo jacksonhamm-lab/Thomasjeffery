@@ -42,11 +42,22 @@
     .then(function (res) { return res.ok ? res.json() : {}; })
     .then(function (cfg) {
       if (!cfg || !cfg.siteKey) return;
+      // In interaction-only mode Turnstile is invisible unless it actually needs
+      // a challenge, but it still holds its box open: 68px plus margin of dead
+      // space above the submit button. Collapse the slot until an iframe exists.
+      // :has() means this reverses itself the moment a real challenge appears,
+      // with no callback to miss.
+      var css = document.createElement('style');
+      css.textContent =
+        '.turnstile-slot{margin:0}' +
+        '.turnstile-slot:not(:has(iframe)){height:0;overflow:hidden}' +
+        '.turnstile-slot:has(iframe){margin:8px 0 16px}';
+      document.head.appendChild(css);
+
       window.tjTurnstileReady = function () {
         forms.forEach(function (form) {
           var slot = document.createElement('div');
           slot.className = 'turnstile-slot';
-          slot.style.margin = '8px 0 16px';
           var submit = form.querySelector('[type="submit"]');
           submit.parentNode.insertBefore(slot, submit);
           widgets.push(window.turnstile.render(slot, {
