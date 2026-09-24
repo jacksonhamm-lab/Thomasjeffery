@@ -19,15 +19,18 @@
  *                         Must use the thomasjeffery.ca domain (verified in Resend).
  */
 
+import { checkSubmission } from '../_lib/spam.js';
+
 export async function onRequestPost(context) {
   const { request, env } = context;
 
   try {
     const form = await request.formData();
 
-    // Honeypot — bots will fill this; humans won't see it.
-    // (Matches the hidden field name in subscribe.html: b_<user_id>_<list_id>.)
+    // Legacy Mailchimp-named honeypot. Its name is well known to spam tools, so
+    // it is kept as a cheap first pass only; checkSubmission below does the work.
     if (form.get('b_a677e9b99521296ba09580ea8_8352715181')) {
+      console.log('Spam blocked: mailchimp honeypot');
       return json({ ok: true });
     }
 
@@ -39,6 +42,16 @@ export async function onRequestPost(context) {
 
     if (!data.email || !isValidEmail(data.email)) {
       return json({ ok: false, error: 'Valid email required.' }, 400);
+    }
+
+    // Same guard stack as the contact and booking forms: website honeypot,
+    // time-on-page, content filter, then Turnstile. Nothing reaches Mailchimp
+    // or Resend until it passes.
+    const blocked = await checkSubmission(form, request, env, [data.firstName, data.lastName, data.email]);
+    if (blocked) {
+      return blocked.silent
+        ? json({ ok: true })
+        : json({ ok: false, error: 'Verification failed. Please try again.' }, 400);
     }
 
     // ─ 1. Add to Mailchimp ─

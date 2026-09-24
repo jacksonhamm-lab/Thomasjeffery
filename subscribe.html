@@ -643,7 +643,7 @@
 
       <form class="subscribe__form" id="subscribe-form"
             action="/api/subscribe"
-            method="post" novalidate>
+            method="post" novalidate data-guard>
         <div class="field">
           <label for="sub-email">Email</label>
           <input type="email" name="EMAIL" id="sub-email" required>
@@ -660,6 +660,7 @@
         </div>
         <div class="subscribe__honey" aria-hidden="true">
           <input type="text" name="b_a677e9b99521296ba09580ea8_8352715181" tabindex="-1" value="">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" value="">
         </div>
         <button type="submit" class="subscribe__submit">Subscribe</button>
       </form>
@@ -916,5 +917,6 @@
 })();
 </script>
 
+<script src="/form-guard.js" defer></script>
 </body>
 </html>

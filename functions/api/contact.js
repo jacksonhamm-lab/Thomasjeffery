@@ -34,6 +34,12 @@ export async function onRequestPost(context) {
       return json({ ok: false, error: 'Missing required fields.' }, 400);
     }
 
+    // A malformed address ends up in reply_to, where Resend rejects the send and
+    // the message is lost without anyone noticing. Catch it here instead.
+    if (!isValidEmail(data.email)) {
+      return json({ ok: false, error: 'Valid email required.' }, 400);
+    }
+
     const blocked = await checkSubmission(form, request, env, [data.firstName, data.lastName, data.message]);
     if (blocked) {
       return blocked.silent
@@ -139,6 +145,10 @@ function renderText(d, typeLabel) {
     '',
     `Reply directly to this email to reach ${d.firstName || 'the sender'}.`,
   ].filter(Boolean).join('\n');
+}
+
+function isValidEmail(s) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 }
 
 function escapeHtml(s) {
