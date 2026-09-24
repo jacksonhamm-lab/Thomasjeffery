@@ -353,6 +353,19 @@
     .tj-consent__btn { padding: 9px 16px; }
   }
 </style>
+
+<style>
+  /* Phones: same problem as the homepage. 44px of padding per tile pushed the
+     third option off the bottom, so the page did not read as three choices. */
+  @media (max-width: 579px) {
+    .landing { padding: 24px 20px 28px; }
+    .landing__logo { height: 72px; margin-bottom: 10px; }
+    .landing__tagline { margin-bottom: 22px; }
+    .landing__prompt { margin-bottom: 16px; }
+    .tile { padding: 20px 20px; gap: 8px; }
+    .tile__name { min-height: 0; font-size: 17px; }
+  }
+</style>
 </head>
 <body>
 
