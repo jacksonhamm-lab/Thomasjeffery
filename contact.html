@@ -898,9 +898,22 @@
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       }).then(function (res) {
-        if (res.ok) {
-          if (window.fbq) fbq('track', 'Contact');
-          if (window.gtag) gtag('event', 'contact', { method: 'form' });
+        return res.json().catch(function () { return {}; })
+          .then(function (body) { return { ok: res.ok, body: body }; });
+      }).then(function (r) {
+        if (r.ok) {
+          // The API sets delivered:true only when the message actually sent.
+          // A silently blocked bot also gets ok:true, so gate on delivered
+          // or the conversion count fills up with spam.
+          if (r.body.delivered) {
+            if (window.fbq) fbq('track', 'Contact');
+            if (window.gtag) {
+              gtag('event', 'generate_lead', { method: 'contact_form' });
+              if (window.TJ_ADS && window.TJ_ADS.contact) {
+                gtag('event', 'conversion', { 'send_to': window.TJ_ADS.contact });
+              }
+            }
+          }
           contactSection.classList.add('submitted');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {

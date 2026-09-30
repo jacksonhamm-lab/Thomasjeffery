@@ -83,7 +83,10 @@ export async function onRequestPost(context) {
       return json({ ok: false, error: 'Email send failed.' }, 500);
     }
 
-    return json({ ok: true });
+    // "delivered" marks a message that actually reached Resend. A silently
+    // blocked bot gets { ok: true } with no delivered flag, so the front end
+    // can fire a conversion on real leads only without telling bots anything.
+    return json({ ok: true, delivered: true });
   } catch (err) {
     console.error('Contact handler error:', err);
     return json({ ok: false, error: 'Unexpected error.' }, 500);

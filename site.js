@@ -13,6 +13,50 @@
  *     have already painted; deferring it risks a visible flicker
  */
 
+/* ── Google Ads conversion labels ────────────────────────────────────────────
+ * Create the two conversion actions in Google Ads (Tools > Conversions), then
+ * paste the "send_to" values here. Until they are filled in, the GA4 events
+ * below still fire, so nothing is lost while this is pending.
+ *
+ * Existing labels for reference:
+ *   booking   AW-17246500151/7sODCPmro9scELfq4p9A
+ *   subscribe AW-17246500151/q6DkCKXeo9scELfq4p9A
+ */
+window.TJ_ADS = {
+  contact: '',   // e.g. 'AW-17246500151/xxxxxxxxxxxxxxxxxxxx'
+  phone:   '',   // e.g. 'AW-17246500151/xxxxxxxxxxxxxxxxxxxx'
+};
+
+/* ── Phone taps ──────────────────────────────────────────────────────────────
+ * The fastest path for most customers is calling the store, and until now that
+ * was completely invisible to Ads and Analytics. Delegated so it covers every
+ * tel: link on every page, including any added later.
+ */
+(function () {
+  var lastFired = 0;
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (!link) return;
+    // A tap can raise more than one event on mobile; do not count it twice.
+    var now = Date.now();
+    if (now - lastFired < 1500) return;
+    lastFired = now;
+
+    var number = link.getAttribute('href').replace('tel:', '');
+    if (window.gtag) {
+      gtag('event', 'phone_call_click', {
+        method: 'tel_link',
+        phone_number: number,
+        page_path: location.pathname,
+      });
+      if (window.TJ_ADS && window.TJ_ADS.phone) {
+        gtag('event', 'conversion', { 'send_to': window.TJ_ADS.phone });
+      }
+    }
+    if (window.fbq) fbq('track', 'Contact');
+  }, true);
+})();
+
 /* ── Cookie consent bar ─────────────────────────────────────────────── */
   (function(){
     var banner = document.getElementById('tj-consent');
