@@ -817,14 +817,18 @@
 
         try { localStorage.setItem('tj_subscribed', '1'); } catch (e) {}
         try { localStorage.setItem('tj_subscribe_seen', '1'); } catch (e) {}
-        if (window.fbq) fbq('track', 'Lead');
-        if (window.gtag) {
-          gtag('event', 'sign_up', { method: 'email' });
-          gtag('event', 'conversion', {
-            'send_to': 'AW-17246500151/q6DkCKXeo9scELfq4p9A',
-            'value': 15.0,
-            'currency': 'CAD'
-          });
+        // A bot caught by the spam guards is answered with { ok: true } and no
+        // delivered flag, so it gets the same confirmation and reports nothing.
+        if (body.delivered) {
+          if (window.fbq) fbq('track', 'Lead');
+          if (window.gtag) {
+            gtag('event', 'sign_up', { method: 'email' });
+            gtag('event', 'conversion', {
+              'send_to': 'AW-17246500151/q6DkCKXeo9scELfq4p9A',
+              'value': 15.0,
+              'currency': 'CAD'
+            });
+          }
         }
 
         subSection.classList.add('submitted');

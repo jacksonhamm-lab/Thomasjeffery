@@ -128,7 +128,9 @@ export async function onRequestPost(context) {
       }
     }
 
-    return json({ ok: true, alreadySubscribed });
+    // See booking.js: "delivered" separates a real signup from a silently
+    // blocked bot, so the subscribe conversion counts people only.
+    return json({ ok: true, delivered: true, alreadySubscribed });
   } catch (err) {
     console.error('Subscribe handler error:', err);
     return json({ ok: false, error: 'Unexpected error.' }, 500);

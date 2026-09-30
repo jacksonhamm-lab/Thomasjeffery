@@ -897,15 +897,23 @@
       body: new FormData(form),
       headers: { 'Accept': 'application/json' }
     }).then(function (res) {
-      if (res.ok) {
-        if (window.fbq) fbq('track', 'Schedule');
-        if (window.gtag) {
-          gtag('event', 'generate_lead', { service: 'office' });
-          gtag('event', 'conversion', {
-            'send_to': 'AW-17246500151/7sODCPmro9scELfq4p9A',
-            'value': 300.0,
-            'currency': 'CAD'
-          });
+      return res.json().catch(function () { return {}; })
+        .then(function (body) { return { ok: res.ok, body: body }; });
+    }).then(function (r) {
+      if (r.ok) {
+        // Only a request that actually reached the store counts as a booking.
+        // A submission caught by the spam guards is answered with { ok: true }
+        // and no delivered flag, so it sees the same thank-you and reports nothing.
+        if (r.body.delivered) {
+          if (window.fbq) fbq('track', 'Schedule');
+          if (window.gtag) {
+            gtag('event', 'generate_lead', { service: 'office' });
+            gtag('event', 'conversion', {
+              'send_to': 'AW-17246500151/7sODCPmro9scELfq4p9A',
+              'value': 300.0,
+              'currency': 'CAD'
+            });
+          }
         }
         document.getElementById('form-section').classList.add('hidden');
         document.getElementById('thanks-section').classList.remove('hidden');

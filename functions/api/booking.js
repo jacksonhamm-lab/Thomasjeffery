@@ -71,7 +71,11 @@ export async function onRequestPost(context) {
       return json({ ok: false, error: 'Email send failed.' }, 500);
     }
 
-    return json({ ok: true });
+    // "delivered" marks a booking request that actually reached Resend. A
+    // silently blocked bot gets { ok: true } with no delivered flag, so the
+    // booking conversion fires on real appointments only, and the bot learns
+    // nothing about why it failed.
+    return json({ ok: true, delivered: true });
   } catch (err) {
     console.error('Booking handler error:', err);
     return json({ ok: false, error: 'Unexpected error.' }, 500);

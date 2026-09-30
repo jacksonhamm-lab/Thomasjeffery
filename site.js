@@ -19,8 +19,8 @@
  * below fire either way; these only add the Google Ads conversion.
  *
  * All four labels on the account:
- *   booking   AW-17246500151/7sODCPmro9scELfq4p9A   (/book-* and /subscribe)
- *   subscribe AW-17246500151/q6DkCKXeo9scELfq4p9A
+ *   booking   AW-17246500151/7sODCPmro9scELfq4p9A   (/book-office, -wedding, -casual)
+ *   subscribe AW-17246500151/q6DkCKXeo9scELfq4p9A   (/subscribe)
  *   contact   AW-17246500151/MlmYCNSanowdELfq4p9A   (below)
  *   phone     AW-17246500151/upKxCNeanowdELfq4p9A   (below)
  */
