@@ -13,18 +13,20 @@
  *     have already painted; deferring it risks a visible flicker
  */
 
-/* ── Google Ads conversion labels ────────────────────────────────────────────
- * Create the two conversion actions in Google Ads (Tools > Conversions), then
- * paste the "send_to" values here. Until they are filled in, the GA4 events
- * below still fire, so nothing is lost while this is pending.
+/* ── Google Ads conversion labels ───────────────────────────────────────────
+ * send_to values for the two conversion actions, both set up as "Manually with
+ * code" so they fire from here rather than from a page view. The GA4 events
+ * below fire either way; these only add the Google Ads conversion.
  *
- * Existing labels for reference:
- *   booking   AW-17246500151/7sODCPmro9scELfq4p9A
+ * All four labels on the account:
+ *   booking   AW-17246500151/7sODCPmro9scELfq4p9A   (/book-* and /subscribe)
  *   subscribe AW-17246500151/q6DkCKXeo9scELfq4p9A
+ *   contact   AW-17246500151/MlmYCNSanowdELfq4p9A   (below)
+ *   phone     AW-17246500151/upKxCNeanowdELfq4p9A   (below)
  */
 window.TJ_ADS = {
-  contact: '',   // e.g. 'AW-17246500151/xxxxxxxxxxxxxxxxxxxx'
-  phone:   '',   // e.g. 'AW-17246500151/xxxxxxxxxxxxxxxxxxxx'
+  contact: 'AW-17246500151/MlmYCNSanowdELfq4p9A',
+  phone:   'AW-17246500151/upKxCNeanowdELfq4p9A',
 };
 
 /* ── Phone taps ──────────────────────────────────────────────────────────────
