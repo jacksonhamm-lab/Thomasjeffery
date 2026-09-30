@@ -57,6 +57,31 @@ window.TJ_ADS = {
   }, true);
 })();
 
+/* ── Outbound social taps ────────────────────────────────────────────────────
+ * Tells us whether the footer icons are actually used, which is the only way
+ * to know if moving them was worth doing.
+ */
+(function () {
+  var lastFired = 0;
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('a[href*="instagram.com"], a[href*="facebook.com"]');
+    if (!link) return;
+    var now = Date.now();
+    if (now - lastFired < 1000) return;
+    lastFired = now;
+
+    var href = link.getAttribute('href') || '';
+    var network = href.indexOf('instagram') > -1 ? 'instagram' : 'facebook';
+    if (window.gtag) {
+      gtag('event', 'social_click', {
+        method: network,
+        link_url: href,
+        page_path: location.pathname,
+      });
+    }
+  }, true);
+})();
+
 /* ── Cookie consent bar ─────────────────────────────────────────────── */
   (function(){
     var banner = document.getElementById('tj-consent');
