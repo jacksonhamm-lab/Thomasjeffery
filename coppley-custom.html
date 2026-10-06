@@ -1045,6 +1045,31 @@
   /* Longer words than the Fall hero, so dial the display size back. */
   .hero__title { font-size: clamp(38px, 7vw, 72px); }
 
+  /* The hero photo is a full-length jacket on a hanger. Keep the whole garment in
+     frame (hook to hem) instead of cropping to the top half as the people shots do. */
+  .hero__image { height: auto; aspect-ratio: 10 / 11; }
+  .hero__image img { object-position: center 34%; }
+  @media (max-width: 699px) {
+    /* Lead with the offer first on a phone: status, headline and button, then the photo. */
+    .hero { min-height: 0; }
+    .hero__panel { flex: none; padding: 34px 24px 38px; }
+    .hero__image { order: 1; }
+  }
+  @media (min-width: 700px) {
+    /* Fit the hero to the first screen, show the whole photo, and extend its wall
+       colour to either side so there are no hard edges. */
+    .hero { min-height: calc(100svh - var(--promo-h, 0px)); }
+    .hero__image { aspect-ratio: auto; }
+    .hero__image::before, .hero__image::after { content: ""; position: absolute; top: 0; bottom: 0; width: 50%; }
+    .hero__image::before { left: 0; background: linear-gradient(to bottom, #d5ccc0 7%, #d4cbbe 21%, #d5ccbe 36%, #d3cbbf 50%, #cfc7bb 64%, #c3b9ae 79%, #b3a599 93%); }
+    .hero__image::after { right: 0; background: linear-gradient(to bottom, #d3c3ad 7%, #cfbfac 21%, #c9bfb2 36%, #beb2a3 50%, #b8ab9d 64%, #b4a493 79%, #b6aba1 93%); }
+    .hero__image img {
+      z-index: 1; object-fit: contain; object-position: center;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+    }
+  }
+
   .specs { list-style: none; margin: 28px 0 0; padding: 0; }
   .specs li {
     font-size: 14px; font-weight: 300; letter-spacing: 0.02em;
@@ -1110,6 +1135,11 @@
   .how__fact { background: var(--ground); padding: 22px 24px; min-width: 0; }
   .how__fact-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(28,43,57,0.55); margin-bottom: 10px; }
   .how__fact p { font-size: 15px; font-weight: 400; line-height: 1.7; color: var(--ink); }
+  .how__save { width: 100%; border-collapse: collapse; margin-top: 16px; font-variant-numeric: tabular-nums; }
+  .how__save th { text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(28,43,57,0.55); padding: 0 0 8px; }
+  .how__save td { font-size: 16px; font-weight: 400; color: var(--ink); padding: 9px 0; border-top: 1px solid rgba(28,43,57,0.14); }
+  .how__save td:first-child { color: rgba(28,43,57,0.6); text-decoration: line-through; }
+  .how__save td:last-child { font-weight: 700; color: var(--accent-red); }
 
   /* ══ FABRIC PREVIEW ══ */
   .fabrics { background: var(--ground); padding: 72px 24px 80px; border-top: 1px solid rgba(28,43,57,0.08); }
@@ -1157,7 +1187,7 @@
     <span class="hero__eyebrow" id="coppley-status">Coppley Custom Event</span>
     <h1 class="hero__title">20% Off<br>Select Coppley<br>Fabrics.</h1>
     <div class="hero__rule"></div>
-    <p class="hero__sub">The event runs October 15 to 24. Custom suiting made for you by Coppley in Canada, with 20% off select Coppley fabrics.</p>
+    <p class="hero__sub">The event runs October 15 to 24. Custom suiting made for you by Coppley in Canada, with 20% off the full price on select fabrics. That is $220 to $600 or more off a garment.</p>
     <a class="hero__cta" href="book?event=coppley">Book a Fitting</a>
     <p class="hero__walkin" id="coppley-early">Walk-ins welcome any day.</p>
   </div>
@@ -1175,10 +1205,10 @@
     <h2 class="vignette__title">Start With the Cloth.</h2>
     <p class="vignette__body">The event covers a selection of fabrics from the Coppley custom program. Choose your cloth from the swatch books and we take your measurements in store. Coppley then makes the garment to those measurements in Hamilton, Ontario.</p>
     <ul class="specs">
-      <li>20% off select Coppley fabrics</li>
+      <li>20% off the full price on select Coppley fabrics</li>
       <li>October 15 to 24</li>
       <li id="coppley-early-spec" hidden>Order before the 15th and we place it on opening day</li>
-      <li>From about $1,100, before the event discount</li>
+      <li>Save about $220 to $600 or more on a garment</li>
       <li>Made by Coppley in Hamilton, Canada</li>
       <li>About three to four weeks to arrive</li>
     </ul>
@@ -1220,8 +1250,16 @@
         <p>Allow three to four weeks from the day your order is placed. Some garments and fabrics take a little longer.</p>
       </div>
       <div class="how__fact">
-        <span class="how__fact-label">Typical pricing</span>
-        <p>Coppley custom starts at about $1,100 and can run above $3,000, depending on the garment and the fabric you choose. Those prices are before the event discount.</p>
+        <span class="how__fact-label">What you save</span>
+        <p>Coppley custom starts at about $1,100 and can run above $3,000, depending on the garment and fabric. During the event, select fabrics are 20% off the full price.</p>
+        <table class="how__save">
+          <thead><tr><th>Regular price</th><th>Event price</th><th>You save</th></tr></thead>
+          <tbody>
+            <tr><td>$1,100</td><td>$880</td><td>$220</td></tr>
+            <tr><td>$2,000</td><td>$1,600</td><td>$400</td></tr>
+            <tr><td>$3,000</td><td>$2,400</td><td>$600</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
