@@ -772,15 +772,15 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Thomas Jeffery Men's Wear">
   <meta property="og:title" content="Coppley Custom Event — Thomas Jeffery Calgary">
-  <meta property="og:description" content="20% off select Coppley fabrics, October 15 to 24. Custom suiting made to your measurements in Canada.">
+  <meta property="og:description" content="20% off select Coppley fabrics, October 15 to 24. Order in October, wear it in December.">
   <meta property="og:url" content="https://thomasjeffery.ca/coppley-custom">
-  <meta property="og:image" content="https://thomasjeffery.ca/fall-vignette-coppley.webp">
-  <meta property="og:image:alt" content="Coppley custom sportcoat on a walnut hanger">
+  <meta property="og:image" content="https://thomasjeffery.ca/coppley-hero-event.webp">
+  <meta property="og:image:alt" content="A man in a black velvet dinner jacket with a shawl collar, a bow tie and tuxedo trousers">
   <meta property="og:locale" content="en_CA">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Coppley Custom Event — Thomas Jeffery Calgary">
-  <meta name="twitter:description" content="20% off select Coppley fabrics, October 15 to 24. Custom suiting made to your measurements in Canada.">
-  <meta name="twitter:image" content="https://thomasjeffery.ca/fall-vignette-coppley.webp">
+  <meta name="twitter:description" content="20% off select Coppley fabrics, October 15 to 24. Order in October, wear it in December.">
+  <meta name="twitter:image" content="https://thomasjeffery.ca/coppley-hero-event.webp">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1045,29 +1045,25 @@
   /* Longer words than the Fall hero, so dial the display size back. */
   .hero__title { font-size: clamp(38px, 7vw, 72px); }
 
-  /* The hero photo is a full-length jacket on a hanger. Keep the whole garment in
-     frame (hook to hem) instead of cropping to the top half as the people shots do. */
-  .hero__image { height: auto; aspect-ratio: 10 / 11; }
-  .hero__image img { object-position: center 34%; }
+  /* The timing line that explains the dinner jacket: order now, wear it in December. */
+  .hero__lede {
+    font-size: 20px; font-weight: 300; line-height: 1.4;
+    color: rgba(245,240,235,0.96); margin-bottom: 14px; max-width: 380px;
+  }
+
+  /* The hero photo is a portrait in a dinner jacket. On a phone the box is nearly
+     square so the jacket shows as well as his face. */
+  .hero__image img { object-position: center 8%; }
   @media (max-width: 699px) {
     /* Lead with the offer first on a phone: status, headline and button, then the photo. */
     .hero { min-height: 0; }
     .hero__panel { flex: none; padding: 34px 24px 38px; }
-    .hero__image { order: 1; }
+    .hero__image { order: 1; height: auto; aspect-ratio: 10 / 11; }
   }
   @media (min-width: 700px) {
-    /* Fit the hero to the first screen, show the whole photo, and extend its wall
-       colour to either side so there are no hard edges. */
+    /* Fit the hero to the first screen. */
     .hero { min-height: calc(100svh - var(--promo-h, 0px)); }
-    .hero__image { aspect-ratio: auto; }
-    .hero__image::before, .hero__image::after { content: ""; position: absolute; top: 0; bottom: 0; width: 50%; }
-    .hero__image::before { left: 0; background: linear-gradient(to bottom, #d5ccc0 7%, #d4cbbe 21%, #d5ccbe 36%, #d3cbbf 50%, #cfc7bb 64%, #c3b9ae 79%, #b3a599 93%); }
-    .hero__image::after { right: 0; background: linear-gradient(to bottom, #d3c3ad 7%, #cfbfac 21%, #c9bfb2 36%, #beb2a3 50%, #b8ab9d 64%, #b4a493 79%, #b6aba1 93%); }
-    .hero__image img {
-      z-index: 1; object-fit: contain; object-position: center;
-      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
-      mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
-    }
+    .hero__image img { object-position: center top; }
   }
 
   .specs { list-style: none; margin: 28px 0 0; padding: 0; }
@@ -1179,17 +1175,18 @@
 <!-- ══ HERO ══ -->
 <section class="hero">
   <div class="hero__image photo photo--hero">
-    <img src="fall-vignette-coppley.webp" width="896" height="1200"
-         srcset="fall-vignette-coppley-600w.webp 600w, fall-vignette-coppley.webp 896w"
-         sizes="100vw" alt="Coppley custom sportcoat on a walnut hanger">
+    <img src="coppley-hero-event.webp" width="1200" height="1607"
+         srcset="coppley-hero-event-600w.webp 600w, coppley-hero-event.webp 1200w"
+         sizes="(min-width: 700px) 47vw, 100vw" alt="A man in a black velvet dinner jacket with a shawl collar, a bow tie and tuxedo trousers">
   </div>
   <div class="hero__panel">
     <span class="hero__eyebrow" id="coppley-status">Coppley Custom Event</span>
     <h1 class="hero__title">20% Off<br>Select Coppley<br>Fabrics.</h1>
     <div class="hero__rule"></div>
-    <p class="hero__sub">The event runs October 15 to 24. Custom suiting made for you by Coppley in Canada, with 20% off the full price on select fabrics. That is $220 to $600 or more off a garment.</p>
+    <p class="hero__lede">Order in October, wear it in December.</p>
+    <p class="hero__sub">The event runs October 15 to 24. A custom suit or dinner jacket made for you by Coppley in Canada, with 20% off the full price on select fabrics. That is $220 to $600 or more off a garment.</p>
     <a class="hero__cta" href="book?event=coppley">Book a Fitting</a>
-    <p class="hero__walkin" id="coppley-early">Walk-ins welcome any day.</p>
+    <p class="hero__walkin" id="coppley-early">Order by October 24 and it is typically here in time for December. Walk-ins welcome any day.</p>
   </div>
 </section>
 
@@ -1210,7 +1207,7 @@
       <li id="coppley-early-spec" hidden>Order before the 15th and we place it on opening day</li>
       <li>Save about $220 to $600 or more on a garment</li>
       <li>Made by Coppley in Hamilton, Canada</li>
-      <li>About three to four weeks to arrive</li>
+      <li>About three to four weeks to arrive, ready for December events</li>
     </ul>
   </div>
 </section>
@@ -1378,12 +1375,13 @@
   var spec = document.getElementById('coppley-early-spec');
   if (now < opens) {
     status.textContent = 'Starts Thursday, October 15';
-    if (early) early.textContent = 'Want to get ahead? Come in now to choose your fabric and be measured. We place your order on October 15 at the event price.';
+    if (early) early.textContent = 'Want to get ahead? Come in now to choose your fabric and be measured. We place your order on October 15 at the event price, so it is here in good time for December.';
     if (spec) spec.hidden = false;
   } else if (now < closed) {
     status.textContent = 'On now until October 24';
   } else {
     status.textContent = 'This event ended October 24';
+    if (early) early.textContent = 'Walk-ins welcome any day.';
   }
 })();
 </script>
