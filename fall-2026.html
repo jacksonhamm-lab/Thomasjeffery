@@ -550,6 +550,8 @@
         min-height: unset;
       }
       .hero__panel { padding: 140px 52px 72px; }
+      /* Tall hero shot: when the box is narrower than the photo, keep the window side in frame */
+      .hero__image img { object-position: 20% top; }
 
       .collections { padding: 64px 48px; }
       .collections__grid { grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -779,20 +781,20 @@
     .fall-closing__cta:hover { background: var(--white); }
 
   </style>
-  <meta name="description" content="Fall 2026 at Thomas Jeffery Calgary. Knitwear from Ferrante, sport coats from 7 Downie St., sport shirts from Klauss Boehler, outerwear from Bugatti and Holebrook, and Coppley off the rack or custom. In-store at Kingsland Village.">
+  <meta name="description" content="Fall 2026 at Thomas Jeffery Calgary. Knitwear from Ferrante, sport coats from Jack Victor and 7 Downie St., sport shirts from Klauss Boehler, outerwear from Bugatti and Holebrook, and Coppley off the rack or custom. In-store at Kingsland Village.">
   <link rel="canonical" href="https://thomasjeffery.ca/fall-2026">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Thomas Jeffery Men's Wear">
   <meta property="og:title" content="Fall 2026 — Thomas Jeffery Menswear Calgary">
   <meta property="og:description" content="The layering season. Knitwear, sport coats, sport shirts, outerwear, and Coppley off the rack or custom, for fall at Thomas Jeffery in Calgary.">
   <meta property="og:url" content="https://thomasjeffery.ca/fall-2026">
-  <meta property="og:image" content="https://thomasjeffery.ca/fall-hero.webp">
+  <meta property="og:image" content="https://thomasjeffery.ca/fall-hero-v2.webp">
   <meta property="og:image:alt" content="Fall 2026 at Thomas Jeffery — the layering season">
   <meta property="og:locale" content="en_CA">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Fall 2026 — Thomas Jeffery Menswear Calgary">
   <meta name="twitter:description" content="The layering season. Knitwear, sport coats, sport shirts, outerwear, and Coppley off the rack or custom, for fall at Thomas Jeffery in Calgary.">
-  <meta name="twitter:image" content="https://thomasjeffery.ca/fall-hero.webp">
+  <meta name="twitter:image" content="https://thomasjeffery.ca/fall-hero-v2.webp">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -805,6 +807,7 @@
   },
   "about": [
     { "@type": "Brand", "name": "Ferrante" },
+    { "@type": "Brand", "name": "Jack Victor" },
     { "@type": "Brand", "name": "7 Downie St." },
     { "@type": "Brand", "name": "Klauss Boehler" },
     { "@type": "Brand", "name": "Bugatti" },
@@ -1062,7 +1065,10 @@
 ══════════════════════════════ -->
 <section class="hero">
   <div class="hero__image photo photo--hero">
-    <img src="fall-hero.webp" width="1200" height="896" srcset="fall-hero-600w.webp 600w, fall-hero.webp 1200w" sizes="100vw" alt="Fall 2026 at Thomas Jeffery">
+    <picture>
+      <source media="(min-width: 700px)" srcset="fall-hero-v2-tall.webp" width="1200" height="1607">
+      <img src="fall-hero-v2.webp" width="1200" height="896" srcset="fall-hero-v2-600w.webp 600w, fall-hero-v2.webp 1200w" sizes="100vw" alt="A man in a checked sport coat, patterned sport shirt and denim beside a window with fall leaves">
+    </picture>
   </div>
   <div class="hero__panel">
     <span class="hero__eyebrow">Thomas Jeffery · Fall 2026</span>
@@ -1102,23 +1108,23 @@
   </div>
 </section>
 
-<!-- Vignette — 7 Downie St. (reversed) -->
+<!-- Vignette — Sport coats: Jack Victor -->
 <section class="vignette">
   <div class="vignette__image">
-    <img src="fall-vignette-7downie.webp" width="896" height="1200" srcset="fall-vignette-7downie-600w.webp 600w, fall-vignette-7downie.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="7 Downie St. sport coat on a walnut hanger">
+    <img src="fall-vignette-jackvictor.webp" width="896" height="1200" srcset="fall-vignette-jackvictor-600w.webp 600w, fall-vignette-jackvictor.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Jack Victor checked sport coat on a walnut hanger">
   </div>
   <div class="vignette__text">
     <span class="vignette__eyebrow">Sport Coats</span>
-    <h2 class="vignette__title">7 Downie St.</h2>
-    <p class="vignette__body">A run of new sportcoats for fall, including the hybrid model with a built-in zip-in vest. Textured weaves, natural shoulders, and a cut that reads equally at home with denim or a dress trouser. Fall is the season a sportcoat gets its full range of use. Worn over a knit, layered under a topcoat, or on its own with a shirt when the weather holds.</p>
-    <p class="vignette__brand">Featured: 7 Downie St.</p>
+    <h2 class="vignette__title">Jack Victor.</h2>
+    <p class="vignette__body">New sportcoats for fall from Jack Victor, with fabrics selected in Europe and everything cut and sewn in Montreal. Textured weaves and checks that sit as easily with denim as with a dress trouser. Fall is the season a sportcoat gets its full range of use. Worn over a knit, layered under a topcoat, or on its own with a shirt when the weather holds. 7 Downie St. is on the floor too, including the hybrid model with a built-in zip-in vest.</p>
+    <p class="vignette__brand">Featured: Jack Victor</p>
   </div>
 </section>
 
 <!-- Vignette — Klauss Boehler -->
 <section class="vignette vignette--reverse">
   <div class="vignette__image">
-    <img src="fall-vignette-klauss.webp" width="896" height="1200" srcset="fall-vignette-klauss-600w.webp 600w, fall-vignette-klauss.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Klauss Boehler sport shirt on a walnut hanger">
+    <img src="fall-vignette-klauss-v2.webp" width="896" height="1200" srcset="fall-vignette-klauss-v2-600w.webp 600w, fall-vignette-klauss-v2.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Klauss Boehler sport shirt on a walnut hanger">
   </div>
   <div class="vignette__text">
     <span class="vignette__eyebrow">Sport Shirts</span>
