@@ -712,6 +712,18 @@
       line-height: 1.85; color: rgba(28,43,57,0.8);
       max-width: 520px;
     }
+    .vignette__body + .vignette__body { margin-top: 18px; }
+    .vignette__body strong { font-weight: 400; color: var(--ink); }
+    .vignette__link {
+      display: inline-block; margin-top: 26px;
+      font-size: 12px; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px solid rgba(28,43,57,0.35); padding-bottom: 5px;
+      transition: border-color 0.2s;
+    }
+    .vignette__link:hover { border-bottom-color: var(--ink); }
+    .vignette__link[hidden] { display: none; }
     .vignette__brand {
       margin-top: 24px; font-size: 11px;
       letter-spacing: 0.34em; text-transform: uppercase;
@@ -767,26 +779,26 @@
     .fall-closing__cta:hover { background: var(--white); }
 
   </style>
-  <meta name="description" content="Fall 2026 at Thomas Jeffery Calgary. Knitwear from Ferrante, sport coats from 7 Downie St., sport shirts from Klauss Boehler, outerwear from Bugatti and Holebrook, and Coppley custom. In-store at Kingsland Village.">
+  <meta name="description" content="Fall 2026 at Thomas Jeffery Calgary. Knitwear from Ferrante, sport coats from 7 Downie St., sport shirts from Klauss Boehler, outerwear from Bugatti and Holebrook, and Coppley off the rack or custom. In-store at Kingsland Village.">
   <link rel="canonical" href="https://thomasjeffery.ca/fall-2026">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Thomas Jeffery Men's Wear">
   <meta property="og:title" content="Fall 2026 — Thomas Jeffery Menswear Calgary">
-  <meta property="og:description" content="The layering season. Knitwear, sport coats, sport shirts, outerwear, and Coppley custom for fall at Thomas Jeffery in Calgary.">
+  <meta property="og:description" content="The layering season. Knitwear, sport coats, sport shirts, outerwear, and Coppley off the rack or custom, for fall at Thomas Jeffery in Calgary.">
   <meta property="og:url" content="https://thomasjeffery.ca/fall-2026">
   <meta property="og:image" content="https://thomasjeffery.ca/fall-hero.webp">
   <meta property="og:image:alt" content="Fall 2026 at Thomas Jeffery — the layering season">
   <meta property="og:locale" content="en_CA">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Fall 2026 — Thomas Jeffery Menswear Calgary">
-  <meta name="twitter:description" content="The layering season. Knitwear, sport coats, sport shirts, outerwear, and Coppley custom for fall at Thomas Jeffery in Calgary.">
+  <meta name="twitter:description" content="The layering season. Knitwear, sport coats, sport shirts, outerwear, and Coppley off the rack or custom, for fall at Thomas Jeffery in Calgary.">
   <meta name="twitter:image" content="https://thomasjeffery.ca/fall-hero.webp">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "Fall 2026 — Thomas Jeffery Menswear",
-  "description": "Fall 2026 collection at Thomas Jeffery Calgary — knitwear, sport coats, sport shirts, outerwear, and Coppley custom.",
+  "description": "Fall 2026 collection at Thomas Jeffery Calgary — knitwear, sport coats, sport shirts, outerwear, and Coppley ready-to-wear and custom.",
   "url": "https://thomasjeffery.ca/fall-2026",
   "isPartOf": {
     "@id": "https://thomasjeffery.ca/#store"
@@ -1062,8 +1074,23 @@
   </div>
 </section>
 
-<!-- Vignette — Ferrante -->
+<!-- Vignette — Coppley, ready-to-wear and custom -->
 <section class="vignette">
+  <div class="vignette__image">
+    <img src="fall-vignette-coppley.webp" width="896" height="1200" srcset="fall-vignette-coppley-600w.webp 600w, fall-vignette-coppley.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Coppley sportcoat on a walnut hanger">
+  </div>
+  <div class="vignette__text">
+    <span class="vignette__eyebrow">Off the Rack and Custom</span>
+    <h2 class="vignette__title">Coppley.</h2>
+    <p class="vignette__body"><strong>Off the rack.</strong> Coppley suits and sportcoats hang in the store ready to wear, with the half-canvas construction the maker is known for. Try one on, and our tailor handles the adjustments here.</p>
+    <p class="vignette__body"><strong>Custom.</strong> Suits, sportcoats, trousers, overshirts, topcoats, and more, in a fabric you choose. We take your measurements in store, then Coppley makes the garment in Hamilton and ships it to us, usually in three to four weeks.</p>
+    <a class="vignette__link" id="coppley-event-link" href="coppley-custom">Custom Event, October 15 to 24 &rarr;</a>
+    <p class="vignette__brand">Featured: Coppley</p>
+  </div>
+</section>
+
+<!-- Vignette — Ferrante -->
+<section class="vignette vignette--reverse">
   <div class="vignette__image">
     <img src="fall-vignette-ferrante.webp" width="896" height="1200" srcset="fall-vignette-ferrante-600w.webp 600w, fall-vignette-ferrante.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Ferrante knitwear on a walnut hanger">
   </div>
@@ -1076,7 +1103,7 @@
 </section>
 
 <!-- Vignette — 7 Downie St. (reversed) -->
-<section class="vignette vignette--reverse">
+<section class="vignette">
   <div class="vignette__image">
     <img src="fall-vignette-7downie.webp" width="896" height="1200" srcset="fall-vignette-7downie-600w.webp 600w, fall-vignette-7downie.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="7 Downie St. sport coat on a walnut hanger">
   </div>
@@ -1089,7 +1116,7 @@
 </section>
 
 <!-- Vignette — Klauss Boehler -->
-<section class="vignette">
+<section class="vignette vignette--reverse">
   <div class="vignette__image">
     <img src="fall-vignette-klauss.webp" width="896" height="1200" srcset="fall-vignette-klauss-600w.webp 600w, fall-vignette-klauss.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Klauss Boehler sport shirt on a walnut hanger">
   </div>
@@ -1102,7 +1129,7 @@
 </section>
 
 <!-- Vignette — Outerwear (Holebrook + Bugatti, reversed) -->
-<section class="vignette vignette--reverse">
+<section class="vignette">
   <div class="vignette__image">
     <img src="fall-vignette-bugatti.webp" width="896" height="1200" srcset="fall-vignette-bugatti-600w.webp 600w, fall-vignette-bugatti.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Bugatti topcoat on a walnut hanger">
   </div>
@@ -1113,18 +1140,12 @@
   </div>
 </section>
 
-<!-- Vignette — Coppley Custom -->
-<section class="vignette">
-  <div class="vignette__image">
-    <img src="fall-vignette-coppley.webp" width="896" height="1200" srcset="fall-vignette-coppley-600w.webp 600w, fall-vignette-coppley.webp 896w" sizes="(min-width: 900px) 50vw, 100vw" alt="Coppley custom sportcoat on a walnut hanger">
-  </div>
-  <div class="vignette__text">
-    <span class="vignette__eyebrow">Custom Program</span>
-    <h2 class="vignette__title">Coppley.</h2>
-    <p class="vignette__body">Custom suits, sportcoats, trousers, overshirts, topcoats, and more. Built to your measurements in Hamilton, in a fabric of your choice. Fall is a good time to start something. Holiday events, a topcoat for the coming winter, or a wardrobe piece you've been meaning to commission properly.</p>
-    <p class="vignette__brand">Featured: Coppley</p>
-  </div>
-</section>
+<script>
+  (function () {
+    var link = document.getElementById('coppley-event-link');
+    if (link && new Date() > new Date(2026, 9, 24, 23, 59, 59)) link.hidden = true;
+  })();
+</script>
 
 <!-- Editor's letter (moved to bottom) -->
 <section class="editor-letter">
