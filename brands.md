@@ -16,7 +16,6 @@ Every brand on the floor was chosen for a reason. Everything below is stocked in
 ### Suiting and tailoring
 - **Paul Betenly** (Italy, 1981) — Milan-designed fabric, hand-sewn armholes, pick stitching.
 - **Coppley** (Hamilton, Canada, 1883) — half-canvas construction, ready-to-wear and custom.
-- **Atelier** — a Jack Victor line, same Montreal manufacturing at a more accessible price.
 
 ### Sport jackets
 - **7 Downie St.** (Canada) — elevated weekend layer or softer business-casual blazer.

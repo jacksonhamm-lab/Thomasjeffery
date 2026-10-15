@@ -819,17 +819,23 @@
     function gtag(){ dataLayer.push(arguments); }
     window.gtag = gtag;
 
+    // Notice-style consent: tracking runs unless the visitor has declined.
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch(e){}
+    var declined = stored === 'denied';
+    var adState = declined ? 'denied' : 'granted';
+
     gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'analytics_storage': 'denied',
+      'ad_storage': adState,
+      'ad_user_data': adState,
+      'ad_personalization': adState,
+      'analytics_storage': adState,
       'functionality_storage': 'granted',
       'security_storage': 'granted'
     });
 
-    // Load gtag script unconditionally; Consent Mode v2 above keeps tracking
-    // gated until consent is granted. Ensures Google's crawler always sees the tag.
+    // Load gtag script unconditionally; Consent Mode v2 above turns tracking off
+    // for visitors who declined. Ensures Google's crawler always sees the tag.
     (function(){
       var s = document.createElement('script');
       s.async = true;
@@ -855,22 +861,37 @@
       fbq('track', 'PageView');
     }
 
-    function applyConsent(state){
-      if(state === 'granted'){
-        gtag('consent', 'update', {
-          'ad_storage': 'granted',
-          'ad_user_data': 'granted',
-          'ad_personalization': 'granted',
-          'analytics_storage': 'granted'
-        });
-        if(!window.__tjGaLoaded){ window.__tjGaLoaded = true; loadGA(); }
-        if(!window.__tjFbLoaded){ window.__tjFbLoaded = true; loadFB(); }
-      }
+    // LocaliQ (our ad agency) measures calls and enquiries from their campaigns.
+    function loadLocaliQ(){
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://cdn.rlets.com/capture_configs/020/ff2/d05/20e476f82240825f9780f79.js';
+      document.head.appendChild(s);
     }
 
-    var stored = null;
-    try { stored = localStorage.getItem(KEY); } catch(e){}
-    if(stored === 'granted') applyConsent('granted');
+    function applyConsent(state){
+      if(state === 'denied'){
+        gtag('consent', 'update', {
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied',
+          'analytics_storage': 'denied'
+        });
+        if(window.fbq) fbq('consent', 'revoke');
+        return;
+      }
+      gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+      });
+      if(!window.__tjGaLoaded){ window.__tjGaLoaded = true; loadGA(); }
+      if(!window.__tjFbLoaded){ window.__tjFbLoaded = true; loadFB(); }
+      if(!window.__tjLiqLoaded){ window.__tjLiqLoaded = true; loadLocaliQ(); }
+    }
+
+    if(!declined) applyConsent('granted');
 
     window.tjConsent = {
       set: function(state){
@@ -1202,7 +1223,7 @@
       <div class="path__content">
         <span class="path__tag">In Store Now</span>
         <h3 class="path__title">Ready to wear.<br>Fitted to you.</h3>
-        <p class="path__body">Paul Betenly, Coppley, and Atelier suits ready to try in-store. We fit every suit and book alterations through our in-house schedule, so everything is done well before your date. If the specific size or colour you need isn't on the floor when you visit, we can order it in. Wedding party orders typically need about 2 weeks to bring in the full run of sizes. Come in early and we'll make sure everything arrives with time to spare.</p>
+        <p class="path__body">Paul Betenly and Coppley suits ready to try in-store. We fit every suit and book alterations through our in-house schedule, so everything is done well before your date. If the specific size or colour you need isn't on the floor when you visit, we can order it in. Wedding party orders typically need about 2 weeks to bring in the full run of sizes. Come in early and we'll make sure everything arrives with time to spare.</p>
         <div class="path__offer">
           Buy 3 Paul Betenly suits, get the 4th free.
           <span>Or 25% off when dressing four or more. In-store only.</span>
@@ -1546,12 +1567,12 @@
 <div class="tj-consent" id="tj-consent" role="dialog" aria-live="polite" aria-label="Cookie preferences">
   <div class="tj-consent__inner">
     <p class="tj-consent__text">
-      We use cookies to understand how visitors use the site so we can improve it.
+      We use cookies to understand how visitors use the site and to measure our advertising. You can decline at any time.
       <a href="privacy" class="tj-consent__link">Privacy Policy</a>
     </p>
     <div class="tj-consent__actions">
       <button type="button" class="tj-consent__btn tj-consent__btn--ghost" data-tj-consent="denied">Decline</button>
-      <button type="button" class="tj-consent__btn tj-consent__btn--primary" data-tj-consent="granted">Accept</button>
+      <button type="button" class="tj-consent__btn tj-consent__btn--primary" data-tj-consent="granted">OK</button>
     </div>
   </div>
 </div>

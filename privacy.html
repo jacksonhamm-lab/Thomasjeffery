@@ -33,17 +33,23 @@
     function gtag(){ dataLayer.push(arguments); }
     window.gtag = gtag;
 
+    // Notice-style consent: tracking runs unless the visitor has declined.
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch(e){}
+    var declined = stored === 'denied';
+    var adState = declined ? 'denied' : 'granted';
+
     gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'analytics_storage': 'denied',
+      'ad_storage': adState,
+      'ad_user_data': adState,
+      'ad_personalization': adState,
+      'analytics_storage': adState,
       'functionality_storage': 'granted',
       'security_storage': 'granted'
     });
 
-    // Load gtag script unconditionally; Consent Mode v2 above keeps tracking
-    // gated until consent is granted. Ensures Google's crawler always sees the tag.
+    // Load gtag script unconditionally; Consent Mode v2 above turns tracking off
+    // for visitors who declined. Ensures Google's crawler always sees the tag.
     (function(){
       var s = document.createElement('script');
       s.async = true;
@@ -69,22 +75,37 @@
       fbq('track', 'PageView');
     }
 
-    function applyConsent(state){
-      if(state === 'granted'){
-        gtag('consent', 'update', {
-          'ad_storage': 'granted',
-          'ad_user_data': 'granted',
-          'ad_personalization': 'granted',
-          'analytics_storage': 'granted'
-        });
-        if(!window.__tjGaLoaded){ window.__tjGaLoaded = true; loadGA(); }
-        if(!window.__tjFbLoaded){ window.__tjFbLoaded = true; loadFB(); }
-      }
+    // LocaliQ (our ad agency) measures calls and enquiries from their campaigns.
+    function loadLocaliQ(){
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://cdn.rlets.com/capture_configs/020/ff2/d05/20e476f82240825f9780f79.js';
+      document.head.appendChild(s);
     }
 
-    var stored = null;
-    try { stored = localStorage.getItem(KEY); } catch(e){}
-    if(stored === 'granted') applyConsent('granted');
+    function applyConsent(state){
+      if(state === 'denied'){
+        gtag('consent', 'update', {
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied',
+          'analytics_storage': 'denied'
+        });
+        if(window.fbq) fbq('consent', 'revoke');
+        return;
+      }
+      gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+      });
+      if(!window.__tjGaLoaded){ window.__tjGaLoaded = true; loadGA(); }
+      if(!window.__tjFbLoaded){ window.__tjFbLoaded = true; loadFB(); }
+      if(!window.__tjLiqLoaded){ window.__tjLiqLoaded = true; loadLocaliQ(); }
+    }
+
+    if(!declined) applyConsent('granted');
 
     window.tjConsent = {
       set: function(state){
@@ -529,7 +550,7 @@
 <main class="policy">
   <span class="policy__eyebrow">Privacy</span>
   <h1 class="policy__title">Privacy Policy</h1>
-  <p class="policy__updated">Effective: June 30, 2026</p>
+  <p class="policy__updated">Effective: October 15, 2026</p>
 
   <p>Thomas Jeffery Men's Wear ("we", "our", "us") respects your privacy. This policy explains what personal information we collect when you visit our website or interact with our store, how we use it, who we share it with, and your rights under Canadian and Alberta privacy law.</p>
 
@@ -578,6 +599,7 @@
     <li><strong>Resend</strong> — delivers our booking and contact form emails to us</li>
     <li><strong>Google (Analytics &amp; Ads)</strong> — provides website analytics and helps us measure ad performance</li>
     <li><strong>Meta (Facebook &amp; Instagram)</strong> — receives our Pixel events to support our advertising</li>
+    <li><strong>LocaliQ (a Gannett company)</strong> — our advertising agency, which measures how our ads perform, including calls and enquiries that come from them</li>
     <li><strong>Cloudflare</strong> — hosts and delivers our website</li>
   </ul>
   <p>These providers may store data outside of Canada (typically the United States). We share only what's needed for them to provide their service.</p>
@@ -589,9 +611,9 @@
   <ul>
     <li><strong>Essential functionality</strong> — for example, remembering that you've dismissed our subscribe popup or which mode page you've chosen</li>
     <li><strong>Analytics</strong> — Google Analytics 4 to understand visitor behaviour in aggregate</li>
-    <li><strong>Advertising</strong> — the Meta Pixel so we can show relevant ads on Facebook and Instagram</li>
+    <li><strong>Advertising</strong> — the Meta Pixel so we can show relevant ads on Facebook and Instagram, and LocaliQ&rsquo;s tracking so we can measure how our ads perform</li>
   </ul>
-  <p>Analytics and advertising cookies only load after you accept them in our cookie banner. You can change your choice at any time: <a href="#" onclick="if(window.tjConsentOpen){window.tjConsentOpen();}return false;">Manage cookie preferences</a>.</p>
+  <p>Analytics and advertising cookies load when you visit. You can decline them in our cookie banner and change your choice at any time: <a href="#" onclick="if(window.tjConsentOpen){window.tjConsentOpen();}return false;">Manage cookie preferences</a>.</p>
   <p>You can also disable cookies in your browser settings. Some features may not work properly if you do.</p>
 
   <h2>6. How long we keep your information</h2>
@@ -709,12 +731,12 @@
 <div class="tj-consent" id="tj-consent" role="dialog" aria-live="polite" aria-label="Cookie preferences">
   <div class="tj-consent__inner">
     <p class="tj-consent__text">
-      We use cookies to understand how visitors use the site so we can improve it.
+      We use cookies to understand how visitors use the site and to measure our advertising. You can decline at any time.
       <a href="privacy" class="tj-consent__link">Privacy Policy</a>
     </p>
     <div class="tj-consent__actions">
       <button type="button" class="tj-consent__btn tj-consent__btn--ghost" data-tj-consent="denied">Decline</button>
-      <button type="button" class="tj-consent__btn tj-consent__btn--primary" data-tj-consent="granted">Accept</button>
+      <button type="button" class="tj-consent__btn tj-consent__btn--primary" data-tj-consent="granted">OK</button>
     </div>
   </div>
 </div>
