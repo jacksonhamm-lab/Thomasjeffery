@@ -1,6 +1,6 @@
 # Thomas Jeffery Men's Wear
 
-A Calgary menswear store since 1968. Locally owned and family run today.
+A Calgary menswear store since 1968. Locally owned and independent.
 
 - **Address:** Kingsland Village #303, 7337 Macleod Trail SW, Calgary, AB T2H 0L8, Canada
 - **Phone:** (403) 278-2445

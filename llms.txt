@@ -1,6 +1,6 @@
 # Thomas Jeffery Men's Wear
 
-> A menswear store in Calgary, Alberta, operating since 1968. Locally owned and family run today. Office suiting, wedding suiting, and casual menswear, with in-store fitting and in-house tailoring.
+> A menswear store in Calgary, Alberta, operating since 1968. Locally owned and independent. Office suiting, wedding suiting, and casual menswear, with in-store fitting and in-house tailoring.
 
 ## Store info
 
@@ -8,7 +8,7 @@
 - **Phone:** (403) 278-2445
 - **Hours:** Monday - Saturday 10am - 6pm. Closed Sundays and statutory holidays.
 - **Founded:** 1968
-- **Owner:** Len Hamm (family-owned)
+- **Owner:** Len Hamm (locally owned, independent)
 
 ## What we do
 

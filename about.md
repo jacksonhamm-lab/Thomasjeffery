@@ -2,7 +2,7 @@
 
 ## A Calgary store, with Calgary roots
 
-Thomas Jeffery has been part of Calgary's menswear scene since 1968. The store carries the names of two sons from one of its earlier owners, Thomas and Jeffery. Today it is family owned and answerable to the city it has served for over half a century.
+Thomas Jeffery has been part of Calgary's menswear scene since 1968. The store carries the names of two sons from one of its earlier owners, Thomas and Jeffery. Today it is locally owned, independent, and answerable to the city it has served for over half a century.
 
 We carry the brands we believe in. We fit every piece in store. We don't sell what we wouldn't wear ourselves. The people who walk you through a fitting are usually the same ones you will see next time, often for years.
 
