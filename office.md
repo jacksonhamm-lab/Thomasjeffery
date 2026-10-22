@@ -10,9 +10,11 @@ Walk-ins welcome. Saturdays fill up fast, so book ahead.
 - **Refreshing a wardrobe.** Bring in what you have. We assess the fit, identify what's worth keeping, and fill the gaps.
 - **One event coming up.** Tell us the occasion and the date. Off the rack or made to measure, fitted right and ready in time.
 
-## The foundation: four pieces, a complete wardrobe
+## The foundation: four pieces, a place to start
 
-1. **The navy suit.** Your most versatile piece. A 180 to 200g tropical wool handles Calgary's temperature swings year round. Available ready-to-wear or custom through Coppley. Best for this: Coppley, Paul Betenly.
+Most professional wardrobes need less than you think to get started. Begin with these four, then build on them with shirts, ties, knitwear, and more.
+
+1. **The navy suit.** Your most versatile piece. A 180 to 200g tropical wool handles Calgary's temperature swings year round. It also splits up: wear the jacket as a sport coat with grey trousers or dark denim, and the trousers on their own with a sweater. Available ready-to-wear or custom through Coppley. Best for this: Coppley, Paul Betenly.
 2. **The charcoal suit.** Reads more formal than navy. The right choice for high-stakes meetings and formal events. Best for this: Coppley, Paul Betenly.
 3. **The sport coat.** The backbone of business casual. Herringbone, houndstooth, or a soft tweed. Best for this: Jack Victor, 7 Downie St., Aristo, Lief Horsens.
 4. **Two trousers.** A textured dress pant and a chino effectively double the number of distinct outfits in your wardrobe. Best for this: Alberto, Meyer, 34 Heritage, Bugatti.
