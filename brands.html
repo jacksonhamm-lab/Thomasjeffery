@@ -1390,15 +1390,15 @@
   var KEY = 'tj_promo_2026_10_coppley';
   var promo = document.getElementById('tj-promo');
   if (!promo) return;
-  // The Coppley event ends October 24. After that the bar goes back to the standing fall message.
-  if (new Date() > new Date(2026, 9, 24, 23, 59, 59)) {
-    KEY = 'tj_promo_2026_09_betenly';
+  // The Coppley event ends at store close, 6pm October 24. After that the bar switches to event dressing.
+  if (new Date() >= new Date(2026, 9, 24, 18, 0, 0)) {
+    KEY = 'tj_promo_2026_10_events';
     var link = promo.querySelector('.tj-promo__inner');
     if (link) {
-      link.setAttribute('href', '/outerwear');
-      link.querySelector('.tj-promo__eyebrow').textContent = 'In-Store Now';
-      link.querySelector('.tj-promo__text').textContent = 'New fall arrivals, plus 20% off Paul Betenly outerwear.';
-      link.querySelector('.tj-promo__cta').textContent = 'See More \u2192';
+      link.setAttribute('href', '/book');
+      link.querySelector('.tj-promo__eyebrow').textContent = 'Events Coming Up?';
+      link.querySelector('.tj-promo__text').textContent = 'Suits, sport coats, and more, fitted in store. Walk in or book a fitting.';
+      link.querySelector('.tj-promo__cta').textContent = 'Book a Fitting \u2192';
     }
   }
   try {
