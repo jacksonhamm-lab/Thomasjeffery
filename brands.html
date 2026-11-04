@@ -1378,40 +1378,50 @@
 
 <!-- ══ SITE-WIDE PROMO BAR — swap copy monthly ══ -->
 <div class="tj-promo" id="tj-promo" role="region" aria-label="Current promotion">
-  <a class="tj-promo__inner" href="/coppley-custom">
-    <span class="tj-promo__eyebrow">Coppley Custom Event</span>
-    <span class="tj-promo__text">20% off select Coppley fabrics, October 15 to 24.</span>
-    <span class="tj-promo__cta">See Details →</span>
+  <a class="tj-promo__inner" href="/find-us">
+    <span class="tj-promo__eyebrow">Remembrance Day</span>
+    <span class="tj-promo__text">We&rsquo;re closed Wednesday, November 11.</span>
+    <span class="tj-promo__cta">Store Hours →</span>
   </a>
   <button type="button" class="tj-promo__close" data-tj-promo-close aria-label="Dismiss">&times;</button>
 </div>
 <script>
 (function(){
-  var KEY = 'tj_promo_2026_10_coppley';
   var promo = document.getElementById('tj-promo');
   if (!promo) return;
-  // The Coppley event ends at store close, 6pm October 24. After that the bar switches to event dressing.
-  if (new Date() >= new Date(2026, 9, 24, 18, 0, 0)) {
-    KEY = 'tj_promo_2026_10_events';
+  // Nov to Dec 2026 schedule. Each phase has its own dismiss key.
+  var PHASES = [
+    { from: new Date(2026, 10, 9),  key: 'tj_promo_2026_11_bonus_closed', href: '/holiday',
+      eyebrow: 'Holiday Gift Bonus', text: 'Now on until December 24. Closed Wednesday, November 11, for Remembrance Day.', cta: 'See Details \u2192' },
+    { from: new Date(2026, 10, 12), key: 'tj_promo_2026_11_bonus', href: '/holiday',
+      eyebrow: 'Holiday Gift Bonus', text: 'Spend $250 or more and get a bonus voucher, until December 24.', cta: 'See Details \u2192' },
+    { from: new Date(2026, 11, 25), key: null }
+  ];
+  var KEY = 'tj_promo_2026_11_remembrance';
+  var now = new Date();
+  for (var i = 0; i < PHASES.length; i++) {
+    var p = PHASES[i];
+    if (now < p.from) break;
+    KEY = p.key;
+    if (!p.key) continue;
     var link = promo.querySelector('.tj-promo__inner');
-    if (link) {
-      link.setAttribute('href', '/book');
-      link.querySelector('.tj-promo__eyebrow').textContent = 'Events Coming Up?';
-      link.querySelector('.tj-promo__text').textContent = 'Suits, sport coats, and more, fitted in store. Walk in or book a fitting.';
-      link.querySelector('.tj-promo__cta').textContent = 'Book a Fitting \u2192';
-    }
+    link.setAttribute('href', p.href);
+    link.querySelector('.tj-promo__eyebrow').textContent = p.eyebrow;
+    link.querySelector('.tj-promo__text').textContent = p.text;
+    link.querySelector('.tj-promo__cta').textContent = p.cta;
   }
+  function hide(){
+    promo.classList.add('tj-promo--hidden');
+    document.body.classList.add('tj-promo-dismissed');
+  }
+  if (!KEY) { hide(); return; }   // after the Gift Bonus ends, until the next promo is written
   try {
-    if (localStorage.getItem(KEY) === '1') {
-      promo.classList.add('tj-promo--hidden');
-      document.body.classList.add('tj-promo-dismissed');
-    }
+    if (localStorage.getItem(KEY) === '1') hide();
   } catch (e) {}
   var close = promo.querySelector('[data-tj-promo-close]');
   if (close) close.addEventListener('click', function(e){
     e.stopPropagation(); e.preventDefault();
-    promo.classList.add('tj-promo--hidden');
-    document.body.classList.add('tj-promo-dismissed');
+    hide();
     try { localStorage.setItem(KEY, '1'); } catch (err) {}
     document.documentElement.style.setProperty('--promo-h', '0px');
   });
