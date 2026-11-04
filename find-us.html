@@ -10,8 +10,8 @@
   <meta name="theme-color" content="#1C2B39">
   <meta name="robots" content="noindex, nofollow">
   <meta name="facebook-domain-verification" content="vrruclf3hfgl41dekz90zsejr3nz40" />
-  <title>Find Us — Thomas Jeffery Men's Wear Calgary</title>
-  <meta name="description" content="Thomas Jeffery Men's Wear in Kingsland Village, Calgary. Open in Apple Maps or Google Maps for directions.">
+  <title>Store Hours and Directions — Thomas Jeffery Men's Wear Calgary</title>
+  <meta name="description" content="Thomas Jeffery Men's Wear store hours: Monday to Saturday, 10am to 6pm, in Kingsland Village, Calgary. Open in Apple Maps or Google Maps for directions.">
   <link rel="canonical" href="https://thomasjeffery.ca/find-us">
   <script type="application/ld+json">
 {
@@ -111,6 +111,30 @@
       letter-spacing: 2px;
       color: var(--ink);
       line-height: 1.3;
+      margin-bottom: 32px;
+    }
+
+    .hours {
+      font-weight: 400;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      color: var(--ink);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .hours__closed {
+      font-size: 13px;
+      color: #8a8078;
+      margin-bottom: 28px;
+    }
+
+    .notice {
+      background-color: var(--ink);
+      color: var(--ground);
+      font-size: 13px;
+      line-height: 1.6;
+      padding: 14px 18px;
       margin-bottom: 32px;
     }
 
@@ -301,12 +325,30 @@
 
   <div class="rule"></div>
 
-  <h1 class="headline">Need Directions?</h1>
+  <h1 class="headline">Store Hours</h1>
+
+  <p class="hours">
+    Monday to Saturday<br>
+    10am to 6pm
+  </p>
+  <p class="hours__closed">Closed Sundays and holidays</p>
+
+  <!-- Dated closure notice; the script below removes it once the date has passed. -->
+  <p class="notice" data-until="2026-11-12">Closed Wednesday, November 11, for Remembrance Day.</p>
+  <script>
+  (function(){
+    var n = document.querySelector('.notice[data-until]');
+    var p = n && n.getAttribute('data-until').split('-');
+    if (n && new Date() >= new Date(+p[0], p[1] - 1, +p[2])) n.remove();
+  })();
+  </script>
+
+  <div class="rule"></div>
 
   <p class="address">
+    Kingsland Village<br>
     7337 Macleod Trail SW, Unit 303<br>
-    Calgary, AB &nbsp;T2H 0L8<br>
-    Mon &ndash; Sat 10am &ndash; 6pm
+    Calgary, AB &nbsp;T2H 0L8
   </p>
 
   <div class="buttons">
