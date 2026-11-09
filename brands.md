@@ -7,7 +7,7 @@ Every brand on the floor was chosen for a reason. Everything below is stocked in
 - **Coppley** — Hamilton, Canada, est. 1883. One of the last North American makers still doing genuine half-canvas construction, so the jacket molds to your body over time rather than holding a fused shape. Ready-to-wear in store, plus the full custom program with four seasons of fabric, made to your exact measurements in Canada.
 - **Paul Betenly** — est. 1981, fabric designed in Milan. Hand-sewn armholes, pick stitching throughout, performance fabrics across the line. Vertically integrated from their own sheep farms in Australia and New Zealand through their own yarn, fabric and factory. Our default recommendation for wedding parties and first suits.
 - **Jack Victor** — Montreal, Canada, est. 1913. Fabrics selected in Europe, cut and sewn in Montreal. Their sport jackets have been a Thomas Jeffery staple for years.
-- **Bugatti** — Germany, est. 1947, still run by the founding Brinkmann family. We carry Bugatti's broadest range in Calgary: trousers, outerwear, knitwear, sport shirts, accessories, and more.
+- **Bugatti** — Germany, est. 1947, still run by the founding Brinkmann family. Trousers, outerwear, knitwear, and sport shirts.
 - **7 Downie St.** — Canada. Built around golf, weekends and travel. Sport shirts, casual knits, light layers and sport jackets.
 - **Alberto** — Mönchengladbach, Germany, est. 1922. A trouser house with no diversification into other categories. Each pair is built from 36 components through roughly 40 production steps.
 
@@ -57,7 +57,7 @@ Every brand on the floor was chosen for a reason. Everything below is stocked in
 - **Alberto** (Germany, 1922) — European construction with stretch and recovery that wears all day.
 
 ### Outerwear
-- **Bugatti** (Germany, 1947) — technical casual jackets through to formal overcoats.
+- **Bugatti** (Germany, 1947) — casual jackets through to formal overcoats.
 - **Holebrook** (Sweden) — windproof knits, warm without bulk.
 - **Regency Leathers** — leather outerwear: biker silhouettes, lighter jackets, vests, coats and puffers.
 - **Coppley** (Hamilton, Canada, 1883) — made-to-measure topcoats and overcoats.
