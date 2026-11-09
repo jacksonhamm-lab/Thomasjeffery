@@ -19,7 +19,7 @@ const MD_PAGES = new Set([
   '/office',
   '/wedding',
   '/casual',
-  '/fall-2026',
+  '/holiday',
   '/outerwear',
   '/brands',
   '/contact',

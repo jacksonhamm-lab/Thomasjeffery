@@ -60,4 +60,8 @@
 /summer-sale        /brands  301
 
 # Short seasonal landing URL
-/fall               /fall-2026  301
+/fall               /holiday    301
+
+# Fall 2026 folded into the holiday page, Nov 2026
+/fall-2026          /holiday    301
+/fall-2026.md       /holiday.md 301

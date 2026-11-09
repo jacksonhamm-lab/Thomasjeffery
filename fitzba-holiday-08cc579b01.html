@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Thomas Jeffery Holiday Picks for Fitzba</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1C2B39; --ground:#F5F0EB; --warm:#EDE7DE; --rule:#D9D3CC; --muted:#8A8078; --red:#7A1E22; --gold:#B08A4F; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Lato',Arial,sans-serif; background:var(--ground); color:var(--ink); -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1040px; margin:0 auto; padding:0 20px; }
+  header { background:var(--red); color:var(--ground); padding:56px 0 48px; border-bottom:3px solid var(--gold); }
+  header .eyebrow { font-size:11px; letter-spacing:.38em; text-transform:uppercase; color:#D6BA96; }
+  header h1 { font-weight:300; font-size:clamp(34px,6vw,56px); line-height:1.1; margin:14px 0 18px; }
+  header p { max-width:620px; line-height:1.75; color:rgba(245,240,235,.88); }
+  header .updated { margin-top:18px; font-size:12px; color:rgba(245,240,235,.6); }
+  nav.jump { display:flex; gap:18px; flex-wrap:wrap; padding:18px 0; border-bottom:1px solid var(--rule); font-size:11px; letter-spacing:.24em; text-transform:uppercase; }
+  nav.jump a { color:var(--ink); text-decoration:none; }
+  section { padding:56px 0 24px; }
+  h2 { font-weight:300; font-size:clamp(26px,4vw,36px); margin-bottom:10px; }
+  .intro { color:rgba(28,43,57,.75); line-height:1.7; max-width:640px; margin-bottom:28px; }
+  .banner { margin-bottom:8px; }
+  .banner img { width:100%; display:block; border-radius:6px; }
+  .grid { display:grid; grid-template-columns:1fr; gap:20px; }
+  @media (min-width:800px) { .grid { grid-template-columns:1fr 1fr; } }
+  .product { background:#fff; border:1px solid var(--rule); border-radius:8px; padding:24px; }
+  .brand { font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:var(--red); }
+  .product h3 { font-weight:400; font-size:22px; margin:16px 0 6px; }
+  .scene img { width:100%; aspect-ratio:4/3; object-fit:cover; object-position:center 22%; border-radius:4px; display:block; }
+  .brands { font-size:14px; color:rgba(28,43,57,.8); line-height:1.6; }
+  .brands span { font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--red); margin-right:6px; }
+  .sub { font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); margin:4px 0 10px; }
+  .colours { font-size:14px; color:var(--muted); }
+  .line, .cell { display:flex; gap:12px; align-items:flex-start; justify-content:space-between; line-height:1.65; }
+  .line { margin:14px 0 16px; font-size:15px; }
+  .copy { flex-shrink:0; font:700 10px 'Lato',sans-serif; letter-spacing:.18em; text-transform:uppercase; background:none; border:1px solid var(--rule); border-radius:4px; padding:5px 9px; color:var(--ink); cursor:pointer; }
+  .copy.done { background:var(--ink); color:var(--ground); border-color:var(--ink); }
+  .photos { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:12px; }
+  figure img { width:100%; aspect-ratio:3/4; object-fit:cover; background:#fff; border:1px solid var(--rule); border-radius:4px; display:block; }
+  figcaption { display:flex; justify-content:space-between; gap:6px; font-size:12px; color:var(--muted); margin-top:6px; }
+  .dl { color:var(--red); font-weight:700; text-decoration:none; }
+  .nophoto { font-size:13px; color:var(--muted); font-style:italic; }
+  table { width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--rule); border-radius:8px; overflow:hidden; }
+  th, td { text-align:left; vertical-align:top; padding:16px; border-bottom:1px solid var(--rule); font-size:15px; }
+  th { font-weight:700; width:22%; }
+  td.dates { width:24%; color:var(--red); white-space:nowrap; }
+  .small { font-size:13px; color:var(--muted); margin-top:6px; line-height:1.6; }
+  @media (max-width:700px) { table, tbody, tr, th, td { display:block; width:100% !important; } th { border-bottom:none; padding-bottom:2px; } td.dates { border-bottom:none; padding:0 16px 4px; } }
+  .closed { margin-top:16px; font-size:15px; }
+  ul.notes { list-style:none; background:#fff; border:1px solid var(--rule); border-radius:8px; }
+  ul.notes li { padding:14px 16px; border-bottom:1px solid var(--rule); line-height:1.6; }
+  ul.notes li:last-child { border-bottom:none; }
+  .store { display:grid; gap:6px; line-height:1.7; }
+  .btn { display:inline-block; margin-top:6px; background:var(--ink); color:var(--ground); text-decoration:none; font-size:11px; font-weight:700; letter-spacing:.24em; text-transform:uppercase; padding:14px 22px; border-radius:6px; }
+  footer { padding:48px 0 64px; color:var(--muted); font-size:12px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <span class="eyebrow">Thomas Jeffery Men’s Wear</span>
+    <h1>Holiday Picks for Fitzba</h1>
+    <p>A short list of what to feature for the holidays, with photos you can download, plus our promotion dates for November and December.</p>
+    <p class="updated">Updated November 9, 2026</p>
+  </div>
+</header>
+<div class="wrap">
+  <nav class="jump"><a href="#products">What to Feature</a><a href="#dates">Dates</a><a href="#notes">Good to know</a><a href="#store">Store</a></nav>
+
+  <section id="products">
+    <h2>What to Feature</h2>
+    <p class="intro">What we carry for the holiday season, by category, with the brands in each. Quantities and sizes change week to week, so we haven’t listed stock counts. The photos under “In store now” are of actual pieces on the floor. Every photo downloads at full size, or <a href="fitzba-holiday-08cc579b01/thomas-jeffery-holiday-photos.zip" download>download all the photos</a> in one zip.</p>
+    <figure class="banner"><img src="fitzba-holiday-08cc579b01/thomas-jeffery-holiday-gifts-preview.jpg" alt="A holiday gift table of sweaters, flannel shirts, dress shirts and scarves">
+      <figcaption>Holiday banner image<a class="dl" href="fitzba-holiday-08cc579b01/thomas-jeffery-holiday-gifts.jpg" download>Download</a></figcaption></figure>
+    <div class="grid">
+    <article class="product">
+      <figure class="scene"><img src="fitzba-holiday-08cc579b01/holiday-knitwear-preview.jpg" alt="Knitwear" loading="lazy">
+        <figcaption>Knitwear<a class="dl" href="fitzba-holiday-08cc579b01/holiday-knitwear.jpg" download>Download</a></figcaption></figure>
+      <h3>Knitwear</h3>
+      <p class="brands"><span>Brands</span> Robert Barakett, Ferrante, Codice, Bugatti</p>
+      <p class="line"><span>Crewnecks, mock necks, turtlenecks, cardigans, quarter-zips, and more.</span><button class="copy" type="button" data-copy="Crewnecks, mock necks, turtlenecks, cardigans, quarter-zips, and more.">Copy</button></p>
+      <p class="sub">In store now</p><div class="photos"><figure><img src="fitzba-holiday-08cc579b01/bugatti-quarter-zip-burgundy-preview.jpg" alt="Bugatti quarter-zip, burgundy" loading="lazy"><figcaption>Bugatti quarter-zip, burgundy<a class="dl" href="fitzba-holiday-08cc579b01/bugatti-quarter-zip-burgundy.jpg" download>Download</a></figcaption></figure><figure><img src="fitzba-holiday-08cc579b01/bugatti-quarter-zip-brown-preview.jpg" alt="Bugatti quarter-zip, brown" loading="lazy"><figcaption>Bugatti quarter-zip, brown<a class="dl" href="fitzba-holiday-08cc579b01/bugatti-quarter-zip-brown.jpg" download>Download</a></figcaption></figure><figure><img src="fitzba-holiday-08cc579b01/bugatti-quilted-zip-navy-preview.jpg" alt="Bugatti quilted zip, navy" loading="lazy"><figcaption>Bugatti quilted zip, navy<a class="dl" href="fitzba-holiday-08cc579b01/bugatti-quilted-zip-navy.jpg" download>Download</a></figcaption></figure><figure><img src="fitzba-holiday-08cc579b01/bugatti-quilted-zip-charcoal-preview.jpg" alt="Bugatti quilted zip, charcoal" loading="lazy"><figcaption>Bugatti quilted zip, charcoal<a class="dl" href="fitzba-holiday-08cc579b01/bugatti-quilted-zip-charcoal.jpg" download>Download</a></figcaption></figure><figure><img src="fitzba-holiday-08cc579b01/bugatti-quilted-zip-brown-preview.jpg" alt="Bugatti quilted zip, brown" loading="lazy"><figcaption>Bugatti quilted zip, brown<a class="dl" href="fitzba-holiday-08cc579b01/bugatti-quilted-zip-brown.jpg" download>Download</a></figcaption></figure></div>
+    </article>
+    <article class="product">
+      <figure class="scene"><img src="fitzba-holiday-08cc579b01/holiday-scarves-gloves-preview.jpg" alt="Scarves and gloves" loading="lazy">
+        <figcaption>Scarves and gloves<a class="dl" href="fitzba-holiday-08cc579b01/holiday-scarves-gloves.jpg" download>Download</a></figcaption></figure>
+      <h3>Scarves and Gloves</h3>
+      
+      <p class="line"><span>Premium wool and cashmere scarves, and wool-lined leather gloves.</span><button class="copy" type="button" data-copy="Premium wool and cashmere scarves, and wool-lined leather gloves.">Copy</button></p>
+      <p class="sub">In store now</p><div class="photos"><figure><img src="fitzba-holiday-08cc579b01/scarf-red-check-preview.jpg" alt="Scarf, red check" loading="lazy"><figcaption>Scarf, red check<a class="dl" href="fitzba-holiday-08cc579b01/scarf-red-check.jpg" download>Download</a></figcaption></figure><figure><img src="fitzba-holiday-08cc579b01/scarf-navy-tartan-preview.jpg" alt="Scarf, navy and green tartan" loading="lazy"><figcaption>Scarf, navy and green tartan<a class="dl" href="fitzba-holiday-08cc579b01/scarf-navy-tartan.jpg" download>Download</a></figcaption></figure></div>
+    </article>
+    <article class="product">
+      <figure class="scene"><img src="fitzba-holiday-08cc579b01/holiday-sport-shirts-preview.jpg" alt="Sport shirts" loading="lazy">
+        <figcaption>Sport shirts<a class="dl" href="fitzba-holiday-08cc579b01/holiday-sport-shirts.jpg" download>Download</a></figcaption></figure>
+      <h3>Sport Shirts</h3>
+      <p class="brands"><span>Brands</span> Altemflower, Klauss Boehler, 7 Downie St., DeSoto, Codice, Blu by Polifroni</p>
+      <p class="line"><span>Checks, plaids, and flannels for the days that don’t call for a tie.</span><button class="copy" type="button" data-copy="Checks, plaids, and flannels for the days that don’t call for a tie.">Copy</button></p>
+      <p class="sub">In store now</p><div class="photos"><figure><img src="fitzba-holiday-08cc579b01/altemflower-flannel-blue-preview.jpg" alt="Altemflower flannel, blue plaid" loading="lazy"><figcaption>Altemflower flannel, blue plaid<a class="dl" href="fitzba-holiday-08cc579b01/altemflower-flannel-blue.jpg" download>Download</a></figcaption></figure><figure><img src="fitzba-holiday-08cc579b01/altemflower-flannel-cream-preview.jpg" alt="Altemflower flannel, cream plaid" loading="lazy"><figcaption>Altemflower flannel, cream plaid<a class="dl" href="fitzba-holiday-08cc579b01/altemflower-flannel-cream.jpg" download>Download</a></figcaption></figure><figure><img src="fitzba-holiday-08cc579b01/klauss-white-paisley-preview.jpg" alt="Klauss Boehler, white paisley" loading="lazy"><figcaption>Klauss Boehler, white paisley<a class="dl" href="fitzba-holiday-08cc579b01/klauss-white-paisley.jpg" download>Download</a></figcaption></figure><figure><img src="fitzba-holiday-08cc579b01/klauss-blue-paisley-preview.jpg" alt="Klauss Boehler, blue paisley" loading="lazy"><figcaption>Klauss Boehler, blue paisley<a class="dl" href="fitzba-holiday-08cc579b01/klauss-blue-paisley.jpg" download>Download</a></figcaption></figure><figure><img src="fitzba-holiday-08cc579b01/blu-polifroni-print-preview.jpg" alt="Blu by Polifroni print" loading="lazy"><figcaption>Blu by Polifroni print<a class="dl" href="fitzba-holiday-08cc579b01/blu-polifroni-print.jpg" download>Download</a></figcaption></figure></div>
+    </article>
+    <article class="product">
+      <figure class="scene"><img src="fitzba-holiday-08cc579b01/holiday-dress-shirts-preview.jpg" alt="Dress shirts" loading="lazy">
+        <figcaption>Dress shirts<a class="dl" href="fitzba-holiday-08cc579b01/holiday-dress-shirts.jpg" download>Download</a></figcaption></figure>
+      <h3>Dress Shirts</h3>
+      <p class="brands"><span>Brands</span> Stenströms, Lugano, Polifroni Milano, Blu by Polifroni, Klauss Boehler</p>
+      <p class="line"><span>White, ivory, light blue, stripes, and more, with ties to go with them.</span><button class="copy" type="button" data-copy="White, ivory, light blue, stripes, and more, with ties to go with them.">Copy</button></p>
+      
+    </article>
+    <article class="product">
+      <figure class="scene"><img src="fitzba-holiday-08cc579b01/holiday-sport-coat-preview.jpg" alt="Aristo knit sport coat over a Bugatti quarter-zip" loading="lazy">
+        <figcaption>Aristo knit sport coat over a Bugatti quarter-zip<a class="dl" href="fitzba-holiday-08cc579b01/holiday-sport-coat.jpg" download>Download</a></figcaption></figure>
+      <h3>Sport Coats</h3>
+      <p class="brands"><span>Brands</span> Jack Victor, 7 Downie St., Aristo, Paul Betenly, Lief Horsens, Coppley</p>
+      <p class="line"><span>Textured weaves and checks that work with a dress trouser or with denim, fitted in store.</span><button class="copy" type="button" data-copy="Textured weaves and checks that work with a dress trouser or with denim, fitted in store.">Copy</button></p>
+      
+    </article>
+    <article class="product">
+      <figure class="scene"><img src="fitzba-holiday-08cc579b01/holiday-suit-preview.jpg" alt="Charcoal suit" loading="lazy">
+        <figcaption>Charcoal suit<a class="dl" href="fitzba-holiday-08cc579b01/holiday-suit.jpg" download>Download</a></figcaption></figure>
+      <h3>Suits for Holiday Events</h3>
+      <p class="brands"><span>Brands</span> Coppley, Paul Betenly</p>
+      <p class="line"><span>For holiday parties, dinners, and work events. Our sales team fits every suit, and our tailor makes the alterations.</span><button class="copy" type="button" data-copy="For holiday parties, dinners, and work events. Our sales team fits every suit, and our tailor makes the alterations.">Copy</button></p>
+      
+    </article>
+    <article class="product">
+      <figure class="scene"><img src="fitzba-holiday-08cc579b01/holiday-dinner-jacket-preview.jpg" alt="Dinner jacket" loading="lazy">
+        <figcaption>Dinner jacket<a class="dl" href="fitzba-holiday-08cc579b01/holiday-dinner-jacket.jpg" download>Download</a></figcaption></figure>
+      <h3>Dinner Jackets</h3>
+      <p class="brands"><span>Brands</span> Coppley, Paul Betenly</p>
+      <p class="line"><span>Black tuxedos, dinner jackets, and more for black tie and holiday parties. Some styles are ordered in or made custom by Coppley.</span><button class="copy" type="button" data-copy="Black tuxedos, dinner jackets, and more for black tie and holiday parties. Some styles are ordered in or made custom by Coppley.">Copy</button></p>
+      <p class="sub">On the hanger</p><div class="photos"><figure><img src="fitzba-holiday-08cc579b01/holiday-tuxedo-preview.jpg" alt="Black tuxedo" loading="lazy"><figcaption>Black tuxedo<a class="dl" href="fitzba-holiday-08cc579b01/holiday-tuxedo.jpg" download>Download</a></figcaption></figure></div>
+    </article>
+    <article class="product">
+      <figure class="scene"><img src="fitzba-holiday-08cc579b01/thomas-jeffery-gift-certificate-preview.jpg" alt="Gift certificate" loading="lazy">
+        <figcaption>Gift certificate<a class="dl" href="fitzba-holiday-08cc579b01/thomas-jeffery-gift-certificate.jpg" download>Download</a></figcaption></figure>
+      <h3>Gift Certificates</h3>
+      
+      <p class="line"><span>Lets him choose. Can be used on anything in the store, sale items included, and counts toward the Gift Bonus.</span><button class="copy" type="button" data-copy="Lets him choose. Can be used on anything in the store, sale items included, and counts toward the Gift Bonus.">Copy</button></p>
+      
+    </article>
+    </div>
+  </section>
+
+  <section id="dates">
+    <h2>Holiday Dates</h2>
+    <p class="intro">What’s on in store from November to early January.</p>
+    <table><tbody><tr><th scope="row">Holiday Gift Bonus</th><td class="dates">November 9 to December 24</td><td><p class="cell"><span>Spend $250 or more, or buy a gift certificate, and get a bonus voucher for the next visit: $50 on $250, $100 on $500, $150 on $750, $200 on $1,000.</span><button class="copy" type="button" data-copy="Spend $250 or more, or buy a gift certificate, and get a bonus voucher for the next visit: $50 on $250, $100 on $500, $150 on $750, $200 on $1,000.">Copy</button></p><p class=small>Spend is before tax and includes sale items. Amounts paid with a gift certificate or voucher don’t count. Bonus vouchers can’t be used on sale items.</p></td></tr><tr><th scope="row">Black Friday Sale</th><td class="dates">November 21 to 28</td><td><p class="cell"><span>30% off select shirts and sport coats.</span><button class="copy" type="button" data-copy="30% off select shirts and sport coats.">Copy</button></p></td></tr><tr><th scope="row">Holiday Suit Sale</th><td class="dates">December 1 to 24</td><td><p class="cell"><span>Up to 30% off select suits.</span><button class="copy" type="button" data-copy="Up to 30% off select suits.">Copy</button></p></td></tr><tr><th scope="row">Boxing Week Sale</th><td class="dates">December 21 to January 2</td><td><p class="cell"><span>Sweaters and casual pants: buy one and get 50% off, or buy two or more and get 70% off.</span><button class="copy" type="button" data-copy="Sweaters and casual pants: buy one and get 50% off, or buy two or more and get 70% off.">Copy</button></p><p class=small>Alterations are extra.</p></td></tr></tbody></table>
+    <p class="closed"><strong>Closed:</strong> Sundays, Remembrance Day (November 11), Christmas Day, Boxing Day, and New Year’s Day.</p>
+  </section>
+
+  <section id="notes">
+    <h2>Good to Know</h2>
+    <ul class="notes"><li>Call them bonus vouchers, never store credit.</li><li>Sale prices are on select pieces only, not the whole store.</li><li>Walk-ins are welcome any day. Our sales team fits every piece in store, and our tailor makes the alterations.</li><li>The full Gift Bonus details are at thomasjeffery.ca/holiday.</li></ul>
+  </section>
+
+  <section id="store">
+    <h2>The Store</h2>
+    <div class="store">
+      <p>Kingsland Village #303, 7337 Macleod Trail SW, Calgary, AB T2H 0L8</p>
+      <p>Monday to Saturday, 10am to 6pm</p>
+      <p>(403) 278-2445</p>
+      <p><a class="btn" href="https://thomasjeffery.ca/holiday">Holiday Gift Bonus page</a></p>
+    </div>
+  </section>
+</div>
+<footer><div class="wrap">Thomas Jeffery Men’s Wear · Calgary · Questions: Jackson Hamm</div></footer>
+<script>
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('.copy');
+    if (!b) return;
+    navigator.clipboard.writeText(b.getAttribute('data-copy')).then(function () {
+      b.textContent = 'Copied'; b.classList.add('done');
+      setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('done'); }, 1400);
+    });
+  });
+</script>
+</body>
+</html>

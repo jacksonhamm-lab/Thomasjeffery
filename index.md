@@ -16,7 +16,7 @@ A Calgary menswear store since 1968. Locally owned and independent.
 
 ## In store now
 
-New fall arrivals, plus 20% off Paul Betenly outerwear. See [Fall 2026](https://thomasjeffery.ca/fall-2026) and the [Paul Betenly clearance](https://thomasjeffery.ca/outerwear).
+Gifts for him and the Holiday Gift Bonus, November 9 to December 24: spend $250 or more, or buy a gift certificate, and get a bonus voucher for the next visit. See [Holiday 2026](https://thomasjeffery.ca/holiday).
 
 ## How we work
 
