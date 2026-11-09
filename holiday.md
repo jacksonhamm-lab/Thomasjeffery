@@ -1,6 +1,6 @@
 # Holiday 2026: Gifts for Him
 
-Knitwear, shirts, scarves and gloves, sport coats, suits, gift certificates, and more, on the floor at Kingsland Village for the holiday season.
+Knitwear, shirts, scarves and gloves, sport coats, suits, gift certificates, and more, on the floor at Kingsland Village for the holiday season. Assorted colours and sizes, while quantities last.
 
 ## The Holiday Gift Bonus, November 9 to December 24
 
