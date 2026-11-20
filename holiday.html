@@ -1163,6 +1163,24 @@
   .vignette__image--wide { aspect-ratio: 4/3; }
   .vignette__eyebrow--red { color: var(--holiday-red); }
 
+  /* Black Friday Sale band (Nov 21 to 28 2026). Hidden by default; the script below shows it only in its window. */
+  .bf { padding: 72px 20px 80px; text-align: center; background: var(--ground); }
+  @media (min-width: 900px) { .bf { padding: 96px 48px 104px; } }
+  .bf[hidden] { display: none; }
+  .bf__eyebrow { display: block; font-size: 11px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--holiday-red); margin-bottom: 18px; }
+  .bf__title { font-size: clamp(40px, 7vw, 72px); font-weight: 300; line-height: 1.05; margin-bottom: 14px; }
+  .bf__title strong { font-weight: 400; color: var(--holiday-red); }
+  .bf__body { font-size: 16px; font-weight: 300; line-height: 1.8; color: rgba(28,43,57,0.8); max-width: 480px; margin: 0 auto 32px; }
+  .bf__list { list-style: none; max-width: 460px; margin: 0 auto 28px; text-align: left; }
+  .bf__list li {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    font-size: clamp(18px, 2.6vw, 22px); font-weight: 300; padding: 14px 4px;
+    border-bottom: 1px solid rgba(122,30,34,0.25);
+  }
+  .bf__list li:first-child { border-top: 1px solid rgba(122,30,34,0.25); }
+  .bf__list span { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--holiday-red); white-space: nowrap; }
+  .bf__fine { font-size: 13px; line-height: 1.7; color: rgba(28,43,57,0.65); max-width: 460px; margin: 0 auto; }
+
   .edit-intro { padding: 80px 20px 8px; text-align: center; }
   @media (min-width: 900px) { .edit-intro { padding: 112px 48px 16px; } }
   .edit-intro__eyebrow { display: block; font-size: 11px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--holiday-red); margin-bottom: 18px; }
@@ -1198,6 +1216,30 @@
     <p class="hero__walkin">Walk-ins welcome any day.</p>
   </div>
 </section>
+
+<!-- ══ BLACK FRIDAY SALE (Nov 21 to 28 2026): shown only in its window by the script below ══ -->
+<section class="bf" id="black-friday" hidden data-from="2026-11-21" data-until="2026-11-29">
+  <span class="bf__eyebrow">Black Friday Sale &middot; November 21 to 28</span>
+  <h2 class="bf__title"><strong>50% Off</strong> Select Styles.</h2>
+  <p class="bf__body">In store at Kingsland Village, for one week only.</p>
+  <ul class="bf__list">
+    <li>Select outerwear <span>50% off</span></li>
+    <li>Select sport coats <span>50% off</span></li>
+    <li>Select sweaters <span>50% off</span></li>
+    <li>Select sport shirts <span>50% off</span></li>
+    <li>Select dress shirts <span>50% off</span></li>
+  </ul>
+  <p class="bf__fine">Assorted colours and sizes, while quantities last. Sale purchases count toward the Holiday Gift Bonus.</p>
+</section>
+<script>
+(function(){
+  var s = document.getElementById('black-friday');
+  if (!s) return;
+  function d(a){ var p = s.getAttribute(a).split('-'); return new Date(+p[0], p[1] - 1, +p[2]); }
+  var now = new Date();
+  if (now >= d('data-from') && now < d('data-until')) s.hidden = false; else s.remove();
+})();
+</script>
 
 <!-- ══ THE GIFT BONUS ══ -->
 <section class="bonus" id="bonus">
