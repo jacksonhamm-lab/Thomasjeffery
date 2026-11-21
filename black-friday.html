@@ -198,7 +198,13 @@
     .card { border-top-color: #AA2828; }
     .eyebrow { display: block; font-size: 11px; letter-spacing: 0.38em; text-transform: uppercase; color: #AA2828; margin-bottom: 14px; }
     .headline strong { font-weight: 400; color: #AA2828; }
-    .dates { font-size: 15px; letter-spacing: 0.5px; color: var(--ink); margin-bottom: 28px; }
+    /* Dates: two clear boxes, start and end, so nobody has to work out the week */
+    .when { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 10px; }
+    .when div { border: 1px solid rgba(170,40,40,0.35); padding: 14px 8px 12px; }
+    .when span { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: #AA2828; margin-bottom: 6px; }
+    .when strong { display: block; font-size: 19px; font-weight: 400; color: var(--ink); line-height: 1.25; }
+    .when small { display: block; font-size: 12px; color: #8a8078; margin-top: 2px; }
+    .dates-note { font-size: 13px; line-height: 1.6; color: #8a8078; margin-bottom: 28px; }
     .sale { list-style: none; text-align: left; margin: 0 0 22px; }
     .sale li {
       display: flex; justify-content: space-between; align-items: baseline; gap: 14px;
@@ -345,7 +351,11 @@
   <div id="bf-sale">
     <span class="eyebrow">Black Friday Sale</span>
     <h1 class="headline"><strong>50% Off</strong><br>Select Styles</h1>
-    <p class="dates">November 21 to 28</p>
+    <div class="when">
+      <div><span>Starts</span><strong>November 21</strong><small>Saturday</small></div>
+      <div><span>Ends</span><strong>November 28</strong><small>Saturday</small></div>
+    </div>
+    <p class="dates-note">One week only. Closed Sunday, November 22.</p>
 
     <ul class="sale">
     <li>Select outerwear <span>50% off</span></li>
